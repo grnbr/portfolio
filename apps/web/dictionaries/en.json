@@ -1,0 +1,213 @@
+{
+  "header": {
+    "nav": [
+      {
+        "title": "About",
+        "href": "/en/about",
+        "icon": "/icons/light/User"
+      },
+      {
+        "title": "Work",
+        "href": "/en/work",
+        "icon": "/icons/light/Bag"
+      },
+      {
+        "title": "Notebook",
+        "href": "/en/notes",
+        "icon": "/icons/light/Pen"
+      },
+      {
+        "title": "Contact",
+        "href": "/en/contact",
+        "icon": "/icons/light/Message"
+      },
+      { "title": "More", "more": true, "icon": "/icons/light/More" }
+    ],
+    "dropdown-nav": [
+      { "title": "Bookshelf", "href": "/en/books" },
+      { "title": "Tech Stack", "href": "/en/techs" }
+    ],
+    "themes": {
+      "title": "Theme: ",
+      "dark": "Dark",
+      "light": "Light"
+    }
+  },
+  "home": {
+    "hero": {
+      "pronoun": "I'm",
+      "name": "Grigoriy",
+      "intro": "A front-end engineer helping startups turn their visions into a digital reality. I specialize in designing and building modern mobile and web-based apps.",
+      "resume-btn": "See my resume"
+    },
+    "widgets": {
+      "title": "Get to know me",
+      "items": [
+        {
+          "id": "0",
+          "title": "About me",
+          "subtitle": "Who I am and what I do",
+          "img": "/images/home/about-face-min.png",
+          "href": "/en/about"
+        },
+        {
+          "id": "1",
+          "title": "Bookshelf",
+          "subtitle": "Books and pieces of wisdom I’ve enjoyed reading",
+          "img": "/images/home/Bookshelf-min.png",
+          "href": "/en/books"
+        },
+        {
+          "id": "2",
+          "title": "Tech Stack",
+          "subtitle": "The dev tools I use.",
+          "img": "/images/home/Tech-Stack-min.png",
+          "href": "/en/techs"
+        }
+      ]
+    },
+    "contactme": {
+      "title": "Let's work together",
+      "subtitle": "Want to discuss an opportunity to create something great? I’m ready when you are.",
+      "getInTouch": "Get in touch"
+    }
+  },
+  "about": {
+    "title": "A little bit about me",
+    "subtitle": "Who I am and what I do",
+    "iam-paragraph": {
+      "title": "WHO I AM",
+      "text": "I'm Grigoriy front-end developer from Moscow, Russia 🇷🇺."
+    },
+    "ido-paragraph": {
+      "title": "WHAT I DO",
+      "text": "With one year of invaluable experience in my role at AlgaTop –– a tech company based here in Moscow, I have honed my skills in React.js, Next.js, TailwindCSS, and TypeScript, allowing me to craft seamless and interactive user experiences. During my time at AlgaTop,  I played a pivotal role in enhancing the user experience and driving sales growth for clients on the Kaspi platform. Leveraging my expertise in frontend development, I contributed to achieving remarkable results, including doubling or tripling sales, elevating clients' stores to the top position, and automating routine tasks effectively."
+    },
+    "closing-text": "Feel free to reach out via e-mail or write me on Telegram.",
+    "appeal": "Let’s build something great.",
+    "getInTouch": "Get in touch"
+  },
+  "work": {
+    "title": "Work",
+    "subtitle": "Projects and ideas I’ve worked on"
+  },
+  "projects": {
+    "title": "Selected work",
+    "works": [
+      {
+        "id": "0",
+        "name": "AlgaTop",
+        "icon": "/icons/works/AlgaTop.svg",
+        "title": "AlgaTop - Store automation service",
+        "text": "As a Frontend Developer, I played a pivotal role in enhancing the user experience and driving sales growth for clients on the Kaspi platform. Leveraging my expertise in frontend development, I contributed to achieving remarkable results, including doubling or tripling sales, elevating clients' stores to the top position, and automating routine tasks effectively.",
+        "presentationImg": "/images/work/works/algatop-screenshot-min.jpg",
+        "text-btn": "Visit Site",
+        "href": "https://algatop.kz/"
+      }
+    ],
+    "placeholder": {
+      "title": "YOUR PROJECT GOES HERE",
+      "subtitle": "Let’s turn your idea into a visual reality",
+      "icon": "/icons/light/stars.svg",
+      "getInTouch": "Get in touch"
+    }
+  },
+  "tech": {
+    "title": "Tech Stack",
+    "subtitle": "The dev tools I use.",
+    "content": {
+      "title": "Front-end",
+      "tech-items": [
+        {
+          "name": "HTML",
+          "logo": "/images/techs/html-logo.svg",
+          "tag": "Language"
+        },
+        {
+          "name": "CSS",
+          "logo": "/images/techs/css-logo.svg",
+          "tag": "Language"
+        },
+        {
+          "name": "JavaScript",
+          "logo": "/images/techs/js-logo.svg",
+          "tag": "Language"
+        },
+        {
+          "name": "Git",
+          "logo": "/images/techs/git-logo.svg",
+          "tag": "Version Control"
+        },
+        {
+          "name": "React",
+          "logo": "/images/techs/react-logo.svg",
+          "tag": "Library"
+        },
+        {
+          "name": "Sass",
+          "logo": "/images/techs/sass-logo.svg",
+          "tag": "Extension Language"
+        },
+        {
+          "name": "TypeScript",
+          "logo": "/images/techs/ts-logo.svg",
+          "tag": "Language"
+        },
+        {
+          "name": "Tailwind",
+          "logo": "/images/techs/tailwind-logo.svg",
+          "tag": "Framework"
+        },
+        {
+          "name": "Next.js",
+          "logo": "/images/techs/nextjs-logo.svg",
+          "tag": "Framework"
+        },
+        {
+          "name": "Redux",
+          "logo": "/images/techs/redux-logo.svg",
+          "tag": "State Manager"
+        }
+      ]
+    }
+  },
+  "contact": {
+    "title": "Get in touch",
+    "subtitle": "Let’s build something awesome.",
+    "form": {
+      "title": "New message",
+      "email": {
+        "label": "Email:",
+        "placeholder": "Enter your email address"
+      },
+      "name": {
+        "label": "Name:",
+        "placeholder": "Enter your name"
+      },
+      "subject": {
+        "label": "Subject:",
+        "placeholder": "Enter subject"
+      },
+      "textarea-placeholder": "Write your message here",
+      "send-btn": "Send"
+    }
+  },
+  "footer": {
+    "underlogo-text": "Thanks for stopping by",
+    "rights": " Grigoriy N. All Rights Reserved.",
+    "links": {
+      "title": "Links",
+      "links": [
+        { "title": "About", "href": "/en/about" },
+        { "title": "Work", "href": "/en/work" },
+        { "title": "Tech Stack", "href": "/en/techs" },
+        { "title": "Contact", "href": "/en/contact" }
+      ]
+    },
+    "elsewhere": "Elsewhere"
+  },
+  "getInTouch": {
+    "title": "Get in touch",
+    "href": "/en/contact"
+  }
+}
