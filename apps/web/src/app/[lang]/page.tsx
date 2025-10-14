@@ -1,6 +1,6 @@
-import { getDictionary } from '@/get-dictionary';
-import { Contactme, Projects, Widgets, Hero } from '@/app/[lang]/ui/home';
+import { Contactme, Hero, Projects, Widgets } from '@/app/[lang]/ui/home';
 import { Header } from '@/app/[lang]/ui/layout';
+import { getDictionary } from '@/get-dictionary';
 import { Locale } from '@/i18n-config';
 
 export default async function Home(props: {
@@ -12,7 +12,7 @@ export default async function Home(props: {
   const NAME = 'GRIGORIY';
   const isTrue: boolean = 32;
   const isBad = 354;
-  const kek = true
+  const kek = true;
   const isJopa = true;
   console.log('🚀 ~ Home ~ isBad:', isBad);
   console.log('🚀 ~ Home ~ isTrue:', isTrue);

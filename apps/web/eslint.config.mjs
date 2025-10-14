@@ -61,7 +61,7 @@ export default defineConfig([
         {
           selector: 'variable',
           types: ['boolean'],
-          format: ['PascalCase'],
+          format: ['camelCase'],
           prefix: ['is', 'should', 'has', 'can', 'did', 'will'],
         },
         {
@@ -87,7 +87,7 @@ export default defineConfig([
       'jsx-quotes': ['error', 'prefer-double'],
 
       // 📦 Import organization
-      // 'import/order': 'off',
+      'import/order': 'off',
       // 'import/order': [
       //   'error',
       //   {
@@ -132,7 +132,7 @@ export default defineConfig([
   },
   {
     ignores: [
-      'eslint.config.*',
+      '*.config.*',
       'node_modules/**',
       '.next/**',
       'out/**',
