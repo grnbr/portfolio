@@ -1,0 +1,15 @@
+@use "@styles-utils/breakpoints" as bp;
+@use "@styles-utils/mixins" as m;
+
+.container {
+  width: 100%;
+  max-width: 144rem;
+  margin: 0 auto;
+  margin-bottom: 12.1rem;
+
+  @include m.padding-sides;
+
+  @include bp.md {
+    margin-bottom: 0rem;
+  }
+}

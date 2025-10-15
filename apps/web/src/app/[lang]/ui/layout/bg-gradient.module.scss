@@ -1,0 +1,220 @@
+@use "@styles-utils/breakpoints" as bp;
+
+.top-blue-element {
+  position: absolute;
+  top: 0;
+
+  transform: translate(21.477rem, -6.2rem);
+  transform: translate(
+    clamp(-33.023rem, -51.967rem + 48.574vw, 21.477rem),
+    -6.2rem
+  );
+
+  height: 17.863rem;
+  width: 59.825rem;
+  background-color: var(--bg-blue-element);
+  border-radius: 100%;
+  filter: blur(10rem);
+  z-index: -5;
+
+  @include bp.lg {
+    transform: translate(-2.22722rem, -6.2rem); // fallback
+    transform: translate(
+      clamp(-33.023rem, -51.967rem + 48.574vw, 21.477rem),
+      -6.2rem
+    );
+  }
+  @include bp.md {
+    transform: translate(-14.6622rem, -6.2rem); // fallback
+    transform: translate(
+      clamp(-33.023rem, -51.967rem + 48.574vw, 21.477rem),
+      -6.2rem
+    );
+  }
+
+  @include bp.sm {
+    transform: translate(-28.6515rem, -6.2rem); // fallback
+    transform: translate(
+      clamp(-33.023rem, -51.967rem + 48.574vw, 21.477rem),
+      -6.2rem
+    );
+  }
+
+  @include bp.xs {
+    transform: translate(-33.023rem, -6.2rem); // fallback
+  }
+}
+
+.top-yellow-element {
+  position: absolute;
+  top: 0;
+
+  transform: translate(
+    clamp(6.69rem, -12.744rem + 49.831vw, 62.6rem),
+    -6.185rem
+  );
+
+  height: 13.812rem;
+  width: 59.825rem;
+
+  border-radius: 100%;
+  filter: blur(10rem);
+  background-color: var(--bg-yellow-element);
+  z-index: -5;
+
+  @include bp.lg {
+    transform: translate(38.2829rem, -6.185rem);
+    transform: translate(
+      clamp(6.69rem, -12.744rem + 49.831vw, 62.6rem),
+      -6.185rem
+    );
+  }
+  @include bp.md {
+    transform: translate(25.5262rem, -6.185rem);
+    transform: translate(
+      clamp(6.69rem, -12.744rem + 49.831vw, 62.6rem),
+      -6.185rem
+    );
+  }
+
+  @include bp.sm {
+    transform: translate(11.1749rem, -6.185rem);
+    transform: translate(
+      clamp(6.69rem, -12.744rem + 49.831vw, 62.6rem),
+      -6.185rem
+    );
+  }
+
+  @include bp.xs {
+    transform: translate(6.69rem, -6.185rem);
+  }
+}
+
+.top-red-element {
+  position: absolute;
+  top: 0;
+
+  transform: translate(44.905rem, -8.285rem);
+  transform: translate(
+    clamp(-7.995rem, -26.383rem + 47.148vw, 44.905rem),
+    -8.285rem
+  );
+
+  height: 26.334rem;
+  width: 59.825rem;
+  border-radius: 100%;
+  filter: blur(10rem);
+  background-color: var(--bg-red-element);
+  z-index: -5;
+
+  @include bp.lg {
+    transform: translate(21.8966rem, -8.285rem);
+    transform: translate(
+      clamp(-7.995rem, -26.383rem + 47.148vw, 44.905rem),
+      -8.285rem
+    );
+  }
+  @include bp.md {
+    transform: translate(9.82666rem, -8.285rem);
+    transform: translate(
+      clamp(-7.995rem, -26.383rem + 47.148vw, 44.905rem),
+      -8.285rem
+    );
+  }
+
+  @include bp.sm {
+    transform: translate(-3.75196rem, -8.285rem);
+    transform: translate(
+      clamp(-7.995rem, -26.383rem + 47.148vw, 44.905rem),
+      -8.285rem
+    );
+  }
+
+  @include bp.xs {
+    transform: translate(-7.995rem, -8.285rem);
+  }
+}
+
+//======================================================================
+//=================== BOTTOM starts below ===========================================
+//======================================================================
+
+.bottom-blue-element {
+  position: absolute;
+  bottom: 0;
+
+  transform: translate(62.681rem, 8.58rem);
+  transform: translate(
+    clamp(9rem, -9.659rem + 47.844vw, 62.681rem),
+    clamp(1.9rem, -0.422rem + 5.954vw, 8.58rem)
+  );
+
+  width: 74.719rem;
+  height: 22.31rem;
+
+  width: clamp(57.2rem, 51.111rem + 15.614vw, 74.719rem);
+  height: clamp(14.22rem, 11.408rem + 7.21vw, 22.31rem);
+
+  background-color: var(--bg-blue-element);
+  border-radius: 100%;
+  filter: blur(7rem);
+  z-index: -5;
+}
+
+.bottom-yellow-element {
+  position: absolute;
+  bottom: 0;
+
+  transform: translate(
+    11.083rem,
+    8.567rem
+  ); // fallback for unsupported browsers
+
+  transform: translate(
+    clamp(-30.5rem, -44.954rem + 37.061vw, 11.083rem),
+    clamp(1.892rem, -0.428rem + 5.949vw, 8.567rem)
+  );
+
+  width: 74.719rem; // fallback for unsupported browsers
+  height: 17.25rem; // fallback for unsupported browsers
+
+  width: clamp(57.2rem, 51.111rem + 15.614vw, 74.719rem);
+  height: clamp(10.995rem, 8.821rem + 5.575vw, 17.25rem);
+
+  background-color: var(--bg-yellow-element);
+  border-radius: 100%;
+  filter: blur(9rem);
+  z-index: -5;
+
+  @include bp.xs {
+    width: 57.2rem; // fallback for unsupported browsers
+    height: 10.995rem; // fallback for unsupported browsers
+    transform: translate(
+      -30.5rem,
+      8.567rem
+    ); // fallback for unsupported browsers
+  }
+}
+
+.bottom-red-element {
+  position: absolute;
+  bottom: 0;
+
+  transform: translate(33.421rem, 11.19rem);
+
+  transform: translate(
+    clamp(-13.4rem, -29.675rem + 41.73vw, 33.421rem),
+    clamp(3.564rem, 0.913rem + 6.797vw, 11.19rem)
+  );
+
+  width: 74.719rem;
+  height: 32.89rem;
+
+  width: clamp(57.2rem, 51.111rem + 15.614vw, 74.719rem);
+  height: clamp(20.964rem, 16.819rem + 10.629vw, 32.89rem);
+
+  background-color: var(--bg-red-element);
+  border-radius: 100%;
+  filter: blur(9rem);
+  z-index: -5;
+}

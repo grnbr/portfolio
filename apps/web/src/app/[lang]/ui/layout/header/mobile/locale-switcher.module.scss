@@ -1,0 +1,33 @@
+@use "@styles-utils/breakpoints" as bp;
+@use "@styles-utils/mixins" as m;
+
+.container {
+  display: flex;
+  column-gap: 1.6rem;
+  text-transform: capitalize;
+
+  a {
+    transition: all 0.3s ease-in-out;
+  }
+
+  .link-wrapper {
+    border-radius: 0.9rem;
+    background-color: var(--header-nav-mobile-popup-btn-bg);
+    flex-basis: 100%;
+
+    .link {
+      @include m.flex-center;
+      padding: 2rem;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .language {
+    filter: opacity(0.6);
+  }
+
+  .language--active {
+    filter: opacity(1);
+  }
+}

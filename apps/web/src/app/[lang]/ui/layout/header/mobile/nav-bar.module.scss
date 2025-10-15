@@ -1,0 +1,36 @@
+.nav-bar {
+  position: relative;
+  height: 100%;
+  padding: 0.9rem 1.5rem;
+  z-index: 1000;
+
+  background-color: var(--header-nav-mobile-bg);
+  border: 1px solid var(--header-nav-mobile-border);
+  border-radius: 1.2rem;
+  backdrop-filter: blur(1.2rem);
+
+  .links-wrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btn-link-wrapper {
+    flex-basis: 100%;
+  }
+
+  .btn-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 4rem;
+    width: 100%;
+    border-radius: 1.2rem;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  .btn-link--active {
+    background-color: var(--header-nav-mobile-btn-bg);
+  }
+}

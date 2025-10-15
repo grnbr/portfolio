@@ -1,0 +1,53 @@
+@mixin page-container {
+  margin: 0 auto;
+  width: 100%;
+
+  @include padding-sides;
+}
+
+@mixin content-container {
+  margin: 0 auto;
+  max-width: 102.4rem;
+}
+
+@mixin head-page-container {
+  @include content-container;
+
+  margin-top: 6.5rem;
+  margin-bottom: 6rem;
+}
+
+@mixin padding-sides {
+  padding: 0 1.6rem;
+}
+
+@mixin apply-margin-bottom-to-children-except-last($margin) {
+  > *:not(:last-child) {
+    margin-bottom: $margin;
+  }
+}
+
+@mixin card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin icon {
+  filter: invert(100%);
+
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  user-drag: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
