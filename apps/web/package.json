@@ -8,7 +8,7 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
-    "stylelint": "stylelint **/*.{scss,css}"
+    "stylelint": "stylelint src/**/*.{scss,css}"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",

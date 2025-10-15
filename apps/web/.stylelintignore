@@ -1,0 +1,12 @@
+**/*.js
+**/*.jsx
+**/*.ts
+**/*.tsx
+**/*.md
+**/*.svg
+node_modules/
+.next/
+out/
+build/
+dist/
+public/
