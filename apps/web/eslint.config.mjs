@@ -1,12 +1,11 @@
 import eslint from '@eslint/js';
 import stylistic from '@stylistic/eslint-plugin';
 import typescriptParser from '@typescript-eslint/parser';
-import nextTs from 'eslint-config-next/typescript';
 import nextVitals from 'eslint-config-next/core-web-vitals';
-import importPlugin from 'eslint-plugin-import';
+import nextTs from 'eslint-config-next/typescript';
+import eslintConfigPrettier from 'eslint-config-prettier/flat';
 import perfectionist from 'eslint-plugin-perfectionist';
 import { defineConfig } from 'eslint/config';
-import eslintConfigPrettier from 'eslint-config-prettier/flat';
 
 export default defineConfig([
   eslint.configs.recommended,
