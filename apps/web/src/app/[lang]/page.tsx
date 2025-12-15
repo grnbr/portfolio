@@ -1,6 +1,6 @@
-import { Contactme, Hero, Projects, Widgets } from "@/app/[lang]/ui/home";
-import { getDictionary } from "@/get-dictionary";
-import { Locale } from "@/i18n-config";
+import { Contactme, Hero, Projects, Widgets } from '@/app/[lang]/ui/home';
+import { getDictionary } from '@/get-dictionary';
+import { Locale } from '@/i18n-config';
 
 export default async function Home(props: {
   params: Promise<{ lang: Locale }>;
@@ -10,10 +10,10 @@ export default async function Home(props: {
 
   return (
     <>
-      <Hero dictionary={dictionary} />
+      {/* <Hero dictionary={dictionary} />
       <Projects dictionary={dictionary.projects} />
       <Widgets dictionary={dictionary.home.widgets} />
-      <Contactme dictionary={dictionary} />
+      <Contactme dictionary={dictionary} /> */}
     </>
   );
 }

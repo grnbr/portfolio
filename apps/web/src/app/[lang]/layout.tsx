@@ -1,17 +1,18 @@
-import type { Metadata } from "next";
-import type { ReactNode } from "react";
+import type Metadata from 'next';
+import type { ReactNode } from 'react';
 
-import "./ui/globals.scss";
-import { inter } from "./ui/fonts";
-import { Providers } from "@/app/[lang]/providers";
-import { Header, Footer, BgGradient } from "./ui/layout";
-import { getDictionary } from "@/get-dictionary";
-import { Locale } from "@/i18n-config";
+import './ui/globals.scss';
+import { Providers } from '@/app/[lang]/providers';
+import { getDictionary } from '@/get-dictionary';
+import { Locale } from '@/i18n-config';
+
+import { inter } from './ui/fonts';
+import { BgGradient, Footer, Header } from './ui/layout';
 
 export const metadata: Metadata = {
-  title: "Grigoriy's portfolio",
   description:
-    "Portfolio page which contains information about me and to show skills",
+    'Portfolio page which contains information about me and to show skills',
+  title: "Grigoriy's portfolio",
 };
 
 export default async function RootLayout(
@@ -34,8 +35,8 @@ export default async function RootLayout(
             <div className="page-wrapper">
               <BgGradient position="top" />
               <Header
-                dictionary={dictionary.header}
                 currentLang={params.lang}
+                dictionary={dictionary.header}
               />
               <main className="flex-1 basis-full">{children}</main>
               <hr className="underline" />

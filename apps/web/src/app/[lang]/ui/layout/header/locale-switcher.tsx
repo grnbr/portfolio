@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import { i18n, Locale } from "@/i18n-config";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import styles from "./locale-switcher.module.scss";
+import { i18n, Locale } from '@/i18n-config';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import styles from './locale-switcher.module.scss';
 
 const LocaleSwitcher = ({ currentLang }: { currentLang: Locale }) => {
   const pathname = usePathname();
   const redirectedPathName = (locale: Locale) => {
-    if (!pathname) return "/";
-    const segments = pathname.split("/");
+    if (!pathname) return '/';
+    const segments = pathname.split('/');
     segments[1] = locale;
-    return segments.join("/");
+    return segments.join('/');
   };
 
   return (
@@ -23,7 +23,7 @@ const LocaleSwitcher = ({ currentLang }: { currentLang: Locale }) => {
               href={redirectedPathName(locale)}
               className={
                 currentLang === locale
-                  ? styles["language--active"]
+                  ? styles['language--active']
                   : styles.language
               }
             >

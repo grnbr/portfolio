@@ -1,17 +1,17 @@
-import Image from "next/image";
-import Link from "next/link";
-import styles from "./header-desktop.module.scss";
-import HeaderDropdown from "./header-dropdown";
-import ThemeSwitcher from "../theme-switcher";
-import { type getDictionary } from "@/get-dictionary";
-import LocaleSwitcher from "../locale-switcher";
-import { Locale } from "@/i18n-config";
+import Image from 'next/image';
+import Link from 'next/link';
+import styles from './header-desktop.module.scss';
+import HeaderDropdown from './header-dropdown';
+import ThemeSwitcher from '../theme-switcher';
+import { type getDictionary } from '@/get-dictionary';
+import LocaleSwitcher from '../locale-switcher';
+import { Locale } from '@/i18n-config';
 
 const HeaderDesktop = ({
   dictionary,
   currentLang,
 }: {
-  dictionary: Awaited<ReturnType<typeof getDictionary>>["header"];
+  dictionary: Awaited<ReturnType<typeof getDictionary>>['header'];
   currentLang: Locale;
 }) => {
   const links = dictionary.nav.map((link, i) => {
@@ -39,12 +39,12 @@ const HeaderDesktop = ({
           />
         </Link>
         <nav>
-          <ul className={styles["nav-links"]}>{links}</ul>
+          <ul className={styles['nav-links']}>{links}</ul>
         </nav>
       </div>
       <div id="right-side" className="flex items-center">
         <nav>
-          <ul className={styles["social-links"]}>
+          <ul className={styles['social-links']}>
             <li>
               <a href="https://t.me/hzrglpoqasd" target="_blank">
                 <Image
@@ -69,7 +69,7 @@ const HeaderDesktop = ({
             </li>
           </ul>
         </nav>
-        <div className={styles["icon-divider"]} />
+        <div className={styles['icon-divider']} />
         <div>
           <LocaleSwitcher currentLang={currentLang} />
         </div>

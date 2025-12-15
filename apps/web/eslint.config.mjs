@@ -1,45 +1,30 @@
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
-
-import { FlatCompat } from '@eslint/eslintrc';
 import eslint from '@eslint/js';
-import { defineConfig } from 'eslint/config';
 import stylistic from '@stylistic/eslint-plugin';
-import importPlugin from 'eslint-plugin-import';
 import typescriptParser from '@typescript-eslint/parser';
+import nextTs from 'eslint-config-next/typescript';
+import nextVitals from 'eslint-config-next/core-web-vitals';
+import importPlugin from 'eslint-plugin-import';
 import perfectionist from 'eslint-plugin-perfectionist';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: eslint.configs.recommended,
-});
+import { defineConfig } from 'eslint/config';
+import eslintConfigPrettier from 'eslint-config-prettier/flat';
 
 export default defineConfig([
-  // 🔹 Base ESLint + TypeScript + Airbnb + Prettier
   eslint.configs.recommended,
-  ...compat.extends(
-    'next/core-web-vitals',
-    'airbnb',
-    'airbnb/hooks',
-    'next/typescript',
-    'prettier',
-  ),
+  ...nextVitals,
+  ...nextTs,
+  eslintConfigPrettier,
   perfectionist.configs['recommended-natural'],
 
   // 🔹 Custom setup
   {
     plugins: {
       '@stylistic': stylistic,
-      import: importPlugin,
     },
 
     rules: {
       // ⚙️ General JS/TS
       'prefer-const': 'error',
-      'no-console': 'warn',
+      'no-console': ['warn', { allow: ['warn', 'error'] }],
       'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': [
         'warn',
@@ -53,7 +38,10 @@ export default defineConfig([
         },
       ],
       '@typescript-eslint/no-unnecessary-condition': 'error',
-      'no-use-before-define': ['error', { variables: true }],
+      'no-use-before-define': [
+        'error',
+        { functions: false, classes: true, variables: true },
+      ],
 
       // 🧠 Naming conventions
       '@typescript-eslint/naming-convention': [
@@ -61,7 +49,7 @@ export default defineConfig([
         {
           selector: 'variable',
           types: ['boolean'],
-          format: ['camelCase'],
+          format: ['PascalCase'],
           prefix: ['is', 'should', 'has', 'can', 'did', 'will'],
         },
         {
@@ -83,7 +71,16 @@ export default defineConfig([
       // 🎨 Stylistic rules
       '@stylistic/quotes': ['error', 'single', { avoidEscape: true }],
       '@stylistic/indent': ['warn', 2],
-      '@stylistic/max-len': ['error', { code: 80 }],
+      '@stylistic/max-len': [
+        'error',
+        {
+          code: 80, // max line length
+          ignorePattern: '^\\s*<', // ignore lines that start with JSX tags
+          ignoreComments: true, // ignore comments
+          ignoreStrings: true, // ignore strings
+          ignoreTemplateLiterals: true,
+        },
+      ],
       'jsx-quotes': ['error', 'prefer-double'],
 
       // 📦 Import organization
@@ -105,14 +102,30 @@ export default defineConfig([
       //     alphabetize: { order: 'asc', caseInsensitive: true },
       //   },
       // ],
-      'import/no-unresolved': 'error',
+      'perfectionist/sort-modules': [
+        'error',
+        {
+          type: 'natural',
+          order: 'asc',
+          fallbackSort: { type: 'unsorted' },
+          ignoreCase: true,
+          specialCharacters: 'keep',
+          partitionByComment: false,
+          partitionByNewLine: false,
+          newlinesBetween: 'ignore',
+          groups: ['enum', 'types-interfaces', 'class', 'function', 'unknown'],
+          customGroups: [
+            {
+              groupName: 'types-interfaces',
+              type: 'unsorted',
+              anyOf: [{ selector: 'type' }, { selector: 'interface' }],
+            },
+          ],
+        },
+      ],
 
       // ⚛️ React
-      'react/jsx-filename-extension': [
-        'error',
-        { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
-      ],
-      'react/react-in-jsx-scope': 'off',
+      // 'react/jsx-max-props-per-line': ['error', { maximum: 1 }],
     },
 
     languageOptions: {
@@ -122,12 +135,14 @@ export default defineConfig([
         sourceType: 'module',
         ecmaFeatures: { jsx: true },
         project: './tsconfig.json',
-        tsconfigRootDir: __dirname,
       },
     },
 
     settings: {
-      'import/resolver': { typescript: {} },
+      'import/resolver': {
+        typescript: {},
+        node: { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
+      },
     },
   },
   {

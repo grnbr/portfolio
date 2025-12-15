@@ -1,14 +1,14 @@
-import { type getDictionary } from "@/get-dictionary";
-import { HeaderDesktop } from "./desktop";
-import { HeaderSmallDevices } from "./mobile";
-import styles from "./header.module.scss";
-import { Locale } from "@/i18n-config";
+import { type getDictionary } from '@/get-dictionary';
+import { HeaderDesktop } from './desktop';
+import { HeaderSmallDevices } from './mobile';
+import styles from './header.module.scss';
+import { Locale } from '@/i18n-config';
 
 const Header = ({
   dictionary,
   currentLang,
 }: {
-  dictionary: Awaited<ReturnType<typeof getDictionary>>["header"];
+  dictionary: Awaited<ReturnType<typeof getDictionary>>['header'];
   currentLang: Locale;
 }) => {
   return (
@@ -18,7 +18,7 @@ const Header = ({
         <HeaderSmallDevices
           dictionary={dictionary}
           currentLang={currentLang}
-        />{" "}
+        />{' '}
         {/*less than medium breakpoint*/}
       </header>
     </div>
