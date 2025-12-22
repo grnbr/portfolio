@@ -1,0 +1,29 @@
+:root {
+  /* Solid colors */
+  --black: #0d0d0d;
+  --white: #fff;
+  --onyx: #181818;
+  --dark-grey: #808080;
+  --light-grey: #c5c5c5;
+
+  /* Transparent variants */
+  --medium-grey-50: rgb(128 128 128 / 50%);
+  --light-blue-43: rgb(63 100 234 / 43%);
+  --light-red-43: rgb(233 63 64 / 43%);
+  --light-yellow-43: rgb(255 184 0 / 43%);
+  --black-50: rgb(21 21 21 / 50%);
+  --black-30: rgb(24 24 29 / 30%);
+  --black-10: rgb(21 21 21 / 10%);
+  --white-10: rgb(255 255 255 / 10%);
+  --white-25: rgb(255 255 255 / 25%);
+  --white-70: rgb(255 255 255 / 70%);
+
+  /* Faint */
+  --faint-white: #f3f3f3;
+
+  /* Gradient */
+  --dark-gradient: linear-gradient(to bottom, #1a1a1a, #131313);
+  --bg-blue-element: var(--light-blue);
+  --bg-yellow-element: var(--light-yellow);
+  --bg-red-element: var(--light-red);
+}

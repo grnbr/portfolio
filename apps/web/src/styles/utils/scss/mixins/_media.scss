@@ -1,0 +1,42 @@
+@use 'sass:map';
+@use '@/styles/utils/scss/variables';
+
+@mixin media-max($bp-key) {
+  $width: map.get(variables.$breakpoints, $bp-key);
+
+  @if not $width {
+    @error "No breakpoint found for `#{$bp-key}` in $breakpoints map.";
+  }
+
+  @media (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin media-min($bp-key) {
+  $width: calc(map.get(variables.$breakpoints, $bp-key) + 0.0625rem);
+
+  @if not $width {
+    @error "No breakpoint found for `#{$bp-key}` in $breakpoints map.";
+  }
+
+  @media (min-width: $width) {
+    @content;
+  }
+}
+
+@mixin desktop-only {
+  display: block;
+
+  @include media-max(mobile) {
+    display: none;
+  }
+}
+
+@mixin mobile-only {
+  display: block;
+
+  @include media-min(mobile) {
+    display: none;
+  }
+}

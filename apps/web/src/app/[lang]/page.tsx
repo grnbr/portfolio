@@ -1,5 +1,5 @@
-import { getDictionary } from '@/get-dictionary';
-import { Locale } from '@/i18n-config';
+import { getDictionary } from '@/shared/i18n/get-dictionary';
+import { Locale } from '@/shared/i18n/i18n-config';
 
 export default async function Home(props: {
   params: Promise<{ lang: Locale }>;

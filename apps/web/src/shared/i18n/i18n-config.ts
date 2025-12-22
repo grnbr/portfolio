@@ -3,13 +3,11 @@ export enum Languages {
   Russian = 'ru',
 }
 
-export type LanguageType = Languages.English | Languages.Russian;
-
 export type Locale = (typeof i18n)['locales'][number];
 
 type I18n = {
-  defaultLocale: LanguageType;
-  locales: LanguageType[];
+  defaultLocale: Languages;
+  locales: Languages[];
 };
 
 export const i18n: I18n = {

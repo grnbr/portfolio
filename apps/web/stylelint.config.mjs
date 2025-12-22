@@ -21,5 +21,13 @@ export default {
         message: 'Avoid using px except for borders and shadows.',
       },
     ],
+    'scss/at-rule-no-unknown': [
+      true,
+      {
+        ignoreAtRules: ['theme', 'themecss'],
+      },
+    ],
+    'selector-class-pattern': '^[a-z][a-zA-Z0-9]+$',
+    'at-rule-empty-line-before': null,
   },
 };

@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 
-import './ui/globals.scss';
+import './globals.scss';
 import { Providers } from '@/app/[lang]/providers';
-import { getDictionary } from '@/get-dictionary';
-import { Locale } from '@/i18n-config';
+import { getDictionary } from '@/shared/i18n/get-dictionary';
+import { Locale } from '@/shared/i18n/i18n-config';
 
-import { inter } from './ui/fonts';
+import styles from './Layout.module.scss';
 
 export const metadata: Metadata = {
   description:
@@ -27,15 +27,15 @@ export default async function RootLayout(
   const dictionary = await getDictionary(params.lang);
 
   return (
-    <html lang={params.lang} suppressHydrationWarning>
-      <body className={`${inter.className}`}>
+    <html lang={params.lang}>
+      <body className={''}>
         <Providers>
-          <div className="gradient-wrapper">
+          <main className={styles.main}>{children}</main>
+          {/* <div className="gradient-wrapper">
             <div className="page-wrapper">
-              <main className="flex-1 basis-full">{children}</main>
               <hr className="underline" />
             </div>
-          </div>
+          </div> */}
         </Providers>
       </body>
     </html>

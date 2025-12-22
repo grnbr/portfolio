@@ -1,0 +1,37 @@
+:root {
+  /* General */
+  --bg-color: #fbfbfb;
+  --text-primary: var(--dark-grey);
+  --text-heading: var(--onyx);
+
+  /* Header */
+  --header-bg: var(--white-25per);
+  --header-text: var(--onyx);
+
+  /* Footer */
+  --footer-text: var(--onyx);
+
+  /* Mobile nav-bar */
+  --nav-mobile-bg: var(--black-30);
+  --nav-mobile-border: rgb(39 38 44 / 30%);
+  --nav-mobile-btn-bg: var(--black-50);
+  --nav-mobile-popup-btn-bg: var(--medium-grey-50);
+  --nav-icon-primary: var(--white);
+  --nav-icon-inactive: var(--faint-white);
+
+  /* Buttons */
+  --btn-primary-text: var(--white);
+  --btn-primary-bg: var(--faint-white);
+  --btn-primary-bg-hover: hsl(0deg 0% 90%);
+  --btn-secondary-text: var(--onyx);
+  --btn-secondary-bg: var(--faint-white);
+  --btn-secondary-bg-hover: hsl(0deg 0% 90%);
+  --btn-ghost-text: var(--onyx);
+
+  /* Cards */
+  --card-bg: #f6f6f6;
+  --card-border: #ebebeb;
+
+  /* Icons */
+  --icon-primary: var(--onyx);
+}

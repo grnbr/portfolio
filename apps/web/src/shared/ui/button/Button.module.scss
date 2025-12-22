@@ -1,0 +1,36 @@
+@use '@/styles/utils/scss/variables';
+@use '@/styles/utils/scss/mixins';
+
+// @use '@/styles/utils/scss/functions' as f;
+
+.button,
+.buttonIcon {
+  cursor: pointer;
+}
+
+.button {
+  @include mixins.flex-center;
+
+  column-gap: 0.5rem;
+  font-size: var(--fs-18);
+
+  &.primary,
+  &.secondary {
+    width: 100%;
+    border-radius: 0.5625rem;
+  }
+
+  &.primary {
+    color: var(--btn-primary-text);
+    background-color: var(--btn-primary-bg);
+  }
+
+  &.secondary {
+    color: var(--btn-secondary-text);
+    background-color: var(--btn-secondary-bg);
+  }
+
+  &.ghost {
+    color: var(--btn-ghost-text);
+  }
+}

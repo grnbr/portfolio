@@ -2,12 +2,12 @@ import { match } from '@formatjs/intl-localematcher';
 import Negotiator from 'negotiator';
 import { type NextRequest, NextResponse } from 'next/server';
 
-import { i18n } from '@/i18n-config';
+import { i18n } from '@/shared/i18n/i18n-config';
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  const hasPathnameLocale = i18n.locales.every(
+  const hasPathnameLocale = i18n.locales.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
   );
 
@@ -21,21 +21,18 @@ export function middleware(request: NextRequest) {
   return NextResponse.redirect(request.nextUrl);
 }
 
-function getLocale(request: NextRequest): string | undefined {
-  const negotiatorHeaders: Record<string, string> = {};
-
-  request.headers.forEach((value, key) => {
-    negotiatorHeaders[key] = value;
-  });
-
-  const { locales } = i18n;
-
-  const languages = new Negotiator({ headers: negotiatorHeaders }).languages();
-
-  return match(languages, locales, i18n.defaultLocale);
-}
-
 export const config = {
   // Matcher ignoring `/_next/` and `/api/`
   matcher: ['/((?!api|_next/static|_next/image|favicon.ico|.*\\.).*)'],
 };
+
+function getLocale(request: NextRequest): string | undefined {
+  const acceptLanguage = request.headers.get('accept-language');
+  const { defaultLocale, locales } = i18n;
+
+  const languages = new Negotiator({
+    headers: { 'accept-language': acceptLanguage ?? '' },
+  }).languages();
+
+  return match(languages, locales, defaultLocale);
+}

@@ -1,0 +1,112 @@
+@use 'sass:math';
+@use 'sass:map';
+@use 'sass:list';
+@use './media';
+@use '../variables';
+
+@mixin clamp($property, $min-value, $max-value, $options: ()) {
+  @if not math.unit($min-value) == rem or not math.unit($max-value) == rem {
+    @error "❌ clamp(): $min-value and $max-value must be rem.";
+  }
+
+  $defaults: (
+    min-breakpoint-key: mobile,
+    max-breakpoint-key: ultra,
+  );
+  $options: map.merge($defaults, $options);
+  $min-breakpoint-key: map.get($options, 'min-breakpoint-key');
+  $max-breakpoint-key: map.get($options, 'max-breakpoint-key');
+  $unit: 'vw';
+
+  // Get viewport values from map
+  $min-bp-val: map.get(variables.$breakpoints, $min-breakpoint-key);
+  $max-bp-val: map.get(variables.$breakpoints, $max-breakpoint-key);
+
+  // Convert rem → unitless
+  $min-val: if($min-value == 0, 0, strip-unit($min-value));
+  $max-val: strip-unit($max-value);
+
+  // Convert px → rem (assuming 16px = 1rem)
+  $min-bp-rem: strip-unit($min-bp-val);
+  $max-bp-rem: strip-unit($max-bp-val);
+
+  // slope per vw/vh
+  $slope: math.div(
+    ($max-val - $min-val),
+    math.div(($max-bp-rem - $min-bp-rem), 100)
+  );
+
+  // y-intersection
+  $y-intersection: $min-val - ($slope * math.div($min-bp-rem, 100));
+
+  #{$property}: #{$max-value};
+  #{$property}: clamp(
+    #{$min-val}rem,
+    #{$y-intersection}rem + #{$slope}#{$unit},
+    #{$max-val}rem
+  );
+}
+
+// у меня тут крыша едет
+@mixin clamp-bp($property, $values) {
+  $defined-bps: map.keys(variables.$breakpoints);
+  $order: mobile, tablet, desktop, ultra; // your preferred order
+
+  @if list.length($values) < 2 {
+    @error "Should be at least two breakpoints";
+  }
+
+  // Validate all keys
+  @each $bp in map.keys($values) {
+    @if not list.index($defined-bps, $bp) {
+      @error "❌ Unknown breakpoint `#{$bp}`. Valid breakpoints are: #{join($defined-bps, ', ')}.";
+    }
+  }
+
+  // Filter order to only existing breakpoints in values
+  $existing-bps: ();
+  @each $bp in $order {
+    @if map.has-key($values, $bp) {
+      $existing-bps: list.append($existing-bps, $bp);
+    }
+  }
+
+  // Loop through pairs and apply clamp
+  $len: list.length($existing-bps);
+  @for $i from 1 through $len - 1 {
+    $min-bp: list.nth($existing-bps, $i);
+    $max-bp: list.nth($existing-bps, $i + 1);
+    $min-value: map.get($values, $min-bp);
+    $max-value: map.get($values, $max-bp);
+
+    // Mobile (first) will always be raw
+    @if $min-bp == mobile {
+      #{$property}: $max-value;
+      @include media.media-min($min-bp) {
+        @include clamp(
+          $property,
+          $min-value,
+          $max-value,
+          (
+            min-breakpoint-key: $min-bp,
+            max-breakpoint-key: $max-bp,
+            axis: $axis,
+          )
+        );
+      }
+    } @else {
+      @include media.media-min($min-bp) {
+        @include clamp(
+          $property,
+          $min-value,
+          $max-value,
+          (
+            min-breakpoint-key: $min-bp,
+            max-breakpoint-key: $max-bp,
+            axis: $axis,
+          )
+        );
+      }
+    }
+  }
+}
