@@ -2,17 +2,18 @@ import { FC } from 'react';
 
 import { IconProps } from '@/shared/ui/Icon';
 
-import styles from './Logo.module.scss';
-
 type LogoProps = IconProps;
 
-const Logo: FC<LogoProps> = () => {
+const Logo: FC<LogoProps> = ({ className, options }) => {
+  const { height, width } = options ?? {};
+
   return (
     <svg
+      className={className}
       fill="none"
-      height="26"
+      height={height}
       viewBox="0 0 40 26"
-      width="40"
+      width={width}
       xmlns="http://www.w3.org/2000/svg"
     >
       <path d="M0 0h6.07v2.502H2.63v20.996h3.44V26H0V0Z" fill="#0D0D0D" />

@@ -2,7 +2,8 @@
 @use 'sass:map';
 @use 'sass:list';
 @use './media';
-@use '../variables';
+@use '../tokens';
+@use '@/styles/utils/functions' as f;
 
 @mixin clamp($property, $min-value, $max-value, $options: ()) {
   @if not math.unit($min-value) == rem or not math.unit($max-value) == rem {
@@ -19,16 +20,16 @@
   $unit: 'vw';
 
   // Get viewport values from map
-  $min-bp-val: map.get(variables.$breakpoints, $min-breakpoint-key);
-  $max-bp-val: map.get(variables.$breakpoints, $max-breakpoint-key);
+  $min-bp-val: map.get(tokens.$breakpoints, $min-breakpoint-key);
+  $max-bp-val: map.get(tokens.$breakpoints, $max-breakpoint-key);
 
   // Convert rem → unitless
-  $min-val: if($min-value == 0, 0, strip-unit($min-value));
-  $max-val: strip-unit($max-value);
+  $min-val: if($min-value == 0, 0, f.strip-unit($min-value));
+  $max-val: f.strip-unit($max-value);
 
   // Convert px → rem (assuming 16px = 1rem)
-  $min-bp-rem: strip-unit($min-bp-val);
-  $max-bp-rem: strip-unit($max-bp-val);
+  $min-bp-rem: f.strip-unit($min-bp-val);
+  $max-bp-rem: f.strip-unit($max-bp-val);
 
   // slope per vw/vh
   $slope: math.div(
@@ -48,8 +49,8 @@
 }
 
 // у меня тут крыша едет
-@mixin clamp-bp($property, $values) {
-  $defined-bps: map.keys(variables.$breakpoints);
+@mixin clamp-bp($property, $values, $axis: 'vw') {
+  $defined-bps: map.keys(tokens.$breakpoints);
   $order: mobile, tablet, desktop, ultra; // your preferred order
 
   @if list.length($values) < 2 {

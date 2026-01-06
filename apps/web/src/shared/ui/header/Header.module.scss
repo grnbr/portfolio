@@ -1,3 +1,19 @@
+@use '@/styles/utils/mixins';
+
 .header {
-  
+  position: fixed;
+  top: 32px;
+  width: 46px;
+  height: 30px;
+
+  .logoLink {
+    @include mixins.mobile-only;
+
+    .logo {
+      path {
+        opacity: 0.5;
+        fill: var(--white);
+      }
+    }
+  }
 }

@@ -1,0 +1,70 @@
+@use '@/styles/utils/mixins';
+@use '@/styles/utils/tokens';
+
+$header-gradient-width: 37.3906rem;
+
+.container {
+  overflow: hidden;
+  width: 100%;
+}
+
+.headerGradient {
+  position: absolute;
+  inset: 0;
+
+  .gradientLeft,
+  .gradientCenter,
+  .gradientRight {
+    position: absolute;
+    width: 37.3906rem;
+    border-radius: 50%;
+    filter: blur(110px);
+
+    @include mixins.media-min(mobile) {
+      width: $header-gradient-width;
+    }
+  }
+
+  .gradientLeft {
+    top: -61.9504px;
+    left: -330.2304px;
+    height: 178.6304px;
+    background-color: var(--bg-red-element);
+
+    @include mixins.media-min(mobile) {
+      top: -61.9504px;
+      left: 50%;
+      transform: translateX(
+        calc(-50% - $header-gradient-width / 2 + 4.5012rem)
+      );
+    }
+  }
+
+  .gradientCenter {
+    top: -82.8496px;
+    left: -95.9504px;
+    height: 263.34px;
+    background-color: var(--bg-yellow-element);
+
+    @include mixins.media-min(mobile) {
+      top: -82.8496px;
+      left: 50%;
+      transform: translateX(calc(-50% + 0.4375rem));
+    }
+  }
+
+  .gradientRight {
+    top: -61.8496px;
+    left: 82.9008px;
+    height: 138.12px;
+    background-color: var(--bg-green-element);
+
+    @include mixins.media-min(mobile) {
+      top: -61.8496px;
+      left: 50%;
+      transform: translateX(
+        calc(-50% + $header-gradient-width / 2 - 7.0687rem)
+      );
+    }
+  }
+}

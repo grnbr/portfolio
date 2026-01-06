@@ -3,10 +3,11 @@ import type { ReactNode } from 'react';
 
 import './globals.scss';
 import { Providers } from '@/app/[lang]/providers';
+import BgGradient from '@/shared/components/bg-bradient/BgGradient';
 import { getDictionary } from '@/shared/i18n/get-dictionary';
-import { Locale } from '@/shared/i18n/i18n-config';
-
-import styles from './Layout.module.scss';
+import { Languages, Locale } from '@/shared/i18n/i18n-config';
+import Header from '@/shared/ui/header/Header';
+import Tapbar from '@/shared/widgets/tapbar/Tapbar';
 
 export const metadata: Metadata = {
   description:
@@ -14,29 +15,33 @@ export const metadata: Metadata = {
   title: "Grigory's portfolio",
 };
 
-export default async function RootLayout(
-  props: Readonly<{
-    children: ReactNode;
-    params: { lang: Locale };
-  }>,
-) {
-  const params = await props.params;
+export async function generateStaticParams() {
+  return [{ lang: 'en-US' }, { lang: 'de' }];
+}
 
-  const { children } = props;
-
-  const dictionary = await getDictionary(params.lang);
+export default async function RootLayout({
+  children,
+  params,
+}: LayoutProps<'/[lang]'>) {
+  const lang = (await params).lang as Languages;
+  const dictionary = await getDictionary(lang);
 
   return (
-    <html lang={params.lang}>
-      <body className={''}>
-        <Providers>
-          <main className={styles.main}>{children}</main>
-          {/* <div className="gradient-wrapper">
+    <html lang={(await params).lang}>
+      <body>
+        <BgGradient component="header" />
+        <Header />
+
+        <main>{children}</main>
+        {/* <Providers>
+          <div className="gradient-wrapper">
             <div className="page-wrapper">
               <hr className="underline" />
             </div>
-          </div> */}
-        </Providers>
+          </div>
+        </Providers> */}
+
+        <Tapbar />
       </body>
     </html>
   );

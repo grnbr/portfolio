@@ -1,0 +1,21 @@
+@use '@/styles/utils/tokens';
+@use './clamp';
+@use './media';
+
+@forward './flex';
+@forward './clamp';
+@forward './media';
+
+@mixin side-padding {
+  padding-inline: tokens.$side-padding;
+
+  @include media.media-min(mobile) {
+    @include clamp.clamp-bp(
+      padding-inline,
+      (
+        mobile: 1.5rem,
+        ultra: 2rem,
+      )
+    );
+  }
+}

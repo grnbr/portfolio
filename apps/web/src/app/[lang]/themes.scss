@@ -1,0 +1,76 @@
+:root {
+  /* General */
+  --bg-color: #fbfbfb;
+  --text-primary: var(--dark-grey);
+  --text-heading: var(--onyx);
+
+  /* Header */
+  --header-bg: var(--white-25per);
+  --header-text: var(--onyx);
+
+  /* Footer */
+  --footer-text: var(--onyx);
+
+  /* Tapbar */
+  --tapbar-bg: var(--black-30);
+  --tapbar-border: rgb(39 38 44 / 30%);
+  --tapbar-btn-bg: var(--black-50);
+  --tapbar-popup-btn-bg: var(--medium-grey-50);
+  --tapbar-icon-primary: var(--white);
+  --tapbar-icon-inactive: var(--faint-white);
+
+  /* Buttons */
+  --btn-primary-text: var(--white);
+  --btn-primary-bg: var(--faint-white);
+  --btn-primary-bg-hover: hsl(0deg 0% 90%);
+  --btn-secondary-text: var(--onyx);
+  --btn-secondary-bg: var(--faint-white);
+  --btn-secondary-bg-hover: hsl(0deg 0% 90%);
+  --btn-ghost-text: var(--onyx);
+
+  /* Cards */
+  --card-bg: #f6f6f6;
+  --card-border: #ebebeb;
+
+  /* Icons */
+  --icon-primary: var(--onyx);
+}
+
+[data-theme='dark'] {
+  /* General */
+  --bg-main: var(--black);
+  --text-heading: var(--white);
+
+  /* Header */
+  --header-bg: var(--black-30);
+  --header-text: var(--white-70);
+  --footer-text: var(--white-70);
+
+  /* Tapbar */
+  --tapbar-bg: rgb(24 24 29 / 60%);
+  --tapbar-border: rgb(39 38 44 / 38%);
+  --tapbar-btn-bg: var(--white-10);
+  --tapbar-popup-btn-bg: rgb(255 255 255 / 10%);
+  --tapbar-icon-inactive: var(--light-grey);
+
+  /* Buttons */
+  --btn-primary-shadow:
+    inset 0 0.0625rem 0.125rem 0 rgb(255 255 255 / 2%),
+    inset 0 0.125rem 0.25rem 0 rgb(255 255 255 / 8%),
+    0 0.4375rem 0.25rem 0 rgb(0 0 0 / 15%);
+  --btn-primary-shadow-hover:
+    inset 0 0.0625rem 0.125rem 0 rgb(255 255 255 / 2%),
+    inset 0 0.4375rem 0.25rem 0 rgb(255 255 255 / 8%),
+    0 0.4375rem 0.25rem 0 rgb(0 0 0 / 15%);
+  --btn-secondary-bg: var(--onyx);
+  --btn-secondary-bg-hover: hsl(0deg 0% 20%);
+  --btn-secondary-text: var(--dark-grey);
+  --btn-ghost-text: var(--white);
+
+  /* Cards */
+  --card-bg: var(--onyx);
+  --card-border: #383737;
+
+  /* Icons */
+  --icon-primary: var(--white);
+}

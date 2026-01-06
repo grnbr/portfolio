@@ -13,12 +13,24 @@ export default {
             'border-bottom',
             'border-left',
             'border-width',
+            'border-radius',
             'box-shadow',
             'outline',
             'outline-width',
+            'top',
+            'right',
+            'bottom',
+            'left',
+            'inset',
+            'inset-block',
+            'inset-inline',
+            'transform',
+            'width',
+            'height',
+            'filter',
           ],
         },
-        message: 'Avoid using px except for borders and shadows.',
+        message: 'Avoid using px',
       },
     ],
     'scss/at-rule-no-unknown': [
@@ -30,4 +42,13 @@ export default {
     'selector-class-pattern': '^[a-z][a-zA-Z0-9]+$',
     'at-rule-empty-line-before': null,
   },
+
+  overrides: [
+    {
+      files: ['src/styles/utils/tokens/**/*.scss'],
+      rules: {
+        'unit-disallowed-list': null,
+      },
+    },
+  ],
 };

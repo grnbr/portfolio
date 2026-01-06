@@ -1,0 +1,17 @@
+@use '@/styles/utils/mixins';
+@use '@/styles/utils/tokens';
+
+.tapbar {
+  @include mixins.mobile-only;
+
+  position: fixed;
+  right: tokens.$side-padding;
+  bottom: 16px;
+  left: tokens.$side-padding;
+
+  height: tokens.$tapbar-height;
+  border: thin solid var(--tapbar-border);
+  border-radius: 12px;
+
+  background-color: var(--tapbar-bg);
+}

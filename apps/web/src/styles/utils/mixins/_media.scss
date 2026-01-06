@@ -1,8 +1,8 @@
 @use 'sass:map';
-@use '@/styles/utils/scss/variables';
+@use '@/styles/utils/tokens';
 
 @mixin media-max($bp-key) {
-  $width: map.get(variables.$breakpoints, $bp-key);
+  $width: map.get(tokens.$breakpoints, $bp-key);
 
   @if not $width {
     @error "No breakpoint found for `#{$bp-key}` in $breakpoints map.";
@@ -14,7 +14,7 @@
 }
 
 @mixin media-min($bp-key) {
-  $width: calc(map.get(variables.$breakpoints, $bp-key) + 0.0625rem);
+  $width: map.get(tokens.$breakpoints, $bp-key) + 0.0625em;
 
   @if not $width {
     @error "No breakpoint found for `#{$bp-key}` in $breakpoints map.";
@@ -26,10 +26,10 @@
 }
 
 @mixin desktop-only {
-  display: block;
+  display: none;
 
-  @include media-max(mobile) {
-    display: none;
+  @include media-min(mobile) {
+    display: block;
   }
 }
 

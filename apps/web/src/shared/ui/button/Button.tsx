@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { ButtonHTMLAttributes, FC, PropsWithChildren } from 'react';
 
-import { ButtonCommonProps } from '@/app/ui/button/types';
+import { ButtonCommonProps } from '@/shared/ui/button/types';
 
 import styles from './Button.module.scss';
 
