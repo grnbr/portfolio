@@ -2,16 +2,49 @@
 @use '@/styles/utils/tokens';
 
 .tapbar {
-  @include mixins.mobile-only;
+  @include mixins.flex-center-vertical;
 
   position: fixed;
+  z-index: 100;
   right: tokens.$side-padding;
   bottom: 16px;
   left: tokens.$side-padding;
 
   height: tokens.$tapbar-height;
+  padding: 10px 15px;
   border: thin solid var(--tapbar-border);
-  border-radius: 12px;
+  border-radius: 32px;
 
   background-color: var(--tapbar-bg);
+
+  @include mixins.media-min(mobile) {
+    display: none;
+  }
+
+  .iconContainer {
+    @include mixins.flex-center;
+
+    position: relative;
+    flex: 1;
+    height: 100%;
+
+    svg {
+      z-index: 2;
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  .activeBg {
+    user-select: none;
+
+    position: absolute;
+    z-index: 1;
+
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+
+    background-color: var(--tapbar-btn-bg);
+  }
 }

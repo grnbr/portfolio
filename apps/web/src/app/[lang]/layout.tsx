@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
-import type { ReactNode } from 'react';
+
+import { ThemeProvider } from 'next-themes';
 
 import './globals.scss';
-import { Providers } from '@/app/[lang]/providers';
+
 import BgGradient from '@/shared/components/bg-bradient/BgGradient';
 import { getDictionary } from '@/shared/i18n/get-dictionary';
-import { Languages, Locale } from '@/shared/i18n/i18n-config';
+import { Languages } from '@/shared/i18n/i18n-config';
 import Header from '@/shared/ui/header/Header';
 import Tapbar from '@/shared/widgets/tapbar/Tapbar';
 
@@ -27,21 +28,15 @@ export default async function RootLayout({
   const dictionary = await getDictionary(lang);
 
   return (
-    <html lang={(await params).lang}>
+    <html lang={(await params).lang} suppressHydrationWarning>
       <body>
-        <BgGradient component="header" />
-        <Header />
+        <ThemeProvider defaultTheme={'light'}>
+          <BgGradient component="header" />
+          <Header />
 
-        <main>{children}</main>
-        {/* <Providers>
-          <div className="gradient-wrapper">
-            <div className="page-wrapper">
-              <hr className="underline" />
-            </div>
-          </div>
-        </Providers> */}
-
-        <Tapbar />
+          <main>{children}</main>
+          <Tapbar navigation={dictionary.navigation} />
+        </ThemeProvider>
       </body>
     </html>
   );

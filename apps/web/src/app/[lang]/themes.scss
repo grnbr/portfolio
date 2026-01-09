@@ -16,7 +16,7 @@
   --tapbar-border: rgb(39 38 44 / 30%);
   --tapbar-btn-bg: var(--black-50);
   --tapbar-popup-btn-bg: var(--medium-grey-50);
-  --tapbar-icon-primary: var(--white);
+  --tapbar-icon-active: var(--white);
   --tapbar-icon-inactive: var(--faint-white);
 
   /* Buttons */
@@ -38,7 +38,7 @@
 
 [data-theme='dark'] {
   /* General */
-  --bg-main: var(--black);
+  --bg-color: var(--black);
   --text-heading: var(--white);
 
   /* Header */

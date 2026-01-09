@@ -1,0 +1,15 @@
+@use '@/styles/utils/tokens';
+@use '@/styles/utils/mixins';
+@use '@/styles/utils/functions' as f;
+
+.icon {
+  @include mixins.flex-center;
+
+  width: 24px;
+  height: 24px;
+
+  @include mixins.media-min(mobile) {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}

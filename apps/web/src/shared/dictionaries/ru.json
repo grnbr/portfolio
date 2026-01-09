@@ -1,37 +1,35 @@
 {
-  "header": {
-    "nav": [
-      {
-        "title": "Обо мне",
-        "href": "/ru/about",
-        "icon": "/icons/light/User"
-      },
-      {
-        "title": "Работа",
-        "href": "/ru/work",
-        "icon": "/icons/light/Bag"
-      },
-      {
-        "title": "Записи",
-        "href": "/ru/notes",
-        "icon": "/icons/light/Pen"
-      },
-      {
-        "title": "Связь",
-        "href": "/ru/contact",
-        "icon": "/icons/light/Message"
-      },
-      { "title": "Еще", "more": true, "icon": "/icons/light/More" }
-    ],
-    "dropdown-nav": [
-      { "title": "Книжная полка", "href": "/ru/books" },
-      { "title": "Технологический стек", "href": "/ru/techs" }
-    ],
-    "themes": {
-      "title": "Тема: ",
-      "dark": "Темная",
-      "light": "Светлая"
-    }
+  "navigation": [
+    {
+      "title": "Обо мне",
+      "href": "/ru/about",
+      "icon": "/icons/light/User"
+    },
+    {
+      "title": "Работа",
+      "href": "/ru/work",
+      "icon": "/icons/light/Bag"
+    },
+    {
+      "title": "Записи",
+      "href": "/ru/notes",
+      "icon": "/icons/light/Pen"
+    },
+    {
+      "title": "Связь",
+      "href": "/ru/contact",
+      "icon": "/icons/light/Message"
+    },
+    { "title": "Еще", "more": true, "icon": "/icons/light/More" }
+  ],
+  "dropdown-nav": [
+    { "title": "Книжная полка", "href": "/ru/books" },
+    { "title": "Технологический стек", "href": "/ru/techs" }
+  ],
+  "themes": {
+    "title": "Тема: ",
+    "dark": "Темная",
+    "light": "Светлая"
   },
   "home": {
     "hero": {

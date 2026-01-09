@@ -1,37 +1,42 @@
 {
-  "header": {
-    "nav": [
-      {
-        "title": "About",
-        "href": "/en/about",
-        "icon": "/icons/light/User"
-      },
-      {
-        "title": "Work",
-        "href": "/en/work",
-        "icon": "/icons/light/Bag"
-      },
-      {
-        "title": "Notebook",
-        "href": "/en/notes",
-        "icon": "/icons/light/Pen"
-      },
-      {
-        "title": "Contact",
-        "href": "/en/contact",
-        "icon": "/icons/light/Message"
-      },
-      { "title": "More", "more": true, "icon": "/icons/light/More" }
-    ],
-    "dropdown-nav": [
-      { "title": "Bookshelf", "href": "/en/books" },
-      { "title": "Tech Stack", "href": "/en/techs" }
-    ],
-    "themes": {
-      "title": "Theme: ",
-      "dark": "Dark",
-      "light": "Light"
+  "navigation": [
+    {
+      "title": "Home",
+      "href": "/",
+      "icon": "home"
+    },
+    {
+      "title": "About",
+      "href": "/about",
+      "icon": "about"
+    },
+    {
+      "title": "Work",
+      "href": "/work",
+      "icon": "work"
+    },
+    {
+      "title": "Contact",
+      "href": "/contact",
+      "icon": "contact"
+    },
+    {
+      "title": "Techs",
+      "href": "/techs",
+      "icon": "techs"
+    },
+    { "title": "More" }
+  ],
+  "dropdown-nav": [
+    {
+      "title": "This UI KIt",
+      "href": "https://www.figma.com/community/file/1266863403759514317"
     }
+  ],
+  "themes": {
+    "title": "Theme: ",
+    "dark": "Dark",
+    "light": "Light"
   },
   "home": {
     "hero": {
