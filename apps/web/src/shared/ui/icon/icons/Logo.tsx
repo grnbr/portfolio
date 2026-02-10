@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { IconProps } from '@/shared/ui/Icon';
+import { IconProps } from '@/shared/ui/icon/Icon';
 
 type LogoProps = IconProps;
 

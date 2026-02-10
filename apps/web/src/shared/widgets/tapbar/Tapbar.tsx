@@ -6,39 +6,43 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { FC } from 'react';
 
-import { NavigationItem } from '@/shared/types/navigation';
-import { NAV_ICONS, NavIconKey } from '@/shared/widgets/tapbar/ui/icons';
+import formatHref from '@/shared/helpers/formatHref';
+import { Languages } from '@/shared/i18n/i18n-config';
+import { Navigation } from '@/shared/types/navigation';
+import Icon from '@/shared/ui/icon/Icon';
+import { NAV_TAPBAR_ICONS } from '@/shared/widgets/tapbar/ui/icons';
 
 import styles from './Tapbar.module.scss';
 
 type TapbarProps = {
-  navigation: NavigationItem[];
+  lang: Languages;
+  navigation: Navigation;
 };
 
-const Tapbar: FC<TapbarProps> = ({ navigation }) => {
+const Tapbar: FC<TapbarProps> = ({ lang, navigation }) => {
   const pathname = usePathname();
-  const pathnameWithoutLang = pathname.split('/').slice(2).join();
-  const formattedPathname = '/' + pathnameWithoutLang;
+  const pathnameWithoutLang = '/' + pathname.split('/').slice(2).join();
 
   return (
     <nav className={styles.tapbar}>
       <LayoutGroup>
-        {navigation.map((item, i) => {
+        {navigation.primary.map((item, i) => {
+          if (item.type !== 'link') return null;
+
           const { href = '', title } = item;
 
-          const Icon =
-            item.icon && item.icon in NAV_ICONS
-              ? NAV_ICONS[item.icon as NavIconKey]
-              : undefined;
+          const TapbarIcon = NAV_TAPBAR_ICONS[item.id];
 
-          const isActive = formattedPathname === href;
+          const isActive = pathnameWithoutLang === href;
 
           if (!href || !title) return null;
+
+          const formattedHref = formatHref({ href, lang });
 
           return (
             <Link
               className={clsx(styles.iconContainer, isActive && styles.active)}
-              href={href}
+              href={formattedHref}
               key={i}
             >
               {isActive && (
@@ -53,19 +57,18 @@ const Tapbar: FC<TapbarProps> = ({ navigation }) => {
                 ></motion.span>
               )}
 
-              {Icon ? (
-                <Icon
-                  options={{
-                    elementsColor: {
-                      primaryColor: 'var(--tapbar-icon-active)',
-                      secondaryColor: 'var(--tapbar-icon-inactive)',
-                    },
-                    variant: isActive ? 'fill' : 'outlined',
-                  }}
-                />
-              ) : (
-                title
-              )}
+              <Icon
+                className={styles.icon}
+                options={{
+                  elementsColor: {
+                    primaryColor: 'var(--tapbar-icon-active)',
+                    secondaryColor: 'var(--tapbar-icon-inactive)',
+                  },
+                  variant: isActive ? 'fill' : 'outlined',
+                }}
+              >
+                <TapbarIcon />
+              </Icon>
             </Link>
           );
         })}

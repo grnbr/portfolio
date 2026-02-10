@@ -1,0 +1,22 @@
+.loader {
+  display: inline-block;
+
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border-top: 1px solid var(--icon-primary);
+  border-right: 1px solid transparent;
+  border-radius: 50%;
+
+  animation: rotation 0.8s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

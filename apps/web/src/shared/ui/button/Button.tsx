@@ -12,7 +12,7 @@ const Button: FC<PropsWithChildren<ButtonProps>> = ({
   children,
   className,
   type = 'button',
-  variant = 'primary',
+  variant = 'ghost',
   ...props
 }) => {
   const classNames = clsx(styles.button, styles[variant], className);

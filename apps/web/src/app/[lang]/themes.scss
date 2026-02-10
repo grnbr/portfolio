@@ -5,7 +5,8 @@
   --text-heading: var(--onyx);
 
   /* Header */
-  --header-bg: var(--white-25per);
+  --header-bg: var(--white-25);
+  --header-border: var(--white-25);
   --header-text: var(--onyx);
 
   /* Footer */
@@ -34,6 +35,7 @@
 
   /* Icons */
   --icon-primary: var(--onyx);
+  --logo-color: var(--white);
 }
 
 [data-theme='dark'] {
@@ -43,6 +45,7 @@
 
   /* Header */
   --header-bg: var(--black-30);
+  --header-border: transparent;
   --header-text: var(--white-70);
   --footer-text: var(--white-70);
 

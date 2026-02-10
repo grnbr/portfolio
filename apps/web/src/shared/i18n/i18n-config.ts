@@ -3,7 +3,7 @@ export enum Languages {
   Russian = 'ru',
 }
 
-export type Locale = (typeof i18n)['locales'][number];
+export type Locale = Languages;
 
 type I18n = {
   defaultLocale: Languages;

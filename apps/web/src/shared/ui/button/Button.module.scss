@@ -1,11 +1,13 @@
-@use '@/styles/utils//variables';
-@use '@/styles/utils/scss/mixins';
-
-// @use '@/styles/utils/scss/functions' as f;
+@use '@/styles/utils/mixins';
 
 .button,
 .buttonIcon {
   cursor: pointer;
+  transition: 0.2s ease opacity;
+
+  * {
+    transition: 0.2s ease opacity;
+  }
 }
 
 .button {
@@ -32,5 +34,11 @@
 
   &.ghost {
     color: var(--btn-ghost-text);
+
+    &:hover {
+      * {
+        opacity: 0.8;
+      }
+    }
   }
 }

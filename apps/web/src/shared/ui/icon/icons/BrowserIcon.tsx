@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
 import { FC } from 'react';
 
-import { IconProps } from '@/shared/ui/Icon';
+import { IconProps } from '@/shared/ui/icon/Icon';
 
 type TechIconProps = IconProps;
 

@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
 
-import { ThemeProvider } from 'next-themes';
-
 import './globals.scss';
+
+import { ThemeProvider } from 'next-themes';
 
 import BgGradient from '@/shared/components/bg-bradient/BgGradient';
 import { getDictionary } from '@/shared/i18n/get-dictionary';
 import { Languages } from '@/shared/i18n/i18n-config';
-import Header from '@/shared/ui/header/Header';
+import Header from '@/shared/widgets/header/Header';
 import Tapbar from '@/shared/widgets/tapbar/Tapbar';
 
 export const metadata: Metadata = {
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 };
 
 export async function generateStaticParams() {
-  return [{ lang: 'en-US' }, { lang: 'de' }];
+  return [{ lang: Languages.English }, { lang: Languages.Russian }];
 }
 
 export default async function RootLayout({
@@ -28,14 +28,15 @@ export default async function RootLayout({
   const dictionary = await getDictionary(lang);
 
   return (
-    <html lang={(await params).lang} suppressHydrationWarning>
+    <html lang={lang} suppressHydrationWarning>
       <body>
-        <ThemeProvider defaultTheme={'light'}>
+        <ThemeProvider defaultTheme="system">
           <BgGradient component="header" />
-          <Header />
+          <Header lang={lang} navigation={dictionary.navigation} />
 
           <main>{children}</main>
-          <Tapbar navigation={dictionary.navigation} />
+
+          <Tapbar lang={lang} navigation={dictionary.navigation} />
         </ThemeProvider>
       </body>
     </html>

@@ -1,0 +1,161 @@
+@use '@/styles/utils/tokens';
+@use '@/styles/utils/mixins';
+
+.header {
+  position: absolute;
+  top: 32px;
+
+  @include mixins.media-min(mobile) {
+    @include mixins.flex-center;
+
+    right: 1rem;
+    left: 1rem;
+    overflow: hidden;
+    margin-inline: auto;
+
+    .container {
+      @include mixins.container-desktop;
+      @include mixins.flex-center-vertical;
+
+      height: tokens.$header-height;
+      padding: 0 1rem;
+      border: thin solid var(--header-bg);
+      border-radius: 1rem;
+
+      background-color: var(--header-bg);
+      backdrop-filter: blur(4px);
+    }
+  }
+
+  .logoLink {
+    @include mixins.mobile-only;
+
+    width: 46px;
+    height: 30px;
+
+    .logo {
+      path {
+        opacity: 0.5;
+        fill: var(--logo-color);
+      }
+    }
+  }
+
+  .desktop {
+    display: none;
+
+    @include mixins.media-min(mobile) {
+      @include mixins.flex-center-vertical;
+
+      flex: 1;
+      column-gap: 1rem;
+      justify-content: space-between;
+
+      .list {
+        @include mixins.flex-center-vertical;
+
+        .item {
+          @include mixins.flex-center;
+        }
+      }
+
+      .layoutLeft {
+        .list {
+          column-gap: 2.5rem;
+
+          .logoLink {
+            display: block;
+            width: 2.4919rem;
+            height: 1.625rem;
+
+            .logo {
+              path {
+                opacity: 1;
+                fill: var(--icon-primary);
+              }
+            }
+          }
+
+          .title {
+            font-size: tokens.$header-nav-font-size;
+          }
+        }
+      }
+
+      .layoutRight {
+        @include mixins.flex-center-vertical;
+
+        align-items: stretch;
+
+        .socialLinks {
+          @include mixins.flex-center-vertical;
+
+          .list {
+            column-gap: 1.5rem;
+          }
+        }
+
+        .divider {
+          width: 0.0625rem;
+          margin-inline: 1.5rem;
+          background-color: var(--black-30);
+
+          @include mixins.theme-dark {
+            background-color: var(--white-25);
+          }
+        }
+
+        .switchers {
+          @include mixins.flex-center-vertical;
+
+          column-gap: 1rem;
+
+          .themeSwitcher {
+            @include mixins.flex-center;
+
+            position: relative;
+            width: 1.5rem;
+            height: 1.5rem;
+
+            .iconWrapper {
+              position: absolute;
+              inset: 0;
+            }
+          }
+
+          .localeSwitcher {
+            display: flex;
+            column-gap: 0.75rem;
+            text-transform: capitalize;
+
+            a {
+              transition: all 0.3s ease-in-out;
+            }
+
+            .linkWrapper {
+              flex-basis: 100%;
+              border-radius: 0.9rem;
+              background-color: var(--header-nav-mobile-popup-btn-bg);
+
+              .link {
+                @include mixins.flex-center;
+
+                width: 100%;
+                height: 100%;
+                padding: 2rem;
+              }
+            }
+
+            .language {
+              filter: opacity(0.6);
+
+              &.active {
+                filter: opacity(1);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

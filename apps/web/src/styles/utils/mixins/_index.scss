@@ -19,3 +19,14 @@
     );
   }
 }
+
+@mixin container-desktop {
+  width: 100%;
+  max-width: 64rem;
+}
+
+@mixin theme-dark {
+  [data-theme='dark'] & {
+    @content;
+  }
+}

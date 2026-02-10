@@ -1,31 +1,64 @@
 {
-  "navigation": [
-    {
-      "title": "Обо мне",
-      "href": "/ru/about",
-      "icon": "/icons/light/User"
-    },
-    {
-      "title": "Работа",
-      "href": "/ru/work",
-      "icon": "/icons/light/Bag"
-    },
-    {
-      "title": "Записи",
-      "href": "/ru/notes",
-      "icon": "/icons/light/Pen"
-    },
-    {
-      "title": "Связь",
-      "href": "/ru/contact",
-      "icon": "/icons/light/Message"
-    },
-    { "title": "Еще", "more": true, "icon": "/icons/light/More" }
-  ],
-  "dropdown-nav": [
-    { "title": "Книжная полка", "href": "/ru/books" },
-    { "title": "Технологический стек", "href": "/ru/techs" }
-  ],
+  "navigation": {
+    "primary": [
+      {
+        "href": "/",
+        "id": "home",
+        "title": "Home",
+        "type": "link"
+      },
+      {
+        "href": "/about",
+        "id": "about",
+        "title": "About",
+        "type": "link"
+      },
+      {
+        "href": "/work",
+        "id": "work",
+        "title": "Work",
+        "type": "link"
+      },
+      {
+        "href": "/contact",
+        "id": "contact",
+        "title": "Contact",
+        "type": "link"
+      },
+      {
+        "href": "/techs",
+        "id": "techs",
+        "title": "Techs",
+        "type": "link"
+      },
+      {
+        "id": "more",
+        "title": "More",
+        "type": "action"
+      }
+    ],
+    "socials": [
+      {
+        "href": "",
+        "id": "linkedin",
+        "title": "LinkedIn",
+        "type": "link"
+      },
+      {
+        "href": "",
+        "id": "telegram",
+        "title": "Telegram",
+        "type": "link"
+      },
+      {
+        "href": "",
+        "id": "github",
+        "title": "Github",
+        "type": "link"
+      }
+    ]
+  },
+  "dropdown-nav": [{ "title": "Технологический стек", "href": "/techs" }],
   "themes": {
     "title": "Тема: ",
     "dark": "Темная",
