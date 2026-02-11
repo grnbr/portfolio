@@ -51,10 +51,16 @@
 // у меня тут крыша едет
 @mixin clamp-bp($property, $values, $axis: 'vw') {
   $defined-bps: map.keys(tokens.$breakpoints);
+  $pivot-bp: 'ultra';
+
+  @if not map.has-key(tokens.$breakpoints, $pivot-bp) {
+    @error "There's no such breakpoint in breakpoints";
+  }
+
   $order: mobile, tablet, desktop, ultra; // your preferred order
 
-  @if list.length($values) < 2 {
-    @error "Should be at least two breakpoints";
+  @if list.length($values) < 1 {
+    @error "Should be at least one breakpoint";
   }
 
   // Validate all keys
@@ -64,50 +70,42 @@
     }
   }
 
-  // Filter order to only existing breakpoints in values
-  $existing-bps: ();
+  // Filling missing breakpoints
+  $pivot-bp-val: map.get(tokens.$breakpoints, $pivot-bp);
+  $pivot-clamp-val: map.get($values, $pivot-bp);
+
   @each $bp in $order {
-    @if map.has-key($values, $bp) {
-      $existing-bps: list.append($existing-bps, $bp);
+    @if not map.has-key($values, $bp) {
+      $bp-val: map.get(tokens.$breakpoints, $bp);
+      $calculated-value: calc(($pivot-clamp-val * $bp-val) / $pivot-bp-val);
+      $values: map.merge(
+        $values,
+        (
+          $bp: $calculated-value,
+        )
+      );
     }
   }
 
   // Loop through pairs and apply clamp
-  $len: list.length($existing-bps);
+  $len: list.length($order);
   @for $i from 1 through $len - 1 {
-    $min-bp: list.nth($existing-bps, $i);
-    $max-bp: list.nth($existing-bps, $i + 1);
+    $min-bp: list.nth($order, $i);
+    $max-bp: list.nth($order, $i + 1);
     $min-value: map.get($values, $min-bp);
     $max-value: map.get($values, $max-bp);
 
-    // Mobile (first) will always be raw
-    @if $min-bp == mobile {
-      #{$property}: $max-value;
-      @include media.media-min($min-bp) {
-        @include clamp(
-          $property,
-          $min-value,
-          $max-value,
-          (
-            min-breakpoint-key: $min-bp,
-            max-breakpoint-key: $max-bp,
-            axis: $axis,
-          )
-        );
-      }
-    } @else {
-      @include media.media-min($min-bp) {
-        @include clamp(
-          $property,
-          $min-value,
-          $max-value,
-          (
-            min-breakpoint-key: $min-bp,
-            max-breakpoint-key: $max-bp,
-            axis: $axis,
-          )
-        );
-      }
+    @include media.media-min($min-bp) {
+      @include clamp(
+        $property,
+        $min-value,
+        $max-value,
+        (
+          min-breakpoint-key: $min-bp,
+          max-breakpoint-key: $max-bp,
+          axis: $axis,
+        )
+      );
     }
   }
 }
