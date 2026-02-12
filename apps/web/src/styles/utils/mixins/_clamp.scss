@@ -51,16 +51,10 @@
 // у меня тут крыша едет
 @mixin clamp-bp($property, $values, $axis: 'vw') {
   $defined-bps: map.keys(tokens.$breakpoints);
-  $pivot-bp: 'ultra';
-
-  @if not map.has-key(tokens.$breakpoints, $pivot-bp) {
-    @error "There's no such breakpoint in breakpoints";
-  }
-
   $order: mobile, tablet, desktop, ultra; // your preferred order
 
-  @if list.length($values) < 1 {
-    @error "Should be at least one breakpoint";
+  @if list.length($values) < 2 {
+    @error "Should be at least two breakpoints";
   }
 
   // Validate all keys
@@ -70,31 +64,23 @@
     }
   }
 
-  // Filling missing breakpoints
-  $pivot-bp-val: map.get(tokens.$breakpoints, $pivot-bp);
-  $pivot-clamp-val: map.get($values, $pivot-bp);
-
+  // Filter order to only existing breakpoints in values
+  $existing-bps: ();
   @each $bp in $order {
-    @if not map.has-key($values, $bp) {
-      $bp-val: map.get(tokens.$breakpoints, $bp);
-      $calculated-value: calc(($pivot-clamp-val * $bp-val) / $pivot-bp-val);
-      $values: map.merge(
-        $values,
-        (
-          $bp: $calculated-value,
-        )
-      );
+    @if map.has-key($values, $bp) {
+      $existing-bps: list.append($existing-bps, $bp);
     }
   }
 
   // Loop through pairs and apply clamp
-  $len: list.length($order);
+  $len: list.length($existing-bps);
   @for $i from 1 through $len - 1 {
-    $min-bp: list.nth($order, $i);
-    $max-bp: list.nth($order, $i + 1);
+    $min-bp: list.nth($existing-bps, $i);
+    $max-bp: list.nth($existing-bps, $i + 1);
     $min-value: map.get($values, $min-bp);
     $max-value: map.get($values, $max-bp);
 
+    #{$property}: $max-value;
     @include media.media-min($min-bp) {
       @include clamp(
         $property,
