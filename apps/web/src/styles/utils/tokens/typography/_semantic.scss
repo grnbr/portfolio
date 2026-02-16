@@ -1,1 +1,3 @@
-$header-nav-font-size: var(--fs-16);
+@use './primitives';
+
+$header-nav-font-size: primitives.$fs-16;

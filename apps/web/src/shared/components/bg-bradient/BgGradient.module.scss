@@ -4,6 +4,7 @@
 $header-gradient-width: 37.3906rem;
 
 .container {
+  z-index: -1;
   overflow: hidden;
   width: 100%;
 }

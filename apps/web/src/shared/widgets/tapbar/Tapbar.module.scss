@@ -6,9 +6,9 @@
 
   position: fixed;
   z-index: 100;
-  right: tokens.$side-padding;
+  right: tokens.$layout-side-padding;
   bottom: 16px;
-  left: tokens.$side-padding;
+  left: tokens.$layout-side-padding;
 
   height: tokens.$tapbar-height;
   padding: 10px 15px;

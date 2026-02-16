@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { NavItemId } from '@/shared/types/navigation';
+import { NavItemId, NavItemIds } from '@/shared/types/navigation';
 import { IconProps } from '@/shared/ui/icon/Icon';
 import BagIcon from '@/shared/ui/icon/icons/BagIcon';
 import TechIcon from '@/shared/ui/icon/icons/BrowserIcon';
@@ -9,7 +9,7 @@ import MessageIcon from '@/shared/ui/icon/icons/MessageIcon';
 import UserIcon from '@/shared/ui/icon/icons/UserIcon';
 
 export const NAV_TAPBAR_ICONS: Record<
-  Exclude<NavItemId, NavItemId.More>,
+  Exclude<NavItemId, typeof NavItemIds.More>,
   FC<IconProps>
 > = {
   about: UserIcon,

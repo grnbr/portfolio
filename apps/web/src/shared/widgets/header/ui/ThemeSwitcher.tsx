@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from 'motion/react';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 
-import Themes from '@/shared/constants/theme';
+import Themes, { Theme } from '@/shared/constants/theme';
 import Button from '@/shared/ui/button/Button';
 import Icon from '@/shared/ui/icon/Icon';
 import MoonIcon from '@/shared/ui/icon/icons/Moon';
@@ -28,7 +28,7 @@ const ThemeSwitcher = () => {
     return () => cancelAnimationFrame(id);
   }, []);
 
-  const onChangeTheme = (theme: Themes) => {
+  const onChangeTheme = (theme: Theme) => {
     setTheme(theme);
   };
 
@@ -58,7 +58,10 @@ const ThemeSwitcher = () => {
         ) : (
           resolvedTheme && (
             <Button
-              aria-label="Toggle theme"
+              aria-label={
+                isDark ? 'Switch to light theme' : 'Switch to dark theme'
+              }
+              aria-pressed={isDark}
               onClick={() => onChangeTheme(isDark ? Themes.Light : Themes.Dark)}
             >
               <motion.div

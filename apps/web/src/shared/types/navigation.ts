@@ -1,20 +1,23 @@
-export enum NavItemId {
-  About = 'about',
-  Contact = 'contact',
-  Home = 'home',
-  More = 'more',
-  Techs = 'techs',
-  Work = 'work',
-}
+export const NavItemIds = {
+  About: 'about',
+  Contact: 'contact',
+  Home: 'home',
+  More: 'more',
+  Techs: 'techs',
+  Work: 'work',
+} as const;
 
-export enum NavSocialId {
-  Github = 'github',
-  Gmail = 'gmail',
-  LinkedIn = 'linkedin',
-  Telegram = 'telegram',
-}
+export const NavSocialIds = {
+  Github: 'github',
+  Gmail: 'gmail',
+  LinkedIn: 'linkedin',
+  Telegram: 'telegram',
+} as const;
 
-type NavLinkId = Exclude<NavItemId, NavItemId.More>;
+export type NavItemId = (typeof NavItemIds)[keyof typeof NavItemIds];
+export type NavSocialId = (typeof NavSocialIds)[keyof typeof NavSocialIds];
+
+type NavLinkId = Exclude<NavItemId, typeof NavItemIds.More>;
 
 type NavLinkItem = {
   href: string;
@@ -24,7 +27,7 @@ type NavLinkItem = {
 };
 
 type NavActionItem = {
-  id: NavItemId.More;
+  id: typeof NavItemIds.More;
   title: string;
   type: 'action';
 };

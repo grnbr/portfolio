@@ -1,15 +1,17 @@
 import 'server-only';
 
-import { Dictionary } from '@/shared/dictionaries/types';
-import { NavItemId, NavSocialId } from '@/shared/types/navigation';
+import { Dictionary, DictionaryData } from '@/shared/dictionaries/types';
+import { NavItemIds, NavSocialIds } from '@/shared/types/navigation';
+
+export const dictionaryData: DictionaryData = {
+  projects: [],
+} as const;
 
 export const dictionary: Dictionary = {
   about: {
     appeal: 'Давайте создадим нечто великое.',
     'closing-text':
       'Не стесняйтесь связаться со мной по e-mail или пишите мне в Telegram.',
-
-    getInTouch: 'Связаться',
 
     'iam-paragraph': {
       text: 'Я Григорий, фронтенд разработчик из Москвы, Россия 🇷🇺.',
@@ -23,7 +25,16 @@ export const dictionary: Dictionary = {
     subtitle: 'Кто я и чем я занимаюсь',
     title: 'Немного обо мне',
   },
-
+  buttons: {
+    getInTouch: {
+      href: '/contact',
+      label: 'Связаться',
+    },
+    seeMyResume: {
+      href: '/resume/Григорий_Найбауер_Frontend_Resume.pdf',
+      label: 'Посмотреть мое резюме',
+    },
+  },
   contact: {
     form: {
       email: {
@@ -73,28 +84,24 @@ export const dictionary: Dictionary = {
     'underlogo-text': 'Спасибо за визит',
   },
 
-  getInTouch: {
-    href: '/ru/contact',
-    title: 'Связаться',
-  },
-
   home: {
     contactme: {
-      getInTouch: 'Связаться',
       subtitle:
         'Хотите обсудить возможность создания чего-то великого? Я готов, когда вы готовы.',
       title: 'Давайте поработаем вместе',
     },
 
     hero: {
-      getInTouch: 'Связаться',
+      greeting: 'Привет 👋',
       intro:
         'Я фронтенд-разработчик, помогающий стартапам превращать их видения в цифровую реальность. Я специализируюсь на проектировании и создании современных мобильных и веб-приложений.',
       name: 'Гриша',
       pronoun: 'Меня зовут',
-      'resume-btn': 'Посмотреть мое резюме',
     },
-
+    selectedWork: {
+      projects: dictionaryData.projects,
+      title: 'Избранные работы',
+    },
     widgets: {
       items: [
         {
@@ -129,37 +136,37 @@ export const dictionary: Dictionary = {
     primary: [
       {
         href: '/',
-        id: NavItemId.Home,
+        id: NavItemIds.Home,
         title: 'Главная',
         type: 'link',
       },
       {
         href: '/about',
-        id: NavItemId.About,
+        id: NavItemIds.About,
         title: 'Обо мне',
         type: 'link',
       },
       {
         href: '/work',
-        id: NavItemId.Work,
+        id: NavItemIds.Work,
         title: 'Работа',
         type: 'link',
       },
 
       {
         href: '/contact',
-        id: NavItemId.Contact,
+        id: NavItemIds.Contact,
         title: 'Связь',
         type: 'link',
       },
       {
         href: '/techs',
-        id: NavItemId.Techs,
+        id: NavItemIds.Techs,
         title: 'Стек',
         type: 'link',
       },
       {
-        id: NavItemId.More,
+        id: NavItemIds.More,
         title: 'Еще',
         type: 'action',
       },
@@ -167,45 +174,21 @@ export const dictionary: Dictionary = {
     socials: [
       {
         href: '',
-        id: NavSocialId.LinkedIn,
+        id: NavSocialIds.LinkedIn,
         title: 'LinkedIn',
         type: 'link',
       },
       {
         href: '',
-        id: NavSocialId.Telegram,
+        id: NavSocialIds.Telegram,
         title: 'Telegram',
         type: 'link',
       },
       {
         href: '',
-        id: NavSocialId.Github,
+        id: NavSocialIds.Github,
         title: 'Github',
         type: 'link',
-      },
-    ],
-  },
-
-  projects: {
-    placeholder: {
-      getInTouch: 'Связаться',
-      icon: '/icons/light/stars.svg',
-      subtitle: 'Давайте превратим вашу идею в визуальную реальность',
-      title: 'ВАШ ПРОЕКТ ЗДЕСЬ',
-    },
-
-    title: 'Работа',
-
-    works: [
-      {
-        href: 'https://algatop.kz/',
-        icon: '/icons/works/AlgaTop.svg',
-        id: '0',
-        name: 'AlgaTop',
-        presentationImg: '/images/work/works/algatop-screenshot-min.jpg',
-        text: 'Как фронтенд-разработчик, я сыграл ключевую роль в улучшении пользовательского опыта и стимулировании роста продаж для клиентов на платформе Kaspi. Используя свои знания в области фронтенд-разработки, я внес вклад в достижение замечательных результатов, включая удвоение или утроение продаж, поднятие магазинов клиентов на верхнюю позицию и эффективную автоматизацию рутинных задач.',
-        'text-btn': 'Перейти на сайт',
-        title: 'AlgaTop - Сервис автоматизации магазина',
       },
     ],
   },

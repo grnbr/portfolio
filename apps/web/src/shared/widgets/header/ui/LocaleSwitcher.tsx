@@ -23,7 +23,7 @@ const LocaleSwitcher = ({ currentLang }: { currentLang: Locale }) => {
         const isActive = currentLang === locale;
 
         return (
-          <li key={locale}>
+          <li className={styles.item} key={locale}>
             <Link
               className={clsx(styles.language, isActive && styles.active)}
               href={redirectedPathName(locale)}

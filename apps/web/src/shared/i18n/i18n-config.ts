@@ -1,16 +1,16 @@
-export enum Languages {
-  English = 'en',
-  Russian = 'ru',
-}
+export const Locales = {
+  English: 'en',
+  Russian: 'ru',
+} as const;
 
-export type Locale = Languages;
+export type Locale = (typeof Locales)[keyof typeof Locales];
 
 type I18n = {
-  defaultLocale: Languages;
-  locales: Languages[];
+  defaultLocale: Locale;
+  locales: Locale[];
 };
 
 export const i18n: I18n = {
-  defaultLocale: Languages.English,
-  locales: [Languages.English, Languages.Russian],
+  defaultLocale: Locales.English,
+  locales: [Locales.English, Locales.Russian],
 } as const;

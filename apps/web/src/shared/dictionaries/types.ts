@@ -1,16 +1,38 @@
 import { Navigation } from '@/shared/types/navigation';
 
+type ButtonDict = {
+  href?: string;
+  icon?: string;
+  label: string;
+};
+
+type Project = {
+  href: string;
+  icon: string;
+  id: string;
+  img: string;
+  text: string;
+  textBtn: 'Visit Site';
+  title: string;
+};
+
+export type DictionaryData = {
+  projects: Project[];
+};
+
 export type Dictionary = {
   about: {
     appeal: string;
     'closing-text': string;
-    getInTouch: string;
     'iam-paragraph': { text: string; title: string };
     'ido-paragraph': { text: string; title: string };
     subtitle: string;
     title: string;
   };
-
+  buttons: {
+    getInTouch: ButtonDict;
+    seeMyResume: ButtonDict;
+  };
   contact: {
     form: {
       email: { label: string; placeholder: string };
@@ -39,26 +61,22 @@ export type Dictionary = {
     'underlogo-text': string;
   };
 
-  getInTouch: {
-    href: string;
-    title: string;
-  };
-
   home: {
     contactme: {
-      getInTouch: string;
       subtitle: string;
       title: string;
     };
 
     hero: {
-      getInTouch?: string;
+      greeting: string;
       intro: string;
       name: string;
       pronoun: string;
-      'resume-btn': string;
     };
-
+    selectedWork: {
+      projects: Project[];
+      title: string;
+    };
     widgets: {
       items: {
         href: string;
@@ -72,27 +90,6 @@ export type Dictionary = {
   };
 
   navigation: Navigation;
-
-  projects: {
-    placeholder: {
-      getInTouch: string;
-      icon: string;
-      subtitle: string;
-      title: string;
-    };
-    title: string;
-
-    works: {
-      href: string;
-      icon: string;
-      id: string;
-      name: string;
-      presentationImg: string;
-      text: string;
-      'text-btn': string;
-      title: string;
-    }[];
-  };
 
   tech: {
     content: {

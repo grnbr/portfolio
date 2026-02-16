@@ -1,7 +1,11 @@
 import 'server-only';
 
-import { Dictionary } from '@/shared/dictionaries/types';
-import { NavItemId, NavSocialId } from '@/shared/types/navigation';
+import { Dictionary, DictionaryData } from '@/shared/dictionaries/types';
+import { NavItemIds, NavSocialIds } from '@/shared/types/navigation';
+
+export const dictionaryData: DictionaryData = {
+  projects: [],
+} as const;
 
 export const dictionary: Dictionary = {
   about: {
@@ -9,10 +13,8 @@ export const dictionary: Dictionary = {
     'closing-text':
       'Feel free to reach out via e-mail or write me on Telegram.',
 
-    getInTouch: 'Get in touch',
-
     'iam-paragraph': {
-      text: "I'm Grigoriy front-end developer from Moscow, Russia 🇷🇺.",
+      text: "I'm Grigory front-end developer from Moscow, Russia 🇷🇺.",
       title: 'WHO I AM',
     },
 
@@ -22,6 +24,16 @@ export const dictionary: Dictionary = {
     },
     subtitle: 'Who I am and what I do',
     title: 'A little bit about me',
+  },
+  buttons: {
+    getInTouch: {
+      href: '/contact',
+      label: 'Get in touch',
+    },
+    seeMyResume: {
+      href: '/resume/Grigory_Neubauer_Frontend_Resume.pdf',
+      label: 'See my resume',
+    },
   },
 
   contact: {
@@ -68,32 +80,28 @@ export const dictionary: Dictionary = {
       title: 'Links',
     },
 
-    rights: ' Grigoriy N. All Rights Reserved.',
+    rights: ' Grigory N. All Rights Reserved.',
 
     'underlogo-text': 'Thanks for stopping by',
   },
 
-  getInTouch: {
-    href: '/en/contact',
-    title: 'Get in touch',
-  },
-
   home: {
     contactme: {
-      getInTouch: 'Get in touch',
       subtitle:
         'Want to discuss an opportunity to create something great? I’m ready when you are.',
       title: "Let's work together",
     },
-
     hero: {
+      greeting: 'Hi 👋',
       intro:
         'A front-end engineer helping startups turn their visions into a digital reality. I specialize in designing and building modern mobile and web-based apps.',
-      name: 'Grigoriy',
-      pronoun: "I'm",
-      'resume-btn': 'See my resume',
+      name: 'Grigory',
+      pronoun: 'I’m',
     },
-
+    selectedWork: {
+      projects: dictionaryData.projects,
+      title: 'Selected Work',
+    },
     widgets: {
       items: [
         {
@@ -126,36 +134,36 @@ export const dictionary: Dictionary = {
     primary: [
       {
         href: '/',
-        id: NavItemId.Home,
+        id: NavItemIds.Home,
         title: 'Home',
         type: 'link',
       },
       {
         href: '/about',
-        id: NavItemId.About,
+        id: NavItemIds.About,
         title: 'About',
         type: 'link',
       },
       {
         href: '/work',
-        id: NavItemId.Work,
+        id: NavItemIds.Work,
         title: 'Work',
         type: 'link',
       },
       {
         href: '/contact',
-        id: NavItemId.Contact,
+        id: NavItemIds.Contact,
         title: 'Contact',
         type: 'link',
       },
       {
         href: '/techs',
-        id: NavItemId.Techs,
+        id: NavItemIds.Techs,
         title: 'Techs',
         type: 'link',
       },
       {
-        id: NavItemId.More,
+        id: NavItemIds.More,
         title: 'More',
         type: 'action',
       },
@@ -163,45 +171,21 @@ export const dictionary: Dictionary = {
     socials: [
       {
         href: '',
-        id: NavSocialId.LinkedIn,
+        id: NavSocialIds.LinkedIn,
         title: 'LinkedIn',
         type: 'link',
       },
       {
         href: '',
-        id: NavSocialId.Telegram,
+        id: NavSocialIds.Telegram,
         title: 'Telegram',
         type: 'link',
       },
       {
         href: '',
-        id: NavSocialId.Github,
+        id: NavSocialIds.Github,
         title: 'Github',
         type: 'link',
-      },
-    ],
-  },
-
-  projects: {
-    placeholder: {
-      getInTouch: 'Get in touch',
-      icon: '/icons/light/stars.svg',
-      subtitle: 'Let’s turn your idea into a visual reality',
-      title: 'YOUR PROJECT GOES HERE',
-    },
-
-    title: 'Selected work',
-
-    works: [
-      {
-        href: 'https://algatop.kz/',
-        icon: '/icons/works/AlgaTop.svg',
-        id: '0',
-        name: 'AlgaTop',
-        presentationImg: '/images/work/works/algatop-screenshot-min.jpg',
-        text: "As a Frontend Developer, I played a pivotal role in enhancing the user experience and driving sales growth for clients on the Kaspi platform. Leveraging my expertise in frontend development, I contributed to achieving remarkable results, including doubling or tripling sales, elevating clients' stores to the top position, and automating routine tasks effectively.",
-        'text-btn': 'Visit Site',
-        title: 'AlgaTop - Store automation service',
       },
     ],
   },

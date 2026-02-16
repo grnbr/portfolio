@@ -25,6 +25,12 @@
   }
 }
 
+@mixin hoverable {
+  @media (hover: hover) and (pointer: fine) {
+    @content;
+  }
+}
+
 @mixin desktop-only {
   display: none;
 

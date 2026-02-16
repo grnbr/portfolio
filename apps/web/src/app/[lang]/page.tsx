@@ -1,3 +1,4 @@
+import Hero from '@/app/[lang]/components/sections/hero/Hero';
 import { getDictionary } from '@/shared/i18n/get-dictionary';
 import { Locale } from '@/shared/i18n/i18n-config';
 import Loader from '@/shared/ui/loader/Loader';
@@ -10,7 +11,7 @@ export default async function Home(props: {
 
   return (
     <>
-      {/* <Loader /> */}
+      <Hero dict={dictionary} />
     </>
   );
 }

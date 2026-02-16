@@ -1,4 +1,5 @@
 @use '@/styles/utils/tokens';
+@use 'sass:math';
 @use './clamp';
 @use './media';
 
@@ -7,17 +8,15 @@
 @forward './media';
 
 @mixin side-padding {
-  padding-inline: tokens.$side-padding;
+  padding-inline: tokens.$layout-side-padding;
 
-  @include media.media-min(mobile) {
-    @include clamp.clamp-bp(
-      padding-inline,
-      (
-        mobile: 1.5rem,
-        ultra: 2rem,
-      )
-    );
-  }
+  @include clamp.clamp-bp(
+    padding-inline,
+    (
+      mobile: tokens.$layout-side-padding,
+      ultra: tokens.$layout-side-padding-desktop,
+    )
+  );
 }
 
 @mixin container-desktop {
@@ -29,4 +28,16 @@
   [data-theme='dark'] & {
     @content;
   }
+}
+
+@mixin clamp-font-size($value-for-bp-map) {
+  @include clamp.clamp-bp(font-size, $value-for-bp-map);
+}
+
+@mixin base-text() {
+  @include clamp-font-size(());
+}
+
+@mixin default-line-height {
+  line-height: 1.2;
 }

@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation';
 import { FC } from 'react';
 
 import formatHref from '@/shared/helpers/formatHref';
-import { Languages } from '@/shared/i18n/i18n-config';
+import { Locale } from '@/shared/i18n/i18n-config';
 import { Navigation } from '@/shared/types/navigation';
 import Icon from '@/shared/ui/icon/Icon';
 import { NAV_TAPBAR_ICONS } from '@/shared/widgets/tapbar/ui/icons';
@@ -15,7 +15,7 @@ import { NAV_TAPBAR_ICONS } from '@/shared/widgets/tapbar/ui/icons';
 import styles from './Tapbar.module.scss';
 
 type TapbarProps = {
-  lang: Languages;
+  lang: Locale;
   navigation: Navigation;
 };
 

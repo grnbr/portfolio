@@ -6,9 +6,7 @@
 @use '@/styles/utils/functions' as f;
 
 @mixin clamp($property, $min-value, $max-value, $options: ()) {
-  @if not math.unit($min-value) == rem or not math.unit($max-value) == rem {
-    @error "❌ clamp(): $min-value and $max-value must be rem.";
-  }
+  @include check-unit($min-value, $max-value);
 
   $defaults: (
     min-breakpoint-key: mobile,
@@ -27,7 +25,7 @@
   $min-val: if($min-value == 0, 0, f.strip-unit($min-value));
   $max-val: f.strip-unit($max-value);
 
-  // Convert px → rem (assuming 16px = 1rem)
+  // Make breakpoint values unitless
   $min-bp-rem: f.strip-unit($min-bp-val);
   $max-bp-rem: f.strip-unit($max-bp-val);
 
@@ -46,6 +44,14 @@
     #{$y-intersection}rem + #{$slope}#{$unit},
     #{$max-val}rem
   );
+}
+
+@mixin check-unit($min-value, $max-value) {
+  @if not(math.unit($min-value) == rem and math.unit($max-value) == rem) or
+    (math.unit($min-value) == px and math.unit($max-value) == px)
+  {
+    @error "❌ clamp(): $min-value and $max-value must be rem or px both.";
+  }
 }
 
 // у меня тут крыша едет
@@ -80,7 +86,6 @@
     $min-value: map.get($values, $min-bp);
     $max-value: map.get($values, $max-bp);
 
-    #{$property}: $max-value;
     @include media.media-min($min-bp) {
       @include clamp(
         $property,

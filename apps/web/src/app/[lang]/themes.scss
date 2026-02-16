@@ -22,7 +22,7 @@
 
   /* Buttons */
   --btn-primary-text: var(--white);
-  --btn-primary-bg: var(--faint-white);
+  --btn-primary-bg: var(--dark-gradient);
   --btn-primary-bg-hover: hsl(0deg 0% 90%);
   --btn-secondary-text: var(--onyx);
   --btn-secondary-bg: var(--faint-white);
@@ -36,6 +36,10 @@
   /* Icons */
   --icon-primary: var(--onyx);
   --logo-color: var(--white);
+
+  // Text Selection
+  --text-selection-bg: var(--light-green-43);
+  --text-selection-color: var(--onyx);
 }
 
 [data-theme='dark'] {
@@ -76,4 +80,8 @@
 
   /* Icons */
   --icon-primary: var(--white);
+
+  // Text Selection
+  --text-selection-bg: var(--light-green-43);
+  --text-selection-color: var(--white);
 }

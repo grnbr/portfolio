@@ -6,7 +6,7 @@ import { ThemeProvider } from 'next-themes';
 
 import BgGradient from '@/shared/components/bg-bradient/BgGradient';
 import { getDictionary } from '@/shared/i18n/get-dictionary';
-import { Languages } from '@/shared/i18n/i18n-config';
+import { Locale, Locales } from '@/shared/i18n/i18n-config';
 import Header from '@/shared/widgets/header/Header';
 import Tapbar from '@/shared/widgets/tapbar/Tapbar';
 
@@ -17,14 +17,14 @@ export const metadata: Metadata = {
 };
 
 export async function generateStaticParams() {
-  return [{ lang: Languages.English }, { lang: Languages.Russian }];
+  return [{ lang: Locales.English }, { lang: Locales.Russian }];
 }
 
 export default async function RootLayout({
   children,
   params,
 }: LayoutProps<'/[lang]'>) {
-  const lang = (await params).lang as Languages;
+  const lang = (await params).lang as Locale;
   const dictionary = await getDictionary(lang);
 
   return (
