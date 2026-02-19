@@ -17,10 +17,12 @@
   column-gap: 0.5rem;
   font-size: tokens.$fs-18;
 
+  @include mixins.media-min(mobile) {
+    width: max-content;
+  }
+
   &.primary,
   &.secondary {
-    @include mixins.default-line-height;
-
     width: 100%;
     padding-block: 1.1875rem;
     border-radius: 9px;
@@ -29,7 +31,7 @@
     font-weight: 500;
 
     @include mixins.media-min(mobile) {
-      width: auto;
+      width: max-content;
       padding-inline: 2rem;
     }
 

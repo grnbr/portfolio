@@ -32,11 +32,11 @@ export default async function RootLayout({
       <body>
         <ThemeProvider defaultTheme="system">
           <BgGradient component="header" />
-          <Header lang={lang} navigation={dictionary.navigation} />
+          <Header lang={lang} navigation={dictionary.header.navigation} />
 
           <main>{children}</main>
 
-          <Tapbar lang={lang} navigation={dictionary.navigation} />
+          <Tapbar lang={lang} navigation={dictionary.header.navigation} />
         </ThemeProvider>
       </body>
     </html>

@@ -1,19 +1,12 @@
-import { Navigation } from '@/shared/types/navigation';
+import { Project } from '@/shared/types/data';
+import {
+  HeaderNavigation,
+  HeroNavigation
+} from '@/shared/types/navigation';
 
 type ButtonDict = {
   href?: string;
-  icon?: string;
   label: string;
-};
-
-type Project = {
-  href: string;
-  icon: string;
-  id: string;
-  img: string;
-  text: string;
-  textBtn: 'Visit Site';
-  title: string;
 };
 
 export type DictionaryData = {
@@ -60,36 +53,32 @@ export type Dictionary = {
     rights: string;
     'underlogo-text': string;
   };
-
+  header: {
+    buttons: {
+      more: ButtonDict & { id: 'more' };
+    };
+    navigation: HeaderNavigation;
+  };
   home: {
     contactme: {
       subtitle: string;
       title: string;
     };
-
     hero: {
       greeting: string;
       intro: string;
       name: string;
       pronoun: string;
     };
+    navigation: {
+      items: HeroNavigation;
+      title: string;
+    };
     selectedWork: {
       projects: Project[];
       title: string;
     };
-    widgets: {
-      items: {
-        href: string;
-        id: string;
-        img: string;
-        subtitle: string;
-        title: string;
-      }[];
-      title: string;
-    };
   };
-
-  navigation: Navigation;
 
   tech: {
     content: {

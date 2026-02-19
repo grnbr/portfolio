@@ -1,10 +1,22 @@
 import 'server-only';
 
+import { Navigation, NavSocialIds } from '@/shared/constants/navigation';
 import { Dictionary, DictionaryData } from '@/shared/dictionaries/types';
-import { NavItemIds, NavSocialIds } from '@/shared/types/navigation';
 
 export const dictionaryData: DictionaryData = {
-  projects: [],
+  projects: [
+    {
+      description:
+        'Tatell разрабатывает бренды и продукты с нуля: от идеи и формулы до дизайна, упаковки, сертификации и запуска.',
+      id: 'tatell',
+      img: '/images/projects/Subbi.png',
+      linkBtn: {
+        href: 'https://tatellstudio.com/',
+        label: 'Посетить сайт',
+      },
+      title: 'Tatell — создание брендов и продуктов под ключ',
+    },
+  ],
 } as const;
 
 export const dictionary: Dictionary = {
@@ -83,7 +95,61 @@ export const dictionary: Dictionary = {
 
     'underlogo-text': 'Спасибо за визит',
   },
+  header: {
+    buttons: {
+      more: {
+        id: 'more',
+        label: 'Еще',
+      },
+    },
+    navigation: {
+      primary: [
+        {
+          href: Navigation.Home.href,
+          id: Navigation.Home.id,
+          label: 'Главная',
+        },
+        {
+          href: Navigation.About.href,
+          id: Navigation.About.id,
+          label: 'Обо мне',
+        },
+        {
+          href: Navigation.Work.href,
+          id: Navigation.Work.id,
+          label: 'Работа',
+        },
 
+        {
+          href: Navigation.Contact.href,
+          id: Navigation.Contact.id,
+          label: 'Связь',
+        },
+        {
+          href: Navigation.TechStack.href,
+          id: Navigation.TechStack.id,
+          label: 'Стек',
+        },
+      ],
+      socials: [
+        {
+          href: '',
+          id: NavSocialIds.LinkedIn,
+          label: 'LinkedIn',
+        },
+        {
+          href: '',
+          id: NavSocialIds.Telegram,
+          label: 'Telegram',
+        },
+        {
+          href: '',
+          id: NavSocialIds.Github,
+          label: 'Github',
+        },
+      ],
+    },
+  },
   home: {
     contactme: {
       subtitle:
@@ -98,99 +164,30 @@ export const dictionary: Dictionary = {
       name: 'Гриша',
       pronoun: 'Меня зовут',
     },
-    selectedWork: {
-      projects: dictionaryData.projects,
-      title: 'Избранные работы',
-    },
-    widgets: {
+    navigation: {
       items: [
         {
-          href: '/ru/about',
-          id: '0',
-          img: '/images/home/about-face.png',
+          href: Navigation.About.href,
+          id: Navigation.About.id,
+          img: '/images/home/navigation/about-min.png',
           subtitle: 'Кто я и чем занимаюсь',
           title: 'Обо мне',
         },
         {
-          href: '/ru/books',
-          id: '1',
-          img: '/images/home/Bookshelf.png',
-          subtitle:
-            'Прочитанные мной книги и которые доставили мне удовольствие',
-          title: 'Книжная полка',
-        },
-        {
-          href: '/ru/techs',
-          id: '2',
-          img: '/images/home/Tech-Stack.png',
+          href: Navigation.TechStack.href,
+          id: Navigation.TechStack.id,
+          img: '/images/home/navigation/tech-stack-min.png',
           subtitle:
             'Инструменты разработки, приложения, устройства и игры, которыми я пользуюсь и играю.',
           title: 'Технологический стек',
         },
       ],
-      title: 'Узнайте обо мне',
+      title: 'Узнать больше обо мне',
     },
-  },
-
-  navigation: {
-    primary: [
-      {
-        href: '/',
-        id: NavItemIds.Home,
-        title: 'Главная',
-        type: 'link',
-      },
-      {
-        href: '/about',
-        id: NavItemIds.About,
-        title: 'Обо мне',
-        type: 'link',
-      },
-      {
-        href: '/work',
-        id: NavItemIds.Work,
-        title: 'Работа',
-        type: 'link',
-      },
-
-      {
-        href: '/contact',
-        id: NavItemIds.Contact,
-        title: 'Связь',
-        type: 'link',
-      },
-      {
-        href: '/techs',
-        id: NavItemIds.Techs,
-        title: 'Стек',
-        type: 'link',
-      },
-      {
-        id: NavItemIds.More,
-        title: 'Еще',
-        type: 'action',
-      },
-    ],
-    socials: [
-      {
-        href: '',
-        id: NavSocialIds.LinkedIn,
-        title: 'LinkedIn',
-        type: 'link',
-      },
-      {
-        href: '',
-        id: NavSocialIds.Telegram,
-        title: 'Telegram',
-        type: 'link',
-      },
-      {
-        href: '',
-        id: NavSocialIds.Github,
-        title: 'Github',
-        type: 'link',
-      },
-    ],
+    selectedWork: {
+      projects: dictionaryData.projects,
+      title: 'Избранные работы',
+    },
   },
 
   tech: {

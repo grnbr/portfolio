@@ -1,0 +1,88 @@
+@use '@/styles/utils/tokens';
+@use '@/styles/utils/mixins';
+@use '@/styles/utils/functions' as f;
+
+.navigation {
+  margin-bottom: 3.75rem;
+  @include mixins.clamp-bp(
+    margin-bottom,
+    (
+      mobile: 3.75rem,
+      ultra: 7.125rem,
+    )
+  );
+
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+
+    @include mixins.media-min(mobile) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card {
+      @include mixins.card-styles;
+
+      .title,
+      .subtitle {
+        padding-inline: 1.125rem;
+        text-align: center;
+
+        @include mixins.clamp-bp(
+          padding-inline,
+          (
+            mobile: 1.125rem,
+            ultra: 1.5rem,
+          )
+        );
+      }
+
+      .title {
+        margin-top: 2rem;
+        margin-bottom: 0.5rem;
+        font-size: 1.5rem;
+
+        @include mixins.clamp-bp(
+          margin-top,
+          (
+            mobile: 2rem,
+            ultra: 3.75rem,
+          )
+        );
+        @include mixins.clamp-bp(
+          margin-bottom,
+          (
+            mobile: 0.75rem,
+            ultra: 1rem,
+          )
+        );
+
+        @include mixins.clamp-font-size(
+          (
+            mobile: 1.5rem,
+            ultra: 2rem,
+          )
+        );
+      }
+
+      .subtitle {
+        margin-bottom: 0.625rem;
+
+        @include mixins.media-min(mobile) {
+          margin-bottom: 0.3125rem;
+        }
+      }
+
+      .imageContainer {
+        position: relative;
+        aspect-ratio: calc(358 / 260);
+        width: 100%;
+
+        @include mixins.media-min(mobile) {
+          aspect-ratio: calc(504 / 365);
+        }
+      }
+    }
+  }
+}

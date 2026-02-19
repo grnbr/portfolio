@@ -45,9 +45,7 @@ const Hero: FC<HeroProps> = ({ dict }) => {
         >
           {seeMyResume.label}
         </ButtonLink>
-        <GetInTouchBtn href={getInTouch.href ?? '#'} variant="secondary">
-          {getInTouch.label}
-        </GetInTouchBtn>
+        <GetInTouchBtn label={getInTouch.label} variant="secondary" />
       </div>
     </section>
   );

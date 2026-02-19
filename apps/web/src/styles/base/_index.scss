@@ -8,6 +8,8 @@ html {
   box-sizing: border-box;
   height: 100%;
 
+  line-height: 1.2;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -51,10 +53,15 @@ body {
   min-height: 100%;
   margin: 0 auto;
   padding: 0;
+  padding-bottom: tokens.$tapbar-height-full;
 
   font-family: Inter, sans-serif;
 
   background-color: var(--bg-color);
+
+  @include mixins.media-min(mobile) {
+    padding-bottom: 0;
+  }
 }
 
 main {
@@ -99,6 +106,12 @@ select {
     border-color 0.3s ease;
 }
 
+h1,
+h2 {
+  font-weight: 700;
+  color: var(--text-heading);
+}
+
 h1 {
   font-size: tokens.$fs-48;
 
@@ -108,16 +121,43 @@ h1 {
       ultra: tokens.$fs-80,
     )
   );
+}
 
+h2 {
+  margin-bottom: 1rem;
+  font-size: tokens.$fs-32;
+
+  @include mixins.clamp-bp(
+    margin-bottom,
+    (
+      mobile: 1rem,
+      ultra: 2rem,
+    )
+  );
+  @include mixins.clamp-font-size(
+    (
+      mobile: tokens.$fs-32,
+      ultra: tokens.$fs-48,
+    )
+  );
+}
+
+h3 {
   font-weight: 800;
-  color: var(--text-heading);
 }
 
 p {
-  font-size: 0.9375rem;
+  font-size: tokens.$fs-15;
   font-weight: 500;
   line-height: 1.33;
   color: var(--text-primary);
+
+  @include mixins.clamp-font-size(
+    (
+      mobile: tokens.$fs-15,
+      ultra: tokens.$fs-16,
+    )
+  );
 }
 
 ::selection {

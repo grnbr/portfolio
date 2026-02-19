@@ -24,6 +24,12 @@
   max-width: 64rem;
 }
 
+@mixin card-styles {
+  border: tokens.$card-border-thickness solid var(--card-border);
+  border-radius: 32px;
+  background-color: var(--card-bg);
+}
+
 @mixin theme-dark {
   [data-theme='dark'] & {
     @content;
@@ -38,6 +44,10 @@
   @include clamp-font-size(());
 }
 
-@mixin default-line-height {
-  line-height: 1.2;
+@mixin text-line-height {
+  line-height: 1.33;
+
+  @include media.media-min(mobile) {
+    line-height: 1.5;
+  }
 }

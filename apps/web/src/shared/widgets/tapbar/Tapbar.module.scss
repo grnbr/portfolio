@@ -7,7 +7,7 @@
   position: fixed;
   z-index: 100;
   right: tokens.$layout-side-padding;
-  bottom: 16px;
+  bottom: tokens.$tapbar-bottom;
   left: tokens.$layout-side-padding;
 
   height: tokens.$tapbar-height;
@@ -16,6 +16,7 @@
   border-radius: 32px;
 
   background-color: var(--tapbar-bg);
+  backdrop-filter: blur(6px);
 
   @include mixins.media-min(mobile) {
     display: none;

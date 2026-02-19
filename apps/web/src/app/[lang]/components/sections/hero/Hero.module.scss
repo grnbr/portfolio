@@ -3,11 +3,28 @@
 @use '@/styles/utils/functions' as f;
 
 .hero {
+  isolation: isolate;
   position: relative;
+  margin-bottom: 8.5625rem;
   padding-top: 17.6875rem;
 
+  @include mixins.clamp-bp(
+    margin-bottom,
+    (
+      mobile: 8.5625rem,
+      ultra: 13.75rem,
+    )
+  );
+
+  @include mixins.clamp-bp(
+    margin-top,
+    (
+      mobile: 13.125rem,
+      ultra: 13.875rem,
+    )
+  );
+
   @include mixins.media-min(mobile) {
-    margin-top: 13.875rem;
     padding-top: 0;
   }
 
@@ -42,19 +59,17 @@
     }
   }
 
-  // > :not(.imageContainer) {
-  //   position: relative;
-  //   z-index: 1;
-  // }
-
   .title {
-    @include mixins.default-line-height;
-
     margin-bottom: 1rem;
+    font-weight: 800;
 
-    @include mixins.media-min(mobile) {
-      margin-bottom: 2.5rem;
-    }
+    @include mixins.clamp-bp(
+      margin-bottom,
+      (
+        mobile: 1rem,
+        ultra: 2.5rem,
+      )
+    );
 
     .greeting,
     .pronoun {
@@ -83,14 +98,21 @@
       )
     );
 
-    // max-width:; // 265
     margin-bottom: 3.5rem;
     line-height: 1.33;
 
+    @include mixins.clamp-bp(
+      margin-bottom,
+      (
+        mobile: 1.5rem,
+        ultra: 2.5rem,
+      )
+    );
     @include mixins.media-min(mobile) {
-      margin-bottom: 2.5rem;
+      position: relative;
+      z-index: 1;
       line-height: 1.5;
-      mix-blend-mode: difference;
+      mix-blend-mode: plus-lighter;
     }
   }
 

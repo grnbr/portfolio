@@ -1,48 +1,70 @@
-export const NavItemIds = {
-  About: 'about',
-  Contact: 'contact',
-  Home: 'home',
-  More: 'more',
-  Techs: 'techs',
-  Work: 'work',
-} as const;
+import { Navigation, NavSocialIds } from '@/shared/constants/navigation';
 
-export const NavSocialIds = {
-  Github: 'github',
-  Gmail: 'gmail',
-  LinkedIn: 'linkedin',
-  Telegram: 'telegram',
-} as const;
+export type NavigationId = (typeof Navigation)[keyof typeof Navigation]['id'];
+export type NavigationHref =
+  (typeof Navigation)[keyof typeof Navigation]['href'];
 
-export type NavItemId = (typeof NavItemIds)[keyof typeof NavItemIds];
-export type NavSocialId = (typeof NavSocialIds)[keyof typeof NavSocialIds];
+export type NavigationSocialId =
+  (typeof NavSocialIds)[keyof typeof NavSocialIds];
 
-type NavLinkId = Exclude<NavItemId, typeof NavItemIds.More>;
+// type NavigationItem = {
+//   href: NavigationHref;
+//   id: NavigationId;
+//   label: string;
+// };
 
-type NavLinkItem = {
+// type NavigationSocialItem = {
+//   href: string;
+//   id: NavigationSocialId;
+//   label: string;
+// };
+
+// export type PrimaryNavigation = NavigationItem[];
+
+type NavItem<K extends keyof typeof Navigation> = {
+  href: (typeof Navigation)[K]['href'];
+  id: (typeof Navigation)[K]['id'];
+  label: string;
+};
+
+type NavSocialItem<K extends keyof typeof NavSocialIds> = {
   href: string;
-  id: NavLinkId;
-  title: string;
-  type: 'link';
+  id: (typeof NavSocialIds)[K];
+  label: string;
 };
 
-type NavActionItem = {
-  id: typeof NavItemIds.More;
-  title: string;
-  type: 'action';
+export type HeaderPrimaryNavigation = [
+  NavItem<'Home'>,
+  NavItem<'About'>,
+  NavItem<'Work'>,
+  NavItem<'Contact'>,
+  NavItem<'TechStack'>,
+];
+
+type HeaderSocialNavigation = [
+  NavSocialItem<'LinkedIn'>,
+  NavSocialItem<'Telegram'>,
+  NavSocialItem<'Github'>,
+];
+
+export type HeaderNavigation = {
+  primary: HeaderPrimaryNavigation;
+  socials: HeaderSocialNavigation;
 };
 
-type NavLinkSocialItem = {
-  href: string;
-  id: NavSocialId;
-  title: string;
-  type: 'link';
-};
-
-export type NavigationItem = NavActionItem | NavLinkItem;
-export type NavigationSocialItem = NavLinkSocialItem;
-
-export type Navigation = {
-  primary: NavigationItem[];
-  socials: NavigationSocialItem[];
-};
+export type HeroNavigation = [
+  {
+    href: (typeof Navigation)['About']['href'];
+    id: (typeof Navigation)['About']['id'];
+    img: '/images/home/navigation/about-min.png';
+    subtitle: string;
+    title: string;
+  },
+  {
+    href: (typeof Navigation)['TechStack']['href'];
+    id: (typeof Navigation)['TechStack']['id'];
+    img: '/images/home/navigation/tech-stack-min.png';
+    subtitle: string;
+    title: string;
+  },
+];

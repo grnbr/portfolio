@@ -1,10 +1,22 @@
 import 'server-only';
 
+import { Navigation, NavSocialIds } from '@/shared/constants/navigation';
 import { Dictionary, DictionaryData } from '@/shared/dictionaries/types';
-import { NavItemIds, NavSocialIds } from '@/shared/types/navigation';
 
 export const dictionaryData: DictionaryData = {
-  projects: [],
+  projects: [
+    {
+      description:
+        'Tatell разрабатывает бренды и продукты с нуля: от идеи и формулы до дизайна, упаковки, сертификации и запуска.',
+      id: 'tatell',
+      img: '/images/projects/Subbi.png',
+      linkBtn: {
+        href: 'https://tatellstudio.com/',
+        label: 'Visit Site',
+      },
+      title: 'Tatell — создание брендов и продуктов под ключ',
+    },
+  ],
 } as const;
 
 export const dictionary: Dictionary = {
@@ -84,7 +96,60 @@ export const dictionary: Dictionary = {
 
     'underlogo-text': 'Thanks for stopping by',
   },
-
+  header: {
+    buttons: {
+      more: {
+        id: 'more',
+        label: 'More',
+      },
+    },
+    navigation: {
+      primary: [
+        {
+          href: Navigation.Home.href,
+          id: Navigation.Home.id,
+          label: 'Home',
+        },
+        {
+          href: Navigation.About.href,
+          id: Navigation.About.id,
+          label: 'About',
+        },
+        {
+          href: Navigation.Work.href,
+          id: Navigation.Work.id,
+          label: 'Work',
+        },
+        {
+          href: Navigation.Contact.href,
+          id: Navigation.Contact.id,
+          label: 'Contact',
+        },
+        {
+          href: Navigation.TechStack.href,
+          id: Navigation.TechStack.id,
+          label: 'Techs',
+        },
+      ],
+      socials: [
+        {
+          href: '',
+          id: NavSocialIds.LinkedIn,
+          label: 'LinkedIn',
+        },
+        {
+          href: '',
+          id: NavSocialIds.Telegram,
+          label: 'Telegram',
+        },
+        {
+          href: '',
+          id: NavSocialIds.Github,
+          label: 'Github',
+        },
+      ],
+    },
+  },
   home: {
     contactme: {
       subtitle:
@@ -98,96 +163,29 @@ export const dictionary: Dictionary = {
       name: 'Grigory',
       pronoun: 'I’m',
     },
-    selectedWork: {
-      projects: dictionaryData.projects,
-      title: 'Selected Work',
-    },
-    widgets: {
+    navigation: {
       items: [
         {
-          href: '/en/about',
-          id: '0',
-          img: '/images/home/about-face-min.png',
+          href: Navigation.About.href,
+          id: Navigation.About.id,
+          img: '/images/home/navigation/about-min.png',
           subtitle: 'Who I am and what I do',
           title: 'About me',
         },
         {
-          href: '/en/books',
-          id: '1',
-          img: '/images/home/Bookshelf-min.png',
-          subtitle: 'Books and pieces of wisdom I’ve enjoyed reading',
-          title: 'Bookshelf',
-        },
-        {
-          href: '/en/techs',
-          id: '2',
-          img: '/images/home/Tech-Stack-min.png',
+          href: Navigation.TechStack.href,
+          id: Navigation.TechStack.id,
+          img: '/images/home/navigation/tech-stack-min.png',
           subtitle: 'The dev tools I use.',
           title: 'Tech Stack',
         },
       ],
       title: 'Get to know me',
     },
-  },
-
-  navigation: {
-    primary: [
-      {
-        href: '/',
-        id: NavItemIds.Home,
-        title: 'Home',
-        type: 'link',
-      },
-      {
-        href: '/about',
-        id: NavItemIds.About,
-        title: 'About',
-        type: 'link',
-      },
-      {
-        href: '/work',
-        id: NavItemIds.Work,
-        title: 'Work',
-        type: 'link',
-      },
-      {
-        href: '/contact',
-        id: NavItemIds.Contact,
-        title: 'Contact',
-        type: 'link',
-      },
-      {
-        href: '/techs',
-        id: NavItemIds.Techs,
-        title: 'Techs',
-        type: 'link',
-      },
-      {
-        id: NavItemIds.More,
-        title: 'More',
-        type: 'action',
-      },
-    ],
-    socials: [
-      {
-        href: '',
-        id: NavSocialIds.LinkedIn,
-        title: 'LinkedIn',
-        type: 'link',
-      },
-      {
-        href: '',
-        id: NavSocialIds.Telegram,
-        title: 'Telegram',
-        type: 'link',
-      },
-      {
-        href: '',
-        id: NavSocialIds.Github,
-        title: 'Github',
-        type: 'link',
-      },
-    ],
+    selectedWork: {
+      projects: dictionaryData.projects,
+      title: 'Selected Work',
+    },
   },
 
   tech: {

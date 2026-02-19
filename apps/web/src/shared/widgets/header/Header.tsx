@@ -2,13 +2,9 @@
 import clsx from 'clsx';
 import { FC } from 'react';
 
-import formatHref from '@/shared/helpers/formatHref';
+import { NavSocialIds } from '@/shared/constants/navigation';
 import { Locale } from '@/shared/i18n/i18n-config';
-import {
-  Navigation,
-  NavItemIds,
-  NavSocialIds,
-} from '@/shared/types/navigation';
+import { HeaderNavigation } from '@/shared/types/navigation';
 import ButtonLink from '@/shared/ui/button/ButtonLink';
 import Icon from '@/shared/ui/icon/Icon';
 import Logo from '@/shared/ui/icon/icons/Logo';
@@ -21,7 +17,7 @@ import styles from './Header.module.scss';
 
 type HeaderProps = {
   lang: Locale;
-  navigation: Navigation;
+  navigation: HeaderNavigation;
 };
 
 const Header: FC<HeaderProps> = ({ lang, navigation }) => {
@@ -44,7 +40,7 @@ const Header: FC<HeaderProps> = ({ lang, navigation }) => {
         <div className={styles.desktop}>
           <nav className={clsx(styles.layoutLeft)}>
             {LogoElement}
-            <NavLinks lang={lang} navigation={navigation} />
+            <NavLinks lang={lang} navigation={navigation.primary} />
             {/* <ul className={styles.list}>
               <li className={styles.item}>{LogoElement}</li>
               {navigation.primary.map((item, i) => {
@@ -93,8 +89,6 @@ const Header: FC<HeaderProps> = ({ lang, navigation }) => {
             <nav className={styles.socialLinks}>
               <ul className={styles.list}>
                 {navigation.socials.map((item, i) => {
-                  if (item.id === NavSocialIds.Gmail) return null;
-
                   const SocialIcon = NAV_HEADER_SOCIAL_ICONS[item.id];
 
                   return (

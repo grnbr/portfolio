@@ -1,0 +1,45 @@
+@use '@/styles/utils/tokens';
+@use '@/styles/utils/mixins';
+@use '@/styles/utils/functions' as f;
+
+.contactMe {
+  margin-bottom: 8.0625rem;
+
+  @include mixins.media-min(mobile) {
+    @include mixins.flex-center-vertical;
+
+    column-gap: 1rem;
+    justify-content: space-between;
+
+    @include mixins.clamp-bp(
+      margin-bottom,
+      (
+        mobile: 5.3438rem,
+        ultra: 7.125rem,
+      )
+    );
+  }
+
+  .textContent {
+    margin-bottom: 2.125rem;
+
+    @include mixins.media-min(mobile) {
+      max-width: 31rem;
+      margin-bottom: 0;
+    }
+
+    .title {
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      font-size: tokens.$fs-15;
+      @include mixins.clamp-font-size(
+        (
+          mobile: tokens.$fs-15,
+          ultra: tokens.$fs-20,
+        )
+      );
+    }
+  }
+}

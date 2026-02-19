@@ -8,7 +8,7 @@ import { FC } from 'react';
 
 import formatHref from '@/shared/helpers/formatHref';
 import { Locale } from '@/shared/i18n/i18n-config';
-import { Navigation } from '@/shared/types/navigation';
+import { HeaderNavigation } from '@/shared/types/navigation';
 import Icon from '@/shared/ui/icon/Icon';
 import { NAV_TAPBAR_ICONS } from '@/shared/widgets/tapbar/ui/icons';
 
@@ -16,7 +16,7 @@ import styles from './Tapbar.module.scss';
 
 type TapbarProps = {
   lang: Locale;
-  navigation: Navigation;
+  navigation: HeaderNavigation;
 };
 
 const Tapbar: FC<TapbarProps> = ({ lang, navigation }) => {
@@ -27,15 +27,13 @@ const Tapbar: FC<TapbarProps> = ({ lang, navigation }) => {
     <nav className={styles.tapbar}>
       <LayoutGroup>
         {navigation.primary.map((item, i) => {
-          if (item.type !== 'link') return null;
-
-          const { href = '', title } = item;
+          const { href = '', label } = item;
 
           const TapbarIcon = NAV_TAPBAR_ICONS[item.id];
 
           const isActive = pathnameWithoutLang === href;
 
-          if (!href || !title) return null;
+          if (!href && !label) return null;
 
           const formattedHref = formatHref({ href, lang });
 
