@@ -1,0 +1,9 @@
+@use '@/styles/utils/tokens';
+@use '@/styles/utils/mixins';
+@use '@/styles/utils/functions' as f;
+
+.logo {
+  @include mixins.media-min(mobile) {
+    opacity: 0.75;
+  }
+}

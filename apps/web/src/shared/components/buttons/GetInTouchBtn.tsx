@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Navigation } from '@/shared/constants/navigation';
+import { NavigationItems } from '@/shared/constants/navigation';
 import ButtonLink, { ButtonLinkProps } from '@/shared/ui/button/ButtonLink';
 import Icon from '@/shared/ui/icon/Icon';
 import SendIcon from '@/shared/ui/icon/icons/SendIcon';
@@ -17,7 +17,11 @@ const GetInTouchBtn: FC<GetInTouchBtnProps> = ({
   ...props
 }) => {
   return (
-    <ButtonLink {...props} href={Navigation.Contact.href} variant={variant}>
+    <ButtonLink
+      {...props}
+      href={NavigationItems.Contact.href}
+      variant={variant}
+    >
       {hasIcon && (
         <Icon
           options={{

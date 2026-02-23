@@ -10,7 +10,9 @@
   --header-text: var(--onyx);
 
   /* Footer */
+  --footer-links: var(--onyx);
   --footer-text: var(--onyx);
+  --footer-border-top: var(--black-10);
 
   /* Tapbar */
   --tapbar-bg: var(--black-30);
@@ -35,7 +37,6 @@
 
   /* Icons */
   --icon-primary: var(--onyx);
-  --logo-color: var(--white);
 
   // Text Selection
   --text-selection-bg: var(--light-green-43);
@@ -51,7 +52,11 @@
   --header-bg: var(--black-30);
   --header-border: transparent;
   --header-text: var(--white-70);
-  --footer-text: var(--white-70);
+
+  // Footer
+  --footer-links: var(--light-grey);
+  --footer-text: var(--white-25);
+  --footer-border-top: var(--white-10);
 
   /* Tapbar */
   --tapbar-bg: rgb(24 24 29 / 60%);

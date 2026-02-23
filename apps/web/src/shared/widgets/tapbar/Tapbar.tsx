@@ -6,27 +6,29 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { FC } from 'react';
 
+import { Dictionary } from '@/shared/dictionaries/types';
 import formatHref from '@/shared/helpers/formatHref';
 import { Locale } from '@/shared/i18n/i18n-config';
-import { HeaderNavigation } from '@/shared/types/navigation';
 import Icon from '@/shared/ui/icon/Icon';
 import { NAV_TAPBAR_ICONS } from '@/shared/widgets/tapbar/ui/icons';
 
 import styles from './Tapbar.module.scss';
 
 type TapbarProps = {
+  dict: Dictionary;
   lang: Locale;
-  navigation: HeaderNavigation;
 };
 
-const Tapbar: FC<TapbarProps> = ({ lang, navigation }) => {
+const Tapbar: FC<TapbarProps> = ({ dict, lang }) => {
+  const navigation = dict.navigation;
+
   const pathname = usePathname();
   const pathnameWithoutLang = '/' + pathname.split('/').slice(2).join();
 
   return (
     <nav className={styles.tapbar}>
       <LayoutGroup>
-        {navigation.primary.map((item, i) => {
+        {navigation.primary.items.map((item, i) => {
           const { href = '', label } = item;
 
           const TapbarIcon = NAV_TAPBAR_ICONS[item.id];
@@ -52,7 +54,7 @@ const Tapbar: FC<TapbarProps> = ({ lang, navigation }) => {
                     stiffness: 500,
                     type: 'spring',
                   }}
-                ></motion.span>
+                />
               )}
 
               <Icon

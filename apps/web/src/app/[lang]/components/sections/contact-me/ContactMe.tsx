@@ -21,7 +21,9 @@ const ContactMe: FC<ContactMeProps> = ({ dict }) => {
         <p className={styles.subtitle}>{content.subtitle}</p>
       </div>
 
-      <GetInTouchBtn hasIcon label={getInTouch.label} />
+      <div className={styles.buttonContainer}>
+        <GetInTouchBtn hasIcon label={getInTouch.label} />
+      </div>
     </section>
   );
 };

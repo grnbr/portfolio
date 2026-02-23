@@ -7,6 +7,7 @@ import { ThemeProvider } from 'next-themes';
 import BgGradient from '@/shared/components/bg-bradient/BgGradient';
 import { getDictionary } from '@/shared/i18n/get-dictionary';
 import { Locale, Locales } from '@/shared/i18n/i18n-config';
+import Footer from '@/shared/widgets/footer/Footer';
 import Header from '@/shared/widgets/header/Header';
 import Tapbar from '@/shared/widgets/tapbar/Tapbar';
 
@@ -32,11 +33,13 @@ export default async function RootLayout({
       <body>
         <ThemeProvider defaultTheme="system">
           <BgGradient component="header" />
-          <Header lang={lang} navigation={dictionary.header.navigation} />
+          <Header dict={dictionary} lang={lang} />
 
           <main>{children}</main>
 
-          <Tapbar lang={lang} navigation={dictionary.header.navigation} />
+          <Footer dict={dictionary} />
+          <BgGradient component="footer" />
+          <Tapbar dict={dictionary} lang={lang} />
         </ThemeProvider>
       </body>
     </html>

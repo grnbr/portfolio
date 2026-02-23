@@ -1,3 +1,4 @@
+@use '@/styles/utils/tokens';
 @use 'sass:math';
 @use 'sass:meta';
 
@@ -8,4 +9,8 @@
   }
 
   @return $number;
+}
+
+@function subtract-border($value, $border-thickness: tokens.$border-thickness) {
+  @return calc($value - $border-thickness);
 }

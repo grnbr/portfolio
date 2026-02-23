@@ -4,15 +4,15 @@ import clsx from 'clsx';
 import { usePathname } from 'next/navigation';
 import { FC } from 'react';
 
-import { Navigation } from '@/shared/constants/navigation';
+import { NavigationItems } from '@/shared/constants/navigation';
 import formatHref from '@/shared/helpers/formatHref';
 import { Locale } from '@/shared/i18n/i18n-config';
-import { HeaderPrimaryNavigation } from '@/shared/types/navigation';
+import { PrimaryNavigation } from '@/shared/types/navigation';
 import ButtonLink from '@/shared/ui/button/ButtonLink';
 
 import styles from '../Header.module.scss';
 
-type NavLinksProps = { lang: Locale; navigation: HeaderPrimaryNavigation };
+type NavLinksProps = { lang: Locale; navigation: PrimaryNavigation };
 
 // TODO Handle tablet view adding more button
 const NavLinks: FC<NavLinksProps> = ({ lang, navigation }) => {
@@ -21,7 +21,7 @@ const NavLinks: FC<NavLinksProps> = ({ lang, navigation }) => {
   return (
     <ul className={styles.list}>
       {navigation.map((item, i) => {
-        if (item.id === Navigation.Home.id) return null;
+        if (item.id === NavigationItems.Home.id) return null;
 
         // TODO add new items like This UI KIT
         // switch (item.type) {
@@ -46,6 +46,7 @@ const NavLinks: FC<NavLinksProps> = ({ lang, navigation }) => {
         return (
           <li className={styles.item} key={i}>
             <ButtonLink
+              aria-label={item.label}
               className={styles.link}
               href={formattedHref}
               key={i}

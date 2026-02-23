@@ -8,15 +8,18 @@ type BgGradientProps = {
 };
 
 const BgGradient: FC<BgGradientProps> = ({ component }) => {
-  if (component === 'header') {
-    return (
-      <div className={clsx(styles.container, styles.headerGradient)}>
-        <div className={styles.gradientLeft} />
-        <div className={styles.gradientCenter} />
-        <div className={styles.gradientRight} />
-      </div>
-    );
-  }
+  return (
+    <div
+      className={clsx(
+        styles.container,
+        component === 'header' ? styles.headerGradient : styles.footerGradient,
+      )}
+    >
+      <div className={styles.gradientLeft} />
+      <div className={styles.gradientCenter} />
+      <div className={styles.gradientRight} />
+    </div>
+  );
 };
 
 export default BgGradient;

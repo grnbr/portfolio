@@ -1,9 +1,16 @@
 import 'server-only';
 
-import { Navigation, NavSocialIds } from '@/shared/constants/navigation';
+import { NavigationItems, NavSocialIds } from '@/shared/constants/navigation';
 import { Dictionary, DictionaryData } from '@/shared/dictionaries/types';
 
 export const dictionaryData: DictionaryData = {
+  navigation: {
+    home: {
+      href: NavigationItems.Home.href,
+      id: NavigationItems.Home.id,
+      label: 'Главная',
+    },
+  },
   projects: [
     {
       description:
@@ -78,22 +85,8 @@ export const dictionary: Dictionary = {
       title: 'Технологический стек',
     },
   ],
-
   footer: {
-    elsewhere: 'В других сервисах',
-    links: {
-      links: [
-        { href: '/ru/about', title: 'Обо мне' },
-        { href: '/ru/work', title: 'Работа' },
-        { href: '/ru/techs', title: 'Технологический стек' },
-        { href: '/ru/contact', title: 'Связь' },
-      ],
-      title: 'Страницы',
-    },
-
-    rights: ' Григорий Н. Все права защищены.',
-
-    'underlogo-text': 'Спасибо за визит',
+    underLogoText: 'Спасибо за визит',
   },
   header: {
     buttons: {
@@ -101,53 +94,6 @@ export const dictionary: Dictionary = {
         id: 'more',
         label: 'Еще',
       },
-    },
-    navigation: {
-      primary: [
-        {
-          href: Navigation.Home.href,
-          id: Navigation.Home.id,
-          label: 'Главная',
-        },
-        {
-          href: Navigation.About.href,
-          id: Navigation.About.id,
-          label: 'Обо мне',
-        },
-        {
-          href: Navigation.Work.href,
-          id: Navigation.Work.id,
-          label: 'Работа',
-        },
-
-        {
-          href: Navigation.Contact.href,
-          id: Navigation.Contact.id,
-          label: 'Связь',
-        },
-        {
-          href: Navigation.TechStack.href,
-          id: Navigation.TechStack.id,
-          label: 'Стек',
-        },
-      ],
-      socials: [
-        {
-          href: '',
-          id: NavSocialIds.LinkedIn,
-          label: 'LinkedIn',
-        },
-        {
-          href: '',
-          id: NavSocialIds.Telegram,
-          label: 'Telegram',
-        },
-        {
-          href: '',
-          id: NavSocialIds.Github,
-          label: 'Github',
-        },
-      ],
     },
   },
   home: {
@@ -167,15 +113,15 @@ export const dictionary: Dictionary = {
     navigation: {
       items: [
         {
-          href: Navigation.About.href,
-          id: Navigation.About.id,
+          href: NavigationItems.About.href,
+          id: NavigationItems.About.id,
           img: '/images/home/navigation/about-min.png',
           subtitle: 'Кто я и чем занимаюсь',
           title: 'Обо мне',
         },
         {
-          href: Navigation.TechStack.href,
-          id: Navigation.TechStack.id,
+          href: NavigationItems.TechStack.href,
+          id: NavigationItems.TechStack.id,
           img: '/images/home/navigation/tech-stack-min.png',
           subtitle:
             'Инструменты разработки, приложения, устройства и игры, которыми я пользуюсь и играю.',
@@ -187,6 +133,56 @@ export const dictionary: Dictionary = {
     selectedWork: {
       projects: dictionaryData.projects,
       title: 'Избранные работы',
+    },
+  },
+  navigation: {
+    home: dictionaryData.navigation.home,
+    primary: {
+      items: [
+        { ...dictionaryData.navigation.home },
+        {
+          href: NavigationItems.About.href,
+          id: NavigationItems.About.id,
+          label: 'Обо мне',
+        },
+        {
+          href: NavigationItems.Work.href,
+          id: NavigationItems.Work.id,
+          label: 'Работа',
+        },
+
+        {
+          href: NavigationItems.Contact.href,
+          id: NavigationItems.Contact.id,
+          label: 'Связь',
+        },
+        {
+          href: NavigationItems.TechStack.href,
+          id: NavigationItems.TechStack.id,
+          label: 'Стек',
+        },
+      ],
+      title: null,
+    },
+    socials: {
+      items: [
+        {
+          href: '',
+          id: NavSocialIds.LinkedIn,
+          label: 'LinkedIn',
+        },
+        {
+          href: '',
+          id: NavSocialIds.Telegram,
+          label: 'Telegram',
+        },
+        {
+          href: '',
+          id: NavSocialIds.Github,
+          label: 'Github',
+        },
+      ],
+      title: null,
     },
   },
 

@@ -1,5 +1,6 @@
 @use '@/styles/utils/tokens';
 @use 'sass:math';
+@use 'sass:map';
 @use './clamp';
 @use './media';
 
@@ -10,13 +11,19 @@
 @mixin side-padding {
   padding-inline: tokens.$layout-side-padding;
 
-  @include clamp.clamp-bp(
-    padding-inline,
-    (
-      mobile: tokens.$layout-side-padding,
-      ultra: tokens.$layout-side-padding-desktop,
-    )
-  );
+  @include media.media-min(mobile) {
+    @include clamp.clamp-bp(
+      padding-inline,
+      (
+        mobile: tokens.$layout-side-padding,
+        desktop: tokens.$layout-side-padding-desktop,
+      )
+    );
+  }
+
+  @include media.media-side-padding {
+    padding-inline: 0;
+  }
 }
 
 @mixin container-desktop {

@@ -1,8 +1,5 @@
 import { Project } from '@/shared/types/data';
-import {
-  HeaderNavigation,
-  HeroNavigation
-} from '@/shared/types/navigation';
+import { HeroNavigation, NavHome, Navigation } from '@/shared/types/navigation';
 
 type ButtonDict = {
   href?: string;
@@ -10,6 +7,9 @@ type ButtonDict = {
 };
 
 export type DictionaryData = {
+  navigation: {
+    home: NavHome;
+  };
   projects: Project[];
 };
 
@@ -38,26 +38,19 @@ export type Dictionary = {
     subtitle: string;
     title: string;
   };
+  
 
   'dropdown-nav': {
     href: string;
     title: string;
   }[];
-
   footer: {
-    elsewhere: string;
-    links: {
-      links: { href: string; title: string }[];
-      title: string;
-    };
-    rights: string;
-    'underlogo-text': string;
+    underLogoText: string;
   };
   header: {
     buttons: {
       more: ButtonDict & { id: 'more' };
     };
-    navigation: HeaderNavigation;
   };
   home: {
     contactme: {
@@ -79,6 +72,7 @@ export type Dictionary = {
       title: string;
     };
   };
+  navigation: Navigation;
 
   tech: {
     content: {

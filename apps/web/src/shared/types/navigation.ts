@@ -1,8 +1,9 @@
-import { Navigation, NavSocialIds } from '@/shared/constants/navigation';
+import { NavigationItems, NavSocialIds } from '@/shared/constants/navigation';
 
-export type NavigationId = (typeof Navigation)[keyof typeof Navigation]['id'];
+export type NavigationId =
+  (typeof NavigationItems)[keyof typeof NavigationItems]['id'];
 export type NavigationHref =
-  (typeof Navigation)[keyof typeof Navigation]['href'];
+  (typeof NavigationItems)[keyof typeof NavigationItems]['href'];
 
 export type NavigationSocialId =
   (typeof NavSocialIds)[keyof typeof NavSocialIds];
@@ -21,9 +22,9 @@ export type NavigationSocialId =
 
 // export type PrimaryNavigation = NavigationItem[];
 
-type NavItem<K extends keyof typeof Navigation> = {
-  href: (typeof Navigation)[K]['href'];
-  id: (typeof Navigation)[K]['id'];
+type NavItem<K extends keyof typeof NavigationItems> = {
+  href: (typeof NavigationItems)[K]['href'];
+  id: (typeof NavigationItems)[K]['id'];
   label: string;
 };
 
@@ -33,36 +34,45 @@ type NavSocialItem<K extends keyof typeof NavSocialIds> = {
   label: string;
 };
 
-export type HeaderPrimaryNavigation = [
-  NavItem<'Home'>,
+export type NavHome = NavItem<'Home'>;
+
+export type PrimaryNavigation = [
+  NavHome,
   NavItem<'About'>,
   NavItem<'Work'>,
   NavItem<'Contact'>,
   NavItem<'TechStack'>,
 ];
 
-type HeaderSocialNavigation = [
+type SocialNavigation = [
   NavSocialItem<'LinkedIn'>,
   NavSocialItem<'Telegram'>,
   NavSocialItem<'Github'>,
 ];
 
-export type HeaderNavigation = {
-  primary: HeaderPrimaryNavigation;
-  socials: HeaderSocialNavigation;
+export type Navigation = {
+  home: NavHome;
+  primary: {
+    items: PrimaryNavigation;
+    title: null | string;
+  };
+  socials: {
+    items: SocialNavigation;
+    title: null | string;
+  };
 };
 
 export type HeroNavigation = [
   {
-    href: (typeof Navigation)['About']['href'];
-    id: (typeof Navigation)['About']['id'];
+    href: (typeof NavigationItems)['About']['href'];
+    id: (typeof NavigationItems)['About']['id'];
     img: '/images/home/navigation/about-min.png';
     subtitle: string;
     title: string;
   },
   {
-    href: (typeof Navigation)['TechStack']['href'];
-    id: (typeof Navigation)['TechStack']['id'];
+    href: (typeof NavigationItems)['TechStack']['href'];
+    id: (typeof NavigationItems)['TechStack']['id'];
     img: '/images/home/navigation/tech-stack-min.png';
     subtitle: string;
     title: string;

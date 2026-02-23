@@ -1,9 +1,16 @@
 import 'server-only';
 
-import { Navigation, NavSocialIds } from '@/shared/constants/navigation';
+import { NavigationItems, NavSocialIds } from '@/shared/constants/navigation';
 import { Dictionary, DictionaryData } from '@/shared/dictionaries/types';
 
 export const dictionaryData: DictionaryData = {
+  navigation: {
+    home: {
+      href: NavigationItems.Home.href,
+      id: NavigationItems.Home.id,
+      label: 'Home',
+    },
+  },
   projects: [
     {
       description:
@@ -76,25 +83,12 @@ export const dictionary: Dictionary = {
   'dropdown-nav': [
     {
       href: 'https://www.figma.com/community/file/1266863403759514317',
-      title: 'This UI KIt',
+      title: 'This UI Kit',
     },
   ],
 
   footer: {
-    elsewhere: 'Elsewhere',
-    links: {
-      links: [
-        { href: '/en/about', title: 'About' },
-        { href: '/en/work', title: 'Work' },
-        { href: '/en/techs', title: 'Tech Stack' },
-        { href: '/en/contact', title: 'Contact' },
-      ],
-      title: 'Links',
-    },
-
-    rights: ' Grigory N. All Rights Reserved.',
-
-    'underlogo-text': 'Thanks for stopping by',
+    underLogoText: 'Thanks for stopping by',
   },
   header: {
     buttons: {
@@ -102,52 +96,6 @@ export const dictionary: Dictionary = {
         id: 'more',
         label: 'More',
       },
-    },
-    navigation: {
-      primary: [
-        {
-          href: Navigation.Home.href,
-          id: Navigation.Home.id,
-          label: 'Home',
-        },
-        {
-          href: Navigation.About.href,
-          id: Navigation.About.id,
-          label: 'About',
-        },
-        {
-          href: Navigation.Work.href,
-          id: Navigation.Work.id,
-          label: 'Work',
-        },
-        {
-          href: Navigation.Contact.href,
-          id: Navigation.Contact.id,
-          label: 'Contact',
-        },
-        {
-          href: Navigation.TechStack.href,
-          id: Navigation.TechStack.id,
-          label: 'Techs',
-        },
-      ],
-      socials: [
-        {
-          href: '',
-          id: NavSocialIds.LinkedIn,
-          label: 'LinkedIn',
-        },
-        {
-          href: '',
-          id: NavSocialIds.Telegram,
-          label: 'Telegram',
-        },
-        {
-          href: '',
-          id: NavSocialIds.Github,
-          label: 'Github',
-        },
-      ],
     },
   },
   home: {
@@ -166,15 +114,15 @@ export const dictionary: Dictionary = {
     navigation: {
       items: [
         {
-          href: Navigation.About.href,
-          id: Navigation.About.id,
+          href: NavigationItems.About.href,
+          id: NavigationItems.About.id,
           img: '/images/home/navigation/about-min.png',
           subtitle: 'Who I am and what I do',
           title: 'About me',
         },
         {
-          href: Navigation.TechStack.href,
-          id: Navigation.TechStack.id,
+          href: NavigationItems.TechStack.href,
+          id: NavigationItems.TechStack.id,
           img: '/images/home/navigation/tech-stack-min.png',
           subtitle: 'The dev tools I use.',
           title: 'Tech Stack',
@@ -185,6 +133,55 @@ export const dictionary: Dictionary = {
     selectedWork: {
       projects: dictionaryData.projects,
       title: 'Selected Work',
+    },
+  },
+  navigation: {
+    home: dictionaryData.navigation.home,
+    primary: {
+      items: [
+        { ...dictionaryData.navigation.home },
+        {
+          href: NavigationItems.About.href,
+          id: NavigationItems.About.id,
+          label: 'About',
+        },
+        {
+          href: NavigationItems.Work.href,
+          id: NavigationItems.Work.id,
+          label: 'Work',
+        },
+        {
+          href: NavigationItems.Contact.href,
+          id: NavigationItems.Contact.id,
+          label: 'Contact',
+        },
+        {
+          href: NavigationItems.TechStack.href,
+          id: NavigationItems.TechStack.id,
+          label: 'Techs',
+        },
+      ],
+      title: 'Links',
+    },
+    socials: {
+      items: [
+        {
+          href: '',
+          id: NavSocialIds.LinkedIn,
+          label: 'LinkedIn',
+        },
+        {
+          href: '',
+          id: NavSocialIds.Telegram,
+          label: 'Telegram',
+        },
+        {
+          href: '',
+          id: NavSocialIds.Github,
+          label: 'Github',
+        },
+      ],
+      title: 'Elsewhere',
     },
   },
 

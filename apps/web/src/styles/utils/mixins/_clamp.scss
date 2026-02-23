@@ -37,20 +37,28 @@
 
   // y-intersection
   $y-intersection: $min-val - ($slope * math.div($min-bp-rem, 100));
+  $min-output: if(math.unit($min-value) == px, #{$min-val}px, #{$min-val}rem);
+  $max-output: if(math.unit($max-value) == px, #{$max-val}px, #{$max-val}rem);
 
-  #{$property}: #{$max-value};
+  #{$property}: $max-value;
+
   #{$property}: clamp(
-    #{$min-val}rem,
+    #{$min-output},
     #{$y-intersection}rem + #{$slope}#{$unit},
-    #{$max-val}rem
+    #{$max-output}
   );
 }
 
 @mixin check-unit($min-value, $max-value) {
-  @if not(math.unit($min-value) == rem and math.unit($max-value) == rem) or
-    (math.unit($min-value) == px and math.unit($max-value) == px)
-  {
-    @error "❌ clamp(): $min-value and $max-value must be rem or px both.";
+  $min-unit: math.unit($min-value);
+  $max-unit: math.unit($max-value);
+  $min-zero: $min-value == 0;
+  $max-zero: $max-value == 0;
+  $valid: ($min-unit == rem and $max-unit == rem) or
+    ($min-unit == px and $max-unit == px);
+
+  @if not $valid {
+    @error "❌ clamp(): Values must both be rem or px.";
   }
 }
 

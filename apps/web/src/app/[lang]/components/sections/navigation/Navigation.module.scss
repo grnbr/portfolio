@@ -24,6 +24,8 @@
     .card {
       @include mixins.card-styles;
 
+      overflow: hidden;
+
       .title,
       .subtitle {
         padding-inline: 1.125rem;

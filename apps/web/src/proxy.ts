@@ -2,7 +2,7 @@ import { match } from '@formatjs/intl-localematcher';
 import Negotiator from 'negotiator';
 import { type NextRequest, NextResponse } from 'next/server';
 
-import { i18n } from '@/shared/i18n/i18n-config';
+import { i18n, Locale } from '@/shared/i18n/i18n-config';
 
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -11,7 +11,17 @@ export function proxy(request: NextRequest) {
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
   );
 
-  if (hasPathnameLocale) return;
+  if (hasPathnameLocale) {
+    const localeFromPath = pathname.split('/')[1] as Locale;
+
+    const response = NextResponse.next();
+    response.cookies.set('locale', localeFromPath, {
+      maxAge: 60 * 60 * 24 * 365,
+      path: '/',
+    });
+
+    return response;
+  }
 
   // Redirect if there is no locale
   const locale = getLocale(request);
@@ -27,6 +37,12 @@ export const config = {
 };
 
 function getLocale(request: NextRequest): string | undefined {
+  const cookieLocale = request.cookies.get('locale')?.value as Locale;
+
+  if (i18n.locales.includes(cookieLocale)) {
+    return cookieLocale;
+  }
+
   const acceptLanguage = request.headers.get('accept-language');
   const { defaultLocale, locales } = i18n;
 

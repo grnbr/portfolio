@@ -24,7 +24,7 @@
     margin-bottom: 2.125rem;
 
     @include mixins.media-min(mobile) {
-      max-width: 31rem;
+      max-width: 31.8rem;
       margin-bottom: 0;
     }
 
@@ -41,5 +41,9 @@
         )
       );
     }
+  }
+
+  .buttonContainer {
+    flex-shrink: 0;
   }
 }

@@ -47,8 +47,8 @@
     row-gap: 1rem;
 
     max-width: 31.4375rem;
-    padding: calc(2rem - tokens.$card-border-thickness)
-      calc(1.5rem - tokens.$card-border-thickness);
+    padding: f.subtract-border(2rem, tokens.$card-border-thickness)
+      f.subtract-border(1.5rem, tokens.$card-border-thickness);
 
     @include mixins.media-min(mobile) {
       @include mixins.clamp-bp(

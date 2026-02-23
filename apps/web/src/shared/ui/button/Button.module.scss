@@ -63,12 +63,11 @@
   }
 
   &.ghost {
+    width: max-content;
     color: var(--btn-ghost-text);
 
-    &:hover {
-      * {
-        opacity: 0.8;
-      }
+    @include mixins.hoverable {
+      opacity: 0.8;
     }
   }
 }

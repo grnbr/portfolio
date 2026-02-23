@@ -1,4 +1,4 @@
-export const Navigation = {
+export const NavigationItems = {
   About: { href: '/about', id: 'about' },
   Contact: { href: '/contact', id: 'contact' },
   Home: { href: '/', id: 'home' },

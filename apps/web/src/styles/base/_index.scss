@@ -1,5 +1,6 @@
 @use '@/styles/utils/tokens';
 @use '@/styles/utils/mixins';
+@use 'sass:map';
 @forward './fonts';
 
 html {
@@ -70,7 +71,7 @@ main {
   flex: 1;
   width: 100%;
 
-  @include mixins.media-min(mobile) {
+  @include mixins.media-side-padding {
     max-width: tokens.$desktop-content;
   }
 }

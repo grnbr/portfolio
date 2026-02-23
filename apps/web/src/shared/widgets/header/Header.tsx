@@ -2,12 +2,11 @@
 import clsx from 'clsx';
 import { FC } from 'react';
 
-import { NavSocialIds } from '@/shared/constants/navigation';
+import Logo from '@/shared/components/logo/Logo';
+import { Dictionary } from '@/shared/dictionaries/types';
 import { Locale } from '@/shared/i18n/i18n-config';
-import { HeaderNavigation } from '@/shared/types/navigation';
 import ButtonLink from '@/shared/ui/button/ButtonLink';
 import Icon from '@/shared/ui/icon/Icon';
-import Logo from '@/shared/ui/icon/icons/Logo';
 import { NAV_HEADER_SOCIAL_ICONS } from '@/shared/widgets/header/ui/icons';
 import LocaleSwitcher from '@/shared/widgets/header/ui/LocaleSwitcher';
 import NavLinks from '@/shared/widgets/header/ui/NavLinks';
@@ -16,31 +15,24 @@ import ThemeSwitcher from '@/shared/widgets/header/ui/ThemeSwitcher';
 import styles from './Header.module.scss';
 
 type HeaderProps = {
+  dict: Dictionary;
   lang: Locale;
-  navigation: HeaderNavigation;
 };
 
-const Header: FC<HeaderProps> = ({ lang, navigation }) => {
-  const LogoElement = (
-    <ButtonLink
-      aria-label="Home"
-      className={styles.logoLink}
-      href={`/${lang}`}
-      variant="ghost"
-    >
-      <Logo className={styles.logo} />
-    </ButtonLink>
-  );
+const Header: FC<HeaderProps> = ({ dict, lang }) => {
+  const navigation = dict.navigation;
+
+  const LogoJSX = <Logo className={styles.logoLink} home={navigation.home} />;
 
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        {LogoElement}
+        {LogoJSX}
 
         <div className={styles.desktop}>
           <nav className={clsx(styles.layoutLeft)}>
-            {LogoElement}
-            <NavLinks lang={lang} navigation={navigation.primary} />
+            {LogoJSX}
+            <NavLinks lang={lang} navigation={navigation.primary.items} />
             {/* <ul className={styles.list}>
               <li className={styles.item}>{LogoElement}</li>
               {navigation.primary.map((item, i) => {
@@ -88,7 +80,7 @@ const Header: FC<HeaderProps> = ({ lang, navigation }) => {
           <div className={styles.layoutRight}>
             <nav className={styles.socialLinks}>
               <ul className={styles.list}>
-                {navigation.socials.map((item, i) => {
+                {navigation.socials.items.map((item, i) => {
                   const SocialIcon = NAV_HEADER_SOCIAL_ICONS[item.id];
 
                   return (
