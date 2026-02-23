@@ -14,8 +14,10 @@
     @include mixins.clamp-bp(
       margin-bottom,
       (
-        mobile: 5.3438rem,
         ultra: 7.125rem,
+      ),
+      (
+        auto-interpolate: true,
       )
     );
   }

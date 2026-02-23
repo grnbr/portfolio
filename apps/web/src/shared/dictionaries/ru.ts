@@ -150,16 +150,15 @@ export const dictionary: Dictionary = {
           id: NavigationItems.Work.id,
           label: 'Работа',
         },
-
-        {
-          href: NavigationItems.Contact.href,
-          id: NavigationItems.Contact.id,
-          label: 'Связь',
-        },
         {
           href: NavigationItems.TechStack.href,
           id: NavigationItems.TechStack.id,
           label: 'Стек',
+        },
+        {
+          href: NavigationItems.Contact.href,
+          id: NavigationItems.Contact.id,
+          label: 'Связь',
         },
       ],
       title: null,

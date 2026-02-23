@@ -62,8 +62,8 @@
 
         @include mixins.clamp-font-size(
           (
-            mobile: 1.5rem,
-            ultra: 2rem,
+            mobile: tokens.$fs-24,
+            ultra: tokens.$fs-32,
           )
         );
       }

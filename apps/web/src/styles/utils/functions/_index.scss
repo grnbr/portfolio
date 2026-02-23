@@ -14,3 +14,7 @@
 @function subtract-border($value, $border-thickness: tokens.$border-thickness) {
   @return calc($value - $border-thickness);
 }
+
+@function desktop-to-mobile($value, $factor: 0.75) {
+  @return $value * $factor;
+}

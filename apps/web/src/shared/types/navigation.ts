@@ -40,8 +40,8 @@ export type PrimaryNavigation = [
   NavHome,
   NavItem<'About'>,
   NavItem<'Work'>,
-  NavItem<'Contact'>,
   NavItem<'TechStack'>,
+  NavItem<'Contact'>,
 ];
 
 type SocialNavigation = [

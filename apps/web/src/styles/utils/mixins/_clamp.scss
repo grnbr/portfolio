@@ -63,11 +63,18 @@
 }
 
 // у меня тут крыша едет
-@mixin clamp-bp($property, $values, $axis: 'vw') {
+@mixin clamp-bp($property, $values, $options: (), $axis: 'vw') {
+  $defaults: (
+    axis: 'vw',
+    auto-interpolate: false,
+  );
+  $options: map.merge($defaults, $options);
+  $axis: map.get($options, 'axis');
+  $auto-interpolate: map.get($options, 'auto-interpolate');
   $defined-bps: map.keys(tokens.$breakpoints);
   $order: mobile, tablet, desktop, ultra; // your preferred order
 
-  @if list.length($values) < 2 {
+  @if list.length($values) < 2 and not $auto-interpolate {
     @error "Should be at least two breakpoints";
   }
 
@@ -76,6 +83,20 @@
     @if not list.index($defined-bps, $bp) {
       @error "❌ Unknown breakpoint `#{$bp}`. Valid breakpoints are: #{join($defined-bps, ', ')}.";
     }
+  }
+
+  @if $auto-interpolate and not map.has-key($values, mobile) {
+    @if not map.has-key($values, ultra) {
+      @error "auto-interpolate requires ultra breakpoint value";
+    }
+
+    $derived-value: f.desktop-to-mobile(map.get($values, ultra));
+    $values: map.merge(
+      $values,
+      (
+        mobile: $derived-value,
+      )
+    );
   }
 
   // Filter order to only existing breakpoints in values

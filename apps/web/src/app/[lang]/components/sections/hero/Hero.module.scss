@@ -119,8 +119,8 @@ $image-desktop-shift: 5.3125rem;
   .intro {
     @include mixins.clamp-font-size(
       (
-        mobile: 0.9375rem,
-        ultra: 1.5rem,
+        mobile: tokens.$fs-15,
+        ultra: tokens.$fs-24,
       )
     );
 
@@ -139,8 +139,10 @@ $image-desktop-shift: 5.3125rem;
     @include mixins.clamp-bp(
       margin-bottom,
       (
-        mobile: 1.5rem,
         ultra: 2.5rem,
+      ),
+      (
+        auto-interpolate: true,
       )
     );
     @include mixins.media-min(mobile) {

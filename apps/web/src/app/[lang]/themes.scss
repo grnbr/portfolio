@@ -3,6 +3,7 @@
   --bg-color: #fbfbfb;
   --text-primary: var(--dark-grey);
   --text-heading: var(--onyx);
+  --border: var(--black-10);
 
   /* Header */
   --header-bg: var(--white-25);
@@ -12,7 +13,6 @@
   /* Footer */
   --footer-links: var(--onyx);
   --footer-text: var(--onyx);
-  --footer-border-top: var(--black-10);
 
   /* Tapbar */
   --tapbar-bg: var(--black-30);
@@ -47,6 +47,7 @@
   /* General */
   --bg-color: var(--black);
   --text-heading: var(--white);
+  --border: var(--white-10);
 
   /* Header */
   --header-bg: var(--black-30);
@@ -56,7 +57,6 @@
   // Footer
   --footer-links: var(--light-grey);
   --footer-text: var(--white-25);
-  --footer-border-top: var(--white-10);
 
   /* Tapbar */
   --tapbar-bg: rgb(24 24 29 / 60%);

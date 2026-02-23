@@ -4,7 +4,7 @@
 
 .footer {
   width: 100%;
-  border-top: 1px solid var(--footer-border-top);
+  border-top: 1px solid var(--border);
 
   .container {
     @include mixins.side-padding;
@@ -25,14 +25,14 @@
       @include mixins.clamp-bp(
         margin-top,
         (
-          mobile: f.subtract-border(3.4375rem),
+          mobile: f.desktop-to-mobile(f.subtract-border(4.625rem)),
           ultra: f.subtract-border(4.625rem),
         )
       );
       @include mixins.clamp-bp(
         margin-bottom,
         (
-          mobile: 1.9688rem,
+          mobile: f.desktop-to-mobile(2.625rem),
           ultra: 2.625rem,
         )
       );

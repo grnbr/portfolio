@@ -151,14 +151,14 @@ export const dictionary: Dictionary = {
           label: 'Work',
         },
         {
-          href: NavigationItems.Contact.href,
-          id: NavigationItems.Contact.id,
-          label: 'Contact',
-        },
-        {
           href: NavigationItems.TechStack.href,
           id: NavigationItems.TechStack.id,
           label: 'Techs',
+        },
+        {
+          href: NavigationItems.Contact.href,
+          id: NavigationItems.Contact.id,
+          label: 'Contact',
         },
       ],
       title: 'Links',

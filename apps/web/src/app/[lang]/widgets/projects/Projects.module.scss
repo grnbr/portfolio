@@ -19,8 +19,10 @@
     @include mixins.clamp-bp(
       margin-bottom,
       (
-        mobile: 1.5rem,
         ultra: 2rem,
+      ),
+      (
+        auto-interpolate: true,
       )
     );
   }
@@ -54,8 +56,8 @@
       @include mixins.clamp-bp(
         padding,
         (
-          mobile: 2.8125rem,
-          ultra: 3.75rem,
+          mobile: f.subtract-border(2.8125rem),
+          ultra: f.subtract-border(3.75rem),
         )
       );
     }
