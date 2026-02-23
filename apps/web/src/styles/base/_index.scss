@@ -70,9 +70,11 @@ main {
 
   flex: 1;
   width: 100%;
+  min-height: 100dvh;
 
   @include mixins.media-side-padding {
     max-width: tokens.$desktop-content;
+    min-height: 100vh;
   }
 }
 

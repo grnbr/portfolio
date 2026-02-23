@@ -29,23 +29,26 @@ const Hero: FC<HeroProps> = ({ dict }) => {
         />
       </div>
 
-      <h1 className={styles.title}>
-        <span className={styles.greeting}>{content.greeting}</span>
-        <span className={styles.pronoun}>{content.pronoun}</span> {content.name}
-      </h1>
+      <div className={styles.textContent}>
+        <h1 className={styles.title}>
+          <span className={styles.greeting}>{content.greeting}</span>
+          <span className={styles.pronoun}>{content.pronoun}</span>{' '}
+          {content.name}
+        </h1>
 
-      <p className={styles.intro}>{content.intro}</p>
+        <p className={styles.intro}>{content.intro}</p>
 
-      <div className={styles.buttons}>
-        <ButtonLink
-          href={seeMyResume.href ?? '#'}
-          rel="noopener noreferrer"
-          target="_blank"
-          variant="primary"
-        >
-          {seeMyResume.label}
-        </ButtonLink>
-        <GetInTouchBtn label={getInTouch.label} variant="secondary" />
+        <div className={styles.buttons}>
+          <ButtonLink
+            href={seeMyResume.href ?? '#'}
+            rel="noopener noreferrer"
+            target="_blank"
+            variant="primary"
+          >
+            {seeMyResume.label}
+          </ButtonLink>
+          <GetInTouchBtn label={getInTouch.label} variant="secondary" />
+        </div>
       </div>
     </section>
   );

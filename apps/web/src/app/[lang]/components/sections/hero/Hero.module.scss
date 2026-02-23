@@ -2,6 +2,41 @@
 @use '@/styles/utils/mixins';
 @use '@/styles/utils/functions' as f;
 
+$image-desktop-shift: 5.3125rem;
+
+@mixin second-layout {
+  display: flex;
+  align-items: center;
+
+  @include mixins.media-min(mobile) {
+    overflow: visible;
+    flex-direction: row-reverse;
+    min-width: auto;
+  }
+
+  .imageContainer {
+    position: relative;
+
+    @include mixins.media-min(mobile) {
+      top: unset;
+      right: unset;
+      margin-left: 85px;
+
+      @include mixins.clamp-bp(
+        flex-basis,
+        (
+          mobile: 19.375rem,
+          ultra: 29.375rem,
+        )
+      );
+    }
+
+    .image {
+      transform: translate(0, -40px);
+    }
+  }
+}
+
 .hero {
   isolation: isolate;
   position: relative;
@@ -127,4 +162,6 @@
       align-items: center;
     }
   }
+
+  // @include second-layout;
 }
