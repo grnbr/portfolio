@@ -11,7 +11,7 @@ type FooterProps = {
 };
 
 const Footer: FC<FooterProps> = ({ dict }) => {
-  const navigation = dict.navigation;
+  const navigation = dict.layout.generic.navigation;
 
   return (
     <footer className={styles.footer}>
@@ -46,7 +46,9 @@ const Footer: FC<FooterProps> = ({ dict }) => {
 
         <div className={styles.logoContainer}>
           <Logo className={styles.logo} home={navigation.home} />
-          <p className={styles.underLogoText}>{dict.footer.underLogoText}</p>
+          <p className={styles.underLogoText}>
+            {dict.layout.footer.underLogoText}
+          </p>
         </div>
       </div>
     </footer>

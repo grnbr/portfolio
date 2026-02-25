@@ -20,7 +20,7 @@ type HeaderProps = {
 };
 
 const Header: FC<HeaderProps> = ({ dict, lang }) => {
-  const navigation = dict.navigation;
+  const navigation = dict.layout.generic.navigation;
 
   const LogoJSX = <Logo className={styles.logoLink} home={navigation.home} />;
 

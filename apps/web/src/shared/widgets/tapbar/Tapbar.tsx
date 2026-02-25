@@ -20,7 +20,7 @@ type TapbarProps = {
 };
 
 const Tapbar: FC<TapbarProps> = ({ dict, lang }) => {
-  const navigation = dict.navigation;
+  const navigation = dict.layout.generic.navigation;
 
   const pathname = usePathname();
   const pathnameWithoutLang = '/' + pathname.split('/').slice(2).join();

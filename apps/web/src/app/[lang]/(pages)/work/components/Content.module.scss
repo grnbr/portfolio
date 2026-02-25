@@ -1,0 +1,17 @@
+@use '@/styles/utils/tokens';
+@use '@/styles/utils/mixins';
+@use '@/styles/utils/functions' as f;
+
+.content {
+  $mb: 5.375rem;
+
+  margin-bottom: $mb;
+
+  @include mixins.clamp-bp(
+    margin-bottom,
+    (
+      mobile: $mb,
+      ultra: 6.75rem,
+    )
+  );
+}

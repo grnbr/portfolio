@@ -5,7 +5,7 @@ import { FC } from 'react';
 import GetInTouchBtn from '@/shared/components/buttons/GetInTouchBtn';
 import ParagraphWithLinks from '@/shared/components/paragraphs/ParagraphWithLinks';
 import { Dictionary } from '@/shared/dictionaries/types';
-import Container from '@/shared/ui/Container';
+import Article from '@/shared/ui/containers/Article';
 
 import styles from './Content.module.scss';
 
@@ -14,13 +14,13 @@ type ContentProps = {
 };
 
 const Content: FC<ContentProps> = ({ dict }) => {
-  const getInTouch = dict.buttons.getInTouch;
-  const portrait = dict.images.portrait;
-  const about = dict.about;
+  const getInTouch = dict.pages.generic.buttons.getInTouch;
+  const portrait = dict.pages.generic.images.portrait;
+  const about = dict.pages.about;
   const textContent = about.textContent;
 
   return (
-    <Container as="article" className={styles.content}>
+    <Article className={styles.content}>
       <div className={styles.imageContainer}>
         <div className={styles.imageWrapper}>
           <Image
@@ -64,7 +64,7 @@ const Content: FC<ContentProps> = ({ dict }) => {
         className={styles.getInTouchBtn}
         label={getInTouch.label}
       />
-    </Container>
+    </Article>
   );
 };
 

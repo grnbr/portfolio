@@ -1,0 +1,15 @@
+@use '@/styles/utils/tokens';
+@use '@/styles/utils/mixins';
+@use '@/styles/utils/functions' as f;
+
+.projects {
+  margin-bottom: 3.75rem;
+
+  @include mixins.clamp-bp(
+    margin-bottom,
+    (
+      mobile: 3.75rem,
+      ultra: 6.25rem,
+    )
+  );
+}

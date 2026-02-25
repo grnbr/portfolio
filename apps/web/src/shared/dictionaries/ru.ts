@@ -50,235 +50,249 @@ export const dictionaryData: DictionaryData = {
 const navSocials = dictionaryData.navigation.socials;
 
 export const dictionary: Dictionary = {
-  about: {
-    afterword: 'Давайте создадим нечто великое.',
-    closingParagraph: {
-      links: {
-        Telegram: {
-          href: navSocials.Telegram.href,
+  layout: {
+    footer: {
+      underLogoText: 'Спасибо за визит',
+    },
+    generic: {
+      navigation: {
+        home: dictionaryData.navigation.home,
+        primary: {
+          items: [
+            { ...dictionaryData.navigation.home },
+            {
+              href: NavigationItems.About.href,
+              id: NavigationItems.About.id,
+              label: 'Обо мне',
+            },
+            {
+              href: NavigationItems.Work.href,
+              id: NavigationItems.Work.id,
+              label: 'Работа',
+            },
+            {
+              href: NavigationItems.TechStack.href,
+              id: NavigationItems.TechStack.id,
+              label: 'Стек',
+            },
+            {
+              href: NavigationItems.Contact.href,
+              id: NavigationItems.Contact.id,
+              label: 'Связь',
+            },
+          ],
+          title: null,
         },
-        почте: {
-          href: navSocials.Email.href,
+        socials: {
+          items: [
+            {
+              href: navSocials.LinkedIn.href,
+              id: NavSocialIds.LinkedIn,
+              label: 'LinkedIn',
+            },
+            {
+              href: navSocials.Telegram.href,
+              id: NavSocialIds.Telegram,
+              label: 'Telegram',
+            },
+            {
+              href: navSocials.Github.href,
+              id: NavSocialIds.Github,
+              label: 'Github',
+            },
+          ],
+          title: null,
         },
       },
-      text: 'Не стесняйтесь связаться со мной по почте или пишите мне в Telegram.',
     },
     header: {
-      subtitle: 'Кто я и чем я занимаюсь',
-      title: 'Немного обо мне',
-    },
-    textContent: [
-      {
-        text: ['Я', 'Григорий', 'фронтенд разработчик из Москвы, Россия 🇷🇺.'],
-        title: 'Кто я',
+      buttons: {
+        more: {
+          id: 'more',
+          label: 'Еще',
+        },
       },
-      {
-        text: [
-          'Обладая годом ценного опыта в своей роли в AlgaTop –– технологической компании находящейся здесь, в Москве, я отточил свои навыки в React.js, Next.js, TailwindCSS и TypeScript, что позволяет мне создавать плавные и интерактивные пользовательские интерфейсы. Во время работы в AlgaTop, я сыграл ключевую роль в улучшении пользовательского опыта и стимулировании роста продаж для клиентов на платформе Kaspi. Используя свои знания в области фронтенд разработки, я внес свой вклад в достижение впечатляющих результатов, включая удвоение или утроение продаж, поднятие магазинов клиентов на верхние позиции и эффективную автоматизацию рутинных задач.',
+    },
+    themes: {
+      dark: 'Темная',
+      light: 'Светлая',
+      title: 'Тема: ',
+    },
+  },
+
+  pages: {
+    about: {
+      afterword: 'Давайте создадим нечто великое.',
+      closingParagraph: {
+        links: {
+          Telegram: {
+            href: navSocials.Telegram.href,
+          },
+          почте: {
+            href: navSocials.Email.href,
+          },
+        },
+        text: 'Не стесняйтесь связаться со мной по почте или пишите мне в Telegram.',
+      },
+      header: {
+        subtitle: 'Кто я и чем я занимаюсь',
+        title: 'Немного обо мне',
+      },
+      textContent: [
+        {
+          text: ['Я', 'Григорий', 'фронтенд разработчик из Москвы, Россия 🇷🇺.'],
+          title: 'Кто я',
+        },
+        {
+          text: [
+            'Обладая годом ценного опыта в своей роли в AlgaTop –– технологической компании находящейся здесь, в Москве, я отточил свои навыки в React.js, Next.js, TailwindCSS и TypeScript, что позволяет мне создавать плавные и интерактивные пользовательские интерфейсы. Во время работы в AlgaTop, я сыграл ключевую роль в улучшении пользовательского опыта и стимулировании роста продаж для клиентов на платформе Kaspi. Используя свои знания в области фронтенд разработки, я внес свой вклад в достижение впечатляющих результатов, включая удвоение или утроение продаж, поднятие магазинов клиентов на верхние позиции и эффективную автоматизацию рутинных задач.',
+          ],
+          title: 'Чем я занимаюсь',
+        },
+      ],
+    },
+    contact: {
+      form: {
+        email: {
+          label: 'Email:',
+          placeholder: 'Введите ваш адрес электронной почты',
+        },
+
+        name: {
+          label: 'Имя:',
+          placeholder: 'Введите ваше имя',
+        },
+        'send-btn': 'Отправить',
+        subject: {
+          label: 'Тема:',
+          placeholder: 'Введите тему',
+        },
+
+        'textarea-placeholder': 'Напишите ваше сообщение здесь',
+        title: 'Новое сообщение',
+      },
+      subtitle: 'Давайте создадим что-то потрясающее.',
+
+      title: 'Связаться',
+    },
+    generic: {
+      buttons: {
+        getInTouch: {
+          label: 'Связаться',
+        },
+        seeMyResume: {
+          href: '/resume/Григорий_Найбауер_Frontend_Resume.pdf',
+          label: 'Посмотреть мое резюме',
+        },
+      },
+      images: {
+        portrait: {
+          alt: 'Григорий',
+        },
+      },
+      projects: {
+        emptyState: {
+          subtitle: 'Давайте превратим вашу идею в визуальную реальность',
+          title: 'Ваш проект здесь',
+        },
+        items: dictionaryData.projects,
+      },
+    },
+    home: {
+      contactme: {
+        subtitle:
+          'Хотите обсудить возможность создания чего-то великого? Я готов, когда вы готовы.',
+        title: 'Давайте поработаем вместе',
+      },
+
+      hero: {
+        greeting: 'Привет 👋',
+        intro:
+          'Я фронтенд-разработчик, помогающий стартапам превращать их видения в цифровую реальность. Я специализируюсь на проектировании и создании современных мобильных и веб-приложений.',
+        name: 'Гриша',
+        pronoun: 'Меня зовут',
+      },
+      navigation: {
+        items: [
+          {
+            href: NavigationItems.About.href,
+            id: NavigationItems.About.id,
+            img: '/images/home/navigation/about-min.png',
+            subtitle: 'Кто я и чем занимаюсь',
+            title: 'Обо мне',
+          },
+          {
+            href: NavigationItems.TechStack.href,
+            id: NavigationItems.TechStack.id,
+            img: '/images/home/navigation/tech-stack-min.png',
+            subtitle:
+              'Инструменты разработки, приложения, устройства и игры, которыми я пользуюсь и играю.',
+            title: 'Технологический стек',
+          },
         ],
-        title: 'Чем я занимаюсь',
+        title: 'Узнать больше обо мне',
       },
-    ],
-  },
-  buttons: {
-    getInTouch: {
-      href: '/contact',
-      label: 'Связаться',
-    },
-    seeMyResume: {
-      href: '/resume/Григорий_Найбауер_Frontend_Resume.pdf',
-      label: 'Посмотреть мое резюме',
-    },
-  },
-  contact: {
-    form: {
-      email: {
-        label: 'Email:',
-        placeholder: 'Введите ваш адрес электронной почты',
-      },
-
-      name: {
-        label: 'Имя:',
-        placeholder: 'Введите ваше имя',
-      },
-      'send-btn': 'Отправить',
-      subject: {
-        label: 'Тема:',
-        placeholder: 'Введите тему',
-      },
-
-      'textarea-placeholder': 'Напишите ваше сообщение здесь',
-      title: 'Новое сообщение',
-    },
-    subtitle: 'Давайте создадим что-то потрясающее.',
-
-    title: 'Связаться',
-  },
-  'dropdown-nav': [
-    {
-      href: '/techs',
-      title: 'Технологический стек',
-    },
-  ],
-
-  footer: {
-    underLogoText: 'Спасибо за визит',
-  },
-  header: {
-    buttons: {
-      more: {
-        id: 'more',
-        label: 'Еще',
+      selectedWork: {
+        title: 'Избранные работы',
       },
     },
-  },
-  home: {
-    contactme: {
-      subtitle:
-        'Хотите обсудить возможность создания чего-то великого? Я готов, когда вы готовы.',
-      title: 'Давайте поработаем вместе',
-    },
+    tech: {
+      content: {
+        'tech-items': [
+          { logo: '/images/techs/html-logo.svg', name: 'HTML', tag: 'Язык' },
+          { logo: '/images/techs/css-logo.svg', name: 'CSS', tag: 'Язык' },
+          {
+            logo: '/images/techs/js-logo.svg',
+            name: 'JavaScript',
+            tag: 'Язык',
+          },
+          {
+            logo: '/images/techs/git-logo.svg',
+            name: 'Git',
+            tag: 'Система контроля версий',
+          },
+          {
+            logo: '/images/techs/react-logo.svg',
+            name: 'React',
+            tag: 'Библиотека',
+          },
+          {
+            logo: '/images/techs/sass-logo.svg',
+            name: 'Sass',
+            tag: 'Расширение языка',
+          },
+          {
+            logo: '/images/techs/ts-logo.svg',
+            name: 'TypeScript',
+            tag: 'Язык',
+          },
+          {
+            logo: '/images/techs/tailwind-logo.svg',
+            name: 'Tailwind',
+            tag: 'Фреймворк',
+          },
+          {
+            logo: '/images/techs/nextjs-logo.svg',
+            name: 'Next.js',
+            tag: 'Фреймворк',
+          },
+          {
+            logo: '/images/techs/redux-logo.svg',
+            name: 'Redux',
+            tag: 'Менеджер состояний',
+          },
+        ],
+        title: 'Front-end',
+      },
+      subtitle: 'Инструменты разработки, которыми я пользуюсь.',
 
-    hero: {
-      greeting: 'Привет 👋',
-      intro:
-        'Я фронтенд-разработчик, помогающий стартапам превращать их видения в цифровую реальность. Я специализируюсь на проектировании и создании современных мобильных и веб-приложений.',
-      name: 'Гриша',
-      pronoun: 'Меня зовут',
+      title: 'Тех. стек',
     },
-    navigation: {
-      items: [
-        {
-          href: NavigationItems.About.href,
-          id: NavigationItems.About.id,
-          img: '/images/home/navigation/about-min.png',
-          subtitle: 'Кто я и чем занимаюсь',
-          title: 'Обо мне',
-        },
-        {
-          href: NavigationItems.TechStack.href,
-          id: NavigationItems.TechStack.id,
-          img: '/images/home/navigation/tech-stack-min.png',
-          subtitle:
-            'Инструменты разработки, приложения, устройства и игры, которыми я пользуюсь и играю.',
-          title: 'Технологический стек',
-        },
-      ],
-      title: 'Узнать больше обо мне',
+    work: {
+      header: {
+        subtitle: 'Проекты и идеи, над которыми я работал',
+        title: 'Проекты',
+      },
     },
-    selectedWork: {
-      projects: dictionaryData.projects,
-      title: 'Избранные работы',
-    },
-  },
-  images: {
-    portrait: {
-      alt: 'Григорий',
-    },
-  },
-  navigation: {
-    home: dictionaryData.navigation.home,
-    primary: {
-      items: [
-        { ...dictionaryData.navigation.home },
-        {
-          href: NavigationItems.About.href,
-          id: NavigationItems.About.id,
-          label: 'Обо мне',
-        },
-        {
-          href: NavigationItems.Work.href,
-          id: NavigationItems.Work.id,
-          label: 'Работа',
-        },
-        {
-          href: NavigationItems.TechStack.href,
-          id: NavigationItems.TechStack.id,
-          label: 'Стек',
-        },
-        {
-          href: NavigationItems.Contact.href,
-          id: NavigationItems.Contact.id,
-          label: 'Связь',
-        },
-      ],
-      title: null,
-    },
-    socials: {
-      items: [
-        {
-          href: navSocials.LinkedIn.href,
-          id: NavSocialIds.LinkedIn,
-          label: 'LinkedIn',
-        },
-        {
-          href: navSocials.Telegram.href,
-          id: NavSocialIds.Telegram,
-          label: 'Telegram',
-        },
-        {
-          href: navSocials.Github.href,
-          id: NavSocialIds.Github,
-          label: 'Github',
-        },
-      ],
-      title: null,
-    },
-  },
-
-  tech: {
-    content: {
-      'tech-items': [
-        { logo: '/images/techs/html-logo.svg', name: 'HTML', tag: 'Язык' },
-        { logo: '/images/techs/css-logo.svg', name: 'CSS', tag: 'Язык' },
-        { logo: '/images/techs/js-logo.svg', name: 'JavaScript', tag: 'Язык' },
-        {
-          logo: '/images/techs/git-logo.svg',
-          name: 'Git',
-          tag: 'Система контроля версий',
-        },
-        {
-          logo: '/images/techs/react-logo.svg',
-          name: 'React',
-          tag: 'Библиотека',
-        },
-        {
-          logo: '/images/techs/sass-logo.svg',
-          name: 'Sass',
-          tag: 'Расширение языка',
-        },
-        { logo: '/images/techs/ts-logo.svg', name: 'TypeScript', tag: 'Язык' },
-        {
-          logo: '/images/techs/tailwind-logo.svg',
-          name: 'Tailwind',
-          tag: 'Фреймворк',
-        },
-        {
-          logo: '/images/techs/nextjs-logo.svg',
-          name: 'Next.js',
-          tag: 'Фреймворк',
-        },
-        {
-          logo: '/images/techs/redux-logo.svg',
-          name: 'Redux',
-          tag: 'Менеджер состояний',
-        },
-      ],
-      title: 'Front-end',
-    },
-    subtitle: 'Инструменты разработки, которыми я пользуюсь.',
-
-    title: 'Тех. стек',
-  },
-
-  themes: {
-    dark: 'Темная',
-    light: 'Светлая',
-    title: 'Тема: ',
-  },
-
-  work: {
-    subtitle: 'Проекты и идеи, над которыми я работал',
-    title: 'Работа',
   },
 } as const;

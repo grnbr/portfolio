@@ -4,7 +4,7 @@ import { FC } from 'react';
 import GetInTouchBtn from '@/shared/components/buttons/GetInTouchBtn';
 import { Dictionary } from '@/shared/dictionaries/types';
 import ButtonLink from '@/shared/ui/button/ButtonLink';
-import Container from '@/shared/ui/Container';
+import Container from '@/shared/ui/containers/Container';
 
 import styles from './Hero.module.scss';
 
@@ -13,8 +13,8 @@ type HeroProps = {
 };
 
 const Hero: FC<HeroProps> = ({ dict }) => {
-  const content = dict.home.hero;
-  const buttons = dict.buttons;
+  const content = dict.pages.home.hero;
+  const buttons = dict.pages.generic.buttons;
   const { getInTouch, seeMyResume } = buttons;
 
   return (

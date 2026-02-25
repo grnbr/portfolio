@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import GetInTouchBtn from '@/shared/components/buttons/GetInTouchBtn';
 import { Dictionary } from '@/shared/dictionaries/types';
-import Container from '@/shared/ui/Container';
+import Container from '@/shared/ui/containers/Container';
 
 import styles from './ContactMe.module.scss';
 
@@ -11,9 +11,9 @@ type ContactMeProps = {
 };
 
 const ContactMe: FC<ContactMeProps> = ({ dict }) => {
-  const content = dict.home.contactme;
+  const content = dict.pages.home.contactme;
 
-  const getInTouch = dict.buttons.getInTouch;
+  const getInTouch = dict.pages.generic.buttons.getInTouch;
 
   return (
     <Container as="section" className={styles.contactMe}>

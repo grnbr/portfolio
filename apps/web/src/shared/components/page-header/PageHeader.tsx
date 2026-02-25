@@ -1,15 +1,18 @@
 import clsx from 'clsx';
 import { FC } from 'react';
 
+import type { PageHeader as PageHeaderType } from '@/shared/dictionaries/types';
+
 import styles from './PageHeader.module.scss';
 
 type PageHeaderProps = {
   className?: string;
-  subtitle: string;
-  title: string;
+  header: PageHeaderType;
 };
 
-const PageHeader: FC<PageHeaderProps> = ({ className, subtitle, title }) => {
+const PageHeader: FC<PageHeaderProps> = ({ className, header }) => {
+  const { subtitle, title } = header;
+
   return (
     <header className={clsx(styles.pageHeader, className)}>
       <div className={styles.content}>

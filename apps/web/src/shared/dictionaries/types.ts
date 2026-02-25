@@ -2,6 +2,11 @@ import { ParagraphWithLinks } from '@/shared/types';
 import { Project } from '@/shared/types/data';
 import { HeroNavigation, NavHome, Navigation } from '@/shared/types/navigation';
 
+export type PageHeader = {
+  subtitle: string;
+  title: string;
+};
+
 type ButtonDict = {
   href?: string;
   label: string;
@@ -43,91 +48,101 @@ type Paragraph = {
 };
 
 export type Dictionary = {
-  about: {
-    afterword: string;
-    closingParagraph: ParagraphWithLinks;
+  layout: {
+    footer: {
+      underLogoText: string;
+    };
+
+    generic: {
+      navigation: Navigation;
+    };
     header: {
-      subtitle: string;
-      title: string;
+      buttons: {
+        more: ButtonDict & { id: 'more' };
+      };
     };
-    textContent: Paragraph[];
-  };
-  buttons: {
-    getInTouch: ButtonDict;
-    seeMyResume: ButtonDict;
-  };
-  contact: {
-    form: {
-      email: { label: string; placeholder: string };
-      name: { label: string; placeholder: string };
-      'send-btn': string;
-      subject: { label: string; placeholder: string };
-      'textarea-placeholder': string;
-      title: string;
-    };
-    subtitle: string;
-    title: string;
-  };
-  'dropdown-nav': {
-    href: string;
-    title: string;
-  }[];
-  footer: {
-    underLogoText: string;
-  };
-  header: {
-    buttons: {
-      more: ButtonDict & { id: 'more' };
-    };
-  };
-  home: {
-    contactme: {
-      subtitle: string;
-      title: string;
-    };
-    hero: {
-      greeting: string;
-      intro: string;
-      name: string;
-      pronoun: string;
-    };
-    navigation: {
-      items: HeroNavigation;
-      title: string;
-    };
-    selectedWork: {
-      projects: Project[];
-      title: string;
-    };
-  };
-  images: {
-    portrait: {
-      alt: string;
-    };
-  };
-  navigation: Navigation;
 
-  tech: {
-    content: {
-      'tech-items': {
-        logo: string;
+    themes: {
+      dark: string;
+      light: string;
+      title: string;
+    };
+  };
+
+  pages: {
+    about: {
+      afterword: string;
+      closingParagraph: ParagraphWithLinks;
+      header: PageHeader;
+      textContent: Paragraph[];
+    };
+
+    contact: {
+      form: {
+        email: { label: string; placeholder: string };
+        name: { label: string; placeholder: string };
+        'send-btn': string;
+        subject: { label: string; placeholder: string };
+        'textarea-placeholder': string;
+        title: string;
+      };
+      subtitle: string;
+      title: string;
+    };
+    generic: {
+      buttons: {
+        getInTouch: ButtonDict;
+        seeMyResume: ButtonDict;
+      };
+      images: {
+        portrait: {
+          alt: string;
+        };
+      };
+      projects: {
+        emptyState: {
+          subtitle: string;
+          title: string;
+        };
+        items: Project[];
+      };
+    };
+
+    home: {
+      contactme: {
+        subtitle: string;
+        title: string;
+      };
+      hero: {
+        greeting: string;
+        intro: string;
         name: string;
-        tag: string;
-      }[];
+        pronoun: string;
+      };
+      navigation: {
+        items: HeroNavigation;
+        title: string;
+      };
+      selectedWork: {
+        title: string;
+      };
+    };
+
+    tech: {
+      content: {
+        'tech-items': {
+          logo: string;
+          name: string;
+          tag: string;
+        }[];
+        title: string;
+      };
+      subtitle: string;
       title: string;
     };
-    subtitle: string;
-    title: string;
-  };
 
-  themes: {
-    dark: string;
-    light: string;
-    title: string;
-  };
-
-  work: {
-    subtitle: string;
-    title: string;
+    work: {
+      header: PageHeader;
+    };
   };
 };

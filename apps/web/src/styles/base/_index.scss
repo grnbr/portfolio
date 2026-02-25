@@ -147,15 +147,15 @@ h3 {
 }
 
 p {
-  font-size: tokens.$fs-15;
+  font-size: tokens.$fs-base;
   font-weight: 500;
   line-height: 1.33;
   color: var(--text-primary);
 
   @include mixins.clamp-font-size(
     (
-      mobile: tokens.$fs-15,
-      ultra: tokens.$fs-16,
+      mobile: tokens.$fs-base,
+      ultra: tokens.$fs-base-desktop,
     )
   );
 }

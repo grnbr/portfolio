@@ -47,7 +47,7 @@ $image-desktop-shift: 5.3125rem;
     margin-bottom,
     (
       mobile: 8.5625rem,
-      ultra: 13.75rem,
+      ultra: 23.4375rem,
     )
   );
 
@@ -121,7 +121,7 @@ $image-desktop-shift: 5.3125rem;
 
     @include mixins.clamp-font-size(
       (
-        mobile: tokens.$fs-15,
+        mobile: tokens.$fs-base,
         ultra: tokens.$fs-24,
       )
     );

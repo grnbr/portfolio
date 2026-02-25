@@ -5,3 +5,7 @@
 .container {
   @include mixins.content-container-styles;
 }
+
+.article {
+  margin-top: 3.75rem;
+}

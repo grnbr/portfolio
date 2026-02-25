@@ -2,12 +2,11 @@
 @use '@/styles/utils/mixins';
 @use '@/styles/utils/functions' as f;
 
-$content-mb: 3.75rem;
+$content-mb: 3.5625rem;
 $image-container-mt: 4.0706rem;
 
 .content {
-  margin-top: $content-mb;
-  margin-bottom: 3.5625rem;
+  margin-bottom: $content-mb;
 
   @include mixins.clamp-bp(
     margin-bottom,
@@ -93,7 +92,7 @@ $image-container-mt: 4.0706rem;
       @include mixins.text-line-height;
       @include mixins.clamp-font-size(
         (
-          mobile: tokens.$fs-15,
+          mobile: tokens.$fs-base,
           ultra: tokens.$fs-18,
         )
       );

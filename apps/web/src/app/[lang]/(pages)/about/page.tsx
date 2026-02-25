@@ -8,15 +8,11 @@ import styles from './Page.module.scss';
 export default async function Page({ params }: PageProps<'/[lang]'>) {
   const lang = (await params).lang as Locale;
   const dictionary = await getDictionary(lang);
-  const pageHeader = dictionary.about.header;
+  const pageHeader = dictionary.pages.about.header;
 
   return (
     <>
-      <PageHeader
-        className={styles.pageHeader}
-        subtitle={pageHeader.subtitle}
-        title={pageHeader.title}
-      />
+      <PageHeader className={styles.pageHeader} header={pageHeader} />
       <Content dict={dictionary} />
     </>
   );

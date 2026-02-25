@@ -35,10 +35,10 @@
     }
 
     .subtitle {
-      font-size: tokens.$fs-15;
+      font-size: tokens.$fs-base;
       @include mixins.clamp-font-size(
         (
-          mobile: tokens.$fs-15,
+          mobile: tokens.$fs-base,
           ultra: tokens.$fs-20,
         )
       );

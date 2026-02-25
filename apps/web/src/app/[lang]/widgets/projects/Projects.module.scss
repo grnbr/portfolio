@@ -3,16 +3,6 @@
 @use '@/styles/utils/functions' as f;
 
 .projects {
-  margin-bottom: 3.75rem;
-
-  @include mixins.clamp-bp(
-    margin-bottom,
-    (
-      mobile: 3.75rem,
-      ultra: 6.25rem,
-    )
-  );
-
   > li:not(:last-of-type) {
     margin-bottom: 2.25rem;
 
@@ -28,15 +18,23 @@
   }
 }
 
+.project,
+.emptyState {
+  @include mixins.card-styles;
+
+  @include mixins.media-min(mobile) {
+    height: 35.3125rem;
+  }
+}
+
 .project {
   @include mixins.flex-center-vertical;
-  @include mixins.card-styles;
 
   position: relative;
   align-items: stretch;
 
   @include mixins.media-min(mobile) {
-    height: 35.3125rem;
+    min-height: 35.3125rem;
   }
 
   .content {
@@ -99,5 +97,100 @@
       aspect-ratio: calc(457 / 565);
       height: 100%;
     }
+  }
+}
+
+.emptyState {
+  padding-inline: 32px;
+  background-image: tokens.$dashed-border;
+
+  .content {
+    $mt: 2.1875rem;
+    $mb: 4.25rem;
+
+    margin-top: $mt;
+    margin-bottom: $mb;
+    margin-inline: auto;
+
+    > * {
+      margin-inline: auto;
+    }
+
+    .icon {
+      $mb: 0.5rem;
+
+      width: 6.625rem;
+      height: 6.625rem;
+      margin-bottom: $mb;
+
+      @include mixins.clamp-bp(
+        margin-bottom,
+        (
+          mobile: $mb,
+          ultra: 0.6875rem,
+        )
+      );
+
+      path {
+        stroke: var(--dark-grey);
+
+        @include mixins.theme-dark {
+          stroke: var(--light-grey);
+        }
+      }
+    }
+
+    .title,
+    .subtitle {
+      text-align: center;
+    }
+
+    .title {
+      @include mixins.clamp-font-size(
+        (
+          mobile: tokens.$fs-20,
+          ultra: tokens.$fs-32,
+        )
+      );
+
+      margin-bottom: 1rem;
+    }
+
+    .subtitle {
+      $mb: 5.3125rem;
+
+      margin-bottom: $mb;
+
+      @include mixins.clamp-font-size(
+        (
+          mobile: tokens.$fs-base,
+          ultra: tokens.$fs-base-desktop,
+        )
+      );
+
+      @include mixins.clamp-bp(
+        margin-bottom,
+        (
+          mobile: $mb,
+          ultra: 5.625rem,
+        )
+      );
+    }
+
+    @include mixins.clamp-bp(
+      margin-top,
+      (
+        mobile: $mt,
+        ultra: 6rem,
+      )
+    );
+
+    @include mixins.clamp-bp(
+      margin-bottom,
+      (
+        mobile: $mb,
+        ultra: 8rem,
+      )
+    );
   }
 }
