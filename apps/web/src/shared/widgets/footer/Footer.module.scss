@@ -4,10 +4,10 @@
 
 .footer {
   width: 100%;
-  border-top: 1px solid var(--border);
+  border-top: var(--border);
 
   .container {
-    @include mixins.side-padding;
+    @include mixins.content-container-styles;
 
     display: flex;
     flex-direction: column;
@@ -19,7 +19,6 @@
     @include mixins.media-min(mobile) {
       flex-direction: row-reverse;
       justify-content: space-between;
-      max-width: tokens.$desktop-content;
       margin: 0 auto;
 
       @include mixins.clamp-bp(

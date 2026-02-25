@@ -1,0 +1,27 @@
+@use '@/styles/utils/tokens';
+@use '@/styles/utils/mixins';
+@use '@/styles/utils/functions' as f;
+
+.pageHeader {
+  width: 100%;
+  border-bottom: var(--border);
+
+  .content {
+    @include mixins.content-container-styles;
+
+    margin-top: 9rem;
+    margin-bottom: 3.75rem;
+
+    @include mixins.clamp-bp(
+      margin-top,
+      (
+        mobile: 9rem,
+        ultra: 17.375rem,
+      )
+    );
+
+    .title {
+      margin-bottom: 0.8rem;
+    }
+  }
+}

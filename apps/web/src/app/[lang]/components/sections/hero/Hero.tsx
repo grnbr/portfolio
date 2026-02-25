@@ -4,6 +4,7 @@ import { FC } from 'react';
 import GetInTouchBtn from '@/shared/components/buttons/GetInTouchBtn';
 import { Dictionary } from '@/shared/dictionaries/types';
 import ButtonLink from '@/shared/ui/button/ButtonLink';
+import Container from '@/shared/ui/Container';
 
 import styles from './Hero.module.scss';
 
@@ -17,7 +18,7 @@ const Hero: FC<HeroProps> = ({ dict }) => {
   const { getInTouch, seeMyResume } = buttons;
 
   return (
-    <section className={styles.hero}>
+    <Container as="section" className={styles.hero}>
       <div className={styles.imageContainer}>
         <Image
           alt="Photo of Grigory"
@@ -25,7 +26,7 @@ const Hero: FC<HeroProps> = ({ dict }) => {
           fill
           objectFit="cover"
           priority
-          src="/images/hero-image.webp"
+          src="/images/home/hero-image.webp"
         />
       </div>
 
@@ -47,10 +48,14 @@ const Hero: FC<HeroProps> = ({ dict }) => {
           >
             {seeMyResume.label}
           </ButtonLink>
-          <GetInTouchBtn label={getInTouch.label} variant="secondary" />
+          <GetInTouchBtn
+            hasIcon={false}
+            label={getInTouch.label}
+            variant="secondary"
+          />
         </div>
       </div>
-    </section>
+    </Container>
   );
 };
 

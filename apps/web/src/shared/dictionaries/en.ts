@@ -10,6 +10,27 @@ export const dictionaryData: DictionaryData = {
       id: NavigationItems.Home.id,
       label: 'Home',
     },
+    socials: {
+      Email: {
+        href: 'mailto:grigoriynbr@gmail.com',
+        text: 'e-mail',
+      },
+      Github: {
+        href: 'https://github.com/waterrDrinker',
+      },
+      LinkedIn: {
+        href: 'www.linkedin.com/in/григорий-найбауер-248a57381',
+        text: 'LinkedIn',
+      },
+      Resume: {
+        href: 'mailto:grigoriynbr@gmail.com',
+        text: 'Resume',
+      },
+      Telegram: {
+        href: 'https://t.me/grnbr',
+        text: 'Telegram',
+      },
+    },
   },
   projects: [
     {
@@ -26,23 +47,38 @@ export const dictionaryData: DictionaryData = {
   ],
 } as const;
 
+const navSocials = dictionaryData.navigation.socials;
+
 export const dictionary: Dictionary = {
   about: {
-    appeal: 'Let’s build something great.',
-    'closing-text':
-      'Feel free to reach out via e-mail or write me on Telegram.',
-
-    'iam-paragraph': {
-      text: "I'm Grigory front-end developer from Moscow, Russia 🇷🇺.",
-      title: 'WHO I AM',
+    afterword: 'Let’s build something great.',
+    closingParagraph: {
+      links: {
+        'e-mail': {
+          href: navSocials.Email.href,
+        },
+        Telegram: {
+          href: navSocials.Telegram.href,
+        },
+      },
+      text: 'Feel free to reach out via e-mail or write me on Telegram.',
     },
-
-    'ido-paragraph': {
-      text: "With one year of invaluable experience in my role at AlgaTop –– a tech company based here in Moscow, I have honed my skills in React.js, Next.js, TailwindCSS, and TypeScript, allowing me to craft seamless and interactive user experiences. During my time at AlgaTop, I played a pivotal role in enhancing the user experience and driving sales growth for clients on the Kaspi platform. Leveraging my expertise in frontend development, I contributed to achieving remarkable results, including doubling or tripling sales, elevating clients' stores to the top position, and automating routine tasks effectively.",
-      title: 'WHAT I DO',
+    header: {
+      subtitle: 'Who I am and what I do',
+      title: 'A little bit about me',
     },
-    subtitle: 'Who I am and what I do',
-    title: 'A little bit about me',
+    textContent: [
+      {
+        text: ["I'm", 'Grigory', 'front-end developer from Moscow, Russia 🇷🇺.'],
+        title: 'Who I am',
+      },
+      {
+        text: [
+          "With one year of invaluable experience in my role at AlgaTop –– a tech company based here in Moscow, I have honed my skills in React.js, Next.js, TailwindCSS, and TypeScript, allowing me to craft seamless and interactive user experiences. During my time at AlgaTop, I played a pivotal role in enhancing the user experience and driving sales growth for clients on the Kaspi platform. Leveraging my expertise in frontend development, I contributed to achieving remarkable results, including doubling or tripling sales, elevating clients' stores to the top position, and automating routine tasks effectively.",
+        ],
+        title: 'What I do',
+      },
+    ],
   },
   buttons: {
     getInTouch: {
@@ -54,7 +90,6 @@ export const dictionary: Dictionary = {
       label: 'See my resume',
     },
   },
-
   contact: {
     form: {
       email: {
@@ -90,6 +125,7 @@ export const dictionary: Dictionary = {
   footer: {
     underLogoText: 'Thanks for stopping by',
   },
+
   header: {
     buttons: {
       more: {
@@ -135,6 +171,11 @@ export const dictionary: Dictionary = {
       title: 'Selected Work',
     },
   },
+  images: {
+    portrait: {
+      alt: 'Grigory',
+    },
+  },
   navigation: {
     home: dictionaryData.navigation.home,
     primary: {
@@ -166,17 +207,17 @@ export const dictionary: Dictionary = {
     socials: {
       items: [
         {
-          href: '',
+          href: navSocials.LinkedIn.href,
           id: NavSocialIds.LinkedIn,
           label: 'LinkedIn',
         },
         {
-          href: '',
+          href: navSocials.Telegram.href,
           id: NavSocialIds.Telegram,
           label: 'Telegram',
         },
         {
-          href: '',
+          href: navSocials.Github.href,
           id: NavSocialIds.Github,
           label: 'Github',
         },

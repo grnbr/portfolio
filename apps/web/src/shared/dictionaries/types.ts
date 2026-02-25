@@ -1,3 +1,4 @@
+import { ParagraphWithLinks } from '@/shared/types';
 import { Project } from '@/shared/types/data';
 import { HeroNavigation, NavHome, Navigation } from '@/shared/types/navigation';
 
@@ -6,21 +7,50 @@ type ButtonDict = {
   label: string;
 };
 
+type Socials = {
+  Email: {
+    href: string;
+    text: string;
+  };
+  Github: {
+    href: string;
+  };
+  LinkedIn: {
+    href: string;
+    text: string;
+  };
+  Resume: {
+    href: string;
+    text: string;
+  };
+  Telegram: {
+    href: string;
+    text: string;
+  };
+};
+
 export type DictionaryData = {
   navigation: {
     home: NavHome;
+    socials: Socials;
   };
   projects: Project[];
 };
 
+type Paragraph = {
+  text: string[];
+  title: string;
+};
+
 export type Dictionary = {
   about: {
-    appeal: string;
-    'closing-text': string;
-    'iam-paragraph': { text: string; title: string };
-    'ido-paragraph': { text: string; title: string };
-    subtitle: string;
-    title: string;
+    afterword: string;
+    closingParagraph: ParagraphWithLinks;
+    header: {
+      subtitle: string;
+      title: string;
+    };
+    textContent: Paragraph[];
   };
   buttons: {
     getInTouch: ButtonDict;
@@ -38,8 +68,6 @@ export type Dictionary = {
     subtitle: string;
     title: string;
   };
-  
-
   'dropdown-nav': {
     href: string;
     title: string;
@@ -70,6 +98,11 @@ export type Dictionary = {
     selectedWork: {
       projects: Project[];
       title: string;
+    };
+  };
+  images: {
+    portrait: {
+      alt: string;
     };
   };
   navigation: Navigation;

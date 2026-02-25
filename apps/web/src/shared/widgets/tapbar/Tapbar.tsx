@@ -34,7 +34,6 @@ const Tapbar: FC<TapbarProps> = ({ dict, lang }) => {
           const TapbarIcon = NAV_TAPBAR_ICONS[item.id];
 
           const isActive = pathnameWithoutLang === href;
-          console.log(label, isActive);
 
           if (!href && !label) return null;
 

@@ -9,7 +9,6 @@ const UserIcon: FC<UserIconProps> = ({ options }) => {
   const { primaryColor = 'black', secondaryColor = 'black' } =
     options?.elementsColor ?? {};
   const isFilled = options?.variant === 'fill';
-  console.log('🚀 ~ UserIcon ~ isFilled:', isFilled);
 
   return (
     <motion.svg

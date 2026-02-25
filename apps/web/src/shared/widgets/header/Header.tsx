@@ -84,7 +84,12 @@ const Header: FC<HeaderProps> = ({ dict, lang }) => {
                   const SocialIcon = NAV_HEADER_SOCIAL_ICONS[item.id];
 
                   return (
-                    <ButtonLink href={item.href} key={i} variant="ghost">
+                    <ButtonLink
+                      href={item.href}
+                      key={i}
+                      target="_blank"
+                      variant="ghost"
+                    >
                       <Icon options={{ opacity: 'faded' }}>
                         <SocialIcon />
                       </Icon>

@@ -1,0 +1,14 @@
+@use './clamp';
+@use './media';
+
+@mixin clamp-font-size($value-for-bp-map) {
+  @include clamp.clamp-bp(font-size, $value-for-bp-map);
+}
+
+@mixin base-text() {
+  @include clamp-font-size(());
+}
+
+@mixin text-line-height {
+  line-height: 1.5;
+}

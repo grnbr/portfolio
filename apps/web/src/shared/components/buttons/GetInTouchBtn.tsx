@@ -11,7 +11,8 @@ type GetInTouchBtnProps = Omit<ButtonLinkProps, 'href'> & {
 };
 
 const GetInTouchBtn: FC<GetInTouchBtnProps> = ({
-  hasIcon,
+  className,
+  hasIcon = true,
   label,
   variant = 'primary',
   ...props
@@ -19,6 +20,7 @@ const GetInTouchBtn: FC<GetInTouchBtnProps> = ({
   return (
     <ButtonLink
       {...props}
+      className={className}
       href={NavigationItems.Contact.href}
       variant={variant}
     >

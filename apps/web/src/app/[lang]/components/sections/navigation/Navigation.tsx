@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { FC } from 'react';
 
 import { Dictionary } from '@/shared/dictionaries/types';
+import Container from '@/shared/ui/Container';
 
 import styles from './Navigation.module.scss';
 
@@ -14,7 +15,7 @@ const Navigation: FC<NavigationProps> = ({ dict }) => {
   const content = dict.home.navigation;
 
   return (
-    <section className={styles.navigation}>
+    <Container as="section" className={styles.navigation}>
       <h2 className={styles.title}>{content.title}</h2>
 
       <ul className={styles.cards}>
@@ -38,7 +39,7 @@ const Navigation: FC<NavigationProps> = ({ dict }) => {
           );
         })}
       </ul>
-    </section>
+    </Container>
   );
 };
 

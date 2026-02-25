@@ -7,6 +7,7 @@
 @forward './flex';
 @forward './clamp';
 @forward './media';
+@forward './text';
 
 @mixin side-padding {
   padding-inline: tokens.$layout-side-padding;
@@ -20,8 +21,15 @@
       )
     );
   }
+}
+
+@mixin content-container-styles {
+  margin-inline: auto;
+  @include side-padding;
 
   @include media.media-side-padding {
+    width: 100%;
+    max-width: tokens.$desktop-content;
     padding-inline: 0;
   }
 }
@@ -40,21 +48,5 @@
 @mixin theme-dark {
   [data-theme='dark'] & {
     @content;
-  }
-}
-
-@mixin clamp-font-size($value-for-bp-map) {
-  @include clamp.clamp-bp(font-size, $value-for-bp-map);
-}
-
-@mixin base-text() {
-  @include clamp-font-size(());
-}
-
-@mixin text-line-height {
-  line-height: 1.33;
-
-  @include media.media-min(mobile) {
-    line-height: 1.5;
   }
 }

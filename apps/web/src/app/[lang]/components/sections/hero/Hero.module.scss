@@ -117,6 +117,8 @@ $image-desktop-shift: 5.3125rem;
   }
 
   .intro {
+    @include mixins.text-line-height;
+
     @include mixins.clamp-font-size(
       (
         mobile: tokens.$fs-15,
@@ -134,8 +136,6 @@ $image-desktop-shift: 5.3125rem;
     );
 
     margin-bottom: 3.5rem;
-    line-height: 1.33;
-
     @include mixins.clamp-bp(
       margin-bottom,
       (
