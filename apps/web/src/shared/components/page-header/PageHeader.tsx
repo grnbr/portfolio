@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { FC } from 'react';
 
-import type { PageHeader as PageHeaderType } from '@/shared/dictionaries/types';
+import type { PageHeader as PageHeaderType } from '@/shared/dictionaries/types/sharedTypes';
 
 import styles from './PageHeader.module.scss';
 

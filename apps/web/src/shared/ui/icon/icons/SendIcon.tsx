@@ -1,12 +1,12 @@
 import { FC } from 'react';
 
-import { IconProps } from '@/shared/ui/icon/Icon';
+import { IconProps } from '../iconTypes';
+import useIconColor from '../useIconColor';
 
 type SendIconProps = IconProps;
 
 const SendIcon: FC<SendIconProps> = ({ options }) => {
-  const { elementsColor } = options ?? {};
-  const { primaryColor } = elementsColor ?? {};
+  const { primaryColor } = useIconColor({ color: options?.elementsColor });
 
   return (
     <svg

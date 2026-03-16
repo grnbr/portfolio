@@ -1,7 +1,10 @@
 import 'server-only';
 
 import { NavigationItems, NavSocialIds } from '@/shared/constants/navigation';
-import { Dictionary, DictionaryData } from '@/shared/dictionaries/types';
+import { Dictionary } from '@/shared/dictionaries/types';
+
+import { AppItems, DevTechItems, OsItems } from './constants/techItems';
+import { DictionaryData } from './types/sharedTypes';
 
 export const dictionaryData: DictionaryData = {
   navigation: {
@@ -238,61 +241,74 @@ export const dictionary: Dictionary = {
         title: 'Selected Work',
       },
     },
-    tech: {
-      content: {
-        'tech-items': [
-          {
-            logo: '/images/techs/html-logo.svg',
-            name: 'HTML',
-            tag: 'Language',
-          },
-          { logo: '/images/techs/css-logo.svg', name: 'CSS', tag: 'Language' },
-          {
-            logo: '/images/techs/js-logo.svg',
-            name: 'JavaScript',
-            tag: 'Language',
-          },
-          {
-            logo: '/images/techs/git-logo.svg',
-            name: 'Git',
-            tag: 'Version Control',
-          },
-          {
-            logo: '/images/techs/react-logo.svg',
-            name: 'React',
-            tag: 'Library',
-          },
-          {
-            logo: '/images/techs/sass-logo.svg',
-            name: 'Sass',
-            tag: 'Extension Language',
-          },
-          {
-            logo: '/images/techs/ts-logo.svg',
-            name: 'TypeScript',
-            tag: 'Language',
-          },
-          {
-            logo: '/images/techs/tailwind-logo.svg',
-            name: 'Tailwind',
-            tag: 'Framework',
-          },
-          {
-            logo: '/images/techs/nextjs-logo.svg',
-            name: 'Next.js',
-            tag: 'Framework',
-          },
-          {
-            logo: '/images/techs/redux-logo.svg',
-            name: 'Redux',
-            tag: 'State Manager',
-          },
-        ],
-        title: 'Front-end',
-      },
-      subtitle: 'The dev tools I use.',
-
-      title: 'Tech Stack',
+    techStack: {
+      content: [
+        {
+          groupKey: 'dev',
+          items: [
+            {
+              ...DevTechItems.Typescript,
+              tag: 'Language'
+            },
+            {
+              ...DevTechItems.React,
+              tag: 'Library'
+            },
+            {
+              ...DevTechItems.Nextjs,
+              tag: 'Framework'
+            },
+            {
+              ...DevTechItems.Scss,
+              tag: 'Preprocessor'
+            },
+            {
+              ...DevTechItems.Git,
+              tag: 'Version control system'
+            },
+            {
+              ...DevTechItems.Jest,
+              tag: 'Testing framework'
+            },
+            {
+              ...DevTechItems.Docker,
+              tag: 'Containerization platform'
+            },
+            {
+              ...DevTechItems.Nodejs,
+              tag: 'Runtime environment'
+            },
+          ],
+          title: "Dev"
+        },
+        {
+          groupKey: 'apps',
+          items: [
+            {
+              ...AppItems.Neovim,
+              tag: 'Editor'
+            },
+            {
+              ...AppItems.Chrome,
+              tag: 'Browser'
+            },
+          ],
+          title: "Программы"
+        },
+        {
+          groupKey: 'os',
+          items: [
+            {
+              ...OsItems.Linux,
+            },
+          ],
+          title: "Операционные системы"
+        },
+      ],
+      header: {
+        subtitle: 'The dev tools I use',
+        title: 'Tech Stack',
+      }
     },
     work: {
       header: {

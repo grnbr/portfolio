@@ -1,14 +1,15 @@
 import { motion } from 'motion/react';
 import { FC } from 'react';
 
-import { IconProps } from '@/shared/ui/icon/Icon';
+import { IconProps } from '../iconTypes';
+import useIconColor from '../useIconColor';
 
 type MessageIconProps = IconProps;
 
 const MessageIcon: FC<MessageIconProps> = ({ options }) => {
-  const { elementsColor, variant = 'outlined' } = options ?? {};
+  const { variant = 'outlined' } = options ?? {};
   const isFilled = variant === 'fill';
-  const { primaryColor, secondaryColor } = elementsColor ?? {};
+  const { primaryColor, secondaryColor } = useIconColor({ color: options?.elementsColor });
 
   return (
     <motion.svg

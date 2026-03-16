@@ -26,11 +26,12 @@ const GetInTouchBtn: FC<GetInTouchBtnProps> = ({
     >
       {hasIcon && (
         <Icon
-          options={{
-            elementsColor: { primaryColor: 'var(--white)' },
-          }}
         >
-          <SendIcon />
+          <SendIcon
+            options={{
+              elementsColor: { primaryColor: 'var(--white)' },
+            }}
+          />
         </Icon>
       )}
       {label}

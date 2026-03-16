@@ -7,8 +7,8 @@ import { useEffect, useState } from 'react';
 import Themes, { Theme } from '@/shared/constants/theme';
 import Button from '@/shared/ui/button/Button';
 import Icon from '@/shared/ui/icon/Icon';
-import MoonIcon from '@/shared/ui/icon/icons/Moon';
-import SunIcon from '@/shared/ui/icon/icons/Sun';
+import MoonIcon from '@/shared/ui/icon/icons/MoonIcon';
+import SunIcon from '@/shared/ui/icon/icons/SunIcon';
 import Loader from '@/shared/ui/loader/Loader';
 
 import styles from '../Header.module.scss';

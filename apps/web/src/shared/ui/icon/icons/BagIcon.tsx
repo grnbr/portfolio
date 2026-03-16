@@ -1,14 +1,15 @@
 import { motion } from 'motion/react';
 import { FC } from 'react';
 
-import { IconProps } from '@/shared/ui/icon/Icon';
+import { IconProps } from '../iconTypes';
+import useIconColor from '../useIconColor';
 
 type BagIconProps = IconProps;
 
 const BagIcon: FC<BagIconProps> = ({ options }) => {
-  const { elementsColor, variant = 'outlined' } = options ?? {};
+  const { variant = 'outlined' } = options ?? {};
+  const { primaryColor, secondaryColor } = useIconColor({ color: options?.elementsColor });
   const isFilled = variant === 'fill';
-  const { primaryColor, secondaryColor } = elementsColor ?? {};
 
   return (
     <motion.svg

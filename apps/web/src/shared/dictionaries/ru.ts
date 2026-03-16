@@ -1,7 +1,10 @@
 import 'server-only';
 
 import { NavigationItems, NavSocialIds } from '@/shared/constants/navigation';
-import { Dictionary, DictionaryData } from '@/shared/dictionaries/types';
+import { Dictionary } from '@/shared/dictionaries/types';
+
+import { AppItems, DevTechItems, OsItems } from './constants/techItems';
+import { DictionaryData } from './types/sharedTypes';
 
 export const dictionaryData: DictionaryData = {
   navigation: {
@@ -236,57 +239,74 @@ export const dictionary: Dictionary = {
         title: 'Избранные работы',
       },
     },
-    tech: {
-      content: {
-        'tech-items': [
-          { logo: '/images/techs/html-logo.svg', name: 'HTML', tag: 'Язык' },
-          { logo: '/images/techs/css-logo.svg', name: 'CSS', tag: 'Язык' },
-          {
-            logo: '/images/techs/js-logo.svg',
-            name: 'JavaScript',
-            tag: 'Язык',
-          },
-          {
-            logo: '/images/techs/git-logo.svg',
-            name: 'Git',
-            tag: 'Система контроля версий',
-          },
-          {
-            logo: '/images/techs/react-logo.svg',
-            name: 'React',
-            tag: 'Библиотека',
-          },
-          {
-            logo: '/images/techs/sass-logo.svg',
-            name: 'Sass',
-            tag: 'Расширение языка',
-          },
-          {
-            logo: '/images/techs/ts-logo.svg',
-            name: 'TypeScript',
-            tag: 'Язык',
-          },
-          {
-            logo: '/images/techs/tailwind-logo.svg',
-            name: 'Tailwind',
-            tag: 'Фреймворк',
-          },
-          {
-            logo: '/images/techs/nextjs-logo.svg',
-            name: 'Next.js',
-            tag: 'Фреймворк',
-          },
-          {
-            logo: '/images/techs/redux-logo.svg',
-            name: 'Redux',
-            tag: 'Менеджер состояний',
-          },
-        ],
-        title: 'Front-end',
+    techStack: {
+      content: [
+        {
+          groupKey: 'dev',
+          items: [
+            {
+              ...DevTechItems.Typescript,
+              tag: 'Язык'
+            },
+            {
+              ...DevTechItems.React,
+              tag: 'Библиотека'
+            },
+            {
+              ...DevTechItems.Nextjs,
+              tag: 'Фреймворк'
+            },
+            {
+              ...DevTechItems.Scss,
+              tag: 'Препроцессор'
+            },
+            {
+              ...DevTechItems.Git,
+              tag: 'Система контроля версий'
+            },
+            {
+              ...DevTechItems.Jest,
+              tag: 'Фреймворк тестирования'
+            },
+            {
+              ...DevTechItems.Docker,
+              tag: 'Платформа контейнеризации'
+            },
+            {
+              ...DevTechItems.Nodejs,
+              tag: 'Среда выполнения'
+            },
+          ],
+          title: "Dev"
+        },
+        {
+          groupKey: 'apps',
+          items: [
+            {
+              ...AppItems.Neovim,
+              tag: 'Редактор'
+            },
+            {
+              ...AppItems.Chrome,
+              tag: 'Браузер'
+            },
+          ],
+          title: "Программы"
+        },
+        {
+          groupKey: 'os',
+          items: [
+            {
+              ...OsItems.Linux,
+            },
+          ],
+          title: "Операционные системы"
+        },
+      ],
+      header: {
+        subtitle: 'Инструменты разработки, которыми я пользуюсь',
+        title: 'Тех. стек',
       },
-      subtitle: 'Инструменты разработки, которыми я пользуюсь.',
-
-      title: 'Тех. стек',
     },
     work: {
       header: {

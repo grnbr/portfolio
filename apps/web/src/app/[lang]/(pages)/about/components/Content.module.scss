@@ -1,6 +1,6 @@
-@use '@/styles/utils/tokens';
-@use '@/styles/utils/mixins';
-@use '@/styles/utils/functions' as f;
+@use 'styles/utils/tokens';
+@use 'styles/utils/mixins';
+@use 'styles/utils/functions' as f;
 
 $content-mb: 3.5625rem;
 $image-container-mt: 4.0706rem;

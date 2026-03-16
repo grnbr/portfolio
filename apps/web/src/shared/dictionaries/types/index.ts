@@ -1,51 +1,8 @@
-import { ParagraphWithLinks } from '@/shared/types';
 import { Project } from '@/shared/types/data';
-import { HeroNavigation, NavHome, Navigation } from '@/shared/types/navigation';
+import { HeroNavigation, Navigation } from '@/shared/types/navigationTypes';
 
-export type PageHeader = {
-  subtitle: string;
-  title: string;
-};
-
-type ButtonDict = {
-  href?: string;
-  label: string;
-};
-
-type Socials = {
-  Email: {
-    href: string;
-    text: string;
-  };
-  Github: {
-    href: string;
-  };
-  LinkedIn: {
-    href: string;
-    text: string;
-  };
-  Resume: {
-    href: string;
-    text: string;
-  };
-  Telegram: {
-    href: string;
-    text: string;
-  };
-};
-
-export type DictionaryData = {
-  navigation: {
-    home: NavHome;
-    socials: Socials;
-  };
-  projects: Project[];
-};
-
-type Paragraph = {
-  text: string[];
-  title: string;
-};
+import { TechStackGroups } from '../types/techTypes';
+import { ButtonDict, PageHeader, Paragraph, ParagraphWithLinks } from './sharedTypes';
 
 export type Dictionary = {
   layout: {
@@ -128,17 +85,9 @@ export type Dictionary = {
       };
     };
 
-    tech: {
-      content: {
-        'tech-items': {
-          logo: string;
-          name: string;
-          tag: string;
-        }[];
-        title: string;
-      };
-      subtitle: string;
-      title: string;
+    techStack: {
+      content: TechStackGroups;
+      header: PageHeader;
     };
 
     work: {

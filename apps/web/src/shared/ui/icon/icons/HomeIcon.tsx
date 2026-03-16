@@ -1,12 +1,13 @@
 import { motion } from 'motion/react';
 import { FC } from 'react';
 
-import { IconProps } from '@/shared/ui/icon/Icon';
+import { IconProps } from '../iconTypes';
+import useIconColor from '../useIconColor';
 
 type HomeIconProps = IconProps;
 
 const HomeIcon: FC<HomeIconProps> = ({ options }) => {
-  const { primaryColor, secondaryColor } = options?.elementsColor ?? {};
+  const { primaryColor, secondaryColor } = useIconColor({ color: options?.elementsColor });
   const isFilled = options?.variant === 'fill';
 
   return (

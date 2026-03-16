@@ -59,15 +59,16 @@ const Tapbar: FC<TapbarProps> = ({ dict, lang }) => {
 
               <Icon
                 className={styles.icon}
-                options={{
-                  elementsColor: {
-                    primaryColor: 'var(--tapbar-icon-active)',
-                    secondaryColor: 'var(--tapbar-icon-inactive)',
-                  },
-                  variant: isActive ? 'fill' : 'outlined',
-                }}
               >
-                <TapbarIcon />
+                <TapbarIcon
+                  options={{
+                    elementsColor: {
+                      primaryColor: 'var(--tapbar-icon-active)',
+                      secondaryColor: 'var(--tapbar-icon-inactive)',
+                    },
+                    variant: isActive ? 'fill' : 'outlined',
+                  }}
+                />
               </Icon>
             </Link>
           );

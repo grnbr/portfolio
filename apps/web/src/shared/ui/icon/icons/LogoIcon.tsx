@@ -1,12 +1,13 @@
 import { FC } from 'react';
 
-import { IconProps } from '@/shared/ui/icon/Icon';
+import { IconProps } from '../iconTypes';
+import useIconColor from '../useIconColor';
 
 type LogoIconProps = IconProps;
 
 const LogoIcon: FC<LogoIconProps> = ({ className, options }) => {
-  const { elementsColor, height, width } = options ?? {};
-  const { primaryColor } = elementsColor ?? {};
+  const { height, width } = options ?? {};
+  const { primaryColor } = useIconColor({ color: options?.elementsColor });
 
   return (
     <svg

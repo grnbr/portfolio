@@ -1,5 +1,4 @@
 import eslint from '@eslint/js';
-import stylistic from '@stylistic/eslint-plugin';
 import typescriptParser from '@typescript-eslint/parser';
 import nextVitals from 'eslint-config-next/core-web-vitals';
 import nextTs from 'eslint-config-next/typescript';
@@ -16,10 +15,6 @@ export default defineConfig([
 
   // 🔹 Custom setup
   {
-    plugins: {
-      '@stylistic': stylistic,
-    },
-
     rules: {
       // ⚙️ General JS/TS
       'prefer-const': 'error',
@@ -66,21 +61,6 @@ export default defineConfig([
           custom: { regex: '^T[A-Z]', match: false },
         },
       ],
-
-      // 🎨 Stylistic rules
-      '@stylistic/quotes': ['error', 'single', { avoidEscape: true }],
-      '@stylistic/indent': ['warn', 2],
-      '@stylistic/max-len': [
-        'error',
-        {
-          code: 80, // max line length
-          ignorePattern: '^\\s*<', // ignore lines that start with JSX tags
-          ignoreComments: true, // ignore comments
-          ignoreStrings: true, // ignore strings
-          ignoreTemplateLiterals: true,
-        },
-      ],
-      'jsx-quotes': ['error', 'prefer-double'],
 
       // 📦 Import organization
       'import/order': 'off',

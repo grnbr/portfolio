@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import { FC, HTMLAttributes } from 'react';
 
-import type { ParagraphWithLinks as ParagraphWithLinksType } from '@/shared/types';
+import type { ParagraphWithLinks as ParagraphWithLinksType } from '@/shared/dictionaries/types/sharedTypes';
 
 import styles from './ParagraphWithLinks.module.scss';
 

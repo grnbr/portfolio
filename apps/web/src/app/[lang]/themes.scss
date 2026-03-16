@@ -1,10 +1,11 @@
-@use '@/styles/utils/tokens';
+@use 'styles/utils/tokens';
 
 :root {
   /* General */
   --bg-color: #fbfbfb;
   --text-primary: var(--dark-grey);
   --text-heading: var(--onyx);
+  --text-label: var(--text-heading);
   --text-highlighted: var(--onyx);
   --border: #{tokens.$border-thickness} solid var(--black-10);
 
@@ -50,6 +51,7 @@
   /* General */
   --bg-color: var(--black);
   --text-heading: var(--white);
+  --text-label: var(--text-heading);
   --text-highlighted: var(--white);
   --border: #{tokens.$border-thickness} solid var(--white-10);
 

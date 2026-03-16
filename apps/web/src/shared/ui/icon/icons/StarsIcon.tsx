@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { IconProps } from '@/shared/ui/icon/Icon';
+import { IconProps } from '../iconTypes';
 
 type StarsIconProps = IconProps;
 

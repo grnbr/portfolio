@@ -1,4 +1,4 @@
-@use '@/styles/utils/tokens';
+@use 'styles/utils/tokens' as t;
 @use 'sass:math';
 @use 'sass:map';
 @use './clamp';
@@ -10,14 +10,14 @@
 @forward './text';
 
 @mixin side-padding {
-  padding-inline: tokens.$layout-side-padding;
+  padding-inline: t.$layout-side-padding;
 
   @include media.media-min(mobile) {
     @include clamp.clamp-bp(
       padding-inline,
       (
-        mobile: tokens.$layout-side-padding,
-        desktop: tokens.$layout-side-padding-desktop,
+        mobile: t.$layout-side-padding,
+        desktop: t.$layout-side-padding-desktop,
       )
     );
   }
@@ -29,20 +29,23 @@
 
   @include media.media-side-padding {
     width: 100%;
-    max-width: tokens.$desktop-content;
+    max-width: t.$desktop-content;
     padding-inline: 0;
   }
 }
-
 @mixin container-desktop {
   width: 100%;
   max-width: 64rem;
 }
 
 @mixin card-styles {
-  border: tokens.$card-border-thickness solid var(--card-border);
-  border-radius: 32px;
+  border: t.$card-border-thickness solid var(--card-border);
+  border-radius: 2rem;
   background-color: var(--card-bg);
+}
+
+@mixin border-styles($color) {
+  border: t.$border-thickness solid $color;
 }
 
 @mixin theme-dark {

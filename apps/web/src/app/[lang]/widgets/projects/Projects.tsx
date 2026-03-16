@@ -5,7 +5,6 @@ import { FC } from 'react';
 import { PROJECT_ICONS } from '@/app/[lang]/widgets/projects/icons';
 import GetInTouchBtn from '@/shared/components/buttons/GetInTouchBtn';
 import { Dictionary } from '@/shared/dictionaries/types';
-import { Project } from '@/shared/types/data';
 import ButtonLink from '@/shared/ui/button/ButtonLink';
 import Icon from '@/shared/ui/icon/Icon';
 import ArrowRightIcon from '@/shared/ui/icon/icons/ArrowRightIcon';

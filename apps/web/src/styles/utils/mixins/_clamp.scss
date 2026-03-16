@@ -3,7 +3,7 @@
 @use 'sass:list';
 @use './media';
 @use '../tokens';
-@use '@/styles/utils/functions' as f;
+@use 'styles/utils/functions' as f;
 
 @mixin clamp($property, $min-value, $max-value, $options: ()) {
   @include check-unit($min-value, $max-value);

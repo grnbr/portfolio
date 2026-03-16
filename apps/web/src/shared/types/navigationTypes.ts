@@ -8,20 +8,6 @@ export type NavigationHref =
 export type NavigationSocialId =
   (typeof NavSocialIds)[keyof typeof NavSocialIds];
 
-// type NavigationItem = {
-//   href: NavigationHref;
-//   id: NavigationId;
-//   label: string;
-// };
-
-// type NavigationSocialItem = {
-//   href: string;
-//   id: NavigationSocialId;
-//   label: string;
-// };
-
-// export type PrimaryNavigation = NavigationItem[];
-
 type NavItem<K extends keyof typeof NavigationItems> = {
   href: (typeof NavigationItems)[K]['href'];
   id: (typeof NavigationItems)[K]['id'];
