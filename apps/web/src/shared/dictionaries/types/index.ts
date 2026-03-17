@@ -2,7 +2,14 @@ import { Project } from '@/shared/types/data';
 import { HeroNavigation, Navigation } from '@/shared/types/navigationTypes';
 
 import { TechStackGroups } from '../types/techTypes';
-import { ButtonDict, PageHeader, Paragraph, ParagraphWithLinks } from './sharedTypes';
+import {
+  ButtonDict,
+  ContactInputs,
+  FormField,
+  PageHeader,
+  Paragraph,
+  ParagraphWithLinks,
+} from './sharedTypes';
 
 export type Dictionary = {
   layout: {
@@ -36,16 +43,20 @@ export type Dictionary = {
 
     contact: {
       form: {
-        email: { label: string; placeholder: string };
-        name: { label: string; placeholder: string };
-        'send-btn': string;
-        subject: { label: string; placeholder: string };
-        'textarea-placeholder': string;
+        buttons: {
+          send: {
+            label: string;
+          };
+        };
+        fields: {
+          inputs: ContactInputs;
+          textarea: FormField<'textarea'>;
+        };
         title: string;
       };
-      subtitle: string;
-      title: string;
+      header: PageHeader;
     };
+
     generic: {
       buttons: {
         getInTouch: ButtonDict;

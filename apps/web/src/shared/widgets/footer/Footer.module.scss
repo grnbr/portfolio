@@ -1,3 +1,4 @@
+@use 'styles/utils/tokens' as t;
 @use 'styles/utils/tokens';
 @use 'styles/utils/mixins';
 @use 'styles/utils/functions' as f;
@@ -59,7 +60,7 @@
         .title {
           margin-bottom: 2rem;
           font-size: tokens.$fs-16;
-          font-weight: 700;
+          font-weight: t.$fw-bold;
         }
 
         .list {
@@ -90,7 +91,7 @@
 
       .underLogoText {
         font-size: tokens.$fs-14;
-        font-weight: 500;
+        font-weight: t.$fw-medium;
         color: var(--footer-text);
 
         &::after {

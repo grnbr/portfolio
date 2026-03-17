@@ -160,27 +160,43 @@ export const dictionary: Dictionary = {
     },
     contact: {
       form: {
-        email: {
-          label: 'Email:',
-          placeholder: 'Enter your email address',
+        buttons: {
+          send: {
+            label: 'Send',
+          },
         },
 
-        name: {
-          label: 'Name:',
-          placeholder: 'Enter your name',
-        },
-        'send-btn': 'Send',
-        subject: {
-          label: 'Subject:',
-          placeholder: 'Enter subject',
+        fields: {
+          inputs: [
+            {
+              id: 'email',
+              label: 'Email:',
+              placeholder: 'Enter your email address',
+            },
+            {
+              id: 'name',
+              label: 'Name:',
+              placeholder: 'Enter your name',
+            },
+            {
+              id: 'subject',
+              label: 'Subject:',
+              placeholder: 'Enter subject',
+            },
+          ],
+          textarea: {
+            id: 'textarea',
+            label: null,
+            placeholder: 'Write your message here',
+          },
         },
 
-        'textarea-placeholder': 'Write your message here',
         title: 'New message',
       },
-      subtitle: 'Let’s build something awesome.',
-
-      title: 'Get in touch',
+      header: {
+        subtitle: 'Let’s build something awesome',
+        title: 'Get in touch',
+      },
     },
     generic: {
       buttons: {
@@ -248,52 +264,52 @@ export const dictionary: Dictionary = {
           items: [
             {
               ...DevTechItems.Typescript,
-              tag: 'Language'
+              tag: 'Language',
             },
             {
               ...DevTechItems.React,
-              tag: 'Library'
+              tag: 'Library',
             },
             {
               ...DevTechItems.Nextjs,
-              tag: 'Framework'
+              tag: 'Framework',
             },
             {
               ...DevTechItems.Scss,
-              tag: 'Preprocessor'
+              tag: 'Preprocessor',
             },
             {
               ...DevTechItems.Git,
-              tag: 'Version control system'
+              tag: 'Version control system',
             },
             {
               ...DevTechItems.Jest,
-              tag: 'Testing framework'
+              tag: 'Testing framework',
             },
             {
               ...DevTechItems.Docker,
-              tag: 'Containerization platform'
+              tag: 'Containerization platform',
             },
             {
               ...DevTechItems.Nodejs,
-              tag: 'Runtime environment'
+              tag: 'Runtime environment',
             },
           ],
-          title: "Dev"
+          title: 'Dev',
         },
         {
           groupKey: 'apps',
           items: [
             {
               ...AppItems.Neovim,
-              tag: 'Editor'
+              tag: 'Editor',
             },
             {
               ...AppItems.Chrome,
-              tag: 'Browser'
+              tag: 'Browser',
             },
           ],
-          title: "Программы"
+          title: 'Программы',
         },
         {
           groupKey: 'os',
@@ -302,13 +318,13 @@ export const dictionary: Dictionary = {
               ...OsItems.Linux,
             },
           ],
-          title: "Операционные системы"
+          title: 'Операционные системы',
         },
       ],
       header: {
         subtitle: 'The dev tools I use',
         title: 'Tech Stack',
-      }
+      },
     },
     work: {
       header: {

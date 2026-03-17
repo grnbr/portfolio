@@ -1,12 +1,14 @@
+@use 'styles/utils/mixins' as m;
 @use 'styles/utils/tokens';
 
 :root {
   /* General */
   --bg-color: #fbfbfb;
+  --color-text: var(--onyx);
   --text-primary: var(--dark-grey);
-  --text-heading: var(--onyx);
+  --text-heading: var(--color-text);
   --text-label: var(--text-heading);
-  --text-highlighted: var(--onyx);
+  --text-highlighted: var(--color-text);
   --border: #{tokens.$border-thickness} solid var(--black-10);
 
   /* Header */
@@ -40,7 +42,14 @@
   --card-border: #ebebeb;
 
   /* Icons */
-  --icon-primary: var(--onyx);
+  --icon-primary: var(--color-text);
+
+  // Input
+  --input-placeholder: var(--dark-grey);
+  --focus-color: var(--color-text);
+
+  // Textarea
+  --textarea-bg: var(--faint-white);
 
   // Text Selection
   --text-selection-bg: var(--light-green-43);
@@ -50,9 +59,10 @@
 [data-theme='dark'] {
   /* General */
   --bg-color: var(--black);
-  --text-heading: var(--white);
+  --color-text: var(--white);
+  --text-heading: var(--color-text);
   --text-label: var(--text-heading);
-  --text-highlighted: var(--white);
+  --text-highlighted: var(--color-text);
   --border: #{tokens.$border-thickness} solid var(--white-10);
 
   /* Header */
@@ -90,7 +100,14 @@
   --card-border: #383737;
 
   /* Icons */
-  --icon-primary: var(--white);
+  --icon-primary: var(--color-text);
+
+  // Input
+  --input-placeholder: var(--medium-grey-50);
+  --focus-color: var(--color-text);
+
+  // Textarea
+  --textarea-bg: var(--bg-color);
 
   // Text Selection
   --text-selection-bg: var(--light-green-43);

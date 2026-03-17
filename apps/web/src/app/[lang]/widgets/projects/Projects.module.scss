@@ -1,3 +1,4 @@
+@use 'styles/utils/tokens' as t;
 @use 'styles/utils/tokens';
 @use 'styles/utils/mixins';
 @use 'styles/utils/functions' as f;
@@ -70,7 +71,7 @@
 
     .title {
       font-size: tokens.$fs-20;
-      font-weight: 800;
+      font-weight: t.$fw-extrabold;
 
       @include mixins.media-min(mobile) {
         mix-blend-mode: plus-lighter;

@@ -1,3 +1,4 @@
+@use 'styles/utils/tokens' as t;
 @use 'styles/utils/tokens';
 @use 'styles/utils/mixins';
 @use 'styles/utils/functions' as f;
@@ -109,7 +110,7 @@ $image-container-mt: 4.0706rem;
 
       .title {
         margin-bottom: 0.5rem;
-        font-weight: 600;
+        font-weight: t.$fw-semibold;
         text-transform: uppercase;
       }
     }

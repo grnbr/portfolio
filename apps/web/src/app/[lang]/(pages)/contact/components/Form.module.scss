@@ -1,0 +1,148 @@
+@use 'styles/utils/functions' as f;
+@use 'styles/utils/tokens' as t;
+@use 'styles/utils/mixins' as m;
+
+// stylelint-disable-next-line unit-disallowed-list
+$border-radius: 12px;
+
+.form {
+  --side-padding: 1rem;
+  @include m.card-styles;
+
+  margin-bottom: 3.3125rem;
+  border-radius: $border-radius;
+
+  @include m.media-min(mobile) {
+    --side-padding: 2rem;
+
+    margin-bottom: 3.8125rem;
+  }
+
+  .content,
+  .footer {
+    padding-inline: var(--side-padding);
+  }
+
+  .header {
+    $padding-block: 1.125rem;
+
+    margin-bottom: 1.5rem;
+    padding-top: $padding-block;
+    padding-bottom: f.subtract-border($padding-block);
+    padding-inline: var(--side-padding);
+    border-bottom: t.$border-thickness solid rgb(0 0 0 / 3%);
+
+    font-weight: t.$fw-medium;
+    text-align: center;
+
+    @include m.theme-dark {
+      border-bottom-color: rgb(255 255 255 / 3%);
+    }
+
+    @include m.media-min(mobile) {
+      margin-bottom: 0.625rem;
+      margin-inline: 0;
+    }
+  }
+
+  .content {
+    .label,
+    .input,
+    .textarea {
+      $fs: t.$fs-14;
+
+      font-size: $fs;
+
+      @include m.clamp-font-size(
+        (
+          mobile: $fs,
+          ultra: t.$fs-16,
+        )
+      );
+    }
+
+    .inputs {
+      padding-inline: 0.3438rem;
+
+      @include m.media-min(mobile) {
+        padding-inline: 0;
+      }
+
+      .inputContainer {
+        @include m.flex-center-vertical;
+
+        column-gap: 0.5rem;
+
+        &:not(:last-of-type) {
+          margin-bottom: f.subtract-border(1rem);
+          padding-bottom: 1rem;
+          border-bottom: t.$border-thickness solid var(--light-grey);
+
+          @include m.theme-dark {
+            border-bottom-color: rgb(255 255 255 / 10%);
+          }
+        }
+
+        .label {
+          color: var(--text-label);
+        }
+
+        .input {
+          width: 100%;
+          padding: 0.3125rem;
+        }
+      }
+    }
+
+    .divider {
+      margin-block: 1.5rem;
+      border: none;
+
+      @include m.border-styles(var(--black-10));
+
+      @include m.media-min(mobile) {
+        margin-block: 2rem;
+      }
+      @include m.theme-dark {
+        border-bottom-color: rgba(#fff, 0.1);
+      }
+    }
+
+    .textareaWrapper {
+      display: flex;
+      margin-bottom: 1.5rem;
+
+      @include m.media-min(mobile) {
+        margin-bottom: 0.625rem;
+      }
+
+      .textarea {
+        resize: none;
+
+        flex: 1;
+
+        min-height: 20.9375rem;
+        padding: 1.5rem;
+        border-radius: $border-radius;
+
+        @include m.media-min(mobile) {
+          min-height: 13.9375rem;
+        }
+      }
+    }
+  }
+
+  .footer {
+    margin-bottom: 1.5rem;
+
+    @include m.media-min(mobile) {
+      margin-block: 1.3438rem;
+    }
+
+    .sendBtn {
+      @include m.media-min(mobile) {
+        margin-left: auto;
+      }
+    }
+  }
+}

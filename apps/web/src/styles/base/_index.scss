@@ -1,3 +1,5 @@
+@use 'styles/utils/mixins' as m;
+@use 'styles/utils/tokens' as t;
 @use 'styles/utils/tokens';
 @use 'styles/utils/mixins';
 @use 'sass:map';
@@ -68,10 +70,11 @@ body {
 main {
   flex: 1;
   width: 100%;
-  min-height: 100dvh;
+
+  // min-height: 100dvh;
 
   @include mixins.media-side-padding {
-    min-height: 100vh;
+    // min-height: 100vh;
   }
 }
 
@@ -108,7 +111,7 @@ select {
 
 h1,
 h2 {
-  font-weight: 700;
+  font-weight: t.$fw-bold;
   color: var(--text-heading);
 }
 
@@ -143,12 +146,12 @@ h2 {
 }
 
 h3 {
-  font-weight: 800;
+  font-weight: t.$fw-extrabold;
 }
 
 p {
   font-size: tokens.$fs-base;
-  font-weight: 500;
+  font-weight: t.$fw-medium;
   line-height: 1.33;
   color: var(--text-primary);
 
@@ -158,6 +161,47 @@ p {
       ultra: tokens.$fs-base-desktop,
     )
   );
+}
+
+input,
+textarea {
+  outline: none;
+
+  &::placeholder {
+    color: var(--input-placeholder);
+  }
+}
+
+@mixin outline {
+  outline: 1px solid var(--focus-color);
+}
+
+textarea {
+  background-color: var(--textarea-bg);
+
+  &:focus-visible {
+    @include outline;
+  }
+}
+
+input {
+  border-radius: 2px;
+
+  &:focus-visible {
+    @include outline;
+
+    animation: fade-outline 1s ease forwards;
+  }
+
+  @keyframes fade-outline {
+    0% {
+      outline-color: var(--focus-color);
+    }
+
+    100% {
+      outline-color: transparent;
+    }
+  }
 }
 
 ::selection {

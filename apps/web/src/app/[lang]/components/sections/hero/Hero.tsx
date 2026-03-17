@@ -3,6 +3,7 @@ import { FC } from 'react';
 
 import GetInTouchBtn from '@/shared/components/buttons/GetInTouchBtn';
 import { Dictionary } from '@/shared/dictionaries/types';
+import { Locale } from '@/shared/i18n/i18n-config';
 import ButtonLink from '@/shared/ui/button/ButtonLink';
 import Container from '@/shared/ui/containers/Container';
 
@@ -10,9 +11,10 @@ import styles from './Hero.module.scss';
 
 type HeroProps = {
   dict: Dictionary;
+  locale: Locale;
 };
 
-const Hero: FC<HeroProps> = ({ dict }) => {
+const Hero: FC<HeroProps> = ({ dict, locale }) => {
   const content = dict.pages.home.hero;
   const buttons = dict.pages.generic.buttons;
   const { getInTouch, seeMyResume } = buttons;
@@ -34,6 +36,7 @@ const Hero: FC<HeroProps> = ({ dict }) => {
         <h1 className={styles.title}>
           <span className={styles.greeting}>{content.greeting}</span>
           <span className={styles.pronoun}>{content.pronoun}</span>{' '}
+          {locale === 'ru' && <br />}
           {content.name}
         </h1>
 

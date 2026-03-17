@@ -156,27 +156,44 @@ export const dictionary: Dictionary = {
     },
     contact: {
       form: {
-        email: {
-          label: 'Email:',
-          placeholder: 'Введите ваш адрес электронной почты',
+        buttons: {
+          send: {
+            label: 'Отправить',
+          },
         },
 
-        name: {
-          label: 'Имя:',
-          placeholder: 'Введите ваше имя',
-        },
-        'send-btn': 'Отправить',
-        subject: {
-          label: 'Тема:',
-          placeholder: 'Введите тему',
+        fields: {
+          inputs: [
+            {
+              id: 'email',
+              label: 'Email:',
+              placeholder: 'Введите ваш адрес электронной почты',
+            },
+            {
+              id: 'name',
+              label: 'Имя:',
+              placeholder: 'Введите ваше имя',
+            },
+            {
+              id: 'subject',
+              label: 'Тема:',
+              placeholder: 'Введите тему',
+            },
+          ],
+          textarea: {
+            id: 'textarea',
+            label: null,
+            placeholder: 'Напишите ваше сообщение здесь',
+          },
         },
 
-        'textarea-placeholder': 'Напишите ваше сообщение здесь',
         title: 'Новое сообщение',
       },
-      subtitle: 'Давайте создадим что-то потрясающее.',
 
-      title: 'Связаться',
+      header: {
+        subtitle: 'Давайте создадим что-то потрясающее',
+        title: 'Связаться',
+      },
     },
     generic: {
       buttons: {
@@ -212,7 +229,7 @@ export const dictionary: Dictionary = {
         greeting: 'Привет 👋',
         intro:
           'Я фронтенд-разработчик, помогающий стартапам превращать их видения в цифровую реальность. Я специализируюсь на проектировании и создании современных мобильных и веб-приложений.',
-        name: 'Гриша',
+        name: 'Григорий',
         pronoun: 'Меня зовут',
       },
       navigation: {
@@ -246,52 +263,52 @@ export const dictionary: Dictionary = {
           items: [
             {
               ...DevTechItems.Typescript,
-              tag: 'Язык'
+              tag: 'Язык',
             },
             {
               ...DevTechItems.React,
-              tag: 'Библиотека'
+              tag: 'Библиотека',
             },
             {
               ...DevTechItems.Nextjs,
-              tag: 'Фреймворк'
+              tag: 'Фреймворк',
             },
             {
               ...DevTechItems.Scss,
-              tag: 'Препроцессор'
+              tag: 'Препроцессор',
             },
             {
               ...DevTechItems.Git,
-              tag: 'Система контроля версий'
+              tag: 'Система контроля версий',
             },
             {
               ...DevTechItems.Jest,
-              tag: 'Фреймворк тестирования'
+              tag: 'Фреймворк тестирования',
             },
             {
               ...DevTechItems.Docker,
-              tag: 'Платформа контейнеризации'
+              tag: 'Платформа контейнеризации',
             },
             {
               ...DevTechItems.Nodejs,
-              tag: 'Среда выполнения'
+              tag: 'Среда выполнения',
             },
           ],
-          title: "Dev"
+          title: 'Dev',
         },
         {
           groupKey: 'apps',
           items: [
             {
               ...AppItems.Neovim,
-              tag: 'Редактор'
+              tag: 'Редактор',
             },
             {
               ...AppItems.Chrome,
-              tag: 'Браузер'
+              tag: 'Браузер',
             },
           ],
-          title: "Программы"
+          title: 'Программы',
         },
         {
           groupKey: 'os',
@@ -300,7 +317,7 @@ export const dictionary: Dictionary = {
               ...OsItems.Linux,
             },
           ],
-          title: "Операционные системы"
+          title: 'Операционные системы',
         },
       ],
       header: {

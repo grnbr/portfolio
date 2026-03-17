@@ -1,3 +1,4 @@
+@use 'styles/utils/tokens' as t;
 @use 'styles/utils/tokens';
 @use 'styles/utils/mixins';
 @use 'styles/utils/functions' as f;
@@ -96,7 +97,7 @@ $image-desktop-shift: 5.3125rem;
 
   .title {
     margin-bottom: 1rem;
-    font-weight: 800;
+    font-weight: t.$fw-extrabold;
 
     @include mixins.clamp-bp(
       margin-bottom,

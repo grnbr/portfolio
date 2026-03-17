@@ -13,7 +13,7 @@ export default async function Home(props: {
 
   return (
     <>
-      <Hero dict={dictionary} />
+      <Hero dict={dictionary} locale={params.lang} />
       <SelectedWork dict={dictionary} />
       <Navigation dict={dictionary} />
       <ContactMe dict={dictionary} />

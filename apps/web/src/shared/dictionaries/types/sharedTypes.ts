@@ -1,5 +1,5 @@
-import { Project } from "@/shared/types/data";
-import { NavHome } from "@/shared/types/navigationTypes";
+import { Project } from '@/shared/types/data';
+import { NavHome } from '@/shared/types/navigationTypes';
 
 export type PageHeader = {
   subtitle: string;
@@ -50,3 +50,21 @@ export type DictionaryData = {
   };
   projects: Project[];
 };
+
+export type FormField<Id extends string> = {
+  id: Id;
+  label: null | string;
+  placeholder: string;
+};
+
+export const ContactInputIds = {
+  Email: 'email',
+  Name: 'name',
+  Subject: 'subject',
+} as const satisfies Record<string, string>;
+
+export type ContactInputs = [
+  FormField<typeof ContactInputIds.Email>,
+  FormField<typeof ContactInputIds.Name>,
+  FormField<typeof ContactInputIds.Subject>,
+];

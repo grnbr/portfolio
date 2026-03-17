@@ -45,7 +45,7 @@
 }
 
 @mixin border-styles($color) {
-  border: t.$border-thickness solid $color;
+  border-bottom: t.$border-thickness solid $color;
 }
 
 @mixin theme-dark {

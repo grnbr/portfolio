@@ -1,6 +1,8 @@
+@use 'styles/utils/tokens' as t;
+
 @font-face {
   font-family: Inter;
-  font-weight: 400;
+  font-weight: t.$fw-regular;
   font-style: normal;
 
   font-display: swap;
@@ -11,7 +13,7 @@
 
 @font-face {
   font-family: Inter;
-  font-weight: 500;
+  font-weight: t.$fw-medium;
   font-style: normal;
 
   font-display: swap;
@@ -22,7 +24,7 @@
 
 @font-face {
   font-family: Inter;
-  font-weight: 600;
+  font-weight: t.$fw-semibold;
   font-style: normal;
 
   font-display: swap;
@@ -33,7 +35,7 @@
 
 @font-face {
   font-family: Inter;
-  font-weight: 700;
+  font-weight: t.$fw-bold;
   font-style: normal;
 
   font-display: swap;
@@ -44,7 +46,7 @@
 
 @font-face {
   font-family: Inter;
-  font-weight: 800;
+  font-weight: t.$fw-extrabold;
   font-style: normal;
 
   font-display: swap;
@@ -55,7 +57,7 @@
 
 @font-face {
   font-family: Inter;
-  font-weight: 900;
+  font-weight: t.$fw-black;
   font-style: normal;
 
   font-display: swap;
