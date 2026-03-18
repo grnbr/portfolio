@@ -21,17 +21,6 @@ const Hero: FC<HeroProps> = ({ dict, locale }) => {
 
   return (
     <Container as="section" className={styles.hero}>
-      <div className={styles.imageContainer}>
-        <Image
-          alt="Photo of Grigory"
-          className={styles.image}
-          fill
-          objectFit="cover"
-          priority
-          src="/images/home/hero-image.webp"
-        />
-      </div>
-
       <div className={styles.textContent}>
         <h1 className={styles.title}>
           <span className={styles.greeting}>{content.greeting}</span>
@@ -57,6 +46,17 @@ const Hero: FC<HeroProps> = ({ dict, locale }) => {
             variant="secondary"
           />
         </div>
+      </div>
+
+      <div className={styles.imageContainer}>
+        <Image
+          alt="Photo of Grigory"
+          className={styles.image}
+          fill
+          objectFit="cover"
+          priority
+          src="/images/home/hero-image.webp"
+        />
       </div>
     </Container>
   );

@@ -1,50 +1,20 @@
+@use 'styles/utils/mixins' as m;
 @use 'styles/utils/tokens' as t;
-@use 'styles/utils/tokens';
-@use 'styles/utils/mixins';
 @use 'styles/utils/functions' as f;
-
-$image-desktop-shift: 5.3125rem;
-
-@mixin second-layout {
-  display: flex;
-  align-items: center;
-
-  @include mixins.media-min(mobile) {
-    overflow: visible;
-    flex-direction: row-reverse;
-    min-width: auto;
-  }
-
-  .imageContainer {
-    position: relative;
-
-    @include mixins.media-min(mobile) {
-      top: unset;
-      right: unset;
-      margin-left: 85px;
-
-      @include mixins.clamp-bp(
-        flex-basis,
-        (
-          mobile: 19.375rem,
-          ultra: 29.375rem,
-        )
-      );
-    }
-
-    .image {
-      transform: translate(0, -40px);
-    }
-  }
-}
 
 .hero {
   isolation: isolate;
   position: relative;
-  margin-bottom: 8.5625rem;
-  padding-top: 17.6875rem;
 
-  @include mixins.clamp-bp(
+  display: flex;
+  flex-direction: column-reverse;
+  row-gap: 0.9rem;
+  align-items: center;
+
+  margin-bottom: 8.5625rem;
+  padding-top: 11.0875rem;
+
+  @include m.clamp-bp(
     margin-bottom,
     (
       mobile: 8.5625rem,
@@ -52,7 +22,7 @@ $image-desktop-shift: 5.3125rem;
     )
   );
 
-  @include mixins.clamp-bp(
+  @include m.clamp-bp(
     margin-top,
     (
       mobile: 13.125rem,
@@ -60,33 +30,45 @@ $image-desktop-shift: 5.3125rem;
     )
   );
 
-  @include mixins.media-min(mobile) {
+  @include m.media-min(mobile) {
+    overflow: visible;
+    min-width: auto;
     padding-top: 0;
   }
 
+  @include m.media-min(tablet) {
+    flex-direction: row;
+    row-gap: unset;
+    column-gap: 0.5rem;
+
+    .textContent,
+    .imageContainer {
+      flex-shrink: 0;
+    }
+  }
+
   .imageContainer {
-    position: absolute;
+    $w: 11rem;
+
+    position: relative;
     z-index: -1;
-    top: 102px;
-    left: 50%;
-    transform: translateX(-50%);
 
     aspect-ratio: 1;
-    width: 176px;
+    width: $w;
+    border-radius: 50%;
 
-    @include mixins.media-min(mobile) {
-      top: -40px;
-      right: -85px;
-      left: unset;
-      transform: none;
-
-      @include mixins.clamp-bp(
+    @include m.media-min(mobile) {
+      @include m.clamp-bp(
         width,
         (
-          mobile: 19.375rem,
+          mobile: $w,
+          tablet: 19.375rem,
           ultra: 29.375rem,
         )
       );
+    }
+    @include m.media-min(tablet) {
+      transform: translate(0, -40px);
     }
 
     .image {
@@ -95,76 +77,82 @@ $image-desktop-shift: 5.3125rem;
     }
   }
 
-  .title {
-    margin-bottom: 1rem;
-    font-weight: t.$fw-extrabold;
+  .textContent {
+    width: 100%;
 
-    @include mixins.clamp-bp(
-      margin-bottom,
-      (
-        mobile: 1rem,
-        ultra: 2.5rem,
-      )
-    );
-
-    .greeting,
-    .pronoun {
-      color: var(--dark-grey);
+    @include m.media-min(tablet) {
+      width: initial;
     }
 
-    .greeting {
-      @include mixins.mobile-only;
+    .title {
+      margin-bottom: 1rem;
+      font-weight: t.$fw-extrabold;
+
+      @include m.clamp-bp(
+        margin-bottom,
+        (
+          mobile: 1rem,
+          ultra: 2.5rem,
+        )
+      );
+
+      .greeting,
+      .pronoun {
+        color: var(--dark-grey);
+      }
+
+      .greeting {
+        @include m.mobile-only;
+      }
+    }
+
+    .intro {
+      @include m.text-line-height;
+
+      @include m.clamp-font-size(
+        (
+          mobile: t.$fs-base,
+          ultra: t.$fs-24,
+        )
+      );
+
+      @include m.clamp-bp(
+        max-width,
+        (
+          tablet: 28.75rem,
+          desktop: 38.75rem,
+          ultra: 45.5625rem,
+        )
+      );
+
+      margin-bottom: 3.5rem;
+      @include m.clamp-bp(
+        margin-bottom,
+        (
+          ultra: 2.5rem,
+        ),
+        (
+          auto-interpolate: true,
+        )
+      );
+      @include m.media-min(mobile) {
+        position: relative;
+        z-index: 1;
+        line-height: 1.5;
+        mix-blend-mode: plus-lighter;
+      }
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      row-gap: 1.0625rem;
+
+      @include m.media-min(mobile) {
+        flex-direction: row;
+        gap: 0 1rem;
+        align-items: center;
+      }
     }
   }
-
-  .intro {
-    @include mixins.text-line-height;
-
-    @include mixins.clamp-font-size(
-      (
-        mobile: tokens.$fs-base,
-        ultra: tokens.$fs-24,
-      )
-    );
-
-    @include mixins.clamp-bp(
-      max-width,
-      (
-        mobile: 16.5625rem,
-        desktop: 38.75rem,
-        ultra: 45.5625rem,
-      )
-    );
-
-    margin-bottom: 3.5rem;
-    @include mixins.clamp-bp(
-      margin-bottom,
-      (
-        ultra: 2.5rem,
-      ),
-      (
-        auto-interpolate: true,
-      )
-    );
-    @include mixins.media-min(mobile) {
-      position: relative;
-      z-index: 1;
-      line-height: 1.5;
-      mix-blend-mode: plus-lighter;
-    }
-  }
-
-  .buttons {
-    display: flex;
-    flex-direction: column;
-    row-gap: 1.0625rem;
-
-    @include mixins.media-min(mobile) {
-      flex-direction: row;
-      gap: 0 1rem;
-      align-items: center;
-    }
-  }
-
-  // @include second-layout;
 }
