@@ -1,19 +1,36 @@
-type NavigationItem = {
+import {
+  NavigationId,
+  NavigationSocialId,
+} from '../dictionaries/types/navigationTypes';
+
+type NavigationItem<ID extends string> = {
   href: string;
-  id: string;
+  id: ID;
 };
+
+type NavigationItemsKeys = Capitalize<NavigationId>;
+type NavSocialKeys = Capitalize<NavigationSocialId>;
 
 export const NavigationItems = {
   About: { href: '/about', id: 'about' },
   Contact: { href: '/contact', id: 'contact' },
   Home: { href: '/', id: 'home' },
-  TechStack: { href: '/tech-stack', id: 'tech-stack' },
+  Techstack: { href: '/tech-stack', id: 'techstack' },
   Work: { href: '/work', id: 'work' },
-} as const satisfies Record<string, NavigationItem>;
+} as const satisfies Record<NavigationItemsKeys, NavigationItem<NavigationId>>;
 
-export const NavSocialIds = {
-  Github: 'github',
-  Gmail: 'gmail',
-  LinkedIn: 'linkedin',
-  Telegram: 'telegram',
-} as const satisfies Record<string, string>;
+export const NavSocialItems = {
+  Github: { href: 'https://github.com/waterrDrinker', id: 'github' },
+  Gmail: {
+    href: 'mailto:grigoriynbr@gmail.com',
+    id: 'gmail',
+  },
+  Linkedin: {
+    href: 'www.linkedin.com/in/григорий-найбауер-248a57381',
+    id: 'linkedin',
+  },
+  Telegram: {
+    href: 'https://t.me/grnbr',
+    id: 'telegram',
+  },
+} as const satisfies Record<NavSocialKeys, NavigationItem<NavigationSocialId>>;

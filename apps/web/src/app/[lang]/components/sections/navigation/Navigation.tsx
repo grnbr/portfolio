@@ -30,8 +30,8 @@ const Navigation: FC<NavigationProps> = ({ dict }) => {
                   <Image
                     alt={`${item.id}-card-image`}
                     fill
-                    objectPosition="bottom"
-                    src={item.img}
+                    src={`/images/home/navigation/${item.id}.png`}
+                    style={{ objectPosition: 'bottom' }}
                   />
                 </div>
               </Link>

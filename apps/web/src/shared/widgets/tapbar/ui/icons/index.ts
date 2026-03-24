@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { NavigationId } from '@/shared/types/navigationTypes';
+import { NavigationId } from '@/shared/dictionaries/types/navigationTypes';
 import BagIcon from '@/shared/ui/icon/icons/BagIcon';
 import TechIcon from '@/shared/ui/icon/icons/BrowserIcon';
 import HomeIcon from '@/shared/ui/icon/icons/HomeIcon';
@@ -12,6 +12,6 @@ export const NAV_TAPBAR_ICONS: Record<NavigationId, FC<IconProps>> = {
   about: UserIcon,
   contact: MessageIcon,
   home: HomeIcon,
-  'tech-stack': TechIcon,
+  techstack: TechIcon,
   work: BagIcon,
 } as const;

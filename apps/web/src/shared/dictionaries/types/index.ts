@@ -1,10 +1,13 @@
-import { Project } from '@/shared/types/data';
-import { HeroNavigation, Navigation } from '@/shared/types/navigationTypes';
+import {
+  HeroNavigation,
+  Navigation,
+} from '@/shared/dictionaries/types/navigationTypes';
+import { ProjectList } from '@/shared/dictionaries/types/projectsTypes';
 
 import { TechStackGroups } from '../types/techTypes';
+import { ContactInputs } from './contactTypes';
 import {
   ButtonDict,
-  ContactInputs,
   FormField,
   PageHeader,
   Paragraph,
@@ -72,7 +75,7 @@ export type Dictionary = {
           subtitle: string;
           title: string;
         };
-        items: Project[];
+        items: ProjectList;
       };
     };
 

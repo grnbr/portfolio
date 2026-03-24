@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { FC } from 'react';
 
-import { NavHome } from '@/shared/types/navigationTypes';
+import { NavHome } from '@/shared/dictionaries/types/navigationTypes';
 import ButtonLink from '@/shared/ui/button/ButtonLink';
 import LogoIcon from '@/shared/ui/icon/icons/LogoIcon';
 

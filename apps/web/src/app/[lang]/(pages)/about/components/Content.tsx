@@ -27,7 +27,7 @@ const Content: FC<ContentProps> = ({ dict }) => {
             alt={portrait.alt}
             className={styles.image}
             fill
-            src={'/images/about/photo-min.webp'}
+            src={'/images/about/photo.webp'}
           />
         </div>
         <GetInTouchBtn

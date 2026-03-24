@@ -1,56 +1,20 @@
 import 'server-only';
 
-import { NavigationItems, NavSocialIds } from '@/shared/constants/navigation';
+import { NavigationItems, NavSocialItems } from '@/shared/constants/navigation';
 import { Dictionary } from '@/shared/dictionaries/types';
 
+import { ProjectItems } from './constants/projects';
 import { AppItems, DevTechItems, OsItems } from './constants/techItems';
 import { DictionaryData } from './types/sharedTypes';
 
 export const dictionaryData: DictionaryData = {
   navigation: {
     home: {
-      href: NavigationItems.Home.href,
-      id: NavigationItems.Home.id,
+      ...NavigationItems.Home,
       label: 'Главная',
     },
-    socials: {
-      Email: {
-        href: 'mailto:grigoriynbr@gmail.com',
-        text: 'почта',
-      },
-      Github: {
-        href: 'https://github.com/waterrDrinker',
-      },
-      LinkedIn: {
-        href: 'www.linkedin.com/in/григорий-найбауер-248a57381',
-        text: 'LinkedIn',
-      },
-      Resume: {
-        href: 'mailto:grigoriynbr@gmail.com',
-        text: 'резюме',
-      },
-      Telegram: {
-        href: 'https://t.me/grnbr',
-        text: 'телеграм',
-      },
-    },
   },
-  projects: [
-    {
-      description:
-        'Tatell разрабатывает бренды и продукты с нуля: от идеи и формулы до дизайна, упаковки, сертификации и запуска.',
-      id: 'tatell',
-      img: '/images/projects/Subbi.png',
-      linkBtn: {
-        href: 'https://tatellstudio.com/',
-        label: 'Посетить сайт',
-      },
-      title: 'Tatell — создание брендов и продуктов под ключ',
-    },
-  ],
 } as const;
-
-const navSocials = dictionaryData.navigation.socials;
 
 export const dictionary: Dictionary = {
   layout: {
@@ -62,49 +26,40 @@ export const dictionary: Dictionary = {
         home: dictionaryData.navigation.home,
         primary: {
           items: [
-            { ...dictionaryData.navigation.home },
+            dictionaryData.navigation.home,
             {
-              href: NavigationItems.About.href,
-              id: NavigationItems.About.id,
+              ...NavigationItems.About,
               label: 'Обо мне',
             },
             {
-              href: NavigationItems.Work.href,
-              id: NavigationItems.Work.id,
+              ...NavigationItems.Work,
               label: 'Работа',
             },
             {
-              href: NavigationItems.TechStack.href,
-              id: NavigationItems.TechStack.id,
               label: 'Стек',
+              ...NavigationItems.Techstack,
             },
             {
-              href: NavigationItems.Contact.href,
-              id: NavigationItems.Contact.id,
               label: 'Связь',
+              ...NavigationItems.Contact,
             },
           ],
-          title: null,
         },
         socials: {
           items: [
             {
-              href: navSocials.LinkedIn.href,
-              id: NavSocialIds.LinkedIn,
+              ...NavSocialItems.Linkedin,
               label: 'LinkedIn',
             },
             {
-              href: navSocials.Telegram.href,
-              id: NavSocialIds.Telegram,
               label: 'Telegram',
+              ...NavSocialItems.Telegram,
             },
             {
-              href: navSocials.Github.href,
-              id: NavSocialIds.Github,
               label: 'Github',
+              ...NavSocialItems.Github,
             },
           ],
-          title: null,
         },
       },
     },
@@ -129,10 +84,10 @@ export const dictionary: Dictionary = {
       closingParagraph: {
         links: {
           Telegram: {
-            href: navSocials.Telegram.href,
+            href: NavSocialItems.Telegram.href,
           },
           почте: {
-            href: navSocials.Email.href,
+            href: NavSocialItems.Gmail.href,
           },
         },
         text: 'Не стесняйтесь связаться со мной по почте или пишите мне в Telegram.',
@@ -215,7 +170,40 @@ export const dictionary: Dictionary = {
           subtitle: 'Давайте превратим вашу идею в визуальную реальность',
           title: 'Ваш проект здесь',
         },
-        items: dictionaryData.projects,
+        items: [
+          {
+            ...ProjectItems.Tatell,
+            description: [
+              {
+                type: 'text',
+                value:
+                  'Разработал для компании Tatell лендинг. Из особенностей:',
+              },
+              {
+                items: [
+                  'анимированное интро',
+                  'гибкие шрифты и UI для популярных разрешений',
+                  'прокручиваемая секция-презентация',
+                  'форма обратной связи с отправкой на email',
+                ],
+                type: 'list',
+              },
+            ],
+            title: 'Tatell — создание брендов и продуктов под ключ',
+          },
+          {
+            ...ProjectItems.Neomaind,
+            description: [
+              {
+                type: 'text',
+                value:
+                  'Получил проект с готовым UI-китом, провёл масштабный рефакторинг и оптимизацию. Разработал два продукта до стабильного релиза — e-commerce магазин и админ-панель. Интегрировал клиентскую часть платёжного шлюза, сократил время загрузки страниц на ~40% и внедрил тестирование, что снизило количество ошибок в продакшене.',
+              },
+            ],
+            title:
+              'Neomaind Shop — маркетплейс нового поколения дизайнерской мебели',
+          },
+        ],
       },
     },
     home: {
@@ -235,18 +223,14 @@ export const dictionary: Dictionary = {
       navigation: {
         items: [
           {
-            href: NavigationItems.About.href,
-            id: NavigationItems.About.id,
-            img: '/images/home/navigation/about-min.png',
+            ...NavigationItems.About,
             subtitle: 'Кто я и чем занимаюсь',
             title: 'Обо мне',
           },
           {
-            href: NavigationItems.TechStack.href,
-            id: NavigationItems.TechStack.id,
-            img: '/images/home/navigation/tech-stack-min.png',
+            ...NavigationItems.Techstack,
             subtitle:
-              'Инструменты разработки, приложения, устройства и игры, которыми я пользуюсь и играю.',
+              'Инструменты разработки, приложения и операционные системы, которые я использую',
             title: 'Технологический стек',
           },
         ],

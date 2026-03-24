@@ -1,7 +1,21 @@
+import clsx from 'clsx';
+import { FC } from 'react';
+
 import styles from './Loader.module.scss';
 
-const Loader = () => {
-  return <span className={styles.loader} />;
+type LoaderProps = {
+  className?: string;
+  options?: {
+    color?: 'default' | 'white';
+  };
+};
+
+const Loader: FC<LoaderProps> = ({ className, options }) => {
+  const { color = 'default' } = options ?? {};
+
+  return (
+    <span className={clsx(styles.loader, className, styles[color])} />
+  );
 };
 
 export default Loader;

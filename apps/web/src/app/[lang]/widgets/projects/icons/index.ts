@@ -1,9 +1,9 @@
 import { FC } from 'react';
 
-import TattellIcon from '@/app/[lang]/widgets/projects/icons/TattellIcon';
-import { ProjectId } from '@/shared/types/data';
+import NeomaindIcon from '@/app/[lang]/widgets/projects/icons/NeomaindIcon';
+import { ProjectId } from '@/shared/dictionaries/types/projectsTypes';
 import { IconProps } from '@/shared/ui/icon/iconTypes';
 
-export const PROJECT_ICONS: Record<ProjectId, FC<IconProps>> = {
-  tatell: TattellIcon,
+export const PROJECT_ICONS: Partial<Record<ProjectId, FC<IconProps>>> = {
+  neomaind: NeomaindIcon,
 };

@@ -5,9 +5,9 @@ import { usePathname } from 'next/navigation';
 import { FC } from 'react';
 
 import { NavigationItems } from '@/shared/constants/navigation';
+import { PrimaryNavigation } from '@/shared/dictionaries/types/navigationTypes';
 import formatHref from '@/shared/helpers/formatHref';
 import { Locale } from '@/shared/i18n/i18n-config';
-import { PrimaryNavigation } from '@/shared/types/navigationTypes';
 import ButtonLink from '@/shared/ui/button/ButtonLink';
 
 import styles from '../Header.module.scss';

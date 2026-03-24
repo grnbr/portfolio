@@ -1,7 +1,7 @@
 import { FC, InputHTMLAttributes } from 'react';
 
 import { Dictionary } from '@/shared/dictionaries/types';
-import { ContactInputIds } from '@/shared/dictionaries/types/sharedTypes';
+import { ContactInputIds } from '@/shared/dictionaries/types/contactTypes';
 import Button from '@/shared/ui/button/Button';
 
 import styles from './Form.module.scss';

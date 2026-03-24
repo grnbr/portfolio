@@ -43,8 +43,7 @@
     @include mixins.media-max(mobile) {
       svg {
         path {
-          opacity: 0.5;
-          fill: var(--white);
+          opacity: 0.75;
         }
       }
     }

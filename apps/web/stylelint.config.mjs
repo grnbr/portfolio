@@ -12,6 +12,7 @@ export default {
             '/^padding/',
             '/^margin/',
             '/^inset/',
+            '/^flex/',
             'box-shadow',
             'transform',
             'width',

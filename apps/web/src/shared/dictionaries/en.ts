@@ -1,8 +1,9 @@
 import 'server-only';
 
-import { NavigationItems, NavSocialIds } from '@/shared/constants/navigation';
+import { NavigationItems, NavSocialItems } from '@/shared/constants/navigation';
 import { Dictionary } from '@/shared/dictionaries/types';
 
+import { ProjectItems } from './constants/projects';
 import { AppItems, DevTechItems, OsItems } from './constants/techItems';
 import { DictionaryData } from './types/sharedTypes';
 
@@ -13,44 +14,8 @@ export const dictionaryData: DictionaryData = {
       id: NavigationItems.Home.id,
       label: 'Home',
     },
-    socials: {
-      Email: {
-        href: 'mailto:grigoriynbr@gmail.com',
-        text: 'e-mail',
-      },
-      Github: {
-        href: 'https://github.com/waterrDrinker',
-      },
-      LinkedIn: {
-        href: 'www.linkedin.com/in/григорий-найбауер-248a57381',
-        text: 'LinkedIn',
-      },
-      Resume: {
-        href: 'mailto:grigoriynbr@gmail.com',
-        text: 'Resume',
-      },
-      Telegram: {
-        href: 'https://t.me/grnbr',
-        text: 'Telegram',
-      },
-    },
   },
-  projects: [
-    {
-      description:
-        'Tatell разрабатывает бренды и продукты с нуля: от идеи и формулы до дизайна, упаковки, сертификации и запуска.',
-      id: 'tatell',
-      img: '/images/projects/Subbi.png',
-      linkBtn: {
-        href: 'https://tatellstudio.com/',
-        label: 'Visit Site',
-      },
-      title: 'Tatell — создание брендов и продуктов под ключ',
-    },
-  ],
 } as const;
-
-const navSocials = dictionaryData.navigation.socials;
 
 export const dictionary: Dictionary = {
   layout: {
@@ -62,26 +27,22 @@ export const dictionary: Dictionary = {
         home: dictionaryData.navigation.home,
         primary: {
           items: [
-            { ...dictionaryData.navigation.home },
+            dictionaryData.navigation.home,
             {
-              href: NavigationItems.About.href,
-              id: NavigationItems.About.id,
+              ...NavigationItems.About,
               label: 'About',
             },
             {
-              href: NavigationItems.Work.href,
-              id: NavigationItems.Work.id,
               label: 'Work',
+              ...NavigationItems.Work,
             },
             {
-              href: NavigationItems.TechStack.href,
-              id: NavigationItems.TechStack.id,
               label: 'Techs',
+              ...NavigationItems.Techstack,
             },
             {
-              href: NavigationItems.Contact.href,
-              id: NavigationItems.Contact.id,
               label: 'Contact',
+              ...NavigationItems.Contact,
             },
           ],
           title: 'Links',
@@ -89,19 +50,16 @@ export const dictionary: Dictionary = {
         socials: {
           items: [
             {
-              href: navSocials.LinkedIn.href,
-              id: NavSocialIds.LinkedIn,
+              ...NavSocialItems.Linkedin,
               label: 'LinkedIn',
             },
             {
-              href: navSocials.Telegram.href,
-              id: NavSocialIds.Telegram,
               label: 'Telegram',
+              ...NavSocialItems.Telegram,
             },
             {
-              href: navSocials.Github.href,
-              id: NavSocialIds.Github,
               label: 'Github',
+              ...NavSocialItems.Github,
             },
           ],
           title: 'Elsewhere',
@@ -129,10 +87,10 @@ export const dictionary: Dictionary = {
       closingParagraph: {
         links: {
           'e-mail': {
-            href: navSocials.Email.href,
+            href: NavSocialItems.Gmail.href,
           },
           Telegram: {
-            href: navSocials.Telegram.href,
+            href: NavSocialItems.Telegram.href,
           },
         },
         text: 'Feel free to reach out via e-mail or write me on Telegram.',
@@ -215,10 +173,42 @@ export const dictionary: Dictionary = {
       },
       projects: {
         emptyState: {
-          subtitle: 'Let’s turn your idea into a visual reality',
-          title: 'Your project goes here',
+          subtitle: "Let's turn your idea into visual reality",
+          title: 'Your project here',
         },
-        items: dictionaryData.projects,
+        items: [
+          {
+            ...ProjectItems.Tatell,
+            description: [
+              {
+                type: 'text',
+                value: 'Developed a landing page for Tatell. Key features:',
+              },
+              {
+                items: [
+                  'animated intro',
+                  'flexible typography and UI for popular resolutions',
+                  'scrollable presentation section',
+                  'contact form with email delivery',
+                ],
+                type: 'list',
+              },
+            ],
+            title: 'Tatell — end-to-end brand and product creation',
+          },
+          {
+            ...ProjectItems.Neomaind,
+            description: [
+              {
+                type: 'text',
+                value:
+                  'Inherited a project with a ready UI kit, performed large-scale refactoring and optimization. Developed two products to stable release — an e-commerce store and an admin panel. Integrated the client-side of a payment gateway, reduced page load time by ~40%, and introduced testing that decreased production errors.',
+              },
+            ],
+            title:
+              'Neomaind Shop — next-generation designer furniture marketplace',
+          },
+        ],
       },
     },
     home: {
@@ -237,17 +227,13 @@ export const dictionary: Dictionary = {
       navigation: {
         items: [
           {
-            href: NavigationItems.About.href,
-            id: NavigationItems.About.id,
-            img: '/images/home/navigation/about-min.png',
+            ...NavigationItems.About,
             subtitle: 'Who I am and what I do',
             title: 'About me',
           },
           {
-            href: NavigationItems.TechStack.href,
-            id: NavigationItems.TechStack.id,
-            img: '/images/home/navigation/tech-stack-min.png',
-            subtitle: 'The dev tools I use.',
+            subtitle: 'The dev tools, apps and OS I use',
+            ...NavigationItems.Techstack,
             title: 'Tech Stack',
           },
         ],

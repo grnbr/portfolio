@@ -9,6 +9,10 @@
   border-radius: 50%;
 
   animation: rotation 0.8s linear infinite;
+
+  &.white {
+    border-top-color: var(--white);
+  }
 }
 
 @keyframes rotation {

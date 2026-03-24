@@ -12,3 +12,22 @@
 @mixin text-line-height {
   line-height: 1.5;
 }
+
+@mixin list-style {
+  padding-left: 1.25rem;
+  list-style-type: disc;
+
+  &:lang(ru) {
+    list-style: none;
+
+    li::before {
+      content: '— ';
+      margin-right: 0.3125rem;
+    }
+  }
+
+  &:lang(en) {
+    padding-left: 1.25rem;
+    list-style-type: disc;
+  }
+}

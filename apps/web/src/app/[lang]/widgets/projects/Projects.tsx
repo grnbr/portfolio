@@ -2,7 +2,6 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import { FC } from 'react';
 
-import { PROJECT_ICONS } from '@/app/[lang]/widgets/projects/icons';
 import GetInTouchBtn from '@/shared/components/buttons/GetInTouchBtn';
 import { Dictionary } from '@/shared/dictionaries/types';
 import ButtonLink from '@/shared/ui/button/ButtonLink';
@@ -10,6 +9,8 @@ import Icon from '@/shared/ui/icon/Icon';
 import ArrowRightIcon from '@/shared/ui/icon/icons/ArrowRightIcon';
 import StarsIcon from '@/shared/ui/icon/icons/StarsIcon';
 
+import ProjectShowcase from './components/ProjectShowcase';
+import { PROJECT_ICONS } from './icons';
 import styles from './Projects.module.scss';
 
 type ProjectsProps = {
@@ -31,16 +32,42 @@ const Projects: FC<ProjectsProps> = ({
   return (
     <ul className={clsx(styles.projects, className)}>
       {items.map((project) => {
-        const ProjectIcon = PROJECT_ICONS[project.id];
+        const LogoTsx = PROJECT_ICONS[project.id];
 
         return (
           <li className={styles.project} key={project.id}>
-            <div className={styles.content}>
-              <span className={styles.iconWrapper}>
-                <ProjectIcon />
+            <div className={styles.textContent}>
+              <span className={styles.logoWrapper}>
+                {LogoTsx ? (
+                  <LogoTsx />
+                ) : (
+                  <Image
+                    alt={`${project.id}-logo`}
+                    height="70"
+                    src={`/projects/${project.id}/logo.svg`}
+                    width="70"
+                  />
+                )}
               </span>
+
               <h3 className={styles.title}>{project.title}</h3>
-              <p className={styles.description}>{project.description}</p>
+              <div className={styles.description}>
+                {project.description.map((item, i) =>
+                  item.type === 'text' ? (
+                    <p className={styles.text} key={i}>
+                      {item.value}
+                    </p>
+                  ) : (
+                    <ul className={styles.list} key={i}>
+                      {item.items.map((item, i) => (
+                        <li className={styles.listItem} key={i}>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  ),
+                )}
+              </div>
               {project.linkBtn && (
                 <ButtonLink href={project.linkBtn.href} target="_blank">
                   {project.linkBtn.label}
@@ -51,12 +78,10 @@ const Projects: FC<ProjectsProps> = ({
               )}
             </div>
 
-            <div className={styles.imageContainer}>
-              <Image
-                alt={`${project.id}-image`}
-                className={styles.image}
-                fill
-                src={project.img}
+            <div className={styles.showcaseContainer}>
+              <ProjectShowcase
+                projectId={project.id}
+                showCase={project.showCase}
               />
             </div>
           </li>

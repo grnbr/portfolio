@@ -53,9 +53,9 @@ const Hero: FC<HeroProps> = ({ dict, locale }) => {
           alt="Photo of Grigory"
           className={styles.image}
           fill
-          objectFit="cover"
           priority
           src="/images/home/hero-image.webp"
+          style={{ objectFit: 'cover' }}
         />
       </div>
     </Container>

@@ -1,0 +1,155 @@
+@use 'styles/utils/functions' as f;
+@use 'styles/utils/mixins' as m;
+@use 'sass:map';
+
+$ratios: (
+  iphone13: calc(400 / 865),
+  desktop: calc(1920 / 1080),
+);
+
+.projectShowcase {
+  position: relative;
+  padding: 1rem;
+  padding-top: 0;
+
+  @include m.media-min(mobile) {
+    height: 100%;
+    padding-top: unset;
+    padding-bottom: unset;
+  }
+}
+
+.showcase {
+  @include m.glow-effect(10px);
+
+  position: relative;
+
+  overflow: hidden;
+
+  height: 400px;
+  margin-inline: auto;
+
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  @include m.media-min(mobile) {
+    margin-inline: unset;
+
+    &.mobile,
+    &.desktop {
+      position: absolute;
+      z-index: 3;
+    }
+  }
+
+  &.mobile {
+    &.iphone13 {
+      aspect-ratio: calc(1311 / 2646);
+
+      @include m.media-min(mobile) {
+        right: 15%;
+        bottom: -7%;
+        transform: rotate(7deg);
+        height: 58%;
+      }
+      @media (width >= 35.5em) {
+        height: 77%;
+      }
+      @include m.media-min(tablet) {
+        height: 100%;
+      }
+    }
+  }
+
+  &.desktop {
+    aspect-ratio: calc(2574 / 2144);
+    height: 100%;
+
+    @include m.media-min(mobile) {
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+      height: initial;
+    }
+    @include m.media-min(desktop) {
+      width: 70%;
+    }
+    @include m.clamp-bp(
+      right,
+      (
+        ultra: 2rem,
+      ),
+      (
+        auto-interpolate: true,
+      )
+    );
+  }
+
+  .overlay {
+    pointer-events: none;
+    user-select: none;
+    position: relative;
+    z-index: 3;
+  }
+
+  .loaderWrapper {
+    // stylelint-disable-next-line unit-disallowed-list
+    --size: 40px;
+
+    @include m.media-min(mobile) {
+      // stylelint-disable-next-line unit-disallowed-list
+      --size: 75px;
+    }
+
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: var(--size);
+    height: var(--size);
+  }
+
+  .video,
+  .posterWrapper {
+    position: absolute;
+    z-index: 2;
+    overflow: hidden;
+    border-radius: 10%;
+
+    @include m.media-min(mobile) {
+      top: 10px;
+    }
+
+    &.desktop {
+      aspect-ratio: map.get($ratios, 'desktop');
+    }
+
+    &.mobile {
+      &.iphone13 {
+        top: 2%;
+        left: 50%;
+        transform: translateX(-50%);
+
+        aspect-ratio: map.get($ratios, 'iphone13');
+        height: 97.5%;
+      }
+    }
+  }
+
+  .imageWrapper {
+    position: relative;
+    z-index: 4;
+
+    &.desktop {
+      position: absolute;
+      top: 4%;
+      left: calc(50% - 1px);
+      transform: translateX(-50%);
+
+      aspect-ratio: map.get($ratios, 'desktop');
+      width: 91%;
+    }
+  }
+}

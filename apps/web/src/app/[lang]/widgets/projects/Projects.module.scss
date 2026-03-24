@@ -1,3 +1,4 @@
+@use 'styles/utils/mixins' as m;
 @use 'styles/utils/tokens' as t;
 @use 'styles/utils/tokens';
 @use 'styles/utils/mixins';
@@ -31,19 +32,30 @@
 }
 
 .project {
-  @include mixins.flex-center-vertical;
-
   position: relative;
+
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
   align-items: stretch;
 
   @include mixins.media-min(mobile) {
+    flex-direction: row;
+    height: auto;
     min-height: 35.3125rem;
   }
 
-  .content {
+  .textContent,
+  .showcaseContainer {
+    @include m.media-min(mobile) {
+      flex: 1;
+    }
+  }
+
+  .textContent {
     isolation: isolate;
     position: relative;
-    z-index: 1;
+    z-index: 2;
 
     display: flex;
     flex-direction: column;
@@ -63,7 +75,7 @@
       );
     }
 
-    .iconWrapper {
+    .logoWrapper {
       display: block;
       width: 70px;
       height: 70px;
@@ -79,26 +91,26 @@
     }
 
     .description {
+      color: var(--text-primary);
+
       @include mixins.text-line-height;
 
       @include mixins.media-min(mobile) {
         flex: 1;
       }
+
+      .list {
+        @include m.list-style;
+      }
     }
   }
 
-  .imageContainer {
-    @include mixins.desktop-only;
+  .showcaseContainer {
+    // @include mixins.desktop-only;
+    // flex: 1;
 
     @include mixins.media-min(mobile) {
-      position: absolute;
-      right: 0;
-      bottom: 0;
-
-      flex-shrink: 0;
-
-      aspect-ratio: calc(457 / 565);
-      height: 100%;
+      position: relative;
     }
   }
 }

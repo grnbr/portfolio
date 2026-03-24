@@ -53,3 +53,9 @@
     @content;
   }
 }
+
+@mixin glow-effect($width: 30px, $opacity: 0.3) {
+  @include theme-dark {
+    filter: drop-shadow(0 0 $width rgba(#fff, $opacity));
+  }
+}
