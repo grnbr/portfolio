@@ -1,7 +1,6 @@
 'use client';
 
 import { AnimatePresence, motion } from 'motion/react';
-import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 
 import Themes, { Theme } from '@/shared/constants/theme';
@@ -18,28 +17,47 @@ const iconVariants = {
   visible: { opacity: 1, rotate: 0, scale: 1 },
 };
 
+const getTheme = () =>
+  (document.documentElement.getAttribute('data-theme') as Theme | undefined) ||
+  Themes.Light;
+
 const ThemeSwitcher = () => {
-  const { resolvedTheme, setTheme } = useTheme();
+  const [theme, setTheme] = useState<null | Theme>(null);
   const [isMounted, setIsMounted] = useState(false);
   const [isLoader, setIsLoader] = useState(true);
 
-  useEffect(() => {
-    const id = requestAnimationFrame(() => setIsMounted(true));
-    return () => cancelAnimationFrame(id);
-  }, []);
+  // useEffect(() => {
+  //   const id = requestAnimationFrame(() => setIsMounted(true));
+  //   return () => cancelAnimationFrame(id);
+  // }, []);
 
-  const onChangeTheme = (theme: Theme) => {
-    setTheme(theme);
+  // const onChangeTheme = (theme: Theme) => {
+  //   setTheme(theme);
+  // };
+
+  const onChangeTheme = () => {
+    const next = theme === Themes.Dark ? Themes.Light : Themes.Dark;
+    document.documentElement.setAttribute('data-theme', next);
+    document.cookie = `theme=${next}; path=/; max-age=31536000`;
+    setTheme(next);
   };
 
-  const isDark = resolvedTheme === Themes.Dark;
+  const isDark = theme === Themes.Dark;
 
   useEffect(() => {
-    if (isMounted && resolvedTheme) {
+    const id = requestAnimationFrame(() => {
+      setIsMounted(true);
+      setTheme(getTheme());
+    });
+
+    return () => cancelAnimationFrame(id);
+  }, []);
+  useEffect(() => {
+    if (isMounted && theme) {
       const timeout = setTimeout(() => setIsLoader(false), 300);
       return () => clearTimeout(timeout);
     }
-  }, [isMounted, resolvedTheme]);
+  }, [isMounted, theme]);
 
   return (
     <div className={styles.themeSwitcher}>
@@ -56,13 +74,13 @@ const ThemeSwitcher = () => {
             <Loader />
           </motion.div>
         ) : (
-          resolvedTheme && (
+          theme && (
             <Button
               aria-label={
                 isDark ? 'Switch to light theme' : 'Switch to dark theme'
               }
               aria-pressed={isDark}
-              onClick={() => onChangeTheme(isDark ? Themes.Light : Themes.Dark)}
+              onClick={() => onChangeTheme()}
             >
               <motion.div
                 animate="visible"

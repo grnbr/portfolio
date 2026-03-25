@@ -2,9 +2,10 @@ import type { Metadata } from 'next';
 
 import './globals.scss';
 
-import { ThemeProvider } from 'next-themes';
+import { cookies } from 'next/headers';
 
 import BgGradient from '@/shared/components/bg-bradient/BgGradient';
+import Themes from '@/shared/constants/theme';
 import { getDictionary } from '@/shared/i18n/get-dictionary';
 import { Locale, Locales } from '@/shared/i18n/i18n-config';
 import Footer from '@/shared/widgets/footer/Footer';
@@ -27,20 +28,33 @@ export default async function RootLayout({
 }: LayoutProps<'/[lang]'>) {
   const lang = (await params).lang as Locale;
   const dictionary = await getDictionary(lang);
+  const theme = (await cookies()).get('theme')?.value || Themes.Light;
 
   return (
-    <html lang={lang} suppressHydrationWarning>
+    <html data-theme={theme} lang={lang} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+        if (!document.cookie.includes('theme')) {
+          const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          document.cookie = 'theme=system; path=/; max-age=31536000';
+          document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+        }
+      `,
+          }}
+        />
+      </head>
+
       <body>
-        <ThemeProvider defaultTheme="system">
-          <BgGradient component="header" />
-          <Header dict={dictionary} lang={lang} />
+        <BgGradient component="header" />
+        <Header dict={dictionary} lang={lang} />
 
-          <main>{children}</main>
+        <main>{children}</main>
 
-          <Footer dict={dictionary} />
-          <BgGradient component="footer" />
-          <Tapbar dict={dictionary} lang={lang} />
-        </ThemeProvider>
+        <Footer dict={dictionary} />
+        <BgGradient component="footer" />
+        <Tapbar dict={dictionary} lang={lang} />
       </body>
     </html>
   );
