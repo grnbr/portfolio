@@ -1,3 +1,5 @@
+@use 'sass:list';
+
 @mixin flex-center {
   display: flex;
   align-items: center;
@@ -25,4 +27,16 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+@mixin stack($direction: column, $gap: 1rem) {
+  $valid-directions: row, row-reverse, column, column-reverse;
+
+  @if not list.index($valid-directions, $direction) {
+    @error "Invalid direction `#{$direction}`. Use: #{$valid-directions}";
+  }
+
+  display: flex;
+  flex-direction: $direction;
+  gap: $gap;
 }

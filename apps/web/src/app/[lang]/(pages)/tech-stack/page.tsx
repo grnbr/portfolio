@@ -5,7 +5,7 @@ import { TechGroupKeyValues } from '@/shared/dictionaries/types/techTypes';
 import { getDictionary } from '@/shared/i18n/get-dictionary';
 import { Locale } from '@/shared/i18n/i18n-config';
 import Article from '@/shared/ui/containers/Article';
-import { type Icon } from '@/shared/ui/icon/iconTypes';
+import { type IconComponent } from '@/shared/ui/icon/iconTypes';
 
 import styles from './Page.module.scss';
 import { TECH_STACK_TSX_ICONS } from './ui/icons';
@@ -28,7 +28,7 @@ export default async function Page({ params }: PageProps<'/[lang]'>) {
                 const getLogoTsx = (
                   groupKey: TechGroupKeyValues,
                   id: string,
-                ): Icon | undefined => {
+                ): IconComponent | undefined => {
                   return TECH_STACK_TSX_ICONS[groupKey]?.[id as never];
                 };
 

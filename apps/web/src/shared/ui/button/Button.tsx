@@ -1,16 +1,19 @@
 import clsx from 'clsx';
-import { ButtonHTMLAttributes, FC, PropsWithChildren } from 'react';
+import React, { ButtonHTMLAttributes, FC, PropsWithChildren } from 'react';
 
 import { ButtonCommonProps } from '@/shared/ui/button/types';
 
 import styles from './Button.module.scss';
 
 export type ButtonProps = ButtonCommonProps &
-  ButtonHTMLAttributes<HTMLButtonElement>;
+  ButtonHTMLAttributes<HTMLButtonElement> & {
+    ref?: React.Ref<HTMLButtonElement | null>;
+  };
 
 const Button: FC<PropsWithChildren<ButtonProps>> = ({
   children,
   className,
+  ref,
   type = 'button',
   variant = 'ghost',
   ...props
@@ -18,7 +21,7 @@ const Button: FC<PropsWithChildren<ButtonProps>> = ({
   const classNames = clsx(styles.button, styles[variant], className);
 
   return (
-    <button className={classNames} type={type} {...props}>
+    <button className={classNames} ref={ref} type={type} {...props}>
       {children}
     </button>
   );

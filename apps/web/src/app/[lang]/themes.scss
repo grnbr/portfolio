@@ -5,6 +5,7 @@
   /* General */
   --bg-color: #fbfbfb;
   --color-text: var(--onyx);
+  --color-text-inverted: var(--white);
   --text-primary: var(--dark-grey);
   --text-heading: var(--color-text);
   --text-label: var(--text-heading);
@@ -13,7 +14,7 @@
 
   /* Header */
   --header-bg: var(--white-25);
-  --header-border: var(--white-25);
+  --header-border: var(--medium-grey-10);
   --header-text: var(--onyx);
 
   /* Footer */
@@ -43,6 +44,7 @@
 
   /* Icons */
   --icon-primary: var(--color-text);
+  --icon-primary-inverted: var(--color-text-inverted);
 
   // Input
   --input-placeholder: var(--dark-grey);
@@ -60,6 +62,7 @@
   /* General */
   --bg-color: var(--black);
   --color-text: var(--white);
+  --color-text-inverted: var(--onyx);
   --text-heading: var(--color-text);
   --text-label: var(--text-heading);
   --text-highlighted: var(--color-text);
@@ -67,7 +70,7 @@
 
   /* Header */
   --header-bg: var(--black-30);
-  --header-border: transparent;
+  --header-border: var(--medium-grey-25);
   --header-text: var(--white-70);
 
   // Footer
@@ -101,6 +104,7 @@
 
   /* Icons */
   --icon-primary: var(--color-text);
+  --icon-primary-inverted: var(--color-text-inverted);
 
   // Input
   --input-placeholder: var(--medium-grey-50);

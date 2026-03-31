@@ -4,7 +4,9 @@ import { type NextRequest, NextResponse } from 'next/server';
 
 import { i18n, Locale } from '@/shared/i18n/i18n-config';
 
-export function proxy(request: NextRequest) {
+import { DefaultTheme, ThemeValues } from './shared/constants/theme';
+
+const handleLocale = (request: NextRequest, response: NextResponse) => {
   const { pathname } = request.nextUrl;
 
   const hasPathnameLocale = i18n.locales.some(
@@ -14,7 +16,6 @@ export function proxy(request: NextRequest) {
   if (hasPathnameLocale) {
     const localeFromPath = pathname.split('/')[1] as Locale;
 
-    const response = NextResponse.next();
     response.cookies.set('locale', localeFromPath, {
       maxAge: 60 * 60 * 24 * 365,
       path: '/',
@@ -28,12 +29,8 @@ export function proxy(request: NextRequest) {
   request.nextUrl.pathname = `/${locale}${pathname}`;
   // e.g. incoming request is /products
   // The new URL is now /en-US/products
-  return NextResponse.redirect(request.nextUrl);
-}
 
-export const config = {
-  // Matcher ignoring `/_next/` and `/api/`
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico|.*\\.).*)'],
+  return NextResponse.redirect(request.nextUrl);
 };
 
 function getLocale(request: NextRequest): string | undefined {
@@ -52,3 +49,33 @@ function getLocale(request: NextRequest): string | undefined {
 
   return match(languages, locales, defaultLocale);
 }
+
+const handleTheme = (request: NextRequest, response: NextResponse) => {
+  const theme = request.cookies.get('theme')?.value;
+  const isValidTheme =
+    theme !== undefined && (ThemeValues as readonly string[]).includes(theme);
+
+  if (!isValidTheme) {
+    const defaulttheme: DefaultTheme = 'system';
+    response.cookies.set('theme', defaulttheme, {
+      maxAge: 60 * 60 * 24 * 365, // 1 year
+      path: '/',
+    });
+  }
+};
+
+export function proxy(request: NextRequest) {
+  const response = NextResponse.next();
+  const localeResponse = handleLocale(request, response);
+
+  if (localeResponse === response) {
+    handleTheme(request, response);
+  }
+
+  return localeResponse;
+}
+
+export const config = {
+  // Matcher ignoring `/_next/` and `/api/`
+  matcher: ['/((?!api|_next/static|_next/image|favicon.ico|.*\\.).*)'],
+};

@@ -6,6 +6,7 @@ import Logo from '@/shared/components/logo/Logo';
 import { Dictionary } from '@/shared/dictionaries/types';
 import { Locale } from '@/shared/i18n/i18n-config';
 import ButtonLink from '@/shared/ui/button/ButtonLink';
+import Container from '@/shared/ui/containers/Container';
 import Icon from '@/shared/ui/icon/Icon';
 import { NAV_HEADER_SOCIAL_ICONS } from '@/shared/widgets/header/ui/icons';
 import LocaleSwitcher from '@/shared/widgets/header/ui/LocaleSwitcher';
@@ -25,7 +26,7 @@ const Header: FC<HeaderProps> = ({ dict, lang }) => {
   const LogoJSX = <Logo className={styles.logoLink} home={navigation.home} />;
 
   return (
-    <header className={styles.header}>
+    <Container as="header" className={styles.header} id="header">
       <div className={styles.container}>
         {LogoJSX}
 
@@ -103,12 +104,12 @@ const Header: FC<HeaderProps> = ({ dict, lang }) => {
 
             <div className={styles.switchers}>
               <LocaleSwitcher currentLang={lang} />
-              <ThemeSwitcher />
+              <ThemeSwitcher dict={dict} />
             </div>
           </div>
         </div>
       </div>
-    </header>
+    </Container>
   );
 };
 

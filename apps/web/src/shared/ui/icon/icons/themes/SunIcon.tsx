@@ -1,16 +1,15 @@
 import { FC } from 'react';
 
-import { IconProps } from '../iconTypes';
-import useIconColor from '../useIconColor';
+import { IconPropsOptions } from '../../iconTypes';
+import useIconColor from '../../useIconColor';
 
-type SunIconProps = IconProps;
+type SunIconProps = IconPropsOptions;
 
-const SunIcon: FC<SunIconProps> = ({ className, options }) => {
-  const { primaryColor } = useIconColor({ color: options?.elementsColor });
+const SunIcon: FC<SunIconProps> = ({ isInvertedDefaultColor }) => {
+  const { primaryColor } = useIconColor({ isInvertedDefaultColor });
 
   return (
     <svg
-      className={className}
       fill="none"
       height="24"
       viewBox="0 0 24 24"

@@ -6,7 +6,7 @@ import useIconColor from '../useIconColor';
 type SendIconProps = IconProps;
 
 const SendIcon: FC<SendIconProps> = ({ options }) => {
-  const { primaryColor } = useIconColor({ color: options?.elementsColor });
+  const { primaryColor } = useIconColor({ elementsColor: options?.elementsColor });
 
   return (
     <svg

@@ -6,7 +6,7 @@ import useIconColor from '../../useIconColor';
 type GithubIconProps = IconProps;
 
 const GithubIcon: FC<GithubIconProps> = ({ options }) => {
-  const { primaryColor } = useIconColor({ color: options?.elementsColor });
+  const { primaryColor } = useIconColor({ elementsColor: options?.elementsColor });
 
   return (
     <svg

@@ -7,7 +7,7 @@ type LogoIconProps = IconProps;
 
 const LogoIcon: FC<LogoIconProps> = ({ className, options }) => {
   const { height, width } = options ?? {};
-  const { primaryColor } = useIconColor({ color: options?.elementsColor });
+  const { primaryColor } = useIconColor({ elementsColor: options?.elementsColor });
 
   return (
     <svg

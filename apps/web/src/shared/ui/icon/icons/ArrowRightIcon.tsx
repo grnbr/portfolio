@@ -6,7 +6,7 @@ import useIconColor from '../useIconColor';
 type ArrowRightIconProps = IconProps;
 
 const ArrowRightIcon: FC<ArrowRightIconProps> = ({ className, options }) => {
-  const { primaryColor } = useIconColor({ color: options?.elementsColor });
+  const { primaryColor } = useIconColor({ elementsColor: options?.elementsColor });
 
   return (
     <svg

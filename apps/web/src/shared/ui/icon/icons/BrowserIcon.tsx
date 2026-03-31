@@ -7,7 +7,7 @@ import useIconColor from '../useIconColor';
 type TechIconProps = IconProps;
 
 const TechIcon: FC<TechIconProps> = ({ options }) => {
-  const { primaryColor, secondaryColor } = useIconColor({ color: options?.elementsColor });
+  const { primaryColor, secondaryColor } = useIconColor({ elementsColor: options?.elementsColor });
   const isFilled = options?.variant === 'fill';
 
   return (

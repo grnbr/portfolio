@@ -1,16 +1,15 @@
 import { FC } from 'react';
 
-import { IconProps } from '../iconTypes';
-import useIconColor from '../useIconColor';
+import { IconPropsOptions } from '../../iconTypes';
+import useIconColor from '../../useIconColor';
 
-type MoonIconProps = IconProps;
+type MoonIconProps = IconPropsOptions;
 
-const MoonIcon: FC<MoonIconProps> = ({ className, options }) => {
-  const { primaryColor } = useIconColor({ color: options?.elementsColor });
+const MoonIcon: FC<MoonIconProps> = ({ isInvertedDefaultColor }) => {
+  const { primaryColor } = useIconColor({ isInvertedDefaultColor });
 
   return (
     <svg
-      className={className}
       fill="none"
       height="24"
       viewBox="0 0 24 24"

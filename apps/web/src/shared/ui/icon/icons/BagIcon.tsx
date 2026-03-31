@@ -8,7 +8,7 @@ type BagIconProps = IconProps;
 
 const BagIcon: FC<BagIconProps> = ({ options }) => {
   const { variant = 'outlined' } = options ?? {};
-  const { primaryColor, secondaryColor } = useIconColor({ color: options?.elementsColor });
+  const { primaryColor, secondaryColor } = useIconColor({ elementsColor: options?.elementsColor });
   const isFilled = variant === 'fill';
 
   return (

@@ -62,6 +62,11 @@ export const dictionary: Dictionary = {
           ],
         },
       },
+      theme: [
+        { label: 'Светлая', value: 'light' },
+        { label: 'Система', value: 'system' },
+        { label: 'Темная', value: 'dark' },
+      ],
     },
     header: {
       buttons: {
@@ -69,12 +74,13 @@ export const dictionary: Dictionary = {
           id: 'more',
           label: 'Еще',
         },
+        themeSwitcher: {
+          ariaLabel: {
+            close: 'Закрыть меню тем',
+            open: 'Открыть меню тем',
+          },
+        },
       },
-    },
-    themes: {
-      dark: 'Темная',
-      light: 'Светлая',
-      title: 'Тема: ',
     },
   },
 

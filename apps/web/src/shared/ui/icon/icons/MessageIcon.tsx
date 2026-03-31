@@ -9,7 +9,7 @@ type MessageIconProps = IconProps;
 const MessageIcon: FC<MessageIconProps> = ({ options }) => {
   const { variant = 'outlined' } = options ?? {};
   const isFilled = variant === 'fill';
-  const { primaryColor, secondaryColor } = useIconColor({ color: options?.elementsColor });
+  const { primaryColor, secondaryColor } = useIconColor({ elementsColor: options?.elementsColor });
 
   return (
     <motion.svg

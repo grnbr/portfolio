@@ -1,0 +1,42 @@
+@use 'styles/utils/mixins' as m;
+
+.themeSwitcher {
+  // position: relative;
+
+  .icon {
+    @include m.flex-center;
+
+    position: relative;
+    width: 1.5rem;
+    height: 1.5rem;
+
+    .iconWrapper {
+      position: absolute;
+      inset: 0;
+    }
+  }
+}
+
+.themeMenuContainer {
+  @include m.desktop-only;
+
+  position: absolute;
+  z-index: 4;
+  top: calc(100% + 5px);
+  right: 0;
+
+  .themeMenu {
+    .themeItem {
+      padding: 3px 0.3125rem;
+      border-radius: 7px;
+
+      &.selected {
+        background-color: var(--color-text);
+
+        .button {
+          color: var(--color-text-inverted);
+        }
+      }
+    }
+  }
+}

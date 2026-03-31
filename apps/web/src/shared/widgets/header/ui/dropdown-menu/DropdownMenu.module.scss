@@ -1,0 +1,13 @@
+@use 'styles/utils/tokens' as t;
+@use 'styles/utils/mixins' as m;
+
+.dropdownMenu {
+  // stylelint-disable-next-line unit-disallowed-list
+  $border-radius: 12px;
+
+  @include m.header-bg;
+  @include m.stack(column, 0.5rem);
+
+  padding: 1rem;
+  border-radius: $border-radius;
+}

@@ -1,5 +1,3 @@
-import 'server-only';
-
 import { NavigationItems, NavSocialItems } from '@/shared/constants/navigation';
 import { Dictionary } from '@/shared/dictionaries/types';
 
@@ -65,6 +63,11 @@ export const dictionary: Dictionary = {
           title: 'Elsewhere',
         },
       },
+      theme: [
+        { label: 'Light', value: 'light' },
+        { label: 'System', value: 'system' },
+        { label: 'Dark', value: 'dark' },
+      ],
     },
     header: {
       buttons: {
@@ -72,12 +75,13 @@ export const dictionary: Dictionary = {
           id: 'more',
           label: 'More',
         },
+        themeSwitcher: {
+          ariaLabel: {
+            close: 'Close Theme Menu',
+            open: 'Open Theme Menu',
+          },
+        },
       },
-    },
-    themes: {
-      dark: 'Dark',
-      light: 'Light',
-      title: 'Theme: ',
     },
   },
 

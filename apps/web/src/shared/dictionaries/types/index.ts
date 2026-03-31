@@ -12,6 +12,7 @@ import {
   PageHeader,
   Paragraph,
   ParagraphWithLinks,
+  ThemeList,
 } from './sharedTypes';
 
 export type Dictionary = {
@@ -22,17 +23,18 @@ export type Dictionary = {
 
     generic: {
       navigation: Navigation;
+      theme: ThemeList;
     };
     header: {
       buttons: {
         more: ButtonDict & { id: 'more' };
+        themeSwitcher: {
+          ariaLabel: {
+            close: string;
+            open: string;
+          };
+        };
       };
-    };
-
-    themes: {
-      dark: string;
-      light: string;
-      title: string;
     };
   };
 

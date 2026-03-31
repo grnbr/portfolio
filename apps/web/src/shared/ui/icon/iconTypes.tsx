@@ -1,13 +1,13 @@
-import { FC, SVGProps } from "react"
+import { FC, SVGProps } from 'react';
 
 export type GenericIconOptionsProps = {
-  opacity?: 'faded'
-}
+  opacity?: 'faded';
+};
 
 export type GenericIconProps = {
-  className?: string,
-  options?: GenericIconOptionsProps
-}
+  className?: string;
+  options?: GenericIconOptionsProps;
+};
 
 export type IconPropsOptions = GenericIconOptionsProps & {
   elementsColor?: {
@@ -15,15 +15,15 @@ export type IconPropsOptions = GenericIconOptionsProps & {
     secondaryColor?: string;
   };
   height?: string;
+  isInvertedDefaultColor?: boolean;
   size?: string;
   variant?: 'fill' | 'outlined';
   width?: string;
-}
+};
 
 export type IconProps = {
   className?: string;
   options?: IconPropsOptions;
 };
 
-export type Icon = FC | FC<IconProps> | FC<SVGProps<SVGElement>>
-
+export type IconComponent = FC | FC<IconProps> | FC<SVGProps<SVGElement>>;

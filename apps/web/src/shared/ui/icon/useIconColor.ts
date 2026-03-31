@@ -1,16 +1,24 @@
-import { IconPropsOptions } from "./iconTypes"
+import { IconPropsOptions } from './iconTypes';
 
-type UseIconColorProps = {
-  color?: IconPropsOptions['elementsColor']
-}
+type UseIconColorProps = Partial<
+  Pick<IconPropsOptions, 'elementsColor' | 'isInvertedDefaultColor'>
+>;
 
 const useIconColor = (props?: UseIconColorProps) => {
-  const { color } = props ?? {};
+  const { elementsColor, isInvertedDefaultColor } = props ?? {};
 
-  const primaryColor = color?.primaryColor ?? 'var(--icon-primary)'
-  const secondaryColor = color?.secondaryColor ?? 'var(--icon-primary)'
+  const primaryColor =
+    elementsColor?.primaryColor ??
+    (isInvertedDefaultColor
+      ? 'var(--icon-primary-inverted)'
+      : 'var(--icon-primary)');
+  const secondaryColor =
+    elementsColor?.secondaryColor ??
+    (isInvertedDefaultColor
+      ? 'var(--icon-primary-inverted)'
+      : 'var(--icon-primary)');
 
-  return { primaryColor, secondaryColor }
-}
+  return { primaryColor, secondaryColor };
+};
 
-export default useIconColor
+export default useIconColor;

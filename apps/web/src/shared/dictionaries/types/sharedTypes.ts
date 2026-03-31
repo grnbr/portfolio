@@ -1,5 +1,7 @@
 import { NavHome } from '@/shared/dictionaries/types/navigationTypes';
 
+import { ThemeItem } from '../../constants/theme';
+
 export type PageHeader = {
   subtitle: string;
   title: string;
@@ -31,3 +33,9 @@ export type DictionaryData = {
     home: NavHome;
   };
 };
+
+export type ThemeList = [
+  ThemeItem<'light'>,
+  ThemeItem<'system'>,
+  ThemeItem<'dark'>,
+];

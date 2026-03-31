@@ -6,7 +6,7 @@ import useIconColor from '../../useIconColor';
 type LinkedInIconProps = IconProps;
 
 const LinkedInIcon: FC<LinkedInIconProps> = ({ options }) => {
-  const { primaryColor } = useIconColor({ color: options?.elementsColor });
+  const { primaryColor } = useIconColor({ elementsColor: options?.elementsColor });
 
   return (
     <svg
