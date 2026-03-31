@@ -1,7 +1,7 @@
 'use client';
 
 import clsx from 'clsx';
-import { LayoutGroup, motion } from 'motion/react';
+import { motion } from 'motion/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { FC } from 'react';
@@ -25,55 +25,59 @@ const Tapbar: FC<TapbarProps> = ({ dict, lang }) => {
   const pathname = usePathname();
   const pathnameWithoutLang = '/' + pathname.split('/').slice(2).join();
 
+  const activeIndex = navigation.primary.items.findIndex(
+    (item) => item.href === pathnameWithoutLang,
+  );
+
+  const navigationLength = navigation.primary.items.length;
+
   return (
     <nav className={styles.tapbar}>
-      <LayoutGroup>
-        {navigation.primary.items.map((item, i) => {
-          const { href = '', label } = item;
+      {navigation.primary.items.map((item, i) => {
+        const { href = '', label } = item;
 
-          const TapbarIcon = NAV_TAPBAR_ICONS[item.id];
+        const TapbarIcon = NAV_TAPBAR_ICONS[item.id];
 
-          const isActive = pathnameWithoutLang === href;
+        const isActive = pathnameWithoutLang === href;
 
-          if (!href && !label) return null;
+        if (!href && !label) return null;
 
-          const formattedHref = formatHref({ href, lang });
+        const formattedHref = formatHref({ href, lang });
 
-          return (
-            <Link
-              className={clsx(styles.iconContainer, isActive && styles.active)}
-              href={formattedHref}
-              key={i}
-            >
-              {isActive && (
-                <motion.span
-                  className={styles.activeBg}
-                  layoutId="tab-indicator"
-                  transition={{
-                    damping: 35,
-                    stiffness: 500,
-                    type: 'spring',
-                  }}
-                />
-              )}
+        return (
+          <Link
+            className={clsx(styles.iconContainer, isActive && styles.active)}
+            href={formattedHref}
+            key={i}
+          >
+            <Icon className={styles.icon}>
+              <TapbarIcon
+                options={{
+                  elementsColor: {
+                    primaryColor: 'var(--tapbar-icon-active)',
+                    secondaryColor: 'var(--tapbar-icon-inactive)',
+                  },
+                  variant: isActive ? 'fill' : 'outlined',
+                }}
+              />
+            </Icon>
+          </Link>
+        );
+      })}
 
-              <Icon
-                className={styles.icon}
-              >
-                <TapbarIcon
-                  options={{
-                    elementsColor: {
-                      primaryColor: 'var(--tapbar-icon-active)',
-                      secondaryColor: 'var(--tapbar-icon-inactive)',
-                    },
-                    variant: isActive ? 'fill' : 'outlined',
-                  }}
-                />
-              </Icon>
-            </Link>
-          );
-        })}
-      </LayoutGroup>
+      <div className={styles.bg}>
+        <motion.span
+          animate={{ x: `calc(${activeIndex} * 100%)` }}
+          className={styles.activeBg}
+          initial={{ x: `calc(${activeIndex} * 100%)` }}
+          style={{ width: `calc(100% / ${navigationLength})` }}
+          transition={{
+            damping: 35,
+            stiffness: 500,
+            type: 'spring',
+          }}
+        />
+      </div>
     </nav>
   );
 };

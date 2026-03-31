@@ -1,6 +1,9 @@
 @use 'styles/utils/mixins';
 @use 'styles/utils/tokens';
 
+// stylelint-disable-next-line unit-disallowed-list
+$padding: 10px 15px;
+
 .tapbar {
   @include mixins.flex-center-vertical;
 
@@ -11,7 +14,7 @@
   left: tokens.$layout-side-padding;
 
   height: tokens.$tapbar-height;
-  padding: 10px 15px;
+  padding: $padding;
   border: thin solid var(--tapbar-border);
   border-radius: 32px;
 
@@ -34,14 +37,19 @@
     }
   }
 
+  .bg {
+    position: absolute;
+    z-index: 1;
+    inset: $padding;
+  }
+
   .activeBg {
     user-select: none;
 
     position: absolute;
     z-index: 1;
+    inset: 0;
 
-    width: 100%;
-    height: 100%;
     border-radius: 12px;
 
     background-color: var(--tapbar-btn-bg);
