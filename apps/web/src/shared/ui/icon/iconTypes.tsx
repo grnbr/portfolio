@@ -11,8 +11,8 @@ export type GenericIconProps = {
 
 export type IconPropsOptions = GenericIconOptionsProps & {
   elementsColor?: {
-    primaryColor?: string;
-    secondaryColor?: string;
+    primaryColor?: false | string;
+    secondaryColor?: false | string;
   };
   height?: string;
   isInvertedDefaultColor?: boolean;

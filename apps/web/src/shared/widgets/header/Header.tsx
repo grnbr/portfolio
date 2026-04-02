@@ -2,6 +2,7 @@
 import clsx from 'clsx';
 import { FC } from 'react';
 
+import LocaleSwitcher from '@/shared/components/LocaleSwitcher';
 import Logo from '@/shared/components/logo/Logo';
 import { Dictionary } from '@/shared/dictionaries/types';
 import { Locale } from '@/shared/i18n/i18n-config';
@@ -9,7 +10,6 @@ import ButtonLink from '@/shared/ui/button/ButtonLink';
 import Container from '@/shared/ui/containers/Container';
 import Icon from '@/shared/ui/icon/Icon';
 import { NAV_HEADER_SOCIAL_ICONS } from '@/shared/widgets/header/ui/icons';
-import LocaleSwitcher from '@/shared/widgets/header/ui/LocaleSwitcher';
 import NavLinks from '@/shared/widgets/header/ui/NavLinks';
 import ThemeSwitcher from '@/shared/widgets/header/ui/ThemeSwitcher';
 

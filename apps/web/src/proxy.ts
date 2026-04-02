@@ -4,7 +4,14 @@ import { type NextRequest, NextResponse } from 'next/server';
 
 import { i18n, Locale } from '@/shared/i18n/i18n-config';
 
-import { DefaultTheme, ThemeValues } from './shared/constants/theme';
+import {
+  ColorScheme,
+  ColorSchemeValues,
+  DefaultTheme,
+  Theme,
+  ThemeMap,
+  ThemeValues,
+} from './shared/constants/theme';
 
 const handleLocale = (request: NextRequest, response: NextResponse) => {
   const { pathname } = request.nextUrl;
@@ -51,9 +58,16 @@ function getLocale(request: NextRequest): string | undefined {
 }
 
 const handleTheme = (request: NextRequest, response: NextResponse) => {
-  const theme = request.cookies.get('theme')?.value;
+  const theme = request.cookies.get('theme')?.value as Theme | undefined;
+  const resolvedTheme = request.cookies.get('resolvedTheme')?.value as
+    | ColorScheme
+    | undefined;
+
   const isValidTheme =
     theme !== undefined && (ThemeValues as readonly string[]).includes(theme);
+  const isValidColorScheme =
+    resolvedTheme !== undefined &&
+    (ColorSchemeValues as readonly string[]).includes(resolvedTheme);
 
   if (!isValidTheme) {
     const defaulttheme: DefaultTheme = 'system';
@@ -62,6 +76,11 @@ const handleTheme = (request: NextRequest, response: NextResponse) => {
       path: '/',
     });
   }
+
+  response.headers.set(
+    'x-resolved-theme',
+    isValidColorScheme ? resolvedTheme : ThemeMap.Light,
+  );
 };
 
 export function proxy(request: NextRequest) {

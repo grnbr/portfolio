@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 
 import { i18n, Locale } from '@/shared/i18n/i18n-config';
 
-import styles from '../Header.module.scss';
+import styles from './LocaleSwitcher.module.scss';
 
 const LocaleSwitcher = ({ currentLang }: { currentLang: Locale }) => {
   const pathname = usePathname();

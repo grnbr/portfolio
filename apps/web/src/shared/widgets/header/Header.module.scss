@@ -6,12 +6,13 @@
 $z-index: 5;
 
 .header {
-  position: fixed;
+  position: absolute;
   z-index: $z-index;
   top: 32px;
   padding: 0;
 
   @include mixins.media-min(mobile) {
+    position: fixed;
     @include mixins.flex-center;
 
     right: 1rem;
@@ -163,30 +164,6 @@ $z-index: 5;
           @include mixins.flex-center-vertical;
 
           column-gap: 1rem;
-
-          .localeSwitcher {
-            display: flex;
-            column-gap: 0.75rem;
-            text-transform: capitalize;
-
-            a {
-              transition: filter 0.3s ease-in-out;
-            }
-
-            .item {
-              @include mixins.flex-center;
-
-              .language {
-                color: var(--color-text);
-                filter: opacity(0.6);
-                transition: opacity 0.3s;
-
-                &.active {
-                  filter: opacity(1);
-                }
-              }
-            }
-          }
         }
       }
     }

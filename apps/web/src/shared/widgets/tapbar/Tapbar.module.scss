@@ -1,3 +1,4 @@
+@use 'styles/utils/mixins' as m;
 @use 'styles/utils/mixins';
 @use 'styles/utils/tokens';
 
@@ -6,24 +7,11 @@ $padding: 10px 15px;
 
 .tapbar {
   @include mixins.flex-center-vertical;
-
-  position: fixed;
-  z-index: 100;
-  right: tokens.$layout-side-padding;
-  bottom: tokens.$tapbar-bottom;
-  left: tokens.$layout-side-padding;
+  @include m.tapbar-bg;
 
   height: tokens.$tapbar-height;
   padding: $padding;
-  border: thin solid var(--tapbar-border);
   border-radius: 32px;
-
-  background-color: var(--tapbar-bg);
-  backdrop-filter: blur(6px);
-
-  @include mixins.media-min(mobile) {
-    display: none;
-  }
 
   .iconContainer {
     @include mixins.flex-center;
@@ -33,6 +21,8 @@ $padding: 10px 15px;
     height: 100%;
 
     .icon {
+      @include m.glow-effect;
+
       z-index: 2;
     }
   }

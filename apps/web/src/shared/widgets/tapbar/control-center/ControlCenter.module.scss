@@ -1,0 +1,62 @@
+@use 'styles/utils/mixins' as m;
+
+.controlCenter {
+  position: relative;
+  align-self: flex-end;
+
+  .openMenuBtn {
+    @include m.tapbar-bg;
+
+    padding: 0.5rem;
+    border-radius: 50%;
+
+    .iconWrapper {
+      width: 2.5rem;
+    }
+  }
+
+  .themeMenuContainer {
+    @include m.tapbar-bg;
+    @include m.stack(column, 8px);
+
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + 8px);
+
+    align-items: flex-end;
+
+    padding: 12px;
+    border-radius: 24px;
+
+    .themeSwitcher {
+      padding: 5px;
+      border-radius: 9999px;
+      background-color: var(--medium-grey-25);
+
+      .list {
+        position: relative;
+        @include m.stack(row, 8px);
+
+        .themeItem {
+          position: relative;
+          z-index: 23;
+
+          .button {
+            padding: 10px;
+            border-radius: 50%;
+          }
+        }
+
+        .bgElement {
+          position: absolute;
+          z-index: 22;
+          inset: 0;
+
+          border-radius: 50%;
+
+          background: var(--btn-selected-theme-bg);
+        }
+      }
+    }
+  }
+}

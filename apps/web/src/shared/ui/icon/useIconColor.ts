@@ -8,12 +8,12 @@ const useIconColor = (props?: UseIconColorProps) => {
   const { elementsColor, isInvertedDefaultColor } = props ?? {};
 
   const primaryColor =
-    elementsColor?.primaryColor ??
+    elementsColor?.primaryColor ||
     (isInvertedDefaultColor
       ? 'var(--icon-primary-inverted)'
       : 'var(--icon-primary)');
   const secondaryColor =
-    elementsColor?.secondaryColor ??
+    elementsColor?.secondaryColor ||
     (isInvertedDefaultColor
       ? 'var(--icon-primary-inverted)'
       : 'var(--icon-primary)');

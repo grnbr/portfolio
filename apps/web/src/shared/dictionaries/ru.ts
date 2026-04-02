@@ -3,6 +3,7 @@ import 'server-only';
 import { NavigationItems, NavSocialItems } from '@/shared/constants/navigation';
 import { Dictionary } from '@/shared/dictionaries/types';
 
+import { ThemeMap } from '../constants/theme';
 import { ProjectItems } from './constants/projects';
 import { AppItems, DevTechItems, OsItems } from './constants/techItems';
 import { DictionaryData } from './types/sharedTypes';
@@ -63,9 +64,9 @@ export const dictionary: Dictionary = {
         },
       },
       theme: [
-        { label: 'Светлая', value: 'light' },
-        { label: 'Система', value: 'system' },
-        { label: 'Темная', value: 'dark' },
+        { label: 'Светлая', value: ThemeMap.Light },
+        { label: 'Система', value: ThemeMap.System },
+        { label: 'Темная', value: ThemeMap.Dark },
       ],
     },
     header: {

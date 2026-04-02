@@ -1,0 +1,40 @@
+@use 'styles/utils/tokens' as t;
+@use 'styles/utils/mixins' as m;
+
+.localeSwitcher {
+  display: flex;
+  text-transform: capitalize;
+
+  @include m.media-min(mobile) {
+    column-gap: 0.75rem;
+  }
+
+  .item {
+    @include m.flex-center;
+
+    .language {
+      padding: 0.5rem;
+
+      font-size: t.$fs-24;
+      color: var(--color-text);
+
+      filter: opacity(0.6);
+
+      transition: opacity 0.3s;
+
+      @include m.media-min(mobile) {
+        padding: 0;
+        font-size: t.$fs-16;
+      }
+
+      &.active {
+        text-decoration: underline;
+        filter: opacity(1);
+
+        @include m.media-min(mobile) {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

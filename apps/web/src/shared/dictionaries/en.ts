@@ -1,6 +1,7 @@
 import { NavigationItems, NavSocialItems } from '@/shared/constants/navigation';
 import { Dictionary } from '@/shared/dictionaries/types';
 
+import { ThemeMap } from '../constants/theme';
 import { ProjectItems } from './constants/projects';
 import { AppItems, DevTechItems, OsItems } from './constants/techItems';
 import { DictionaryData } from './types/sharedTypes';
@@ -64,9 +65,9 @@ export const dictionary: Dictionary = {
         },
       },
       theme: [
-        { label: 'Light', value: 'light' },
-        { label: 'System', value: 'system' },
-        { label: 'Dark', value: 'dark' },
+        { label: 'Light', value: ThemeMap.Light },
+        { label: 'System', value: ThemeMap.System },
+        { label: 'Dark', value: ThemeMap.Dark },
       ],
     },
     header: {

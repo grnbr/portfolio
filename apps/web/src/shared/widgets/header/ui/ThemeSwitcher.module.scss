@@ -19,19 +19,25 @@
 
 .themeMenuContainer {
   @include m.desktop-only;
+  @include m.header-bg;
 
   position: absolute;
   z-index: 4;
   top: calc(100% + 5px);
   right: 0;
 
+  padding: 1rem;
+  border-radius: 12px;
+
   .themeMenu {
+    @include m.stack(column, 0.5rem);
+
     .themeItem {
       padding: 3px 0.3125rem;
       border-radius: 7px;
 
       &.selected {
-        background-color: var(--color-text);
+        background-color: var(--btn-selected-theme-bg);
 
         .button {
           color: var(--color-text-inverted);

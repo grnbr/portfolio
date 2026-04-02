@@ -5,8 +5,8 @@ $layout-side-padding-desktop: 2rem;
 
 // Components
 $tapbar-height: 60px;
-$tapbar-bottom: 16px;
-$tapbar-height-full: calc($tapbar-height + $tapbar-bottom);
+$bottom-widgets-bottom: 16px;
+$tapbar-bottom-full: calc($tapbar-height + $bottom-widgets-bottom);
 $header-height: 3.75rem;
 $border-thickness: 0.0625rem;
 $card-border-thickness: 0.0625rem;

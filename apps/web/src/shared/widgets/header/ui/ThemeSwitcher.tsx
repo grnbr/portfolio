@@ -5,15 +5,17 @@ import { AnimatePresence, motion } from 'motion/react';
 import { FC, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
-import { ColorScheme, DefaultTheme, Theme } from '@/shared/constants/theme';
+import { ColorScheme, Theme, ThemeMap } from '@/shared/constants/theme';
 import { Dictionary } from '@/shared/dictionaries/types';
-import { getCookie } from '@/shared/helpers/cookies';
+import { setCookie } from '@/shared/helpers/cookies';
+import { getTheme, resolveTheme } from '@/shared/helpers/theme';
+import useIsMounted from '@/shared/hooks/useIsMounted';
 import Button from '@/shared/ui/button/Button';
+import DropdownMenu from '@/shared/ui/containers/DropdownMenu';
 import Icon from '@/shared/ui/icon/Icon';
 import { THEME_ICONS } from '@/shared/ui/icon/icons/themes';
 import Loader from '@/shared/ui/loader/Loader';
 
-import DropdownMenu from './dropdown-menu/DropdownMenu';
 import styles from './ThemeSwitcher.module.scss';
 
 const iconVariants = {
@@ -21,36 +23,16 @@ const iconVariants = {
   visible: { opacity: 1, rotate: 0, scale: 1 },
 };
 
-const MAX_AGE = 31536000;
-
 type ThemeSwitcherProps = { dict: Dictionary };
 
-const getTheme = (): { resolvedTheme?: ColorScheme; theme: Theme } => {
-  const defaultTheme: DefaultTheme = 'system';
-
-  const theme = getCookie('Theme') ?? defaultTheme;
-  const resolvedTheme = getCookie('ResolvedTheme');
-
-  return { resolvedTheme, theme };
-};
-
-function resolveTheme(theme: Theme): ColorScheme {
-  if (theme === 'system') {
-    return window.matchMedia('(prefers-color-scheme: dark').matches
-      ? 'dark'
-      : 'light';
-  }
-  return theme;
-}
-
 const ThemeSwitcher: FC<ThemeSwitcherProps> = ({ dict }) => {
+  const isMounted = useIsMounted();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [theme, setTheme] = useState<null | Theme>(null);
-  const [resolvedTheme, setResolvedTheme] = useState<ColorScheme | null>(null);
-  const [isMounted, setIsMounted] = useState(false);
-  const [isLoader, setIsLoader] = useState(true);
-
   const buttonRef = useRef<HTMLButtonElement | null>(null);
+  const [resolvedTheme, setResolvedTheme] = useState<ColorScheme | null>(null);
+  const [isLoader, setIsLoader] = useState(true);
 
   const handleToggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
@@ -68,6 +50,7 @@ const ThemeSwitcher: FC<ThemeSwitcherProps> = ({ dict }) => {
     const resolvedTheme = resolveTheme(newTheme);
 
     document.documentElement.setAttribute('data-theme', resolvedTheme);
+
     setTheme(newTheme);
     setResolvedTheme(resolvedTheme);
     onCloseMenu();
@@ -83,13 +66,12 @@ const ThemeSwitcher: FC<ThemeSwitcherProps> = ({ dict }) => {
     const id = requestAnimationFrame(() => {
       const { resolvedTheme, theme } = getTheme();
 
-      setIsMounted(true);
       setTheme(theme);
       if (resolvedTheme) setResolvedTheme(resolvedTheme);
     });
 
     return () => cancelAnimationFrame(id);
-  }, []);
+  }, [setTheme]);
 
   useEffect(() => {
     if (isMounted && theme) {
@@ -99,10 +81,8 @@ const ThemeSwitcher: FC<ThemeSwitcherProps> = ({ dict }) => {
   }, [isMounted, theme]);
 
   useEffect(() => {
-    if (!theme) return;
-    document.cookie = `theme=${theme}; path=/; max-age=${MAX_AGE}`;
-
-    document.cookie = `resolvedTheme=${resolvedTheme}; path=/; max-age=${MAX_AGE}`;
+    if (theme) setCookie('Theme', theme);
+    if (resolvedTheme) setCookie('ResolvedTheme', resolvedTheme);
   }, [theme, resolvedTheme]);
 
   useEffect(() => {
@@ -111,7 +91,7 @@ const ThemeSwitcher: FC<ThemeSwitcherProps> = ({ dict }) => {
     perferColorMedia.addEventListener('change', (e) => {
       if (theme !== 'system') return;
 
-      const resolvedTheme = e.matches ? 'dark' : 'light';
+      const resolvedTheme = e.matches ? ThemeMap.Dark : ThemeMap.Light;
       setResolvedTheme(resolvedTheme);
     });
   }, [theme]);
@@ -161,25 +141,13 @@ const ThemeSwitcher: FC<ThemeSwitcherProps> = ({ dict }) => {
         createPortal(
           <AnimatePresence initial={false}>
             {isMenuOpen && (
-              <motion.div
-                animate={{ opacity: 1, scale: 1, y: 0 }}
+              <DropdownMenu
+                buttonRef={buttonRef}
                 className={styles.themeMenuContainer}
-                exit={{ opacity: 0, scale: 0.85, y: -8 }}
-                initial={{ opacity: 0, scale: 0.85, y: -8 }}
-                key="menu"
-                transition={{
-                  damping: 25,
-                  mass: 0.8,
-                  stiffness: 400,
-                  type: 'spring',
-                }}
+                handleCloseMenu={onCloseMenu}
+                variant="header"
               >
-                <DropdownMenu
-                  buttonRef={buttonRef}
-                  className={styles.themeMenu}
-                  handleCloseMenu={onCloseMenu}
-                  key="menu"
-                >
+                <ul className={styles.themeMenu}>
                   {themes.map((item) => {
                     const ThemeIcon = THEME_ICONS[item.value];
                     const isSelected = item.value === theme;
@@ -204,8 +172,8 @@ const ThemeSwitcher: FC<ThemeSwitcherProps> = ({ dict }) => {
                       </li>
                     );
                   })}
-                </DropdownMenu>
-              </motion.div>
+                </ul>
+              </DropdownMenu>
             )}
           </AnimatePresence>,
           header,

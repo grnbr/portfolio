@@ -1,0 +1,16 @@
+@use 'styles/utils/tokens' as t;
+@use 'styles/utils/mixins' as m;
+
+.bottomWidgets {
+  @include m.stack(column, 8px);
+
+  position: fixed;
+  z-index: 100;
+  right: t.$layout-side-padding;
+  bottom: t.$bottom-widgets-bottom;
+  left: t.$layout-side-padding;
+
+  @include m.media-min(mobile) {
+    display: none;
+  }
+}

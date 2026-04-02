@@ -40,6 +40,12 @@
   backdrop-filter: blur(4px);
 }
 
+@mixin tapbar-bg {
+  border: thin solid var(--tapbar-border);
+  background-color: var(--tapbar-bg);
+  backdrop-filter: blur(6px);
+}
+
 @mixin card-styles {
   border: t.$card-border-thickness solid var(--card-border);
   border-radius: 2rem;

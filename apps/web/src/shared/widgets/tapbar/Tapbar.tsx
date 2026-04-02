@@ -46,6 +46,8 @@ const Tapbar: FC<TapbarProps> = ({ dict, lang }) => {
 
         return (
           <Link
+            aria-current={isActive ? 'page' : undefined}
+            aria-label={`Go to ${TapbarIcon.name} page`}
             className={clsx(styles.iconContainer, isActive && styles.active)}
             href={formattedHref}
             key={i}
@@ -54,8 +56,8 @@ const Tapbar: FC<TapbarProps> = ({ dict, lang }) => {
               <TapbarIcon
                 options={{
                   elementsColor: {
-                    primaryColor: 'var(--tapbar-icon-active)',
-                    secondaryColor: 'var(--tapbar-icon-inactive)',
+                    primaryColor: isActive && 'var(--tapbar-icon-active)',
+                    secondaryColor: isActive && 'var(--tapbar-icon-inactive)',
                   },
                   variant: isActive ? 'fill' : 'outlined',
                 }}

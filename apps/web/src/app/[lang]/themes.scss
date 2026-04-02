@@ -22,9 +22,9 @@
   --footer-text: var(--onyx);
 
   /* Tapbar */
-  --tapbar-bg: var(--black-30);
+  --tapbar-bg: var(--white-25);
   --tapbar-border: rgb(39 38 44 / 30%);
-  --tapbar-btn-bg: var(--black-50);
+  --tapbar-btn-bg: var(--black-70);
   --tapbar-popup-btn-bg: var(--medium-grey-50);
   --tapbar-icon-active: var(--white);
   --tapbar-icon-inactive: var(--faint-white);
@@ -37,6 +37,7 @@
   --btn-secondary-bg: var(--faint-white);
   --btn-secondary-bg-hover: hsl(0deg 0% 90%);
   --btn-ghost-text: var(--onyx);
+  --btn-selected-theme-bg: var(--black-70);
 
   /* Cards */
   --card-bg: #f6f6f6;
@@ -79,7 +80,7 @@
 
   /* Tapbar */
   --tapbar-bg: rgb(24 24 29 / 60%);
-  --tapbar-border: rgb(39 38 44 / 38%);
+  --tapbar-border: var(--medium-grey-25);
   --tapbar-btn-bg: var(--white-10);
   --tapbar-popup-btn-bg: rgb(255 255 255 / 10%);
   --tapbar-icon-inactive: var(--light-grey);
@@ -97,6 +98,7 @@
   --btn-secondary-bg-hover: hsl(0deg 0% 20%);
   --btn-secondary-text: var(--dark-grey);
   --btn-ghost-text: var(--white);
+  --btn-selected-theme-bg: var(--white-70);
 
   /* Cards */
   --card-bg: var(--black-50);
