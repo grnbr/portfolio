@@ -27,6 +27,7 @@ const LocaleSwitcher = ({ currentLang }: { currentLang: Locale }) => {
             <Link
               className={clsx(styles.language, isActive && styles.active)}
               href={redirectedPathName(locale)}
+              scroll={false}
             >
               {locale}
             </Link>

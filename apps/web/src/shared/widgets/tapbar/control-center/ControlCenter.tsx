@@ -1,7 +1,7 @@
 'use client';
 
 import { AnimatePresence, motion } from 'motion/react';
-import { FC, useRef, useState } from 'react';
+import { FC, useRef } from 'react';
 
 import LocaleSwitcher from '@/shared/components/LocaleSwitcher';
 import { Dictionary } from '@/shared/dictionaries/types';
@@ -12,6 +12,7 @@ import DropdownMenu from '@/shared/ui/containers/DropdownMenu';
 import CogIcon from '@/shared/ui/icon/icons/CogIcon';
 
 import styles from './ControlCenter.module.scss';
+import { useControlCenterStore } from './model/store';
 import ThemeSwitcher from './ui/ThemeSwitcher';
 
 type ControlCenterProps = {
@@ -24,15 +25,9 @@ const MotionButton = motion.create(Button);
 const ControlCenter: FC<ControlCenterProps> = ({ dict, lang }) => {
   const isMounted = useIsMounted();
 
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { handleCloseMenu, handleToggleMenu, isMenuOpen } =
+    useControlCenterStore();
   const buttonRef = useRef<HTMLButtonElement | null>(null);
-
-  const handleToggleMenu = () => {
-    setIsMenuOpen((prev) => !prev);
-  };
-  const onCloseMenu = () => {
-    setIsMenuOpen(false);
-  };
 
   return (
     <div className={styles.controlCenter}>
@@ -45,6 +40,7 @@ const ControlCenter: FC<ControlCenterProps> = ({ dict, lang }) => {
         <motion.div
           animate={{ rotate: isMenuOpen ? 240 : 0 }}
           className={styles.iconWrapper}
+          initial={isMenuOpen ? false : undefined}
           transition={{
             damping: 25,
             stiffness: 250,
@@ -61,7 +57,7 @@ const ControlCenter: FC<ControlCenterProps> = ({ dict, lang }) => {
             <DropdownMenu
               buttonRef={buttonRef}
               className={styles.themeMenuContainer}
-              handleCloseMenu={onCloseMenu}
+              handleCloseMenu={handleCloseMenu}
               variant="controlCenter"
             >
               <ThemeSwitcher dict={dict} />
