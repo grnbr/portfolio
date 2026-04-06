@@ -144,7 +144,9 @@ p {
 
 input,
 textarea {
+  color: var(--input-color);
   outline: none;
+  caret-color: var(--color-text);
 
   &::placeholder {
     color: var(--input-placeholder);

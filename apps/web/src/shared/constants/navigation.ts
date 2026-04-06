@@ -1,3 +1,4 @@
+import { EMAIL } from '.';
 import {
   NavigationId,
   NavigationSocialId,
@@ -22,7 +23,7 @@ export const NavigationItems = {
 export const NavSocialItems = {
   Github: { href: 'https://github.com/waterrDrinker', id: 'github' },
   Gmail: {
-    href: 'mailto:grigoriynbr@gmail.com',
+    href: `mailto:${EMAIL}`,
     id: 'gmail',
   },
   Linkedin: {

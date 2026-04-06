@@ -6,6 +6,7 @@ import { Dictionary } from '@/shared/dictionaries/types';
 import { ThemeMap } from '../constants/theme';
 import { ProjectItems } from './constants/projects';
 import { AppItems, DevTechItems, OsItems } from './constants/techItems';
+import { ContactInputMap } from './types/contactTypes';
 import { DictionaryData } from './types/sharedTypes';
 
 export const dictionaryData: DictionaryData = {
@@ -127,28 +128,34 @@ export const dictionary: Dictionary = {
         fields: {
           inputs: [
             {
-              id: 'email',
+              ...ContactInputMap.Email,
+              errors: {
+                invalid_format: 'Неверный адрес электронной почты',
+                too_small: 'Email обязателен',
+              },
               label: 'Email:',
               placeholder: 'Введите ваш адрес электронной почты',
             },
             {
-              id: 'name',
+              ...ContactInputMap.Name,
               label: 'Имя:',
               placeholder: 'Введите ваше имя',
             },
             {
-              id: 'subject',
+              ...ContactInputMap.Subject,
               label: 'Тема:',
               placeholder: 'Введите тему',
             },
           ],
           textarea: {
-            id: 'textarea',
+            errors: {
+              too_small: 'Сообщение обязательно',
+            },
+            id: 'message',
             label: null,
             placeholder: 'Напишите ваше сообщение здесь',
           },
         },
-
         title: 'Новое сообщение',
       },
 

@@ -1,3 +1,7 @@
+import { z } from 'zod';
+
+export type ZodIssueCode = z.core.$ZodIssueCode;
+
 import { NavHome } from '@/shared/dictionaries/types/navigationTypes';
 
 import { ThemeItem } from '../../constants/theme';
@@ -22,7 +26,13 @@ export type ParagraphWithLinks = {
   text: string;
 };
 
-export type FormField<Id extends string> = {
+export type FormField<
+  Id extends string,
+  Type extends React.HTMLInputTypeAttribute | undefined = undefined,
+> = (Type extends undefined ? object : { type: Type }) & {
+  errors?: {
+    [K in ZodIssueCode]?: string;
+  };
   id: Id;
   label: null | string;
   placeholder: string;

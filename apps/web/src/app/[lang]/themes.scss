@@ -4,13 +4,16 @@
 :root {
   /* General */
   --bg-color: #fbfbfb;
+  --border: #{tokens.$border-thickness} solid var(--black-10);
+  --color-error: #ef4444;
+
+  // Text
   --color-text: var(--onyx);
   --color-text-inverted: var(--white);
   --text-primary: var(--dark-grey);
   --text-heading: var(--color-text);
   --text-label: var(--text-heading);
   --text-highlighted: var(--color-text);
-  --border: #{tokens.$border-thickness} solid var(--black-10);
 
   /* Header */
   --header-bg: var(--white-25);
@@ -48,6 +51,7 @@
   --icon-primary-inverted: var(--color-text-inverted);
 
   // Input
+  --input-color: var(--color-text);
   --input-placeholder: var(--dark-grey);
   --focus-color: var(--color-text);
 
@@ -62,12 +66,14 @@
 [data-theme='dark'] {
   /* General */
   --bg-color: var(--black);
+  --border: #{tokens.$border-thickness} solid var(--white-10);
+
+  // Text
   --color-text: var(--white);
   --color-text-inverted: var(--onyx);
   --text-heading: var(--color-text);
   --text-label: var(--text-heading);
   --text-highlighted: var(--color-text);
-  --border: #{tokens.$border-thickness} solid var(--white-10);
 
   /* Header */
   --header-bg: var(--black-30);

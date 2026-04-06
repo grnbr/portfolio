@@ -4,6 +4,7 @@ import { Dictionary } from '@/shared/dictionaries/types';
 import { ThemeMap } from '../constants/theme';
 import { ProjectItems } from './constants/projects';
 import { AppItems, DevTechItems, OsItems } from './constants/techItems';
+import { ContactInputMap } from './types/contactTypes';
 import { DictionaryData } from './types/sharedTypes';
 
 export const dictionaryData: DictionaryData = {
@@ -132,28 +133,34 @@ export const dictionary: Dictionary = {
         fields: {
           inputs: [
             {
-              id: 'email',
+              ...ContactInputMap.Email,
+              errors: {
+                invalid_format: 'Invalid email address',
+                too_small: 'Email is required',
+              },
               label: 'Email:',
               placeholder: 'Enter your email address',
             },
             {
-              id: 'name',
+              ...ContactInputMap.Name,
               label: 'Name:',
               placeholder: 'Enter your name',
             },
             {
-              id: 'subject',
+              ...ContactInputMap.Subject,
               label: 'Subject:',
               placeholder: 'Enter subject',
             },
           ],
           textarea: {
-            id: 'textarea',
+            errors: {
+              too_small: 'Message is required',
+            },
+            id: 'message',
             label: null,
             placeholder: 'Write your message here',
           },
         },
-
         title: 'New message',
       },
       header: {

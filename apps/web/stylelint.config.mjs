@@ -36,6 +36,7 @@ export default {
     ],
     'selector-class-pattern': '^[a-z][a-zA-Z0-9]+$',
     'at-rule-empty-line-before': null,
+    'no-descending-specificity': null,
   },
 
   overrides: [

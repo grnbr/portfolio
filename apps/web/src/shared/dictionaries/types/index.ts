@@ -5,7 +5,7 @@ import {
 import { ProjectList } from '@/shared/dictionaries/types/projectsTypes';
 
 import { TechStackGroups } from '../types/techTypes';
-import { ContactInputs } from './contactTypes';
+import { ContactInputsTuple, ContactTextareaMap } from './contactTypes';
 import {
   ButtonDict,
   FormField,
@@ -54,8 +54,8 @@ export type Dictionary = {
           };
         };
         fields: {
-          inputs: ContactInputs;
-          textarea: FormField<'textarea'>;
+          inputs: ContactInputsTuple;
+          textarea: FormField<typeof ContactTextareaMap.Message>;
         };
         title: string;
       };
