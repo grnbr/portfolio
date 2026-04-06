@@ -10,6 +10,7 @@ export type DevTechItemsId =
   | 'nextjs'
   | 'nodejs'
   | 'react'
+  | 'react-query'
   | 'scss'
   | 'typescript';
 
@@ -44,6 +45,11 @@ export const DevTechItems = {
   React: {
     id: 'react',
     label: 'React',
+  },
+
+  'React-query': {
+    id: 'react-query',
+    label: 'React Query',
   },
 
   Scss: {

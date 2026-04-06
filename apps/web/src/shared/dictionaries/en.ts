@@ -273,6 +273,10 @@ export const dictionary: Dictionary = {
               tag: 'Framework',
             },
             {
+              ...DevTechItems['React-query'],
+              tag: 'Data Fetching library',
+            },
+            {
               ...DevTechItems.Scss,
               tag: 'Preprocessor',
             },

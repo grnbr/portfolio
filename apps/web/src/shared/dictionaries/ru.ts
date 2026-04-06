@@ -272,6 +272,10 @@ export const dictionary: Dictionary = {
               tag: 'Фреймворк',
             },
             {
+              ...DevTechItems['React-query'],
+              tag: 'Библиотека',
+            },
+            {
               ...DevTechItems.Scss,
               tag: 'Препроцессор',
             },
