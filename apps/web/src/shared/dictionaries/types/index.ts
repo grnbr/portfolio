@@ -57,6 +57,12 @@ export type Dictionary = {
           inputs: ContactInputsTuple;
           textarea: FormField<typeof ContactTextareaMap.Message>;
         };
+        modal: {
+          success: {
+            closeBtn: string;
+            title: string;
+          };
+        };
         title: string;
       };
       header: PageHeader;

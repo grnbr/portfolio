@@ -2,7 +2,8 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import clsx from 'clsx';
-import { FC, InputHTMLAttributes } from 'react';
+import { FC, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { useForm } from 'react-hook-form';
 import z from 'zod';
 
@@ -10,20 +11,19 @@ import { EMPTY_PLACEHOLDER } from '@/shared/constants';
 import { Dictionary } from '@/shared/dictionaries/types';
 import { ContactFieldsId } from '@/shared/dictionaries/types/contactTypes';
 import { ZodIssueCode } from '@/shared/dictionaries/types/sharedTypes';
+import useIsMounted from '@/shared/hooks/useIsMounted';
 import Button from '@/shared/ui/button/Button';
 
 import styles from './Form.module.scss';
+import Input from './ui/Input';
+import Modal from './ui/Modal';
+
+const COOLDOWN_MS = 10000; // 10 seconds
 
 export type ContactFormData = Record<ContactFieldsId, string>;
 
 type FormProps = {
   dict: Dictionary;
-};
-
-type InputProps = InputHTMLAttributes<HTMLInputElement> & {
-  errorMsg?: string;
-  id: string;
-  label: null | string;
 };
 
 const schema = z.object({
@@ -34,12 +34,18 @@ const schema = z.object({
 });
 
 const Form: FC<FormProps> = ({ dict }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isCooldown, setIsCooldown] = useState(false);
+  const isMounted = useIsMounted();
+
   const {
-    formState: { errors: formErrors },
+    formState: { errors: formErrors, isDirty, isSubmitting },
     handleSubmit,
     register,
   } = useForm<ContactFormData>({
+    mode: 'onChange',
     resolver: zodResolver(schema),
+    shouldFocusError: false,
   });
 
   const formDict = dict.pages.contact.form;
@@ -52,20 +58,35 @@ const Form: FC<FormProps> = ({ dict }) => {
     ? textarea.errors?.[messageError.type as ZodIssueCode]
     : messageError?.message;
 
-  const onSubmit = async (data: ContactFormData) => {
-    const res = await fetch('/api/contact', {
-      body: JSON.stringify(data),
-      headers: { 'Content-Type': 'application/json' },
-      method: 'POST',
-    });
+  const onOpenModal = () => setIsModalOpen(true);
+  const onCloseModal = () => setIsModalOpen(false);
 
-    const json = await res.json();
+  const onSubmit = async (data: ContactFormData) => {
+    try {
+      const res = await fetch('/api/contact', {
+        body: JSON.stringify(data),
+        headers: { 'Content-Type': 'application/json' },
+        method: 'POST',
+      });
+
+      const json = await res.json();
+
+      if (!res.ok) {
+        console.error(json.error);
+        return;
+      }
+
+      onOpenModal();
+      setIsCooldown(true);
+      setTimeout(() => setIsCooldown(false), COOLDOWN_MS);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
     <form className={styles.form} noValidate onSubmit={handleSubmit(onSubmit)}>
       <header className={styles.header}>{title}</header>
-
       <div className={styles.content}>
         <div className={styles.inputs}>
           {inputs.map((input) => {
@@ -110,26 +131,24 @@ const Form: FC<FormProps> = ({ dict }) => {
       </div>
 
       <footer className={styles.footer}>
-        <Button className={styles.sendBtn} type="submit" variant="primary">
+        <Button
+          className={styles.sendBtn}
+          disabled={isSubmitting || !isDirty || isCooldown}
+          isLoading={isSubmitting}
+          type="submit"
+          variant="primary"
+        >
           {sendBtn.label}
         </Button>
       </footer>
+
+      {isMounted &&
+        createPortal(
+          <Modal isModalOpen={isModalOpen} onCloseModal={onCloseModal} />,
+          document.body,
+        )}
     </form>
   );
 };
-
-function Input({ errorMsg, id, label, ...rest }: InputProps) {
-  return (
-    <div className={clsx(styles.inputContainer, errorMsg && styles.error)}>
-      {label && (
-        <label className={styles.label} htmlFor={id}>
-          {label}
-        </label>
-      )}
-      <input className={styles.input} id={id} {...rest} />
-      <span className={styles.errorText}>{errorMsg ?? EMPTY_PLACEHOLDER}</span>
-    </div>
-  );
-}
 
 export default Form;

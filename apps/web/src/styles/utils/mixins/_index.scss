@@ -8,6 +8,7 @@
 @forward './clamp';
 @forward './media';
 @forward './text';
+@forward './position';
 
 @mixin side-padding {
   padding-inline: t.$layout-side-padding;
@@ -46,8 +47,13 @@
   backdrop-filter: blur(6px);
 }
 
-@mixin card-styles {
+@mixin card-border {
   border: t.$card-border-thickness solid var(--card-border);
+}
+
+@mixin card-styles {
+  @include card-border;
+
   border-radius: 2rem;
   background-color: var(--card-bg);
 }

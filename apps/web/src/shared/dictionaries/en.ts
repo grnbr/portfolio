@@ -161,6 +161,14 @@ export const dictionary: Dictionary = {
             placeholder: 'Write your message here',
           },
         },
+
+        modal: {
+          success: {
+            closeBtn: 'Close',
+            title: 'Message sent!',
+          },
+        },
+
         title: 'New message',
       },
       header: {

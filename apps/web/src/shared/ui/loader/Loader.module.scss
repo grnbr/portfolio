@@ -13,6 +13,10 @@
   &.white {
     border-top-color: var(--white);
   }
+
+  &.inverted {
+    border-top-color: var(--color-text-inverted);
+  }
 }
 
 @keyframes rotation {

@@ -124,7 +124,6 @@ export const dictionary: Dictionary = {
             label: 'Отправить',
           },
         },
-
         fields: {
           inputs: [
             {
@@ -154,6 +153,13 @@ export const dictionary: Dictionary = {
             id: 'message',
             label: null,
             placeholder: 'Напишите ваше сообщение здесь',
+          },
+        },
+
+        modal: {
+          success: {
+            closeBtn: 'Закрыть',
+            title: 'Сообщение отправлено!',
           },
         },
         title: 'Новое сообщение',

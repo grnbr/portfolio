@@ -188,9 +188,58 @@ $border-radius: 12px;
     }
 
     .sendBtn {
+      .loaderWrapper {
+        $size: 2rem;
+
+        width: $size;
+        height: $size;
+      }
+
       @include m.media-min(mobile) {
         margin-left: auto;
       }
+    }
+  }
+}
+
+.backdrop {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--backdrop-color);
+  backdrop-filter: blur(4px);
+
+  .modal {
+    @include m.stack(column, 16px);
+    @include m.card-border;
+
+    width: min(90vw, 480px);
+    padding: 2rem;
+    border-radius: 16px;
+    background-color: var(--modal-bg);
+
+    .title {
+      $fs: t.$fs-24;
+
+      font-size: $fs;
+      font-weight: t.$fw-medium;
+      text-align: center;
+
+      @include m.clamp-font-size(
+        (
+          mobile: $fs,
+          ultra: t.$fs-32,
+        )
+      );
+    }
+
+    .closeBtn {
+      margin-inline: auto;
     }
   }
 }
