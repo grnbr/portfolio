@@ -1,26 +1,42 @@
-import {
-  AppItems,
-  AppItemsKeys,
-  DevTechItems,
-  DevTechItemsKeys,
-  OsItems,
-  OsItemsKeys,
-} from '../constants/techItems';
+import { AppMap, DevTechMap, OsMap } from '../constants/techItems';
+
+export type TechGroupName = 'apps' | 'dev' | 'os';
 
 export type TechGroupKeyMap = {
   Apps: 'apps';
   Dev: 'dev';
   Os: 'os';
 };
-export type TechGroupKeys = keyof TechGroupKeyMap;
-export type TechGroupKeyValues = TechGroupKeyMap[keyof TechGroupKeyMap];
 
-export type DictTechItem = {
+export type DevTechItemId =
+  | 'docker'
+  | 'git'
+  | 'jest'
+  | 'nextjs'
+  | 'nodejs'
+  | 'react'
+  | 'react-query'
+  | 'scss'
+  | 'typescript';
+export type AppItemId = 'chrome' | 'neovim';
+export type OsItemId = 'linux';
+type DevTechItemKey = Capitalize<DevTechItemId>;
+type AppItemKey = Capitalize<AppItemId>;
+type OsItemKey = Capitalize<OsItemId>;
+
+export type TechItem<ID extends string> = {
+  id: ID;
+  label: string;
+};
+
+export type TechItemDict = {
   tag?: string;
 };
 
-export type DevTechStackItem<K extends DevTechItemsKeys> =
-  (typeof DevTechItems)[K] & DictTechItem;
+export type DevTechStackItem<K extends DevTechItemKey> =
+  (typeof DevTechMap)[K] & TechItemDict;
+export type AppItem<K extends AppItemKey> = (typeof AppMap)[K] & TechItemDict;
+export type OsItem<K extends OsItemKey> = (typeof OsMap)[K] & TechItemDict;
 
 type DevTechStackItems = [
   DevTechStackItem<'Typescript'>,
@@ -34,22 +50,18 @@ type DevTechStackItems = [
   DevTechStackItem<'Nodejs'>,
 ];
 
-export type AppItem<K extends AppItemsKeys> = (typeof AppItems)[K] &
-  DictTechItem;
-
 type AppTechStackItems = [AppItem<'Neovim'>, AppItem<'Chrome'>];
 
-export type OsItem<K extends OsItemsKeys> = (typeof OsItems)[K] & DictTechItem;
-
 type OsTechStackItems = [OsItem<'Linux'>];
-type TechGroup<K extends TechGroupKeys, I> = {
-  groupKey: TechGroupKeyMap[K];
+
+type TechGroup<K extends TechGroupName, I> = {
+  groupKey: K;
   items: I;
   title: string;
 };
 
 export type TechStackGroups = [
-  TechGroup<'Dev', DevTechStackItems>,
-  TechGroup<'Apps', AppTechStackItems>,
-  TechGroup<'Os', OsTechStackItems>,
+  TechGroup<'dev', DevTechStackItems>,
+  TechGroup<'apps', AppTechStackItems>,
+  TechGroup<'os', OsTechStackItems>,
 ];

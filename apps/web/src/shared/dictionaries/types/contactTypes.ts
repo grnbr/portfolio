@@ -9,13 +9,17 @@ export type ContactInput = {
   subject: FormField<'subject', 'text'>;
 };
 
-export type ContactInputKeys = Capitalize<ContactInputId>;
-export type ContactTextareaKeys = Capitalize<ContactTextareaId>;
+export type ContactInputKey = Capitalize<ContactInputId>;
+export type ContactTextareaKey = Capitalize<ContactTextareaId>;
 
-export type ContactFieldsId = ContactInputId | ContactTextareaId;
+export type ContactFieldId = ContactInputId | ContactTextareaId;
 
 type ContactInputMapType = {
   [K in ContactInputId as Capitalize<K>]: Pick<ContactInput[K], 'id' | 'type'>;
+};
+
+type ContactTextareaMapType = {
+  [K in ContactTextareaId as Capitalize<K>]: K;
 };
 
 export const ContactInputMap: ContactInputMapType = {
@@ -33,9 +37,9 @@ export const ContactInputMap: ContactInputMapType = {
   },
 } as const;
 
-export const ContactTextareaMap = {
+export const ContactTextareaMap: ContactTextareaMapType = {
   Message: 'message',
-} as const satisfies Record<ContactTextareaKeys, ContactTextareaId>;
+} as const;
 
 export type ContactInputsTuple = [
   ContactInput[typeof ContactInputMap.Email.id],

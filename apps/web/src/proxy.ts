@@ -7,11 +7,11 @@ import { i18n, Locale } from '@/shared/i18n/i18n-config';
 import {
   ColorScheme,
   ColorSchemeValues,
-  DefaultTheme,
+  SystemTheme,
   Theme,
   ThemeMap,
   ThemeValues,
-} from './shared/constants/theme';
+} from './shared/types/theme';
 
 const handleLocale = (request: NextRequest, response: NextResponse) => {
   const { pathname } = request.nextUrl;
@@ -70,7 +70,7 @@ const handleTheme = (request: NextRequest, response: NextResponse) => {
     (ColorSchemeValues as readonly string[]).includes(resolvedTheme);
 
   if (!isValidTheme) {
-    const defaulttheme: DefaultTheme = 'system';
+    const defaulttheme: SystemTheme = 'system';
     response.cookies.set('theme', defaulttheme, {
       maxAge: 60 * 60 * 24 * 365, // 1 year
       path: '/',

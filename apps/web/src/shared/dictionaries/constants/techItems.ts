@@ -1,22 +1,15 @@
-export type TechItem<I extends string = string> = {
-  id: I;
-  label: string;
+import {
+  AppItemId,
+  DevTechItemId,
+  OsItemId,
+  TechItem,
+} from '../types/techTypes';
+
+type DevTechMapType = {
+  [K in DevTechItemId as Capitalize<K>]: TechItem<K>;
 };
 
-export type DevTechItemsId =
-  | 'docker'
-  | 'git'
-  | 'jest'
-  | 'nextjs'
-  | 'nodejs'
-  | 'react'
-  | 'react-query'
-  | 'scss'
-  | 'typescript';
-
-export type DevTechItemsKeys = Capitalize<DevTechItemsId>;
-
-export const DevTechItems = {
+export const DevTechMap: DevTechMapType = {
   Docker: {
     id: 'docker',
     label: 'Docker',
@@ -61,13 +54,13 @@ export const DevTechItems = {
     id: 'typescript',
     label: 'TypeScript',
   },
-} as const satisfies Record<DevTechItemsKeys, TechItem<DevTechItemsId>>;
+} as const;
 
-export type AppItemsId = 'chrome' | 'neovim';
+type AppMapType = {
+  [K in AppItemId as Capitalize<K>]: TechItem<K>;
+};
 
-export type AppItemsKeys = Capitalize<AppItemsId>;
-
-export const AppItems = {
+export const AppMap: AppMapType = {
   Chrome: {
     id: 'chrome',
     label: 'Chrome',
@@ -76,15 +69,15 @@ export const AppItems = {
     id: 'neovim',
     label: 'Neovim',
   },
-} as const satisfies Record<AppItemsKeys, TechItem<AppItemsId>>;
+} as const;
 
-export type OsItemsId = 'linux';
+type OsMapType = {
+  [K in OsItemId as Capitalize<K>]: TechItem<K>;
+};
 
-export type OsItemsKeys = Capitalize<OsItemsId>;
-
-export const OsItems = {
+export const OsMap: OsMapType = {
   Linux: {
     id: 'linux',
     label: 'Linux',
   },
-} as const satisfies Record<OsItemsKeys, TechItem<OsItemsId>>;
+} as const;

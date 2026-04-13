@@ -1,17 +1,20 @@
-import { NavigationItems, NavSocialItems } from '@/shared/constants/navigation';
+import {
+  NavigationMap,
+  NavSocialMap,
+} from '@/shared/dictionaries/constants/navigation';
 import { Dictionary } from '@/shared/dictionaries/types';
 
-import { ThemeMap } from '../constants/theme';
+import { ThemeMap } from '../types/theme';
 import { ProjectItems } from './constants/projects';
-import { AppItems, DevTechItems, OsItems } from './constants/techItems';
+import { AppMap, DevTechMap, OsMap } from './constants/techItems';
 import { ContactInputMap } from './types/contactTypes';
 import { DictionaryData } from './types/sharedTypes';
 
 export const dictionaryData: DictionaryData = {
   navigation: {
     home: {
-      href: NavigationItems.Home.href,
-      id: NavigationItems.Home.id,
+      href: NavigationMap.Home.href,
+      id: NavigationMap.Home.id,
       label: 'Home',
     },
   },
@@ -29,20 +32,20 @@ export const dictionary: Dictionary = {
           items: [
             dictionaryData.navigation.home,
             {
-              ...NavigationItems.About,
+              ...NavigationMap.About,
               label: 'About',
             },
             {
               label: 'Work',
-              ...NavigationItems.Work,
+              ...NavigationMap.Work,
             },
             {
               label: 'Techs',
-              ...NavigationItems.Techstack,
+              ...NavigationMap['Tech-stack'],
             },
             {
               label: 'Contact',
-              ...NavigationItems.Contact,
+              ...NavigationMap.Contact,
             },
           ],
           title: 'Links',
@@ -50,16 +53,16 @@ export const dictionary: Dictionary = {
         socials: {
           items: [
             {
-              ...NavSocialItems.Linkedin,
+              ...NavSocialMap.Linkedin,
               label: 'LinkedIn',
             },
             {
               label: 'Telegram',
-              ...NavSocialItems.Telegram,
+              ...NavSocialMap.Telegram,
             },
             {
               label: 'Github',
-              ...NavSocialItems.Github,
+              ...NavSocialMap.Github,
             },
           ],
           title: 'Elsewhere',
@@ -93,10 +96,10 @@ export const dictionary: Dictionary = {
       closingParagraph: {
         links: {
           'e-mail': {
-            href: NavSocialItems.Gmail.href,
+            href: NavSocialMap.Gmail.href,
           },
           Telegram: {
-            href: NavSocialItems.Telegram.href,
+            href: NavSocialMap.Telegram.href,
           },
         },
         text: 'Feel free to reach out via e-mail or write me on Telegram.',
@@ -247,13 +250,13 @@ export const dictionary: Dictionary = {
       navigation: {
         items: [
           {
-            ...NavigationItems.About,
+            ...NavigationMap.About,
             subtitle: 'Who I am and what I do',
             title: 'About me',
           },
           {
             subtitle: 'The dev tools, apps and OS I use',
-            ...NavigationItems.Techstack,
+            ...NavigationMap['Tech-stack'],
             title: 'Tech Stack',
           },
         ],
@@ -269,39 +272,39 @@ export const dictionary: Dictionary = {
           groupKey: 'dev',
           items: [
             {
-              ...DevTechItems.Typescript,
+              ...DevTechMap.Typescript,
               tag: 'Language',
             },
             {
-              ...DevTechItems.React,
+              ...DevTechMap.React,
               tag: 'Library',
             },
             {
-              ...DevTechItems.Nextjs,
+              ...DevTechMap.Nextjs,
               tag: 'Framework',
             },
             {
-              ...DevTechItems['React-query'],
+              ...DevTechMap['React-query'],
               tag: 'Data Fetching library',
             },
             {
-              ...DevTechItems.Scss,
+              ...DevTechMap.Scss,
               tag: 'Preprocessor',
             },
             {
-              ...DevTechItems.Git,
+              ...DevTechMap.Git,
               tag: 'Version control system',
             },
             {
-              ...DevTechItems.Jest,
+              ...DevTechMap.Jest,
               tag: 'Testing framework',
             },
             {
-              ...DevTechItems.Docker,
+              ...DevTechMap.Docker,
               tag: 'Containerization platform',
             },
             {
-              ...DevTechItems.Nodejs,
+              ...DevTechMap.Nodejs,
               tag: 'Runtime environment',
             },
           ],
@@ -311,11 +314,11 @@ export const dictionary: Dictionary = {
           groupKey: 'apps',
           items: [
             {
-              ...AppItems.Neovim,
+              ...AppMap.Neovim,
               tag: 'Editor',
             },
             {
-              ...AppItems.Chrome,
+              ...AppMap.Chrome,
               tag: 'Browser',
             },
           ],
@@ -325,7 +328,7 @@ export const dictionary: Dictionary = {
           groupKey: 'os',
           items: [
             {
-              ...OsItems.Linux,
+              ...OsMap.Linux,
             },
           ],
           title: 'Операционные системы',

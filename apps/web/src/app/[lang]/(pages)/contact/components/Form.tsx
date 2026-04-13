@@ -9,7 +9,7 @@ import z from 'zod';
 
 import { EMPTY_PLACEHOLDER } from '@/shared/constants';
 import { Dictionary } from '@/shared/dictionaries/types';
-import { ContactFieldsId } from '@/shared/dictionaries/types/contactTypes';
+import { ContactFieldId } from '@/shared/dictionaries/types/contactTypes';
 import { ZodIssueCode } from '@/shared/dictionaries/types/sharedTypes';
 import useIsMounted from '@/shared/hooks/useIsMounted';
 import Button from '@/shared/ui/button/Button';
@@ -20,7 +20,7 @@ import Modal from './ui/Modal';
 
 const COOLDOWN_MS = 10000; // 10 seconds
 
-export type ContactFormData = Record<ContactFieldsId, string>;
+export type ContactFormData = Record<ContactFieldId, string>;
 
 type FormProps = {
   dict: Dictionary;

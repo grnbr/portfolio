@@ -4,7 +4,7 @@ export type ZodIssueCode = z.core.$ZodIssueCode;
 
 import { NavHome } from '@/shared/dictionaries/types/navigationTypes';
 
-import { ThemeItem } from '../../constants/theme';
+import { ThemeItem } from '../../types/theme';
 
 export type PageHeader = {
   subtitle: string;

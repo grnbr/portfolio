@@ -1,6 +1,8 @@
+export type ProjectId = 'neomaind' | 'tatell';
 export type ContentType = 'image' | 'video';
 export type ShowCaseDevice = 'desktop' | 'tablet';
 export type MobileDeviceModel = 'iphone13';
+
 export type ShowCase = {
   contentType: ContentType;
   deviceType:
@@ -12,8 +14,6 @@ export type ShowCase = {
         type: ShowCaseDevice;
       };
 };
-
-export type ProjectId = 'neomaind' | 'tatell';
 
 export type Project<ID extends ProjectId> = {
   id: ID;

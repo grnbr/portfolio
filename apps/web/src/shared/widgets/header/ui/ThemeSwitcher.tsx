@@ -5,11 +5,11 @@ import { AnimatePresence, motion } from 'motion/react';
 import { FC, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
-import { ColorScheme, Theme, ThemeMap } from '@/shared/constants/theme';
 import { Dictionary } from '@/shared/dictionaries/types';
 import { setCookie } from '@/shared/helpers/cookies';
 import { getTheme, resolveTheme } from '@/shared/helpers/theme';
 import useIsMounted from '@/shared/hooks/useIsMounted';
+import { ColorScheme, Theme, ThemeMap } from '@/shared/types/theme';
 import Button from '@/shared/ui/button/Button';
 import DropdownMenu from '@/shared/ui/containers/DropdownMenu';
 import Icon from '@/shared/ui/icon/Icon';

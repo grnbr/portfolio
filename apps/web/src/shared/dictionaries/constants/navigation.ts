@@ -1,26 +1,27 @@
-import { EMAIL } from '.';
+import { EMAIL } from '@/shared/constants';
+
 import {
   NavigationId,
   NavigationSocialId,
-} from '../dictionaries/types/navigationTypes';
+  NavItem,
+} from '../types/navigationTypes';
 
-type NavigationItem<ID extends string> = {
-  href: string;
-  id: ID;
+type NavigationMapType = {
+  [K in NavigationId as Capitalize<K>]: NavItem<K, true>;
+};
+type NavSocialMapType = {
+  [K in NavigationSocialId as Capitalize<K>]: NavItem<K>;
 };
 
-type NavigationItemsKeys = Capitalize<NavigationId>;
-type NavSocialKeys = Capitalize<NavigationSocialId>;
-
-export const NavigationItems = {
+export const NavigationMap: NavigationMapType = {
   About: { href: '/about', id: 'about' },
   Contact: { href: '/contact', id: 'contact' },
   Home: { href: '/', id: 'home' },
-  Techstack: { href: '/tech-stack', id: 'techstack' },
+  ['Tech-stack']: { href: '/tech-stack', id: 'tech-stack' },
   Work: { href: '/work', id: 'work' },
-} as const satisfies Record<NavigationItemsKeys, NavigationItem<NavigationId>>;
+} as const;
 
-export const NavSocialItems = {
+export const NavSocialMap: NavSocialMapType = {
   Github: { href: 'https://github.com/waterrDrinker', id: 'github' },
   Gmail: {
     href: `mailto:${EMAIL}`,
@@ -34,4 +35,4 @@ export const NavSocialItems = {
     href: 'https://t.me/grnbr',
     id: 'telegram',
   },
-} as const satisfies Record<NavSocialKeys, NavigationItem<NavigationSocialId>>;
+} as const;

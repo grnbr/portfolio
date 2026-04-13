@@ -1,38 +1,33 @@
-import { NavigationItems, NavSocialItems } from '@/shared/constants/navigation';
+import { NavigationMap } from '@/shared/dictionaries/constants/navigation';
 
-export type NavigationId = 'about' | 'contact' | 'home' | 'techstack' | 'work';
+export type NavigationId = 'about' | 'contact' | 'home' | 'tech-stack' | 'work';
 export type NavigationSocialId = 'github' | 'gmail' | 'linkedin' | 'telegram';
-export type NavigationHref =
-  (typeof NavigationItems)[keyof typeof NavigationItems]['href'];
-export type NavSocialHrefs =
-  (typeof NavSocialItems)[keyof typeof NavSocialItems]['href'];
 
-type NavItem<K extends keyof typeof NavigationItems> = {
-  href: (typeof NavigationItems)[K]['href'];
-  id: (typeof NavigationItems)[K]['id'];
+export type NavItem<ID extends string, Primary extends boolean = false> = {
+  href: Primary extends true ? (ID extends 'home' ? '/' : `/${ID}`) : string;
+  id: ID;
+};
+type NavItemDict<ID extends NavigationId> = NavItem<ID, true> & {
+  label: string;
+};
+type NavSocialItemDict<ID extends NavigationSocialId> = NavItem<ID> & {
   label: string;
 };
 
-type NavSocialItem<K extends keyof typeof NavSocialItems> = {
-  href: (typeof NavSocialItems)[K]['href'];
-  id: (typeof NavSocialItems)[K]['id'];
-  label: string;
-};
-
-export type NavHome = NavItem<'Home'>;
+export type NavHome = NavItemDict<'home'>;
 
 export type PrimaryNavigation = [
   NavHome,
-  NavItem<'About'>,
-  NavItem<'Work'>,
-  NavItem<'Techstack'>,
-  NavItem<'Contact'>,
+  NavItemDict<'about'>,
+  NavItemDict<'work'>,
+  NavItemDict<'tech-stack'>,
+  NavItemDict<'contact'>,
 ];
 
 type SocialNavigation = [
-  NavSocialItem<'Linkedin'>,
-  NavSocialItem<'Telegram'>,
-  NavSocialItem<'Github'>,
+  NavSocialItemDict<'linkedin'>,
+  NavSocialItemDict<'telegram'>,
+  NavSocialItemDict<'github'>,
 ];
 
 export type Navigation = {
@@ -48,15 +43,11 @@ export type Navigation = {
 };
 
 export type HeroNavigation = [
-  {
-    href: (typeof NavigationItems)['About']['href'];
-    id: (typeof NavigationItems)['About']['id'];
+  (typeof NavigationMap)['About'] & {
     subtitle: string;
     title: string;
   },
-  {
-    href: (typeof NavigationItems)['Techstack']['href'];
-    id: (typeof NavigationItems)['Techstack']['id'];
+  (typeof NavigationMap)['Tech-stack'] & {
     subtitle: string;
     title: string;
   },

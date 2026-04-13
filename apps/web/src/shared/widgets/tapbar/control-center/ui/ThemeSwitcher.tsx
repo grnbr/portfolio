@@ -2,10 +2,10 @@ import clsx from 'clsx';
 import { motion } from 'motion/react';
 import { FC, useCallback, useEffect, useRef, useState } from 'react';
 
-import { Theme } from '@/shared/constants/theme';
 import { Dictionary } from '@/shared/dictionaries/types';
 import { setCookie } from '@/shared/helpers/cookies';
 import { getTheme, resolveTheme } from '@/shared/helpers/theme';
+import { Theme } from '@/shared/types/theme';
 import Button from '@/shared/ui/button/Button';
 import Icon from '@/shared/ui/icon/Icon';
 import { THEME_ICONS } from '@/shared/ui/icon/icons/themes';

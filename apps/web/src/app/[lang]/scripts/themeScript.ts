@@ -1,5 +1,5 @@
 import type { CookieNames } from '@/shared/constants/cookies';
-import type { ColorScheme, Theme } from '@/shared/constants/theme';
+import type { ColorScheme, Theme } from '@/shared/types/theme';
 
 export default function themeScript() {
   const MAX_AGE = 31536000;

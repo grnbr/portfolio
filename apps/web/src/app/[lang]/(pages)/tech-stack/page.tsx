@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 import PageHeader from '@/shared/components/page-header/PageHeader';
-import { TechGroupKeyValues } from '@/shared/dictionaries/types/techTypes';
+import { TechGroupName } from '@/shared/dictionaries/types/techTypes';
 import { getDictionary } from '@/shared/i18n/get-dictionary';
 import { Locale } from '@/shared/i18n/i18n-config';
 import Article from '@/shared/ui/containers/Article';
@@ -26,7 +26,7 @@ export default async function Page({ params }: PageProps<'/[lang]'>) {
             <ul className={styles.itemsContainer}>
               {group.items.map((item) => {
                 const getLogoTsx = (
-                  groupKey: TechGroupKeyValues,
+                  groupKey: TechGroupName,
                   id: string,
                 ): IconComponent | undefined => {
                   return TECH_STACK_TSX_ICONS[groupKey]?.[id as never];

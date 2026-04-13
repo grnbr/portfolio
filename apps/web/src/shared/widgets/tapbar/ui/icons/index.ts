@@ -12,6 +12,6 @@ export const NAV_TAPBAR_ICONS: Record<NavigationId, FC<IconProps>> = {
   about: UserIcon,
   contact: MessageIcon,
   home: HomeIcon,
-  techstack: TechIcon,
+  'tech-stack': TechIcon,
   work: BagIcon,
 } as const;

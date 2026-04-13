@@ -1,4 +1,4 @@
-import { ColorSchemeValues, ThemeValues } from './theme';
+import { ColorSchemeValues, ThemeValues } from '../types/theme';
 
 export type CookieNames = 'resolvedTheme' | 'theme';
 export type CookieKeys = Capitalize<CookieNames>;

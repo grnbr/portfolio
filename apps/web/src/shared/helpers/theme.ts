@@ -1,8 +1,8 @@
-import { ColorScheme, DefaultTheme, Theme, ThemeMap } from '../constants/theme';
+import { ColorScheme, SystemTheme, Theme, ThemeMap } from '../types/theme';
 import { getCookie } from './cookies';
 
 export const getTheme = (): { resolvedTheme?: ColorScheme; theme: Theme } => {
-  const defaultTheme: DefaultTheme = 'system';
+  const defaultTheme: SystemTheme = 'system';
 
   const theme = getCookie('Theme') ?? defaultTheme;
   const resolvedTheme = getCookie('ResolvedTheme');
