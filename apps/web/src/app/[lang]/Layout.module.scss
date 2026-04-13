@@ -10,7 +10,7 @@
   bottom: t.$bottom-widgets-bottom;
   left: t.$layout-side-padding;
 
-  @include m.media-min(mobile) {
+  @include m.media-min(tablet) {
     display: none;
   }
 }

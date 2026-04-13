@@ -16,7 +16,7 @@ export type IconPropsOptions = GenericIconOptionsProps & {
   };
   height?: string;
   isInvertedDefaultColor?: boolean;
-  size?: string;
+  size?: number;
   variant?: 'fill' | 'outlined';
   width?: string;
 };

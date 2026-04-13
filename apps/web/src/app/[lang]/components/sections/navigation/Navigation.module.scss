@@ -24,7 +24,19 @@
     .card {
       @include mixins.card-styles;
 
+      position: relative;
+
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+
+      aspect-ratio: 1;
+
+      .link {
+        position: absolute;
+        z-index: 1;
+        inset: 0;
+      }
 
       .title,
       .subtitle {
@@ -78,8 +90,8 @@
 
       .imageContainer {
         position: relative;
+        flex: 1;
         aspect-ratio: calc(358 / 260);
-        width: 100%;
 
         @include mixins.media-min(mobile) {
           aspect-ratio: calc(504 / 365);

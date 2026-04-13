@@ -34,6 +34,7 @@
 
     font-size: tokens.$fs-18;
     font-weight: t.$fw-medium;
+    white-space: nowrap;
 
     @include mixins.media-min(mobile) {
       width: max-content;
