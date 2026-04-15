@@ -66,23 +66,41 @@
 
   &.primary {
     color: var(--btn-primary-text);
+
     background: var(--btn-primary-bg);
+    outline-color: var(--btn-primary-outline);
+    outline-offset: -3px;
     box-shadow: var(--btn-primary-shadow);
 
-    // transition:
-    //   transform 0.3s ease-in-out,
-    //   box-shadow 0.3s ease-in-out;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease,
+      opacity 0.2s ease;
 
-    // &:hover:enabled,
-    // &:hover:any-link {
-    //   transform: translateY(-0.2rem);
-    //   box-shadow: var(--sd-primary-btn-hover);
-    // }
+    @include mixins.hoverable {
+      &:not(.disabled, .loading) {
+        transform: translateY(-2px);
+        opacity: 0.95;
+        box-shadow: var(--btn-primary-shadow-hover);
+      }
+    }
   }
 
   &.secondary {
     color: var(--btn-secondary-text);
     background-color: var(--btn-secondary-bg);
+    transition:
+      transform 0.2s ease,
+      background-color 0.2s ease,
+      opacity 0.2s ease;
+
+    @include mixins.hoverable {
+      &:not(.disabled, .loading) {
+        transform: translateY(-2px);
+        opacity: 0.95;
+        background-color: var(--btn-secondary-bg-hover);
+      }
+    }
   }
 
   &.ghost {
