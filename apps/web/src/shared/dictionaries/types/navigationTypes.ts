@@ -3,14 +3,18 @@ import { NavigationMap } from '@/shared/dictionaries/constants/navigation';
 export type NavigationId = 'about' | 'contact' | 'home' | 'tech-stack' | 'work';
 export type NavigationSocialId = 'github' | 'gmail' | 'linkedin' | 'telegram';
 
-export type NavItem<ID extends string, Primary extends boolean = false> = {
-  href: Primary extends true ? (ID extends 'home' ? '/' : `/${ID}`) : string;
+export type NavItem<ID extends NavigationId> = {
+  href: ID extends 'home' ? '/' : `/${ID}`;
   id: ID;
 };
-type NavItemDict<ID extends NavigationId> = NavItem<ID, true> & {
+
+type NavItemDict<ID extends NavigationId> = NavItem<ID> & {
   label: string;
 };
-type NavSocialItemDict<ID extends NavigationSocialId> = NavItem<ID> & {
+
+export type NavSocialItem<ID extends NavigationSocialId> = {
+  href: string;
+  id: ID;
   label: string;
 };
 
@@ -24,10 +28,11 @@ export type PrimaryNavigation = [
   NavItemDict<'contact'>,
 ];
 
-type SocialNavigation = [
-  NavSocialItemDict<'linkedin'>,
-  NavSocialItemDict<'telegram'>,
-  NavSocialItemDict<'github'>,
+export type SocialNavigation = [
+  NavSocialItem<'linkedin'>,
+  NavSocialItem<'telegram'>,
+  NavSocialItem<'github'>,
+  NavSocialItem<'gmail'>,
 ];
 
 export type Navigation = {

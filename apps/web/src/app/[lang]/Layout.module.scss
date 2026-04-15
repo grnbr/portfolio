@@ -7,7 +7,7 @@
   position: fixed;
   z-index: 100;
   right: t.$layout-side-padding;
-  bottom: t.$bottom-widgets-bottom;
+  bottom: calc(env(safe-area-inset-bottom) + t.$bottom-widgets-bottom);
   left: t.$layout-side-padding;
 
   @include m.media-min(tablet) {

@@ -18,7 +18,9 @@ const Footer: FC<FooterProps> = ({ dict }) => {
       <div className={styles.container}>
         <div className={styles.navigation}>
           <nav className={styles.socials}>
-            <h2 className={styles.title}>{navigation.socials.title}</h2>
+            {navigation.socials.title && (
+              <p className={styles.title}>{navigation.socials.title}</p>
+            )}
             <ul className={styles.list}>
               {navigation.socials.items.map((item) => (
                 <li className={styles.item} key={item.id}>
@@ -31,7 +33,10 @@ const Footer: FC<FooterProps> = ({ dict }) => {
           </nav>
 
           <nav className={styles.primary}>
-            <h2 className={styles.title}>{navigation.primary.title}</h2>
+            {navigation.primary.title && (
+              <p className={styles.title}>{navigation.primary.title}</p>
+            )}
+
             <ul className={styles.list}>
               {navigation.primary.items.map((item) => (
                 <li className={styles.item} key={item.id}>

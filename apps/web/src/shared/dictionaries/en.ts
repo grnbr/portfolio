@@ -1,6 +1,7 @@
 import {
   NavigationMap,
   NavSocialMap,
+  NavSocialTuple,
 } from '@/shared/dictionaries/constants/navigation';
 import { Dictionary } from '@/shared/dictionaries/types';
 
@@ -51,20 +52,7 @@ export const dictionary: Dictionary = {
           title: 'Links',
         },
         socials: {
-          items: [
-            {
-              ...NavSocialMap.Linkedin,
-              label: 'LinkedIn',
-            },
-            {
-              label: 'Telegram',
-              ...NavSocialMap.Telegram,
-            },
-            {
-              label: 'Github',
-              ...NavSocialMap.Github,
-            },
-          ],
+          items: NavSocialTuple,
           title: 'Elsewhere',
         },
       },

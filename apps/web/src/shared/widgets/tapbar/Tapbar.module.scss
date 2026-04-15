@@ -34,14 +34,17 @@ $padding: 10px 15px;
   }
 
   .activeBg {
+    will-change: transform;
     user-select: none;
 
     position: absolute;
     z-index: 1;
     inset: 0;
+    transform: translateZ(0);
 
     border-radius: 12px;
 
+    backface-visibility: hidden;
     background-color: var(--tapbar-btn-bg);
   }
 }

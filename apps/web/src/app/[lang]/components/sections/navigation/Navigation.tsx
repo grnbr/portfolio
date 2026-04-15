@@ -22,19 +22,19 @@ const Navigation: FC<NavigationProps> = ({ dict }) => {
         {content.items.map((item) => {
           return (
             <li className={styles.card} key={item.id}>
-              <h3 className={styles.title}>{item.title}</h3>
-              <p className={styles.subtitle}>{item.subtitle}</p>
+              <Link className={styles.link} href={item.href}>
+                <h3 className={styles.title}>{item.title}</h3>
+                <p className={styles.subtitle}>{item.subtitle}</p>
 
-              <div className={styles.imageContainer}>
-                <Image
-                  alt={`${item.id}-card-image`}
-                  fill
-                  src={`/images/home/navigation/${item.id}.png`}
-                  style={{ objectPosition: 'bottom' }}
-                />
-              </div>
-
-              <Link className={styles.link} href={item.href} />
+                <div className={styles.imageContainer}>
+                  <Image
+                    alt={`${item.id}-card-image`}
+                    fill
+                    src={`/images/home/navigation/${item.id}.png`}
+                    style={{ objectPosition: 'bottom' }}
+                  />
+                </div>
+              </Link>
             </li>
           );
         })}

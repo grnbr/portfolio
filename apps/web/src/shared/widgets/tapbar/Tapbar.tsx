@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import { motion } from 'motion/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 
 import { Dictionary } from '@/shared/dictionaries/types';
 import formatHref from '@/shared/helpers/formatHref';
@@ -30,6 +30,8 @@ const Tapbar: FC<TapbarProps> = ({ dict, lang }) => {
   );
 
   const navigationLength = navigation.primary.items.length;
+
+  useEffect(() => {}, []);
 
   return (
     <nav className={styles.tapbar}>
@@ -75,6 +77,7 @@ const Tapbar: FC<TapbarProps> = ({ dict, lang }) => {
           style={{ width: `calc(100% / ${navigationLength})` }}
           transition={{
             damping: 35,
+            delay: 0.2,
             stiffness: 500,
             type: 'spring',
           }}

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { FC } from 'react';
 
 import LocaleSwitcher from '@/shared/components/LocaleSwitcher';
@@ -25,15 +26,25 @@ const RightPanel: FC<RightPanelProps> = ({ dict, lang, navigation }) => {
           {navigation.socials.items.map((item, i) => {
             const SocialIcon = NAV_HEADER_SOCIAL_ICONS[item.id];
 
+            const svgPath = `/icons/navigation/social/${item.id}-logo.svg`;
+
             return (
               <ButtonLink
+                className={styles.link}
                 href={item.href}
                 key={i}
                 target="_blank"
                 variant="ghost"
               >
-                <Icon options={{ opacity: 'faded' }}>
-                  <SocialIcon />
+                <Icon
+                  className={styles.iconWrapper}
+                  options={{ opacity: 'faded' }}
+                >
+                  {SocialIcon ? (
+                    <SocialIcon />
+                  ) : (
+                    <Image alt={`${item.id}-logo`} fill src={svgPath} />
+                  )}
                 </Icon>
               </ButtonLink>
             );

@@ -99,7 +99,7 @@ const ThemeSwitcher: FC<ThemeSwitcherProps> = ({ dict }) => {
   return (
     <div className={styles.themeSwitcher}>
       <AnimatePresence initial={false}>
-        <div className={styles.icon}>
+        <div className={styles.container}>
           {isLoader ? (
             <motion.div
               animate={{ opacity: 1 }}

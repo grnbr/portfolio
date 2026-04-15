@@ -4,13 +4,15 @@ import {
   NavigationId,
   NavigationSocialId,
   NavItem,
+  NavSocialItem,
+  SocialNavigation,
 } from '../types/navigationTypes';
 
 type NavigationMapType = {
-  [K in NavigationId as Capitalize<K>]: NavItem<K, true>;
+  [K in NavigationId as Capitalize<K>]: NavItem<K>;
 };
 type NavSocialMapType = {
-  [K in NavigationSocialId as Capitalize<K>]: NavItem<K>;
+  [K in NavigationSocialId as Capitalize<K>]: NavSocialItem<K>;
 };
 
 export const NavigationMap: NavigationMapType = {
@@ -22,17 +24,31 @@ export const NavigationMap: NavigationMapType = {
 } as const;
 
 export const NavSocialMap: NavSocialMapType = {
-  Github: { href: 'https://github.com/waterrDrinker', id: 'github' },
+  Github: {
+    href: 'https://github.com/waterrDrinker',
+    id: 'github',
+    label: 'Github',
+  },
   Gmail: {
     href: `mailto:${EMAIL}`,
     id: 'gmail',
+    label: 'Gmail',
   },
   Linkedin: {
-    href: 'www.linkedin.com/in/григорий-найбауер-248a57381',
+    href: 'https://www.linkedin.com/in/grigory-neubauer/',
     id: 'linkedin',
+    label: 'LinkedIn',
   },
   Telegram: {
     href: 'https://t.me/grnbr',
     id: 'telegram',
+    label: 'Telegram',
   },
 } as const;
+
+export const NavSocialTuple: SocialNavigation = [
+  NavSocialMap.Linkedin,
+  NavSocialMap.Telegram,
+  NavSocialMap.Github,
+  NavSocialMap.Gmail,
+];

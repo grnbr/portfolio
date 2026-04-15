@@ -17,9 +17,6 @@ $z-index: 5;
 
     right: 1rem;
     left: 1rem;
-
-    overflow: hidden;
-
     margin-inline: auto;
 
     .container {
@@ -110,7 +107,6 @@ $z-index: 5;
           @include mixins.flex-center-vertical;
 
           position: relative;
-          overflow: hidden;
 
           @include mixins.clamp-bp(
             column-gap,
@@ -124,36 +120,6 @@ $z-index: 5;
             @include mixins.flex-center;
 
             position: relative;
-
-            &.more {
-              position: absolute;
-              top: 50%;
-              right: 0;
-              transform: translateY(-50%);
-
-              .ghostBtn {
-                column-gap: 0;
-              }
-
-              .dropdown {
-                position: absolute;
-
-                // > .list {
-                // }
-              }
-            }
-
-            &.hidden {
-              pointer-events: none;
-              user-select: none;
-              opacity: 0;
-            }
-
-            .link {
-              &.hidden {
-                pointer-events: none;
-              }
-            }
 
             .label,
             .ghostBtn {
@@ -186,6 +152,12 @@ $z-index: 5;
             @include mixins.flex-center-vertical;
 
             column-gap: 1.5rem;
+
+            .link {
+              .iconWrapper {
+                position: relative;
+              }
+            }
           }
         }
 

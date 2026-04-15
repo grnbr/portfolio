@@ -37,6 +37,10 @@ export default async function RootLayout({
   return (
     <html data-theme={resolvedTheme} lang={lang} suppressHydrationWarning>
       <head>
+        <meta
+          content="width=device-width, initial-scale=1, viewport-fit=cover"
+          name="viewport"
+        />
         <script
           dangerouslySetInnerHTML={{ __html: inlineScript(themeScript) }}
         />
@@ -44,18 +48,13 @@ export default async function RootLayout({
 
       <body>
         <BgGradient component="header" />
-
         <Header dict={dictionary} lang={lang} />
-
         <main>{children}</main>
-
         <Footer dict={dictionary} />
-
         <div className={styles.bottomWidgets}>
           <ControlCenter dict={dictionary} lang={lang} />
           <Tapbar dict={dictionary} lang={lang} />
         </div>
-
         <BgGradient component="footer" />
       </body>
     </html>

@@ -22,79 +22,79 @@
     }
 
     .card {
-      @include mixins.card-styles;
-
       position: relative;
-
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-
       aspect-ratio: 1;
 
       .link {
-        position: absolute;
-        z-index: 1;
-        inset: 0;
-      }
+        @include mixins.card-styles;
 
-      .title,
-      .subtitle {
-        padding-inline: 1.125rem;
-        text-align: center;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
 
-        @include mixins.clamp-bp(
-          padding-inline,
-          (
-            mobile: 1.125rem,
-            ultra: 1.5rem,
-          )
-        );
-      }
+        height: 100%;
+        min-height: 0;
 
-      .title {
-        margin-top: 2rem;
-        margin-bottom: 0.5rem;
-        font-size: 1.5rem;
+        .title,
+        .subtitle {
+          padding-inline: 1.125rem;
+          text-align: center;
 
-        @include mixins.clamp-bp(
-          margin-top,
-          (
-            mobile: 2rem,
-            ultra: 3.75rem,
-          )
-        );
-        @include mixins.clamp-bp(
-          margin-bottom,
-          (
-            mobile: 0.75rem,
-            ultra: 1rem,
-          )
-        );
-
-        @include mixins.clamp-font-size(
-          (
-            mobile: tokens.$fs-24,
-            ultra: tokens.$fs-32,
-          )
-        );
-      }
-
-      .subtitle {
-        margin-bottom: 0.625rem;
-
-        @include mixins.media-min(mobile) {
-          margin-bottom: 0.3125rem;
+          @include mixins.clamp-bp(
+            padding-inline,
+            (
+              mobile: 1.125rem,
+              ultra: 1.5rem,
+            )
+          );
         }
-      }
 
-      .imageContainer {
-        position: relative;
-        flex: 1;
-        aspect-ratio: calc(358 / 260);
+        .title {
+          margin-top: 2rem;
+          margin-bottom: 0.5rem;
+          font-size: 1.5rem;
 
-        @include mixins.media-min(mobile) {
-          aspect-ratio: calc(504 / 365);
+          @include mixins.clamp-bp(
+            margin-top,
+            (
+              mobile: 2rem,
+              ultra: 3.75rem,
+            )
+          );
+          @include mixins.clamp-bp(
+            margin-bottom,
+            (
+              mobile: 0.75rem,
+              ultra: 1rem,
+            )
+          );
+
+          @include mixins.clamp-font-size(
+            (
+              mobile: tokens.$fs-24,
+              ultra: tokens.$fs-32,
+            )
+          );
+        }
+
+        .subtitle {
+          margin-bottom: 0.625rem;
+
+          @include mixins.media-min(mobile) {
+            margin-bottom: 0.3125rem;
+          }
+        }
+
+        .imageContainer {
+          position: relative;
+          flex: 1;
+          aspect-ratio: calc(358 / 260);
+
+          // min-height: 0;
+
+          @include mixins.media-min(mobile) {
+            aspect-ratio: calc(504 / 365);
+          }
         }
       }
     }
