@@ -1,5 +1,3 @@
-import type { Metadata } from 'next';
-
 import './globals.scss';
 
 import { headers } from 'next/headers';
@@ -15,12 +13,6 @@ import Tapbar from '@/shared/widgets/tapbar/Tapbar';
 
 import styles from './Layout.module.scss';
 import themeScript from './scripts/themeScript';
-
-export const metadata: Metadata = {
-  description:
-    'Portfolio page which contains information about me and to show skills',
-  title: "Grigory's portfolio",
-};
 
 export async function generateStaticParams() {
   return [{ lang: Locales.English }, { lang: Locales.Russian }];

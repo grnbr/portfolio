@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import Image from 'next/image';
 
 import PageHeader from '@/shared/components/page-header/PageHeader';
@@ -10,10 +11,26 @@ import { type IconComponent } from '@/shared/ui/icon/iconTypes';
 import styles from './Page.module.scss';
 import { TECH_STACK_TSX_ICONS } from './ui/icons';
 
+export async function generateMetadata(props: {
+  params: Promise<{ lang: Locale }>;
+}): Promise<Metadata> {
+  const params = await props.params;
+  const dictionary = await getDictionary(params.lang);
+  const meta = dictionary.pages['tech-stack'].meta;
+  const { description, title } = meta;
+
+  const titlePostfix = dictionary.pages.generic.meta.titlePostfix;
+
+  return {
+    description,
+    title: title + titlePostfix,
+  };
+}
+
 export default async function Page({ params }: PageProps<'/[lang]'>) {
   const lang = (await params).lang as Locale;
   const dictionary = await getDictionary(lang);
-  const techStack = dictionary.pages.techStack;
+  const techStack = dictionary.pages['tech-stack'];
   const { content, header } = techStack;
 
   return (

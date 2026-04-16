@@ -6,6 +6,15 @@ import { NavHome } from '@/shared/dictionaries/types/navigationTypes';
 
 import { ThemeItem } from '../../types/theme';
 
+export type PageMeta = {
+  description: string;
+  title: string;
+};
+
+export type Page = {
+  meta: PageMeta;
+};
+
 export type PageHeader = {
   subtitle: string;
   title: string;

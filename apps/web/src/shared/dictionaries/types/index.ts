@@ -9,6 +9,7 @@ import { ContactInputsTuple, ContactTextareaMap } from './contactTypes';
 import {
   ButtonDict,
   FormField,
+  Page,
   PageHeader,
   Paragraph,
   ParagraphWithLinks,
@@ -39,14 +40,14 @@ export type Dictionary = {
   };
 
   pages: {
-    about: {
+    about: Page & {
       afterword: string;
       closingParagraph: ParagraphWithLinks;
       header: PageHeader;
       textContent: Paragraph[];
     };
 
-    contact: {
+    contact: Page & {
       form: {
         buttons: {
           send: {
@@ -78,6 +79,9 @@ export type Dictionary = {
           alt: string;
         };
       };
+      meta: {
+        titlePostfix: string;
+      };
       projects: {
         emptyState: {
           subtitle: string;
@@ -87,11 +91,12 @@ export type Dictionary = {
       };
     };
 
-    home: {
+    home: Page & {
       contactme: {
         subtitle: string;
         title: string;
       };
+
       hero: {
         greeting: string;
         intro: string;
@@ -107,12 +112,12 @@ export type Dictionary = {
       };
     };
 
-    techStack: {
+    'tech-stack': Page & {
       content: TechStackGroups;
       header: PageHeader;
     };
 
-    work: {
+    work: Page & {
       header: PageHeader;
     };
   };

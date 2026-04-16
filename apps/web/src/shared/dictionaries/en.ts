@@ -96,6 +96,11 @@ export const dictionary: Dictionary = {
         subtitle: 'Who I am and what I do',
         title: 'A little bit about me',
       },
+      meta: {
+        description:
+          'Learn more about Grigory, a frontend developer focused on modern UI and web applications.',
+        title: 'About',
+      },
       textContent: [
         {
           text: [
@@ -166,6 +171,11 @@ export const dictionary: Dictionary = {
         subtitle: 'Let’s build something awesome',
         title: 'Get in touch',
       },
+      meta: {
+        description:
+          'Get in touch with Grigory for collaboration or project inquiries.',
+        title: 'Contact',
+      },
     },
     generic: {
       buttons: {
@@ -181,6 +191,9 @@ export const dictionary: Dictionary = {
         portrait: {
           alt: 'Grigory',
         },
+      },
+      meta: {
+        titlePostfix: ' | Grigory',
       },
       projects: {
         emptyState: {
@@ -235,6 +248,11 @@ export const dictionary: Dictionary = {
         name: 'Grigory',
         pronoun: 'I’m',
       },
+      meta: {
+        description:
+          'A frontend engineer helping startups turn ideas into modern web and mobile applications.',
+        title: 'Frontend Developer',
+      },
       navigation: {
         items: [
           {
@@ -254,7 +272,7 @@ export const dictionary: Dictionary = {
         title: 'Selected Work',
       },
     },
-    techStack: {
+    'tech-stack': {
       content: [
         {
           groupKey: 'dev',
@@ -326,11 +344,21 @@ export const dictionary: Dictionary = {
         subtitle: 'The dev tools I use',
         title: 'Tech Stack',
       },
+      meta: {
+        description:
+          'Technologies and tools Grigory uses to build modern web applications.',
+        title: 'Tech Stack',
+      },
     },
     work: {
       header: {
         subtitle: 'Projects and ideas I’ve worked on',
         title: 'Projects',
+      },
+      meta: {
+        description:
+          'Explore projects built by Grigory, showcasing modern web development and UI solutions.',
+        title: 'Work',
       },
     },
   },
