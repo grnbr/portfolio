@@ -6,7 +6,6 @@ import {
 import { Dictionary } from '@/shared/dictionaries/types';
 
 import { ThemeMap } from '../types/theme';
-import { openGraph } from './constants/meta';
 import { ProjectItems } from './constants/projects';
 import { AppMap, DevTechMap, OsMap } from './constants/techItems';
 import { ContactInputMap } from './types/contactTypes';
@@ -100,7 +99,6 @@ export const dictionary: Dictionary = {
       meta: {
         description:
           'Learn more about Grigory, a frontend developer focused on modern UI and web applications.',
-        openGraph,
         title: 'About',
       },
       textContent: [
@@ -176,7 +174,6 @@ export const dictionary: Dictionary = {
       meta: {
         description:
           'Get in touch with Grigory for collaboration or project inquiries.',
-        openGraph,
         title: 'Contact',
       },
     },
@@ -254,7 +251,6 @@ export const dictionary: Dictionary = {
       meta: {
         description:
           'A frontend engineer helping startups turn ideas into modern web and mobile applications.',
-        openGraph,
         title: 'Frontend Developer',
       },
       navigation: {
@@ -351,7 +347,6 @@ export const dictionary: Dictionary = {
       meta: {
         description:
           'Technologies and tools Grigory uses to build modern web applications.',
-        openGraph,
         title: 'Tech Stack',
       },
     },
@@ -363,7 +358,6 @@ export const dictionary: Dictionary = {
       meta: {
         description:
           'Explore projects built by Grigory, showcasing modern web development and UI solutions.',
-        openGraph,
         title: 'Work',
       },
     },

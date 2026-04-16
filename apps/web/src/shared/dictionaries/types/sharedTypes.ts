@@ -6,14 +6,8 @@ import { NavHome } from '@/shared/dictionaries/types/navigationTypes';
 
 import { ThemeItem } from '../../types/theme';
 
-export type OpenGraph = {
-  images: string;
-  type: 'website';
-};
-
 export type PageMeta = {
   description: string;
-  openGraph: OpenGraph;
   title: string;
 };
 

@@ -4,6 +4,7 @@ import Content from '@/app/[lang]/(pages)/work/components/Content';
 import PageHeader from '@/shared/components/page-header/PageHeader';
 import { getDictionary } from '@/shared/i18n/get-dictionary';
 import { Locale } from '@/shared/i18n/i18n-config';
+import getOpenGraphDefaults from '@/shared/lib/metadata/getOpenGraphDefaults';
 
 export async function generateMetadata(props: {
   params: Promise<{ lang: Locale }>;
@@ -11,7 +12,8 @@ export async function generateMetadata(props: {
   const params = await props.params;
   const dictionary = await getDictionary(params.lang);
   const meta = dictionary.pages.work.meta;
-  const { description, openGraph, title } = meta;
+  const { description, title } = meta;
+  const openGraph = getOpenGraphDefaults({ lang: params.lang });
 
   const titlePostfix = dictionary.pages.generic.meta.titlePostfix;
   const fullTitle = title + titlePostfix;
