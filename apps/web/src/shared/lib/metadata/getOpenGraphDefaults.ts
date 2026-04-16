@@ -11,7 +11,7 @@ export default function getOpenGraphDefaults({
   lang: Locale;
 }): OpenGraphDefaults {
   return {
-    images: `/images/og/image-${lang}.webp`,
+    images: `/images/og/image-${lang}-v2.webp`,
     type: 'website',
   };
 }
