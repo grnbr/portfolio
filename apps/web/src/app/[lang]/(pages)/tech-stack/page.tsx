@@ -17,13 +17,20 @@ export async function generateMetadata(props: {
   const params = await props.params;
   const dictionary = await getDictionary(params.lang);
   const meta = dictionary.pages['tech-stack'].meta;
-  const { description, title } = meta;
+  const { description, openGraph, title } = meta;
 
   const titlePostfix = dictionary.pages.generic.meta.titlePostfix;
 
+  const fullTitle = title + titlePostfix;
+
   return {
     description,
-    title: title + titlePostfix,
+    openGraph: {
+      description,
+      title: fullTitle,
+      ...openGraph,
+    },
+    title: fullTitle,
   };
 }
 

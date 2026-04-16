@@ -8,6 +8,7 @@ import {
 import { Dictionary } from '@/shared/dictionaries/types';
 
 import { ThemeMap } from '../types/theme';
+import { openGraph } from './constants/meta';
 import { ProjectItems } from './constants/projects';
 import { AppMap, DevTechMap, OsMap } from './constants/techItems';
 import { ContactInputMap } from './types/contactTypes';
@@ -98,6 +99,7 @@ export const dictionary: Dictionary = {
       meta: {
         description:
           'Более подробно обо мне — frontend-разработчике, специализирующемся на современных интерфейсах и веб-приложениях.',
+        openGraph,
         title: 'Обо мне',
       },
       textContent: [
@@ -168,6 +170,7 @@ export const dictionary: Dictionary = {
       meta: {
         description:
           'Свяжитесь со мной для сотрудничества или обсуждения проекта.',
+        openGraph,
         title: 'Контакты',
       },
     },
@@ -247,6 +250,7 @@ export const dictionary: Dictionary = {
       meta: {
         description:
           'Frontend-разработчик, помогающий стартапам превращать идеи в современные веб- и мобильные приложения.',
+        openGraph,
         title: 'Frontend Developer',
       },
       navigation: {
@@ -344,6 +348,7 @@ export const dictionary: Dictionary = {
       meta: {
         description:
           'Технологии и инструменты, которые я использую для создания современных веб-приложений.',
+        openGraph,
         title: 'Стек технологий',
       },
     },
@@ -355,6 +360,7 @@ export const dictionary: Dictionary = {
       meta: {
         description:
           'Мои проекты: примеры современной веб-разработки и решений в области пользовательских интерфейсов.',
+        openGraph,
         title: 'Проекты',
       },
     },
