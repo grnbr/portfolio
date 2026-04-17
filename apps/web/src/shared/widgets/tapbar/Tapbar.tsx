@@ -31,7 +31,9 @@ const Tapbar: FC<TapbarProps> = ({ dict, lang }) => {
 
   const navigationLength = navigation.primary.items.length;
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   return (
     <nav className={styles.tapbar}>
