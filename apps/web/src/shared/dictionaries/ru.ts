@@ -27,6 +27,7 @@ export const dictionary: Dictionary = {
     footer: {
       underLogoText: 'Спасибо за визит',
     },
+
     generic: {
       navigation: {
         home: dictionaryData.navigation.home,
@@ -71,6 +72,15 @@ export const dictionary: Dictionary = {
           ariaLabel: {
             close: 'Закрыть меню тем',
             open: 'Открыть меню тем',
+          },
+        },
+      },
+    },
+    widgets: {
+      controlCenter: {
+        buttons: {
+          toggle: {
+            ariaLabel: 'Открыть настройки',
           },
         },
       },

@@ -42,7 +42,7 @@ export default async function RootLayout({
         <BgGradient component="header" />
         <Header dict={dictionary} lang={lang} />
         <main>{children}</main>
-        <Footer dict={dictionary} />
+        <Footer dict={dictionary} lang={lang} />
         <div className={styles.bottomWidgets}>
           <ControlCenter dict={dictionary} lang={lang} />
           <Tapbar dict={dictionary} lang={lang} />

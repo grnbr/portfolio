@@ -76,6 +76,15 @@ export const dictionary: Dictionary = {
         },
       },
     },
+    widgets: {
+      controlCenter: {
+        buttons: {
+          toggle: {
+            ariaLabel: 'Open Control Center',
+          },
+        },
+      },
+    },
   },
 
   pages: {

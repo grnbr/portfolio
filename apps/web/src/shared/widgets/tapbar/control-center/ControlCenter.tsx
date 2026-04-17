@@ -28,10 +28,12 @@ const ControlCenter: FC<ControlCenterProps> = ({ dict, lang }) => {
   const { handleCloseMenu, handleToggleMenu, isMenuOpen } =
     useControlCenterStore();
   const buttonRef = useRef<HTMLButtonElement | null>(null);
+  const toggleBtnDict = dict.layout.widgets.controlCenter.buttons.toggle;
 
   return (
     <div className={styles.controlCenter}>
       <MotionButton
+        aria-label={toggleBtnDict.ariaLabel}
         className={styles.openMenuBtn}
         onClick={handleToggleMenu}
         ref={buttonRef}

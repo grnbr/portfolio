@@ -47,14 +47,16 @@
           }
         }
 
-        .bgElement {
-          position: absolute;
-          z-index: 22;
-          inset: 0;
+        .indicatorItem {
+          .bgElement {
+            position: absolute;
+            z-index: 22;
+            inset: 0;
 
-          border-radius: 50%;
+            border-radius: 50%;
 
-          background: var(--btn-selected-theme-bg);
+            background: var(--btn-selected-theme-bg);
+          }
         }
       }
     }

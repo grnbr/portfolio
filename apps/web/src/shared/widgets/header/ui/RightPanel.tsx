@@ -29,24 +29,26 @@ const RightPanel: FC<RightPanelProps> = ({ dict, lang, navigation }) => {
             const svgPath = `/icons/navigation/social/${item.id}-logo.svg`;
 
             return (
-              <ButtonLink
-                className={styles.link}
-                href={item.href}
-                key={i}
-                target="_blank"
-                variant="ghost"
-              >
-                <Icon
-                  className={styles.iconWrapper}
-                  options={{ opacity: 'faded' }}
+              <li key={i}>
+                <ButtonLink
+                  aria-label={item.label}
+                  className={styles.link}
+                  href={item.href}
+                  target="_blank"
+                  variant="ghost"
                 >
-                  {SocialIcon ? (
-                    <SocialIcon />
-                  ) : (
-                    <Image alt={`${item.id}-logo`} fill src={svgPath} />
-                  )}
-                </Icon>
-              </ButtonLink>
+                  <Icon
+                    className={styles.iconWrapper}
+                    options={{ opacity: 'faded' }}
+                  >
+                    {SocialIcon ? (
+                      <SocialIcon />
+                    ) : (
+                      <Image alt={`${item.id}-logo`} fill src={svgPath} />
+                    )}
+                  </Icon>
+                </ButtonLink>
+              </li>
             );
           })}
         </ul>

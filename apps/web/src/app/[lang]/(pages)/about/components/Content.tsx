@@ -26,8 +26,10 @@ const Content: FC<ContentProps> = ({ dict }) => {
           <Image
             alt={portrait.alt}
             className={styles.image}
-            fill
+            height={443}
             src={'/images/about/photo.webp'}
+            // fill
+            width={340}
           />
         </div>
         <GetInTouchBtn
@@ -38,7 +40,7 @@ const Content: FC<ContentProps> = ({ dict }) => {
 
       <div className={styles.textContainer}>
         <div className={styles.paragraph}>
-          <h3 className={styles.title}>{textContent[0]?.title}</h3>
+          <h2 className={styles.title}>{textContent[0]?.title}</h2>
           <p className={styles.text}>
             {textContent[0]?.text[0]}{' '}
             <span className={styles.highlight}>{textContent[0]?.text[1]}</span>{' '}
@@ -47,7 +49,7 @@ const Content: FC<ContentProps> = ({ dict }) => {
         </div>
 
         <div className={styles.paragraph}>
-          <h3 className={styles.title}>{textContent[1]?.title}</h3>
+          <h2 className={styles.title}>{textContent[1]?.title}</h2>
           <p className={styles.text}>{textContent[1]?.text[0]}</p>
         </div>
 

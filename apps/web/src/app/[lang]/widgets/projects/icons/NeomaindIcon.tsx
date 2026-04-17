@@ -1,12 +1,6 @@
 const NeomaindIcon = () => {
   return (
-    <svg
-      fill="none"
-      height="auto"
-      viewBox="0 0 41 40"
-      width="auto"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg fill="none" viewBox="0 0 41 40" xmlns="http://www.w3.org/2000/svg">
       <path
         d="M36.2717 6.92475V35.0994H40.8918V8.98636C40.8918 8.87449 40.8454 8.76594 40.765 8.68888H40.7683L31.8316 0.114349C31.7537 0.0397736 31.6517 0 31.5462 0H4.62036V4.8557H34.2018C35.3435 4.8557 36.2717 5.78293 36.2717 6.92393V6.92475Z"
         fill="var(--icon-primary)"

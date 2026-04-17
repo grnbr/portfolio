@@ -95,19 +95,25 @@ const ThemeSwitcher: FC<ThemeProps> = ({ dict }) => {
         })}
 
         {indicator?.ready && (
-          <motion.span
-            animate={{ x: indicator.offset }}
-            className={styles.bgElement}
-            initial={false}
-            style={{
-              width: indicator.width || `calc(100% / ${themes.length})`,
-            }}
-            transition={{
-              damping: 30,
-              stiffness: 400,
-              type: 'spring',
-            }}
-          />
+          <li
+            aria-hidden="true"
+            className={styles.indicatorItem}
+            role="presentation"
+          >
+            <motion.span
+              animate={{ x: indicator.offset }}
+              className={styles.bgElement}
+              initial={false}
+              style={{
+                width: indicator.width || `calc(100% / ${themes.length})`,
+              }}
+              transition={{
+                damping: 30,
+                stiffness: 400,
+                type: 'spring',
+              }}
+            />
+          </li>
         )}
       </ul>
     </div>

@@ -18,7 +18,13 @@ type HeaderProps = {
 const Header: FC<HeaderProps> = ({ dict, lang }) => {
   const navigation = dict.layout.generic.navigation;
 
-  const LogoJSX = <Logo className={styles.logoLink} home={navigation.home} />;
+  const LogoJSX = (
+    <Logo
+      className={styles.logoLink}
+      homeNavDictItem={navigation.home}
+      lang={lang}
+    />
+  );
 
   return (
     <Container as="header" className={styles.header} id="header">

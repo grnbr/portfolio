@@ -77,7 +77,7 @@ const Tapbar: FC<TapbarProps> = ({ dict, lang }) => {
           style={{ width: `calc(100% / ${navigationLength})` }}
           transition={{
             damping: 35,
-            delay: 0.2,
+            delay: 0.1,
             stiffness: 500,
             type: 'spring',
           }}

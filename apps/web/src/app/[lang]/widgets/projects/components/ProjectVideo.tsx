@@ -54,7 +54,7 @@ const ProjectVideo: FC<ProjectVideoProps> = ({
         onPause={() => setIsPlaying(false)}
         onPlay={() => setIsPlaying(true)}
         playsInline
-        preload="auto"
+        preload="none"
         ref={videoRef}
       >
         <source src={`/projects/${projectId}/${deviceType.type}-video.webm`} />

@@ -26,6 +26,7 @@ export type Dictionary = {
       navigation: Navigation;
       theme: ThemeList;
     };
+
     header: {
       buttons: {
         more: ButtonDict & { id: 'more' };
@@ -33,6 +34,16 @@ export type Dictionary = {
           ariaLabel: {
             close: string;
             open: string;
+          };
+        };
+      };
+    };
+
+    widgets: {
+      controlCenter: {
+        buttons: {
+          toggle: {
+            ariaLabel: string;
           };
         };
       };

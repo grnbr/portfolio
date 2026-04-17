@@ -50,7 +50,7 @@ const Projects: FC<ProjectsProps> = ({
                 )}
               </span>
 
-              <h3 className={styles.title}>{project.title}</h3>
+              <h2 className={styles.title}>{project.title}</h2>
               <div className={styles.description}>
                 {project.description.map((item, i) =>
                   item.type === 'text' ? (
