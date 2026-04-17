@@ -33,6 +33,7 @@ const Hero: FC<HeroProps> = ({ dict, locale }) => {
 
         <div className={styles.buttons}>
           <ButtonLink
+            as="a"
             href={seeMyResume.href ?? '#'}
             rel="noopener noreferrer"
             target="_blank"
