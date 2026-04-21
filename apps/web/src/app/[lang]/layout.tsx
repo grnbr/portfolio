@@ -1,5 +1,6 @@
 import './globals.scss';
 
+import { Analytics } from '@vercel/analytics/next';
 import { headers } from 'next/headers';
 
 import BgGradient from '@/shared/components/bg-bradient/BgGradient';
@@ -48,6 +49,8 @@ export default async function RootLayout({
           <Tapbar dict={dictionary} lang={lang} />
         </div>
         <BgGradient component="footer" />
+
+        <Analytics />
       </body>
     </html>
   );

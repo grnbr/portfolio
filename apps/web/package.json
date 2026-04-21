@@ -25,6 +25,7 @@
     "@hookform/resolvers": "^5.2.2",
     "@react-email/render": "^2.0.5",
     "@tailwindcss/postcss": "^4.1.18",
+    "@vercel/analytics": "^2.0.1",
     "clsx": "^2.1.1",
     "motion": "^12.24.11",
     "negotiator": "^1.0.0",
