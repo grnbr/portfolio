@@ -1,7 +1,8 @@
 import { NavigationMap } from '@/shared/dictionaries/constants/navigation';
 
 export type NavigationId = 'about' | 'contact' | 'home' | 'tech-stack' | 'work';
-export type NavigationSocialId = 'github' | 'gmail' | 'linkedin' | 'telegram';
+export type SocialNavigationId = 'github' | 'gmail' | 'linkedin' | 'telegram';
+export type ResourceNavigationId = 'figma' | 'source-code';
 
 export type NavItem<ID extends NavigationId> = {
   href: ID extends 'home' ? '/' : `/${ID}`;
@@ -12,7 +13,13 @@ type NavItemDict<ID extends NavigationId> = NavItem<ID> & {
   label: string;
 };
 
-export type NavSocialItem<ID extends NavigationSocialId> = {
+export type SocialNavItemDict<ID extends SocialNavigationId> = {
+  href: string;
+  id: ID;
+  label: string;
+};
+
+export type ResourceNavItemDict<ID extends ResourceNavigationId> = {
   href: string;
   id: ID;
   label: string;
@@ -29,16 +36,20 @@ export type PrimaryNavigation = [
 ];
 
 export type SocialNavigation = [
-  NavSocialItem<'linkedin'>,
-  NavSocialItem<'telegram'>,
-  NavSocialItem<'github'>,
-  NavSocialItem<'gmail'>,
+  SocialNavItemDict<'linkedin'>,
+  SocialNavItemDict<'telegram'>,
+  SocialNavItemDict<'github'>,
+  SocialNavItemDict<'gmail'>,
 ];
 
 export type Navigation = {
   home: NavHome;
   primary: {
     items: PrimaryNavigation;
+    title?: string;
+  };
+  resources: {
+    items: [ResourceNavItemDict<'source-code'>, ResourceNavItemDict<'figma'>];
     title?: string;
   };
   socials: {

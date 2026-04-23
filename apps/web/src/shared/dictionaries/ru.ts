@@ -2,8 +2,9 @@ import 'server-only';
 
 import {
   NavigationMap,
-  NavSocialMap,
   NavSocialTuple,
+  ResourceNavMap,
+  SocialNavMap,
 } from '@/shared/dictionaries/constants/navigation';
 import { Dictionary } from '@/shared/dictionaries/types';
 
@@ -52,6 +53,18 @@ export const dictionary: Dictionary = {
             },
           ],
         },
+        resources: {
+          items: [
+            {
+              ...ResourceNavMap['Source-code'],
+              label: 'Код портфолио',
+            },
+            {
+              ...ResourceNavMap.Figma,
+              label: 'Figma автора',
+            },
+          ],
+        },
         socials: {
           items: NavSocialTuple,
         },
@@ -93,10 +106,10 @@ export const dictionary: Dictionary = {
       closingParagraph: {
         links: {
           Telegram: {
-            href: NavSocialMap.Telegram.href,
+            href: SocialNavMap.Telegram.href,
           },
           почте: {
-            href: NavSocialMap.Gmail.href,
+            href: SocialNavMap.Gmail.href,
           },
         },
         text: 'Не стесняйтесь связаться со мной по почте или пишите мне в Telegram.',

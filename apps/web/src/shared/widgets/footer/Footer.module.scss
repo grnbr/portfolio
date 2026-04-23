@@ -1,3 +1,4 @@
+@use 'styles/utils/mixins' as m;
 @use 'styles/utils/tokens' as t;
 @use 'styles/utils/tokens';
 @use 'styles/utils/mixins';
@@ -7,7 +8,7 @@
   width: 100%;
   border-top: var(--border);
 
-  .container {
+  .content {
     @include mixins.content-container-styles;
 
     display: flex;
@@ -38,13 +39,13 @@
       );
     }
 
-    .navigation {
+    .navListsContainer {
       display: flex;
       flex-direction: column;
       row-gap: 2.5rem;
 
       @include mixins.media-min(mobile) {
-        flex-direction: row-reverse;
+        flex-direction: row;
         column-gap: 7.5rem;
         @include mixins.clamp-bp(
           column-gap,
@@ -59,8 +60,17 @@
         color: var(--color-text);
       }
 
-      .socials,
-      .primary {
+      .navigation {
+        @include m.media-min(mobile) {
+          &.primary {
+            order: -1;
+          }
+
+          &.resources {
+            order: 3;
+          }
+        }
+
         .title {
           margin-bottom: 2rem;
           font-size: tokens.$fs-16;

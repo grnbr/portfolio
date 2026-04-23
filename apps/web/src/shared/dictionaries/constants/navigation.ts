@@ -2,18 +2,28 @@ import { EMAIL } from '@/shared/constants';
 
 import {
   NavigationId,
-  NavigationSocialId,
   NavItem,
-  NavSocialItem,
+  ResourceNavigationId,
+  ResourceNavItemDict,
   SocialNavigation,
+  SocialNavigationId,
+  SocialNavItemDict,
 } from '../types/navigationTypes';
 
 type NavigationMapType = {
   [K in NavigationId as Capitalize<K>]: NavItem<K>;
 };
-type NavSocialMapType = {
-  [K in NavigationSocialId as Capitalize<K>]: NavSocialItem<K>;
+type SocialNavMapType = {
+  [K in SocialNavigationId as Capitalize<K>]: SocialNavItemDict<K>;
 };
+type ResourceNavMapType = {
+  [K in ResourceNavigationId as Capitalize<K>]: Omit<
+    ResourceNavItemDict<K>,
+    'label'
+  >;
+};
+
+const GITHUB_URL = 'https://github.com/grnbr';
 
 export const NavigationMap: NavigationMapType = {
   About: { href: '/about', id: 'about' },
@@ -23,9 +33,9 @@ export const NavigationMap: NavigationMapType = {
   Work: { href: '/work', id: 'work' },
 } as const;
 
-export const NavSocialMap: NavSocialMapType = {
+export const SocialNavMap: SocialNavMapType = {
   Github: {
-    href: 'https://github.com/waterrDrinker',
+    href: GITHUB_URL,
     id: 'github',
     label: 'Github',
   },
@@ -47,8 +57,19 @@ export const NavSocialMap: NavSocialMapType = {
 } as const;
 
 export const NavSocialTuple: SocialNavigation = [
-  NavSocialMap.Linkedin,
-  NavSocialMap.Telegram,
-  NavSocialMap.Github,
-  NavSocialMap.Gmail,
+  SocialNavMap.Linkedin,
+  SocialNavMap.Telegram,
+  SocialNavMap.Github,
+  SocialNavMap.Gmail,
 ];
+
+export const ResourceNavMap: ResourceNavMapType = {
+  Figma: {
+    href: 'https://www.figma.com/files/team/1248244319164565493/resources/community/file/1266863403759514317?q_id=2452efbd-7d9b-49e4-9e98-e07e2e4cbc06',
+    id: 'figma',
+  },
+  'Source-code': {
+    href: `${GITHUB_URL}/Portfolio`,
+    id: 'source-code',
+  },
+} as const;

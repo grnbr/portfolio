@@ -1,7 +1,8 @@
 import {
   NavigationMap,
-  NavSocialMap,
   NavSocialTuple,
+  ResourceNavMap,
+  SocialNavMap,
 } from '@/shared/dictionaries/constants/navigation';
 import { Dictionary } from '@/shared/dictionaries/types';
 
@@ -51,6 +52,19 @@ export const dictionary: Dictionary = {
           ],
           title: 'Links',
         },
+        resources: {
+          items: [
+            {
+              ...ResourceNavMap['Source-code'],
+              label: 'Portfolio Repository',
+            },
+            {
+              ...ResourceNavMap.Figma,
+              label: "Author's Figma",
+            },
+          ],
+          title: 'Resources',
+        },
         socials: {
           items: NavSocialTuple,
           title: 'Elsewhere',
@@ -93,10 +107,10 @@ export const dictionary: Dictionary = {
       closingParagraph: {
         links: {
           'e-mail': {
-            href: NavSocialMap.Gmail.href,
+            href: SocialNavMap.Gmail.href,
           },
           Telegram: {
-            href: NavSocialMap.Telegram.href,
+            href: SocialNavMap.Telegram.href,
           },
         },
         text: 'Feel free to reach out via e-mail or write me on Telegram.',

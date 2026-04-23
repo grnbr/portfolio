@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { FC } from 'react';
 
 import Logo from '@/shared/components/logo/Logo';
@@ -18,16 +19,21 @@ const Footer: FC<FooterProps> = ({ dict, lang }) => {
 
   return (
     <footer className={styles.footer}>
-      <div className={styles.container}>
-        <div className={styles.navigation}>
-          <nav className={styles.socials}>
+      <div className={styles.content}>
+        <div className={styles.navListsContainer}>
+          <nav className={clsx(styles.navigation, styles.socials)} id="socials">
             {navigation.socials.title && (
               <p className={styles.title}>{navigation.socials.title}</p>
             )}
+
             <ul className={styles.list}>
               {navigation.socials.items.map((item) => (
                 <li className={styles.item} key={item.id}>
-                  <ButtonLink className={styles.link} href={item.href}>
+                  <ButtonLink
+                    aria-label={item.label}
+                    className={styles.link}
+                    href={item.href}
+                  >
                     {item.label}
                   </ButtonLink>
                 </li>
@@ -35,7 +41,7 @@ const Footer: FC<FooterProps> = ({ dict, lang }) => {
             </ul>
           </nav>
 
-          <nav className={styles.primary}>
+          <nav className={clsx(styles.navigation, styles.primary)} id="primary">
             {navigation.primary.title && (
               <p className={styles.title}>{navigation.primary.title}</p>
             )}
@@ -56,6 +62,29 @@ const Footer: FC<FooterProps> = ({ dict, lang }) => {
                   </li>
                 );
               })}
+            </ul>
+          </nav>
+
+          <nav
+            className={clsx(styles.navigation, styles.resources)}
+            id="resources"
+          >
+            {navigation.resources.title && (
+              <p className={styles.title}>{navigation.resources.title}</p>
+            )}
+
+            <ul className={styles.list}>
+              {navigation.resources.items.map((item) => (
+                <li className={styles.item} key={item.id}>
+                  <ButtonLink
+                    aria-label={item.label}
+                    className={styles.link}
+                    href={item.href}
+                  >
+                    {item.label}
+                  </ButtonLink>
+                </li>
+              ))}
             </ul>
           </nav>
         </div>
