@@ -135,7 +135,7 @@ export const dictionary: Dictionary = {
         },
         {
           text: [
-            "With one year of invaluable experience in my role at AlgaTop –– a tech company based here in Moscow, I have honed my skills in React.js, Next.js, TailwindCSS, and TypeScript, allowing me to craft seamless and interactive user experiences. During my time at AlgaTop, I played a pivotal role in enhancing the user experience and driving sales growth for clients on the Kaspi platform. Leveraging my expertise in frontend development, I contributed to achieving remarkable results, including doubling or tripling sales, elevating clients' stores to the top position, and automating routine tasks effectively.",
+            "With one year of invaluable experience in my role at Neomaind –– a tech company based here in Moscow, I have honed my skills in React.js, TypeScript, Next.js, React-query and Scss, allowing me to craft seamless and interactive user experiences. During my time at Neomaind, I played a pivotal role in enhancing the user experience and driving sales growth for clients. Leveraging my expertise in frontend development, I contributed to achieving remarkable results, including doubling or tripling sales, elevating clients' stores to the top position, and automating routine tasks effectively.",
           ],
           title: 'What I do',
         },
