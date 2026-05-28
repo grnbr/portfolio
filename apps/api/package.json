@@ -17,15 +17,18 @@
   "license": "ISC",
   "packageManager": "pnpm@10.25.0",
   "dependencies": {
+    "@prisma/client": "^7.8.0",
     "dotenv": "^17.4.2",
     "eslint": "^10.4.0",
     "eslint-plugin-perfectionist": "^5.9.0",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "prisma": "^7.8.0",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@tsconfig/node22": "^22.0.5",
-    "@types/express": "latest",
+    "@types/express": "^5.0.6",
     "@types/node": "^25.6.0",
     "@typescript-eslint/parser": "^8.59.4",
     "eslint-config-prettier": "^10.1.8",
