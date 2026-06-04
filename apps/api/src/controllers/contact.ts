@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import z from 'zod';
 
+import prisma from '../lib/prisma.js';
 import { ContactSchema } from '../types/contact.js';
 
 export const createContact = async (req: Request, res: Response) => {
@@ -13,7 +14,9 @@ export const createContact = async (req: Request, res: Response) => {
 
   const { email, message, name } = result.data;
 
-  res
-    .status(201)
-    .json({ data: { email, message, name }, message: 'contact received' });
+  const newMessage = await prisma.message.create({
+    data: { email, message, name },
+  });
+
+  res.status(201).json({ data: newMessage, message: 'contact received' });
 };
