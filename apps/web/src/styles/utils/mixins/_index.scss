@@ -1,0 +1,75 @@
+@use 'styles/utils/tokens' as t;
+@use 'sass:math';
+@use 'sass:map';
+@use './clamp';
+@use './media';
+
+@forward './flex';
+@forward './clamp';
+@forward './media';
+@forward './text';
+@forward './position';
+
+@mixin side-padding {
+  padding-inline: t.$layout-side-padding;
+
+  @include media.media-min(mobile) {
+    @include clamp.clamp-bp(
+      padding-inline,
+      (
+        mobile: t.$layout-side-padding,
+        desktop: t.$layout-side-padding-desktop,
+      )
+    );
+  }
+}
+
+@mixin content-container-styles {
+  margin-inline: auto;
+  @include side-padding;
+
+  @include media.media-side-padding {
+    width: 100%;
+    max-width: t.$desktop-content;
+    padding-inline: 0;
+  }
+}
+
+@mixin header-bg {
+  border: t.$border-thickness solid var(--header-border);
+  background-color: var(--header-bg);
+  backdrop-filter: blur(4px);
+}
+
+@mixin tapbar-bg {
+  border: thin solid var(--tapbar-border);
+  background-color: var(--tapbar-bg);
+  backdrop-filter: blur(6px);
+}
+
+@mixin card-border {
+  border: t.$card-border-thickness solid var(--card-border);
+}
+
+@mixin card-styles {
+  @include card-border;
+
+  border-radius: 2rem;
+  background-color: var(--card-bg);
+}
+
+@mixin border-styles($color) {
+  border-bottom: t.$border-thickness solid $color;
+}
+
+@mixin theme-dark {
+  [data-theme='dark'] & {
+    @content;
+  }
+}
+
+@mixin glow-effect($width: 30px, $opacity: 0.3) {
+  @include theme-dark {
+    filter: drop-shadow(0 0 $width rgba(#fff, $opacity));
+  }
+}

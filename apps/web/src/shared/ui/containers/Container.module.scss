@@ -1,0 +1,11 @@
+@use 'styles/utils/tokens';
+@use 'styles/utils/mixins';
+@use 'styles/utils/functions' as f;
+
+.container {
+  @include mixins.content-container-styles;
+}
+
+.article {
+  margin-top: 3.75rem;
+}

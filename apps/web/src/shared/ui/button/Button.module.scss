@@ -1,0 +1,114 @@
+@use 'styles/utils/mixins' as m;
+@use 'styles/utils/tokens' as t;
+@use 'styles/utils/mixins';
+@use 'styles/utils/tokens';
+
+.button,
+.buttonIcon {
+  cursor: pointer;
+  transition: 0.2s ease opacity;
+
+  * {
+    transition: 0.2s ease opacity;
+  }
+}
+
+.button {
+  @include mixins.flex-center;
+
+  column-gap: 0.5rem;
+  font-size: tokens.$fs-18;
+
+  @include mixins.media-min(mobile) {
+    width: max-content;
+  }
+
+  &.primary,
+  &.secondary {
+    position: relative;
+
+    width: 100%;
+    min-height: 3.75rem;
+    padding-block: 1.1875rem;
+    border-radius: 9px;
+
+    font-size: tokens.$fs-18;
+    font-weight: t.$fw-medium;
+    white-space: nowrap;
+
+    @include mixins.media-min(mobile) {
+      width: max-content;
+      padding-inline: 2rem;
+    }
+
+    a,
+    span {
+      white-space: nowrap;
+    }
+
+    &.disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    &.loading {
+      min-width: 8rem;
+    }
+
+    .loaderWrapper {
+      $size: 1.5rem;
+
+      position: absolute;
+      width: $size;
+      height: $size;
+    }
+  }
+
+  &.primary {
+    color: var(--btn-primary-text);
+
+    background: var(--btn-primary-bg);
+    outline-color: var(--btn-primary-outline);
+    outline-offset: -3px;
+    box-shadow: var(--btn-primary-shadow);
+
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease,
+      opacity 0.2s ease;
+
+    @include mixins.hoverable {
+      &:not(.disabled, .loading) {
+        transform: translateY(-2px);
+        opacity: 0.95;
+        box-shadow: var(--btn-primary-shadow-hover);
+      }
+    }
+  }
+
+  &.secondary {
+    color: var(--btn-secondary-text);
+    background-color: var(--btn-secondary-bg);
+    transition:
+      transform 0.2s ease,
+      background-color 0.2s ease,
+      opacity 0.2s ease;
+
+    @include mixins.hoverable {
+      &:not(.disabled, .loading) {
+        transform: translateY(-2px);
+        opacity: 0.95;
+        background-color: var(--btn-secondary-bg-hover);
+      }
+    }
+  }
+
+  &.ghost {
+    width: max-content;
+    color: var(--btn-ghost-text);
+
+    @include mixins.hoverable {
+      opacity: 0.8;
+    }
+  }
+}

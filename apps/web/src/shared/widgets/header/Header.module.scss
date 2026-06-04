@@ -1,0 +1,182 @@
+@use 'styles/utils/mixins' as m;
+@use 'styles/utils/tokens' as t;
+@use 'styles/utils/tokens';
+@use 'styles/utils/mixins';
+
+$z-index: 5;
+
+.header {
+  position: absolute;
+  z-index: $z-index;
+  top: 32px;
+  padding: 0;
+
+  @include mixins.media-min(tablet) {
+    position: fixed;
+    @include mixins.flex-center;
+
+    right: 1rem;
+    left: 1rem;
+    margin-inline: auto;
+
+    .container {
+      @include mixins.flex-center-vertical;
+      @include m.header-bg;
+      @include mixins.clamp-bp(
+        height,
+        (
+          mobile: calc(tokens.$header-height - 0.25rem),
+          ultra: tokens.$header-height,
+        )
+      );
+
+      position: relative;
+      z-index: $z-index;
+
+      width: 100%;
+      padding: 0 1rem;
+      border-radius: 1rem;
+    }
+  }
+
+  .logoLink {
+    width: 46px;
+    height: 30px;
+
+    @include m.media-min(tablet) {
+      display: none;
+    }
+
+    @include mixins.media-max(mobile) {
+      svg {
+        path {
+          opacity: 0.75;
+        }
+      }
+    }
+  }
+
+  .desktop {
+    display: none;
+
+    @include mixins.media-min(tablet) {
+      @include mixins.flex-center-vertical;
+
+      column-gap: 1rem;
+      justify-content: space-between;
+      width: 100%;
+
+      .label,
+      .language,
+      .ghostBtn {
+        @include mixins.clamp-font-size(
+          (
+            mobile: tokens.$fs-12,
+            ultra: tokens.$fs-16,
+          )
+        );
+      }
+
+      .navLeft {
+        @include mixins.flex-center-vertical;
+
+        flex-grow: 1;
+        flex-shrink: 1;
+        min-width: 0;
+
+        .logoLink {
+          @include mixins.clamp-bp(
+            margin-right,
+            (
+              mobile: 1rem,
+              ultra: 2.5rem,
+            )
+          );
+
+          display: block;
+          flex-shrink: 0;
+          width: 2.4919rem;
+          height: 1.625rem;
+
+          @include mixins.hoverable {
+            opacity: 0.6;
+          }
+        }
+
+        > .list {
+          @include mixins.flex-center-vertical;
+
+          position: relative;
+
+          @include mixins.clamp-bp(
+            column-gap,
+            (
+              mobile: 1rem,
+              ultra: 2.5rem,
+            )
+          );
+
+          .item {
+            @include mixins.flex-center;
+
+            position: relative;
+
+            .label,
+            .ghostBtn {
+              white-space: nowrap;
+              opacity: 0.65;
+              transition: opacity 0.3s;
+
+              @include mixins.hoverable {
+                opacity: 1;
+              }
+
+              &.active {
+                opacity: 1;
+              }
+            }
+          }
+        }
+      }
+
+      .rightPanel {
+        @include mixins.flex-center-vertical;
+
+        flex-shrink: 0;
+        align-items: stretch;
+
+        .socialLinks {
+          @include mixins.flex-center-vertical;
+
+          .list {
+            @include mixins.flex-center-vertical;
+
+            column-gap: 1.5rem;
+
+            .link {
+              .iconWrapper {
+                position: relative;
+              }
+            }
+          }
+        }
+
+        .divider {
+          width: 0.0625rem;
+          margin-inline: 1.5rem;
+          background-color: var(--black-30);
+
+          @include mixins.theme-dark {
+            background-color: var(--white-25);
+          }
+        }
+
+        .switchers {
+          @include mixins.flex-center-vertical;
+
+          column-gap: 1rem;
+        }
+      }
+    }
+  }
+}

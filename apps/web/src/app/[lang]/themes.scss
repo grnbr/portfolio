@@ -1,0 +1,135 @@
+@use 'styles/utils/mixins' as m;
+@use 'styles/utils/tokens';
+
+:root {
+  /* General */
+  --bg-color: #fbfbfb;
+  --border: #{tokens.$border-thickness} solid var(--black-10);
+  --color-error: #ef4444;
+
+  // Text
+  --color-text: var(--onyx);
+  --color-text-inverted: var(--white);
+  --text-primary: var(--dark-grey);
+  --text-heading: var(--color-text);
+  --text-label: var(--text-heading);
+  --text-highlighted: var(--color-text);
+
+  /* Header */
+  --header-bg: var(--white-25);
+  --header-border: var(--medium-grey-10);
+  --header-text: var(--onyx);
+
+  /* Footer */
+  --footer-links: var(--onyx);
+  --footer-text: var(--onyx);
+
+  /* Tapbar */
+  --tapbar-bg: var(--white-25);
+  --tapbar-border: rgb(39 38 44 / 30%);
+  --tapbar-btn-bg: var(--black-70);
+  --tapbar-popup-btn-bg: var(--medium-grey-50);
+  --tapbar-icon-active: var(--white);
+  --tapbar-icon-inactive: var(--faint-white);
+
+  /* Buttons */
+  --btn-primary-text: var(--white);
+  --btn-primary-bg: var(--dark-gradient);
+  --btn-primary-bg-hover: hsl(0deg 0% 90%);
+  --btn-primary-outline: var(--white);
+  --btn-secondary-text: var(--onyx);
+  --btn-secondary-bg: var(--faint-white);
+  --btn-secondary-bg-hover: hsl(0deg 0% 90%);
+  --btn-ghost-text: var(--onyx);
+  --btn-selected-theme-bg: var(--black-70);
+
+  /* Cards */
+  --card-bg: #f6f6f6;
+  --card-border: #ebebeb;
+
+  /* Icons */
+  --icon-primary: var(--color-text);
+  --icon-primary-inverted: var(--color-text-inverted);
+
+  // Input
+  --input-color: var(--color-text);
+  --input-placeholder: var(--dark-grey);
+  --focus-color: var(--color-text);
+
+  // Textarea
+  --textarea-bg: var(--faint-white);
+
+  // Text Selection
+  --text-selection-bg: var(--light-green-43);
+  --text-selection-color: var(--onyx);
+
+  // Modal
+  --backdrop-color: var(--black-50);
+  --modal-bg: var(--white-70);
+}
+
+[data-theme='dark'] {
+  /* General */
+  --bg-color: var(--black);
+  --border: #{tokens.$border-thickness} solid var(--white-10);
+
+  // Text
+  --color-text: var(--white);
+  --color-text-inverted: var(--onyx);
+  --text-heading: var(--color-text);
+  --text-label: var(--text-heading);
+  --text-highlighted: var(--color-text);
+
+  /* Header */
+  --header-bg: var(--black-30);
+  --header-border: var(--medium-grey-25);
+  --header-text: var(--white-70);
+
+  // Footer
+  --footer-links: var(--light-grey);
+  --footer-text: var(--white-25);
+
+  /* Tapbar */
+  --tapbar-bg: rgb(24 24 29 / 60%);
+  --tapbar-border: var(--medium-grey-25);
+  --tapbar-btn-bg: var(--white-10);
+  --tapbar-popup-btn-bg: rgb(255 255 255 / 10%);
+  --tapbar-icon-inactive: var(--light-grey);
+
+  /* Buttons */
+  --btn-primary-shadow:
+    inset 0 0.0625rem 0.125rem 0 rgb(255 255 255 / 2%),
+    inset 0 0.125rem 0.25rem 0 rgb(255 255 255 / 8%),
+    0 0.4375rem 0.25rem 0 rgb(0 0 0 / 15%);
+  --btn-primary-shadow-hover:
+    inset 0 0.0625rem 0.125rem 0 rgb(255 255 255 / 2%),
+    inset 0 0.4375rem 0.25rem 0 rgb(255 255 255 / 8%),
+    0 0.4375rem 0.25rem 0 rgb(0 0 0 / 15%);
+  --btn-secondary-bg: var(--onyx);
+  --btn-secondary-bg-hover: hsl(0deg 0% 20%);
+  --btn-secondary-text: var(--dark-grey);
+  --btn-ghost-text: var(--white);
+  --btn-selected-theme-bg: var(--white-70);
+
+  /* Cards */
+  --card-bg: var(--black-50);
+  --card-border: #383737;
+
+  /* Icons */
+  --icon-primary: var(--color-text);
+  --icon-primary-inverted: var(--color-text-inverted);
+
+  // Input
+  --input-placeholder: var(--medium-grey-50);
+  --focus-color: var(--color-text);
+
+  // Textarea
+  --textarea-bg: var(--bg-color);
+
+  // Text Selection
+  --text-selection-bg: var(--light-green-43);
+  --text-selection-color: var(--white);
+
+  // Modal
+  --modal-bg: var(--black-70);
+}

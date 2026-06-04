@@ -1,0 +1,191 @@
+@use 'styles/utils/mixins' as m;
+@use 'styles/utils/tokens' as t;
+@use 'styles/utils/tokens';
+@use 'styles/utils/mixins';
+@use 'sass:map';
+@forward './fonts';
+
+html {
+  scroll-behavior: smooth;
+
+  box-sizing: border-box;
+  height: 100%;
+
+  line-height: 1.2;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding: 0;
+  padding-bottom: tokens.$tapbar-bottom-full;
+
+  font-family: Inter, sans-serif;
+
+  background-color: var(--bg-color);
+
+  @include mixins.media-min(mobile) {
+    padding-bottom: 0;
+  }
+  @include m.media-min(desktop) {
+    transition:
+      color 0.2s ease,
+      background-color 0.2s ease;
+  }
+}
+
+main {
+  flex: 1;
+  width: 100%;
+
+  // min-height: 100dvh;
+
+  @include mixins.media-side-padding {
+    // min-height: 100vh;
+  }
+}
+
+h1,
+h2,
+h3 {
+  color: var(--text-heading);
+}
+
+h1,
+h2 {
+  font-weight: t.$fw-bold;
+}
+
+h1 {
+  font-size: tokens.$fs-48;
+
+  @include mixins.clamp-font-size(
+    (
+      mobile: tokens.$fs-48,
+      ultra: tokens.$fs-80,
+    )
+  );
+}
+
+h2 {
+  margin-bottom: 1rem;
+  font-size: tokens.$fs-32;
+
+  @include mixins.clamp-bp(
+    margin-bottom,
+    (
+      mobile: 1rem,
+      ultra: 2rem,
+    )
+  );
+  @include mixins.clamp-font-size(
+    (
+      mobile: tokens.$fs-32,
+      ultra: tokens.$fs-48,
+    )
+  );
+}
+
+h3 {
+  font-weight: t.$fw-extrabold;
+}
+
+p {
+  font-size: tokens.$fs-base;
+  font-weight: t.$fw-medium;
+  line-height: 1.33;
+  color: var(--text-primary);
+
+  @include mixins.clamp-font-size(
+    (
+      mobile: tokens.$fs-base,
+      ultra: tokens.$fs-base-desktop,
+    )
+  );
+}
+
+input,
+textarea {
+  color: var(--input-color);
+  outline: none;
+  caret-color: var(--color-text);
+
+  &::placeholder {
+    color: var(--input-placeholder);
+  }
+}
+
+@mixin outline {
+  outline: 1px solid var(--focus-color);
+}
+
+textarea {
+  background-color: var(--textarea-bg);
+
+  &:focus-visible {
+    @include outline;
+  }
+}
+
+input {
+  border-radius: 2px;
+
+  &:focus-visible {
+    @include outline;
+
+    animation: fade-outline 1s ease forwards;
+  }
+
+  @keyframes fade-outline {
+    0% {
+      outline-color: var(--focus-color);
+    }
+
+    100% {
+      outline-color: transparent;
+    }
+  }
+}
+
+::selection {
+  color: var(--text-selection-color);
+  background: var(--text-selection-bg);
+}

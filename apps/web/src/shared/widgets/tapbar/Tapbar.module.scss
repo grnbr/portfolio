@@ -1,0 +1,50 @@
+@use 'styles/utils/mixins' as m;
+@use 'styles/utils/mixins';
+@use 'styles/utils/tokens';
+
+// stylelint-disable-next-line unit-disallowed-list
+$padding: 10px 15px;
+
+.tapbar {
+  @include mixins.flex-center-vertical;
+  @include m.tapbar-bg;
+
+  height: tokens.$tapbar-height;
+  padding: $padding;
+  border-radius: 32px;
+
+  .iconContainer {
+    @include mixins.flex-center;
+
+    position: relative;
+    flex: 1;
+    height: 100%;
+
+    .icon {
+      @include m.glow-effect;
+
+      z-index: 2;
+    }
+  }
+
+  .bg {
+    position: absolute;
+    z-index: 1;
+    inset: $padding;
+  }
+
+  .activeBg {
+    will-change: transform;
+    user-select: none;
+
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    transform: translateZ(0);
+
+    border-radius: 12px;
+
+    backface-visibility: hidden;
+    background-color: var(--tapbar-btn-bg);
+  }
+}

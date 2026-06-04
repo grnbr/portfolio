@@ -1,0 +1,118 @@
+@use 'styles/utils/mixins' as m;
+@use 'styles/utils/tokens' as t;
+@use 'styles/utils/tokens';
+@use 'styles/utils/mixins';
+@use 'styles/utils/functions' as f;
+
+.footer {
+  width: 100%;
+  border-top: var(--border);
+
+  .content {
+    @include mixins.content-container-styles;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 4rem;
+
+    margin-top: 5rem;
+    margin-bottom: 1.125rem;
+
+    @include mixins.media-min(mobile) {
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      margin: 0 auto;
+
+      @include mixins.clamp-bp(
+        margin-top,
+        (
+          mobile: f.desktop-to-mobile(f.subtract-border(4.625rem)),
+          ultra: f.subtract-border(4.625rem),
+        )
+      );
+      @include mixins.clamp-bp(
+        margin-bottom,
+        (
+          mobile: f.desktop-to-mobile(2.625rem),
+          ultra: 2.625rem,
+        )
+      );
+    }
+
+    .navListsContainer {
+      display: flex;
+      flex-direction: column;
+      row-gap: 2.5rem;
+
+      @include mixins.media-min(mobile) {
+        flex-direction: row;
+        column-gap: 7.5rem;
+        @include mixins.clamp-bp(
+          column-gap,
+          (
+            mobile: 4.0625rem,
+            ultra: 7.5rem,
+          )
+        );
+      }
+
+      .title {
+        color: var(--color-text);
+      }
+
+      .navigation {
+        @include m.media-min(mobile) {
+          &.primary {
+            order: -1;
+          }
+
+          &.resources {
+            order: 3;
+          }
+        }
+
+        .title {
+          margin-bottom: 2rem;
+          font-size: tokens.$fs-16;
+          font-weight: t.$fw-bold;
+        }
+
+        .list {
+          .item {
+            &:not(:last-of-type) {
+              margin-bottom: 1rem;
+            }
+
+            .link {
+              font-size: tokens.$fs-16;
+              color: var(--footer-links);
+            }
+          }
+        }
+      }
+    }
+
+    .logoContainer {
+      .logo {
+        width: 5.75rem;
+        height: 3.75rem;
+        margin-bottom: 1rem;
+
+        @include mixins.hoverable {
+          opacity: 0.6;
+        }
+      }
+
+      .underLogoText {
+        font-size: tokens.$fs-14;
+        font-weight: t.$fw-medium;
+        color: var(--footer-text);
+
+        &::after {
+          content: 'ッ';
+          font-size: tokens.$fs-20;
+        }
+      }
+    }
+  }
+}

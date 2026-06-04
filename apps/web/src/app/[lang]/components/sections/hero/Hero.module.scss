@@ -1,0 +1,158 @@
+@use 'styles/utils/mixins' as m;
+@use 'styles/utils/tokens' as t;
+@use 'styles/utils/functions' as f;
+
+.hero {
+  isolation: isolate;
+  position: relative;
+
+  display: flex;
+  flex-direction: column-reverse;
+  row-gap: 0.9rem;
+  align-items: center;
+
+  margin-bottom: 8.5625rem;
+  padding-top: 11.0875rem;
+
+  @include m.clamp-bp(
+    margin-bottom,
+    (
+      mobile: 8.5625rem,
+      ultra: 23.4375rem,
+    )
+  );
+
+  @include m.clamp-bp(
+    margin-top,
+    (
+      mobile: 13.125rem,
+      ultra: 13.875rem,
+    )
+  );
+
+  @include m.media-min(mobile) {
+    overflow: visible;
+    min-width: auto;
+    padding-top: 0;
+  }
+
+  @include m.media-min(tablet) {
+    flex-direction: row;
+    row-gap: unset;
+    column-gap: 0.5rem;
+
+    .textContent,
+    .imageContainer {
+      flex-shrink: 0;
+    }
+  }
+
+  .imageContainer {
+    $w: 11rem;
+
+    position: relative;
+    z-index: -1;
+
+    aspect-ratio: 1;
+    width: $w;
+    border-radius: 50%;
+
+    @include m.media-min(mobile) {
+      @include m.clamp-bp(
+        width,
+        (
+          mobile: $w,
+          tablet: 19.375rem,
+          ultra: 29.375rem,
+        )
+      );
+    }
+    @include m.media-min(tablet) {
+      transform: translate(0, -40px);
+    }
+
+    .image {
+      border-radius: 50%;
+      filter: blur(0.2px);
+    }
+  }
+
+  .textContent {
+    width: 100%;
+
+    @include m.media-min(tablet) {
+      width: initial;
+    }
+
+    .title {
+      margin-bottom: 1rem;
+      font-weight: t.$fw-extrabold;
+
+      @include m.clamp-bp(
+        margin-bottom,
+        (
+          mobile: 1rem,
+          ultra: 2.5rem,
+        )
+      );
+
+      .greeting,
+      .pronoun {
+        color: var(--dark-grey);
+      }
+
+      .greeting {
+        @include m.mobile-only;
+      }
+    }
+
+    .intro {
+      @include m.text-line-height;
+
+      @include m.clamp-font-size(
+        (
+          mobile: t.$fs-base,
+          ultra: t.$fs-24,
+        )
+      );
+
+      @include m.clamp-bp(
+        max-width,
+        (
+          tablet: 28.75rem,
+          desktop: 38.75rem,
+          ultra: 45.5625rem,
+        )
+      );
+
+      margin-bottom: 3.5rem;
+      @include m.clamp-bp(
+        margin-bottom,
+        (
+          ultra: 2.5rem,
+        ),
+        (
+          auto-interpolate: true,
+        )
+      );
+      @include m.media-min(mobile) {
+        position: relative;
+        z-index: 1;
+        line-height: 1.5;
+        mix-blend-mode: plus-lighter;
+      }
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      row-gap: 1.0625rem;
+
+      @include m.media-min(mobile) {
+        flex-direction: row;
+        gap: 0 1rem;
+        align-items: center;
+      }
+    }
+  }
+}

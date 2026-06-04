@@ -1,0 +1,10 @@
+#!/bin/sh
+echo "Running lint-staged..."
+npx lint-staged
+
+echo "Running full TypeScript type-check..."
+# Run TypeScript type-checking
+if ! pnpm tsc --noEmit; then
+  echo -e "${RED}Type-checking failed. Please fix type errors and try again.${RESET}"
+  exit 1
+fi

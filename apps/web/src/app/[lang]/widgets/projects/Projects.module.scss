@@ -1,0 +1,211 @@
+@use 'styles/utils/mixins' as m;
+@use 'styles/utils/tokens' as t;
+@use 'styles/utils/tokens';
+@use 'styles/utils/mixins';
+@use 'styles/utils/functions' as f;
+
+.projects {
+  > li:not(:last-of-type) {
+    margin-bottom: 2.25rem;
+
+    @include mixins.clamp-bp(
+      margin-bottom,
+      (
+        ultra: 2rem,
+      ),
+      (
+        auto-interpolate: true,
+      )
+    );
+  }
+}
+
+.project,
+.emptyState {
+  @include mixins.card-styles;
+
+  border-radius: 32px;
+
+  @include mixins.media-min(mobile) {
+    height: 35.3125rem;
+  }
+}
+
+.project {
+  position: relative;
+
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  @include mixins.media-min(mobile) {
+    flex-direction: row;
+    height: auto;
+    min-height: 35.3125rem;
+  }
+
+  .textContent,
+  .showcaseContainer {
+    @include m.media-min(mobile) {
+      flex: 1;
+    }
+  }
+
+  .textContent {
+    isolation: isolate;
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+
+    max-width: 31.4375rem;
+    padding: f.subtract-border(2rem, tokens.$card-border-thickness)
+      f.subtract-border(1.5rem, tokens.$card-border-thickness);
+
+    @include mixins.media-min(mobile) {
+      @include mixins.clamp-bp(
+        padding,
+        (
+          mobile: f.subtract-border(2.8125rem),
+          ultra: f.subtract-border(3.75rem),
+        )
+      );
+    }
+
+    .logoWrapper {
+      display: block;
+      width: 70px;
+      height: 70px;
+    }
+
+    .title {
+      font-size: tokens.$fs-20;
+      font-weight: t.$fw-extrabold;
+
+      @include mixins.media-min(mobile) {
+        mix-blend-mode: plus-lighter;
+      }
+    }
+
+    .description {
+      color: var(--text-primary);
+
+      @include mixins.text-line-height;
+
+      @include mixins.media-min(mobile) {
+        flex: 1;
+      }
+
+      .list {
+        @include m.list-style;
+      }
+    }
+  }
+
+  .showcaseContainer {
+    // @include mixins.desktop-only;
+    // flex: 1;
+
+    @include mixins.media-min(mobile) {
+      position: relative;
+    }
+  }
+}
+
+.emptyState {
+  padding-inline: 2rem;
+  background-image: tokens.$dashed-border;
+
+  .content {
+    $mt: 2.1875rem;
+    $mb: 4.25rem;
+
+    margin-top: $mt;
+    margin-bottom: $mb;
+    margin-inline: auto;
+
+    > * {
+      margin-inline: auto;
+    }
+
+    .icon {
+      $mb: 0.5rem;
+
+      width: 6.625rem;
+      height: 6.625rem;
+      margin-bottom: $mb;
+
+      @include mixins.clamp-bp(
+        margin-bottom,
+        (
+          mobile: $mb,
+          ultra: 0.6875rem,
+        )
+      );
+
+      path {
+        stroke: var(--dark-grey);
+
+        @include mixins.theme-dark {
+          stroke: var(--light-grey);
+        }
+      }
+    }
+
+    .title,
+    .subtitle {
+      text-align: center;
+    }
+
+    .title {
+      @include mixins.clamp-font-size(
+        (
+          mobile: tokens.$fs-20,
+          ultra: tokens.$fs-32,
+        )
+      );
+
+      margin-bottom: 1rem;
+    }
+
+    .subtitle {
+      $mb: 5.3125rem;
+
+      margin-bottom: $mb;
+
+      @include mixins.clamp-font-size(
+        (
+          mobile: tokens.$fs-base,
+          ultra: tokens.$fs-base-desktop,
+        )
+      );
+
+      @include mixins.clamp-bp(
+        margin-bottom,
+        (
+          mobile: $mb,
+          ultra: 5.625rem,
+        )
+      );
+    }
+
+    @include mixins.clamp-bp(
+      margin-top,
+      (
+        mobile: $mt,
+        ultra: 6rem,
+      )
+    );
+
+    @include mixins.clamp-bp(
+      margin-bottom,
+      (
+        mobile: $mb,
+        ultra: 8rem,
+      )
+    );
+  }
+}

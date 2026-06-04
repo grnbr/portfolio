@@ -1,0 +1,245 @@
+@use 'styles/utils/functions' as f;
+@use 'styles/utils/tokens' as t;
+@use 'styles/utils/mixins' as m;
+
+// stylelint-disable-next-line unit-disallowed-list
+$border-radius: 12px;
+
+.form {
+  --side-padding: 1rem;
+  @include m.card-styles;
+
+  margin-bottom: 3.3125rem;
+  border-radius: $border-radius;
+  color: var(--color-text);
+
+  @include m.media-min(mobile) {
+    --side-padding: 2rem;
+
+    margin-bottom: 3.8125rem;
+  }
+
+  .content,
+  .footer {
+    padding-inline: var(--side-padding);
+  }
+
+  .header {
+    $padding-block: 1.125rem;
+
+    margin-bottom: 1.5rem;
+    padding-top: $padding-block;
+    padding-bottom: f.subtract-border($padding-block);
+    padding-inline: var(--side-padding);
+    border-bottom: t.$border-thickness solid rgb(0 0 0 / 3%);
+
+    font-weight: t.$fw-medium;
+    text-align: center;
+
+    @include m.theme-dark {
+      border-bottom-color: rgb(255 255 255 / 3%);
+    }
+
+    @include m.media-min(mobile) {
+      margin-bottom: 0.625rem;
+      margin-inline: 0;
+    }
+  }
+
+  .content {
+    .inputContainer,
+    .textareaContainer {
+      .label,
+      .input,
+      .textarea {
+        $fs: t.$fs-14;
+
+        font-size: $fs;
+
+        @include m.clamp-font-size(
+          (
+            mobile: $fs,
+            ultra: t.$fs-16,
+          )
+        );
+      }
+
+      .textarea,
+      .input {
+        border: t.$border-thickness solid transparent;
+      }
+
+      .errorText {
+        height: 0.9375rem;
+      }
+
+      &.error {
+        .input,
+        .textarea {
+          border: t.$border-thickness solid var(--color-error);
+          outline-color: var(--color-error);
+        }
+
+        .errorText {
+          display: block;
+          width: 100%;
+          font-size: t.$fs-12;
+          color: var(--color-error);
+        }
+      }
+    }
+
+    .inputs {
+      padding-inline: 0.3438rem;
+
+      @include m.media-min(mobile) {
+        padding-inline: 0;
+      }
+
+      .inputContainer {
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        column-gap: 0.5rem;
+        align-items: center;
+
+        &:not(:last-of-type) {
+          margin-bottom: f.subtract-border(1rem);
+          border-bottom: t.$border-thickness solid var(--light-grey);
+
+          @include m.theme-dark {
+            border-bottom-color: rgb(255 255 255 / 10%);
+          }
+        }
+
+        .label {
+          color: var(--text-label);
+        }
+
+        .input {
+          width: 100%;
+          padding: 0.3125rem;
+        }
+
+        .errorText {
+          grid-column: 2 / -1;
+          margin-block: 0.25rem;
+
+          @include m.media-min(mobile) {
+            margin-block: 0.125rem;
+          }
+        }
+
+        &.error {
+          .input {
+            color: var(--color-error);
+          }
+        }
+      }
+    }
+
+    .divider {
+      margin-block: 1.5rem;
+      border: none;
+
+      @include m.border-styles(var(--black-10));
+
+      @include m.media-min(mobile) {
+        margin-block: 2rem;
+      }
+      @include m.theme-dark {
+        border-bottom-color: rgba(#fff, 0.1);
+      }
+    }
+
+    .textareaContainer {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 0.625rem;
+
+      @include m.media-min(mobile) {
+        margin-bottom: 0.625rem;
+      }
+
+      .textarea {
+        resize: none;
+
+        flex: 1;
+
+        min-height: 20.9375rem;
+        padding: 1.5rem;
+        border-radius: $border-radius;
+
+        @include m.media-min(mobile) {
+          min-height: 13.9375rem;
+        }
+      }
+
+      .errorText {
+        margin-top: 0.375rem;
+      }
+    }
+  }
+
+  .footer {
+    margin-bottom: 1.5rem;
+
+    @include m.media-min(mobile) {
+      margin-block: 1.3438rem;
+    }
+
+    .sendBtn {
+      .loaderWrapper {
+        $size: 2rem;
+
+        width: $size;
+        height: $size;
+      }
+
+      @include m.media-min(mobile) {
+        margin-left: auto;
+      }
+    }
+  }
+}
+
+.backdrop {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--backdrop-color);
+  backdrop-filter: blur(4px);
+
+  .modal {
+    @include m.stack(column, 16px);
+    @include m.card-border;
+
+    width: min(90vw, 480px);
+    padding: 2rem;
+    border-radius: 16px;
+    background-color: var(--modal-bg);
+
+    .title {
+      $fs: t.$fs-24;
+
+      font-size: $fs;
+      font-weight: t.$fw-medium;
+      text-align: center;
+
+      @include m.clamp-font-size(
+        (
+          mobile: $fs,
+          ultra: t.$fs-32,
+        )
+      );
+    }
+
+    .closeBtn {
+      margin-inline: auto;
+    }
+  }
+}

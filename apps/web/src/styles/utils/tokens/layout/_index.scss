@@ -1,0 +1,12 @@
+$desktop-frame: 94.5rem; // Figma desktop frame
+$desktop-content: 64rem;
+$layout-side-padding: 1rem;
+$layout-side-padding-desktop: 2rem;
+
+// Components
+$tapbar-height: 60px;
+$bottom-widgets-bottom: 16px;
+$tapbar-bottom-full: calc($tapbar-height + $bottom-widgets-bottom);
+$header-height: 3.75rem;
+$border-thickness: 0.0625rem;
+$card-border-thickness: 0.0625rem;
