@@ -4,8 +4,14 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"]
+    },
+    "@portfolio/web#build": {
+      "env": ["TELEGRAM_BOT_TOKEN", "TELEGRAM_CHAT_ID", "NEXT_PUBLIC_SITE_URL"],
       "outputs": [".next/**", "!.next/cache/**", "!.next/dev/**", "dist/**"]
+    },
+    "@portfolio/api#build": {
+      "outputs": ["dist/**"]
     },
     "lint": {
       "dependsOn": ["^lint"]
