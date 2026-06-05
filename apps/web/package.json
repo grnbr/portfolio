@@ -1,5 +1,5 @@
 {
-  "name": "portfolio",
+  "name": "@portfolio/web",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -7,17 +7,9 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint && tsc --noEmit && stylelint 'src/**/*.{scss,css}'",
+    "lint": "eslint && stylelint 'src/**/*.{scss,css}'",
     "stylelint": "stylelint 'src/**/*.{scss,css}'",
-    "prepare": "husky"
-  },
-  "lint-staged": {
-    "src/**/*.{js,ts,tsx}": [
-      "pnpm eslint --fix"
-    ],
-    "src/**/*.{css,scss}": [
-      "stylelint --fix"
-    ]
+    "check-types": "tsc --noEmit"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
@@ -57,8 +49,6 @@
     "eslint-plugin-perfectionist": "^4.15.1",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
-    "husky": "^9.1.7",
-    "lint-staged": "^16.2.7",
     "postcss": "^8.5.6",
     "prettier": "^3.7.4",
     "sass": "^1.96.0",

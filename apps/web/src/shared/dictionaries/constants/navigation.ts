@@ -69,7 +69,7 @@ export const ResourceNavMap: ResourceNavMapType = {
     id: 'figma',
   },
   'Source-code': {
-    href: `${GITHUB_URL}/Portfolio`,
+    href: `${GITHUB_URL}/portfolio`,
     id: 'source-code',
   },
 } as const;
