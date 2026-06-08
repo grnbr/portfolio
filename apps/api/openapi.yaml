@@ -18,6 +18,8 @@ components:
         password:
           type: string
           example: "your_password_here"
+          minLength: 1
+          maxLength: 255
 
     LoginResponse:
       type: object
@@ -32,13 +34,20 @@ components:
       properties:
         name:
           type: string
+          minLength: 1
           example: John Doe
+        subject:
+          minLength: 1
+          type: string
+          example: Hello
         email:
           type: string
+          minLength: 1
           format: email
           example: john@example.com
         message:
           type: string
+          minLength: 10
           example: Hello!
 
     Message:

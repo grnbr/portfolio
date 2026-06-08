@@ -6,14 +6,18 @@
     "dev": "tsx watch src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src",
+    "lint:tsc": "eslint src && tsc --noemit",
     "build": "tsc -p tsconfig.build.json",
-    "check-types": "tsc --noEmit"
+    "check-types": "tsc --noEmit",
+    "migrate": "prisma migrate dev",
+    "db:generate": "prisma generate"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.25.0",
   "dependencies": {
+    "@portfolio/types": "workspace:*",
     "@prisma/client": "^7.8.0",
     "dotenv": "^17.4.2",
     "eslint": "^10.4.0",
@@ -21,7 +25,7 @@
     "express": "^5.2.1",
     "jsonwebtoken": "^9.0.3",
     "prisma": "^7.8.0",
-    "zod": "^4.4.3"
+    "zod": "^3.25.76"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

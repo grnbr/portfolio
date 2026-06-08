@@ -1,7 +1,10 @@
+import { ContactFormData } from '@portfolio/types';
+
 import { FormField } from './sharedTypes';
 
-export type ContactInputId = 'email' | 'name' | 'subject';
-export type ContactTextareaId = 'message';
+export type ContactFormDataKeys = keyof ContactFormData;
+export type ContactInputId = Exclude<ContactFormDataKeys, 'message'>;
+export type ContactTextareaId = Extract<ContactFormDataKeys, 'message'>;
 
 export type ContactInput = {
   email: FormField<'email', 'email'>;
@@ -9,10 +12,10 @@ export type ContactInput = {
   subject: FormField<'subject', 'text'>;
 };
 
-export type ContactInputKey = Capitalize<ContactInputId>;
+export type ContactInputKey = Capitalize<ContactFormDataKeys>;
 export type ContactTextareaKey = Capitalize<ContactTextareaId>;
 
-export type ContactFieldId = ContactInputId | ContactTextareaId;
+export type ContactFieldId = ContactFormDataKeys | ContactTextareaId;
 
 type ContactInputMapType = {
   [K in ContactInputId as Capitalize<K>]: Pick<ContactInput[K], 'id' | 'type'>;

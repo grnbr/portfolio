@@ -1,15 +1,15 @@
-import { Request, Response } from 'express';
+import { schemas } from '@portfolio/types';
 import 'dotenv/config';
-import z from 'zod';
+import { Request, Response } from 'express';
 
 import { signToken } from '../lib/auth.js';
-import { LoginSchema } from '../types/auth.js';
 
 export const login = async (req: Request, res: Response) => {
-  const result = LoginSchema.safeParse(req.body);
+  const { LoginRequest } = schemas;
+  const result = LoginRequest.safeParse(req.body);
 
   if (!result.success) {
-    res.status(400).json({ errors: z.treeifyError(req.body) });
+    res.status(400).json({ errors: result.error.flatten() });
     return;
   }
 

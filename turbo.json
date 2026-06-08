@@ -2,8 +2,12 @@
   "$schema": "https://turborepo.dev/schema.json",
   "ui": "tui",
   "tasks": {
+    "generate": {
+      "inputs": ["apps/api/openapi.yaml"],
+      "outputs": ["src/generated/**"]
+    },
     "build": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^generate", "^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"]
     },
     "@portfolio/web#build": {

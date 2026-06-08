@@ -148,7 +148,7 @@ export const dictionary: Dictionary = {
             {
               ...ContactInputMap.Email,
               errors: {
-                invalid_format: 'Неверный адрес электронной почты',
+                invalid_string: 'Неверный адрес электронной почты',
                 too_small: 'Email обязателен',
               },
               label: 'Email:',

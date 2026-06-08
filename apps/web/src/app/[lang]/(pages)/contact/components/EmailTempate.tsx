@@ -1,4 +1,4 @@
-import { ContactFormData } from './Form';
+import { ContactFormData } from '@portfolio/types';
 
 export default function EmailTemplate({
   formData,

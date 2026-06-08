@@ -1,16 +1,14 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { ContactFormData, schemas, ZodIssueCode } from '@portfolio/types';
 import clsx from 'clsx';
 import { FC, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useForm } from 'react-hook-form';
-import z from 'zod';
 
 import { EMPTY_PLACEHOLDER } from '@/shared/constants';
 import { Dictionary } from '@/shared/dictionaries/types';
-import { ContactFieldId } from '@/shared/dictionaries/types/contactTypes';
-import { ZodIssueCode } from '@/shared/dictionaries/types/sharedTypes';
 import useIsMounted from '@/shared/hooks/useIsMounted';
 import Button from '@/shared/ui/button/Button';
 
@@ -20,18 +18,9 @@ import Modal from './ui/Modal';
 
 const COOLDOWN_MS = 10000; // 10 seconds
 
-export type ContactFormData = Record<ContactFieldId, string>;
-
 type FormProps = {
   dict: Dictionary;
 };
-
-const schema = z.object({
-  email: z.string().min(1).check(z.email()),
-  message: z.string().min(10),
-  name: z.string(),
-  subject: z.string(),
-});
 
 const Form: FC<FormProps> = ({ dict }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -44,7 +33,7 @@ const Form: FC<FormProps> = ({ dict }) => {
     register,
   } = useForm<ContactFormData>({
     mode: 'onChange',
-    resolver: zodResolver(schema),
+    resolver: zodResolver(schemas.ContactRequest),
     shouldFocusError: false,
   });
 

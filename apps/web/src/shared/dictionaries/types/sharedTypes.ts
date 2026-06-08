@@ -1,6 +1,4 @@
-import { z } from 'zod';
-
-export type ZodIssueCode = z.core.$ZodIssueCode;
+import { ZodIssueCode } from '@portfolio/types';
 
 import { NavHome } from '@/shared/dictionaries/types/navigationTypes';
 
