@@ -4,6 +4,7 @@
 @use 'styles/utils/mixins';
 @use 'sass:map';
 @forward './fonts';
+@forward './themes';
 
 html {
   scroll-behavior: smooth;

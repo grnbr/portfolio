@@ -14,7 +14,7 @@ const Input: FC<InputProps> = ({
   errorMsg,
   id,
   label,
-  ...rest
+  ...props
 }: InputProps) => {
   return (
     <div className={clsx(styles.inputContainer, errorMsg && styles.error)}>
@@ -23,7 +23,7 @@ const Input: FC<InputProps> = ({
           {label}
         </label>
       )}
-      <input className={styles.input} id={id} {...rest} />
+      <input className={styles.input} id={id} {...props} />
       <span className={styles.errorText}>{errorMsg ?? EMPTY_PLACEHOLDER}</span>
     </div>
   );

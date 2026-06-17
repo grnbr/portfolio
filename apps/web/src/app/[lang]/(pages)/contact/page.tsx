@@ -6,7 +6,7 @@ import { Locale } from '@/shared/i18n/i18n-config';
 import getOpenGraphDefaults from '@/shared/lib/metadata/getOpenGraphDefaults';
 import Article from '@/shared/ui/containers/Article';
 
-import Form from './components/Form';
+import ContactForm from './components/ContactForm';
 
 export async function generateMetadata(props: {
   params: Promise<{ lang: Locale }>;
@@ -39,7 +39,7 @@ export default async function Page({ params }: PageProps<'/[lang]'>) {
     <>
       <PageHeader header={dictionary.pages.contact.header} />
       <Article>
-        <Form dict={dictionary} />
+        <ContactForm dict={dictionary} />
       </Article>
     </>
   );

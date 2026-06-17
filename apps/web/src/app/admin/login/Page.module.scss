@@ -1,0 +1,8 @@
+@use 'styles/utils/mixins' as m;
+
+.page {
+  @include m.flex-center;
+
+  width: 100%;
+  min-height: 0;
+}

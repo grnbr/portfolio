@@ -42,7 +42,7 @@ const DropdownMenu: FC<DropdownMenuProps> = ({
   children,
   handleCloseMenu,
   variant,
-  ...rest
+  ...props
 }) => {
   const menuRef = useRef<HTMLDivElement | null>(null);
 
@@ -69,7 +69,7 @@ const DropdownMenu: FC<DropdownMenuProps> = ({
       ref={menuRef}
       transition={dropdownTransition[variant]}
       variants={variants[variant]}
-      {...rest}
+      {...props}
     >
       {children}
     </motion.div>

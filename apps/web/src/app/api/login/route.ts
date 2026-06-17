@@ -3,7 +3,7 @@ const API_URL = process.env.API_URL || 'http://localhost:4000';
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const res = await fetch(`${API_URL}/contact`, {
+    const res = await fetch(`${API_URL}/login`, {
       body: JSON.stringify(body),
       headers: { 'Content-Type': 'application/json' },
       method: 'POST',

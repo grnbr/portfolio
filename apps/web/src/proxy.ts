@@ -16,6 +16,10 @@ import {
 const handleLocale = (request: NextRequest, response: NextResponse) => {
   const { pathname } = request.nextUrl;
 
+  const isAdminRoute = pathname.startsWith('/admin');
+
+  if (isAdminRoute) return response;
+
   const hasPathnameLocale = i18n.locales.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
   );

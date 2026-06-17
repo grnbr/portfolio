@@ -108,6 +108,13 @@ paths:
       responses:
         "201":
           description: Message saved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
         "400":
           description: Validation error
           content:

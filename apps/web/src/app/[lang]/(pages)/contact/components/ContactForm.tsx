@@ -12,7 +12,7 @@ import { Dictionary } from '@/shared/dictionaries/types';
 import useIsMounted from '@/shared/hooks/useIsMounted';
 import Button from '@/shared/ui/button/Button';
 
-import styles from './Form.module.scss';
+import styles from './ContactForm.module.scss';
 import Input from './ui/Input';
 import Modal from './ui/Modal';
 

@@ -1,4 +1,4 @@
-import './globals.scss';
+import '../globals.scss';
 
 import { Analytics } from '@vercel/analytics/next';
 import { headers } from 'next/headers';
