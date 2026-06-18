@@ -73,7 +73,7 @@ components:
           type: string
 
 paths:
-  /auth/login:
+  /admin/auth/login:
     post:
       summary: Login as admin
       requestBody:
@@ -122,7 +122,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Error"
 
-  /messages:
+  /admin/messages:
     get:
       summary: Get all messages (admin only)
       security:

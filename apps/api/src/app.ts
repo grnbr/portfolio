@@ -1,15 +1,13 @@
 import express from 'express';
 
-import authRouter from './routes/auth.js';
+import adminRouter from './routes/admin/index.js';
 import contactRouter from './routes/contact.js';
-import messagesRouter from './routes/messages.js';
 
 const app = express();
 
 app.use(express.json());
 
-app.use('/auth', authRouter);
-app.use('/contact', contactRouter);
-app.use('/messages', messagesRouter);
+app.use('/api/v1/admin', adminRouter);
+app.use('/api/v1/contact', contactRouter);
 
 export default app;
