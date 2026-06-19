@@ -3,7 +3,7 @@ import { FC, InputHTMLAttributes } from 'react';
 
 import { EMPTY_PLACEHOLDER } from '@/shared/constants';
 
-import styles from '../Form.module.scss';
+import styles from '../ContactForm.module.scss';
 
 type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   errorMsg?: string;

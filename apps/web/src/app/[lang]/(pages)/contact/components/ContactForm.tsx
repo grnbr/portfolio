@@ -10,6 +10,8 @@ import { useForm } from 'react-hook-form';
 import { EMPTY_PLACEHOLDER } from '@/shared/constants';
 import { Dictionary } from '@/shared/dictionaries/types';
 import useIsMounted from '@/shared/hooks/useIsMounted';
+import { apiFetch } from '@/shared/lib/api/apiFetch';
+import { API_BASE } from '@/shared/lib/api/constants';
 import Button from '@/shared/ui/button/Button';
 
 import styles from './ContactForm.module.scss';
@@ -51,19 +53,14 @@ const Form: FC<FormProps> = ({ dict }) => {
   const onCloseModal = () => setIsModalOpen(false);
 
   const onSubmit = async (data: ContactFormData) => {
+    console.log(1);
     try {
-      const res = await fetch('/api/contact', {
-        body: JSON.stringify(data),
-        headers: { 'Content-Type': 'application/json' },
+      await apiFetch({
+        baseURL: API_BASE.public,
+        body: data,
+        endpoint: '/v1/contact',
         method: 'POST',
       });
-
-      const json = await res.json();
-
-      if (!res.ok) {
-        console.error(json.error);
-        return;
-      }
 
       onOpenModal();
       setIsCooldown(true);

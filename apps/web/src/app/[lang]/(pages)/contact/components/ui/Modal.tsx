@@ -3,7 +3,7 @@ import { FC } from 'react';
 
 import Button from '@/shared/ui/button/Button';
 
-import styles from '../Form.module.scss';
+import styles from '../ContactForm.module.scss';
 
 type ModalProps = { isModalOpen: boolean; onCloseModal: () => void };
 
