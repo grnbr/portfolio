@@ -7,7 +7,7 @@
       "outputs": ["src/generated/**"]
     },
     "build": {
-      "dependsOn": ["^generate", "^build"],
+      "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"]
     },
     "@portfolio/web#build": {
@@ -16,6 +16,10 @@
     },
     "@portfolio/api#build": {
       "outputs": ["dist/**"]
+    },
+    "@portfolio/types#build": {
+      "inputs": ["src/**", "../../apps/api/openapi.yaml"],
+      "outputs": ["dist/**", "src/generated/**"]
     },
     "lint": {
       "dependsOn": ["^lint"]
