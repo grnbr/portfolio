@@ -200,7 +200,7 @@ export const dictionary: Dictionary = {
           label: 'Связаться',
         },
         seeMyResume: {
-          href: '/resume/Григорий_Найбауер_Full-stack_Resume.pdf',
+          href: '/resume/Григорий_Найбауер_Frontend_Resume.pdf',
           label: 'Посмотреть мое резюме',
         },
       },
