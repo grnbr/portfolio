@@ -7,7 +7,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use('/api/v1/admin', adminRouter);
-app.use('/api/v1/contact', contactRouter);
+app.use('/api/admin', adminRouter);
+app.use('/api/contact', contactRouter);
 
 export default app;

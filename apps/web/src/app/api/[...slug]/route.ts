@@ -9,3 +9,4 @@ async function handleRequest(request: Request) {
 }
 
 export const POST = handleRequest;
+export const GET = handleRequest;

@@ -13,7 +13,57 @@ import {
   ThemeValues,
 } from './shared/types/theme';
 
-const handleLocale = (request: NextRequest, response: NextResponse) => {
+export function proxy(request: NextRequest) {
+  const adminResponse = handleAdmin(request);
+  if (adminResponse) return adminResponse;
+
+  const response = NextResponse.next();
+  const localeResponse = handleLocale(request, response);
+
+  if (localeResponse === response) {
+    handleTheme(request, response);
+  }
+
+  return localeResponse;
+}
+
+export const config = {
+  // Matcher ignoring `/_next/` and `/api/`
+  matcher: ['/((?!api|_next/static|_next/image|favicon.ico|.*\\.).*)'],
+};
+
+function getLocale(request: NextRequest): string | undefined {
+  const cookieLocale = request.cookies.get('locale')?.value as Locale;
+
+  if (i18n.locales.includes(cookieLocale)) {
+    return cookieLocale;
+  }
+
+  const acceptLanguage = request.headers.get('accept-language');
+  const { defaultLocale, locales } = i18n;
+
+  const languages = new Negotiator({
+    headers: { 'accept-language': acceptLanguage ?? '' },
+  }).languages();
+
+  return match(languages, locales, defaultLocale);
+}
+
+function handleAdmin(request: NextRequest) {
+  const token = request.cookies.get('admin_token')?.value;
+  const isAdminPage = request.nextUrl.pathname.startsWith('/admin');
+  const isLoginPage = request.nextUrl.pathname === '/admin/login';
+
+  if (isAdminPage && !isLoginPage && !token) {
+    return NextResponse.redirect(new URL('/admin/login', request.url));
+  }
+
+  if (isLoginPage && token) {
+    return NextResponse.redirect(new URL('/admin/messages', request.url));
+  }
+}
+
+function handleLocale(request: NextRequest, response: NextResponse) {
   const { pathname } = request.nextUrl;
 
   const isAdminRoute = pathname.startsWith('/admin');
@@ -42,26 +92,9 @@ const handleLocale = (request: NextRequest, response: NextResponse) => {
   // The new URL is now /en-US/products
 
   return NextResponse.redirect(request.nextUrl);
-};
-
-function getLocale(request: NextRequest): string | undefined {
-  const cookieLocale = request.cookies.get('locale')?.value as Locale;
-
-  if (i18n.locales.includes(cookieLocale)) {
-    return cookieLocale;
-  }
-
-  const acceptLanguage = request.headers.get('accept-language');
-  const { defaultLocale, locales } = i18n;
-
-  const languages = new Negotiator({
-    headers: { 'accept-language': acceptLanguage ?? '' },
-  }).languages();
-
-  return match(languages, locales, defaultLocale);
 }
 
-const handleTheme = (request: NextRequest, response: NextResponse) => {
+function handleTheme(request: NextRequest, response: NextResponse) {
   const theme = request.cookies.get('theme')?.value as Theme | undefined;
   const resolvedTheme = request.cookies.get('resolvedTheme')?.value as
     | ColorScheme
@@ -85,20 +118,4 @@ const handleTheme = (request: NextRequest, response: NextResponse) => {
     'x-resolved-theme',
     isValidColorScheme ? resolvedTheme : ThemeMap.Light,
   );
-};
-
-export function proxy(request: NextRequest) {
-  const response = NextResponse.next();
-  const localeResponse = handleLocale(request, response);
-
-  if (localeResponse === response) {
-    handleTheme(request, response);
-  }
-
-  return localeResponse;
 }
-
-export const config = {
-  // Matcher ignoring `/_next/` and `/api/`
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico|.*\\.).*)'],
-};
