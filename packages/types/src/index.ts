@@ -10,5 +10,6 @@ export const schemas = {
 
 export type ContactFormData = z.infer<typeof schemas.ContactRequest>;
 export type LoginFormData = z.infer<typeof schemas.LoginRequest>;
+export type LoginResponse = z.infer<typeof schemas.LoginResponse>;
 
 export type ZodIssueCode = z.ZodIssueCode;

@@ -16,7 +16,7 @@ export const login = async (req: Request, res: Response) => {
   const result = LoginRequest.safeParse(req.body);
 
   if (!result.success) {
-    res.status(400).json({ errors: result.error.flatten(req.body) });
+    res.status(400).json({ error: result.error.flatten(req.body) });
     return;
   }
 

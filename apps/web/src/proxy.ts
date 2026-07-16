@@ -1,4 +1,5 @@
 import { match } from '@formatjs/intl-localematcher';
+import { jwtVerify } from 'jose';
 import Negotiator from 'negotiator';
 import { type NextRequest, NextResponse } from 'next/server';
 
@@ -13,8 +14,8 @@ import {
   ThemeValues,
 } from './shared/types/theme';
 
-export function proxy(request: NextRequest) {
-  const adminResponse = handleAdmin(request);
+export async function proxy(request: NextRequest) {
+  const adminResponse = await handleAdmin(request);
   if (adminResponse) return adminResponse;
 
   const response = NextResponse.next();
@@ -49,7 +50,7 @@ function getLocale(request: NextRequest): string | undefined {
   return match(languages, locales, defaultLocale);
 }
 
-function handleAdmin(request: NextRequest) {
+async function handleAdmin(request: NextRequest) {
   const token = request.cookies.get('admin_token')?.value;
   const isAdminPage = request.nextUrl.pathname.startsWith('/admin');
   const isLoginPage = request.nextUrl.pathname === '/admin/login';
@@ -58,8 +59,22 @@ function handleAdmin(request: NextRequest) {
     return NextResponse.redirect(new URL('/admin/login', request.url));
   }
 
-  if (isLoginPage && token) {
-    return NextResponse.redirect(new URL('/admin/messages', request.url));
+  const secret = new TextEncoder().encode(process.env.JWT_SECRET);
+
+  if (token) {
+    try {
+      await jwtVerify(token, secret);
+
+      if (isLoginPage) {
+        return NextResponse.redirect(new URL('/admin/messages', request.url));
+      }
+    } catch {
+      const response = NextResponse.redirect(
+        new URL('/admin/login', request.url),
+      );
+      response.cookies.delete('admin_token');
+      return response;
+    }
   }
 }
 

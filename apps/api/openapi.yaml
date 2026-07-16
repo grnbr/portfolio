@@ -24,9 +24,9 @@ components:
     LoginResponse:
       type: object
       properties:
-        token:
-          type: string
-          example: eyJhbGciOiJIUzI1NiJ9...
+        success:
+          type: boolean
+          example: true
         
     ContactRequest:
       type: object

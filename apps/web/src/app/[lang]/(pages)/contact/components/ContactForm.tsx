@@ -53,12 +53,11 @@ const Form: FC<FormProps> = ({ dict }) => {
   const onCloseModal = () => setIsModalOpen(false);
 
   const onSubmit = async (data: ContactFormData) => {
-    console.log(1);
     try {
       await apiFetch({
         baseURL: API_BASE.public,
         body: data,
-        endpoint: '/v1/contact',
+        endpoint: '/contact',
         method: 'POST',
       });
 
