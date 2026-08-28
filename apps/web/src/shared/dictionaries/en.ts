@@ -206,7 +206,7 @@ export const dictionary: Dictionary = {
           label: 'Get in touch',
         },
         seeMyResume: {
-          href: '/resume/Grigory_Neubauer_Frontend_Resume.pdf',
+          href: '/resume/Grigory_Neubauer_CV.pdf',
           label: 'See my resume',
         },
       },
